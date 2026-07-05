@@ -1,0 +1,448 @@
+@import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+
+:root {
+  color-scheme: dark;
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #f9e7b7;
+  background: #101820;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  --forest: #101820;
+  --canopy: #1f5a3d;
+  --moss: #6aa84f;
+  --gold: #ffd166;
+  --magic: #c084fc;
+  --rose: #ff6f91;
+  --paper: #f9e7b7;
+  --ink: #211a1d;
+  --aqua: #80ffdb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(255, 209, 102, 0.13), transparent 18rem),
+    radial-gradient(circle at 76% 12%, rgba(192, 132, 252, 0.12), transparent 22rem),
+    linear-gradient(180deg, #101820 0%, #14251d 52%, #211a1d 100%);
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+.app-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  grid-template-rows: auto minmax(320px, 1fr);
+  gap: 18px;
+  width: min(1540px, calc(100vw - 32px));
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 18px 0;
+}
+
+.hero-stage {
+  display: grid;
+  grid-template-columns: 330px minmax(0, 1fr);
+  gap: 18px;
+  min-height: 620px;
+}
+
+.story-panel,
+.memory-sidebar,
+.reward-card,
+.game-frame {
+  background: rgba(33, 26, 29, 0.86);
+  border: 4px solid var(--paper);
+  box-shadow:
+    0 0 0 4px #37251f,
+    0 18px 40px rgba(0, 0, 0, 0.35);
+}
+
+.story-panel {
+  align-self: stretch;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  image-rendering: pixelated;
+  position: relative;
+  overflow: hidden;
+}
+
+.story-panel::after {
+  content: "";
+  position: absolute;
+  inset: auto 24px 24px auto;
+  width: 86px;
+  height: 86px;
+  background:
+    linear-gradient(#3a2118 0 0) 28px 8px / 30px 18px,
+    linear-gradient(#f8c49a 0 0) 24px 24px / 38px 28px,
+    linear-gradient(#111 0 0) 29px 34px / 9px 5px,
+    linear-gradient(#111 0 0) 49px 34px / 9px 5px,
+    linear-gradient(#5f3dc4 0 0) 23px 54px / 40px 24px,
+    linear-gradient(#ffd166 0 0) 15px 56px / 10px 18px,
+    linear-gradient(#ffd166 0 0) 62px 56px / 10px 18px;
+  background-repeat: no-repeat;
+  opacity: 0.9;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: var(--gold);
+  font-family: "Pixelify Sans", monospace;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
+
+h1,
+h2 {
+  margin: 0;
+  font-family: "Pixelify Sans", monospace;
+  line-height: 0.95;
+  letter-spacing: 0;
+}
+
+h1 {
+  color: #fff4c7;
+  font-size: clamp(3.4rem, 8vw, 6.6rem);
+  text-shadow: 5px 5px 0 #5f3dc4, 9px 9px 0 #211a1d;
+}
+
+h2 {
+  color: #fff4c7;
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+}
+
+.story-panel p:not(.eyebrow) {
+  max-width: 28rem;
+  margin: 22px 0;
+  color: #ffeec5;
+  font-size: 1rem;
+}
+
+.control-grid {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 10px;
+  margin-top: 18px;
+  padding: 14px;
+  background: #101820;
+  border: 3px solid var(--gold);
+}
+
+.control-grid span {
+  color: var(--aqua);
+  font-family: "Pixelify Sans", monospace;
+}
+
+.control-grid strong {
+  color: var(--paper);
+}
+
+.game-frame {
+  min-width: 0;
+  padding: 12px;
+  background:
+    linear-gradient(90deg, rgba(255, 209, 102, 0.08) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(255, 209, 102, 0.08) 1px, transparent 1px),
+    rgba(33, 26, 29, 0.9);
+  background-size: 16px 16px;
+}
+
+.game-topbar {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 10px 14px;
+  color: var(--gold);
+  font-family: "Pixelify Sans", monospace;
+  font-size: 1.15rem;
+}
+
+.motion-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--paper);
+  font-family: "Space Grotesk", system-ui, sans-serif;
+  font-size: 0.9rem;
+}
+
+.motion-toggle input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--rose);
+}
+
+.game-canvas {
+  width: 100%;
+  min-height: 540px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: #13241f;
+  border: 4px solid #100d10;
+}
+
+.game-canvas canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+}
+
+.memory-sidebar {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  min-height: calc(100vh - 36px);
+  padding: 18px;
+  position: sticky;
+  top: 18px;
+  align-self: start;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.counter {
+  min-width: 58px;
+  padding: 8px 10px;
+  background: #101820;
+  border: 3px solid var(--gold);
+  color: var(--gold);
+  font-family: "Pixelify Sans", monospace;
+  text-align: center;
+}
+
+.sidebar-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.sidebar-actions button,
+.reward-list button {
+  border: 3px solid var(--paper);
+  background: #101820;
+  color: var(--paper);
+  box-shadow: 4px 4px 0 #000;
+}
+
+.sidebar-actions button {
+  padding: 10px 8px;
+  color: var(--gold);
+  font-family: "Pixelify Sans", monospace;
+}
+
+.sidebar-actions button:hover,
+.reward-list button:not(:disabled):hover,
+.reward-list button.active {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 #000;
+  border-color: var(--gold);
+}
+
+.reward-list {
+  display: grid;
+  gap: 10px;
+}
+
+.reward-list button {
+  min-height: 88px;
+  padding: 12px;
+  text-align: left;
+}
+
+.reward-list button:disabled {
+  opacity: 0.45;
+}
+
+.reward-list span,
+.reward-list small {
+  display: block;
+}
+
+.reward-list span {
+  color: var(--aqua);
+  font-family: "Pixelify Sans", monospace;
+}
+
+.reward-list strong {
+  display: block;
+  margin: 4px 0;
+  color: #fff4c7;
+}
+
+.reward-list small {
+  color: #d8c8a3;
+}
+
+.empty-state {
+  margin: 18px 0 0;
+  color: #d8c8a3;
+  font-size: 0.95rem;
+}
+
+.reward-detail {
+  grid-column: 1;
+}
+
+.reward-card {
+  padding: clamp(18px, 3vw, 30px);
+}
+
+.reward-card-header {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.status {
+  flex: 0 0 auto;
+  padding: 8px 10px;
+  border: 3px solid;
+  font-family: "Pixelify Sans", monospace;
+  font-size: 0.9rem;
+}
+
+.status.verified {
+  border-color: var(--aqua);
+  color: var(--aqua);
+}
+
+.status.pending {
+  border-color: var(--rose);
+  color: var(--rose);
+}
+
+.summary {
+  max-width: 72rem;
+  margin: 0 0 20px;
+  color: #ffeec5;
+  font-size: 1.05rem;
+}
+
+.reward-card ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.reward-card li {
+  min-height: 74px;
+  padding: 14px;
+  background: rgba(16, 24, 32, 0.74);
+  border: 3px solid rgba(249, 231, 183, 0.42);
+  color: #f9e7b7;
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.tag-row span {
+  padding: 7px 10px;
+  background: #101820;
+  border: 2px solid var(--magic);
+  color: #f4dcff;
+  font-family: "Pixelify Sans", monospace;
+}
+
+@media (max-width: 1180px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-stage {
+    grid-template-columns: 1fr;
+  }
+
+  .memory-sidebar,
+  .reward-detail {
+    grid-column: 1;
+  }
+
+  .memory-sidebar {
+    grid-row: auto;
+    min-height: 0;
+    position: static;
+  }
+
+  .reward-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .app-shell {
+    width: min(100vw - 20px, 1540px);
+    padding: 10px 0;
+    gap: 12px;
+  }
+
+  .story-panel,
+  .memory-sidebar,
+  .reward-card,
+  .game-frame {
+    border-width: 3px;
+    box-shadow:
+      0 0 0 3px #37251f,
+      0 12px 26px rgba(0, 0, 0, 0.32);
+  }
+
+  .story-panel {
+    padding: 18px;
+    min-height: 460px;
+  }
+
+  .game-topbar,
+  .reward-card-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .game-canvas {
+    min-height: 330px;
+  }
+
+  .reward-list,
+  .reward-card ul {
+    grid-template-columns: 1fr;
+  }
+}
