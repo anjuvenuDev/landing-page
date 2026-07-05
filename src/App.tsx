@@ -5,7 +5,7 @@ import { MemoryQuestGame } from "./game/MemoryQuestGame";
 
 const storageKey = "anjana-memory-unlocks";
 
-type AppMode = "intro" | "quest" | "archive";
+type AppMode = "intro" | "quest";
 
 const narrationLines = [
   "I wake inside a forest that feels older than memory.",
@@ -59,10 +59,10 @@ function useTypewriter(lines: string[]) {
 
 function IntroScreen({
   onEnterQuest,
-  onOpenArchive,
+  onOpenMemories,
 }: {
   onEnterQuest: () => void;
-  onOpenArchive: () => void;
+  onOpenMemories: () => void;
 }) {
   const { visibleLines, activeLine, complete } = useTypewriter(narrationLines);
 
@@ -76,7 +76,6 @@ function IntroScreen({
       </div>
       <section className="flashback-panel" aria-label="Story narration">
         <div className="intro-copy">
-          <p className="eyebrow">Flashback sequence</p>
           <h1>Anjana Memory Quest</h1>
           <div className="typewriter" aria-live="polite">
             {visibleLines.map((line) => (
@@ -91,29 +90,35 @@ function IntroScreen({
             <button type="button" onClick={onEnterQuest}>
               Enter the game
             </button>
-            <button type="button" onClick={onOpenArchive}>
+            <button type="button" onClick={onOpenMemories}>
               Unlock memory shards
             </button>
           </div>
         </div>
         <div className="avatar-stage" aria-label="Pixel avatar of Anjana">
           <div className="gesture-avatar">
-            <span className="hair hair-left" />
-            <span className="hair hair-right" />
-            <span className="face" />
-            <span className="glasses left" />
-            <span className="glasses right" />
-            <span className="smile" />
-            <span className="body" />
-            <span className="arm arm-left" />
-            <span className="arm arm-right" />
-            <span className="leg leg-left" />
-            <span className="leg leg-right" />
-          </div>
-          <div className="speech-runes">
-            <span>?</span>
-            <span>!</span>
-            <span>★</span>
+            <span className="px hair-back" />
+            <span className="px hair-crown" />
+            <span className="px hair-left-sheet" />
+            <span className="px hair-right-sheet" />
+            <span className="px face" />
+            <span className="px ear left-ear" />
+            <span className="px ear right-ear" />
+            <span className="px eye left-eye" />
+            <span className="px eye right-eye" />
+            <span className="px lens left-lens" />
+            <span className="px lens right-lens" />
+            <span className="px nose" />
+            <span className="px smile" />
+            <span className="px neck" />
+            <span className="px top" />
+            <span className="px sleeve left-sleeve" />
+            <span className="px sleeve right-sleeve" />
+            <span className="px arm left-arm" />
+            <span className="px arm right-arm" />
+            <span className="px pants" />
+            <span className="px shoe left-shoe" />
+            <span className="px shoe right-shoe" />
           </div>
         </div>
       </section>
@@ -198,84 +203,85 @@ function SectionIllustration({ section }: { section: PortfolioSection }) {
   );
 }
 
-function RewardDetail({ section }: { section: PortfolioSection | null }) {
-  if (!section) {
-    return (
-      <div className="reward-card locked-detail">
-        <p className="eyebrow">Quest start</p>
-        <h2>Choose a treasure box</h2>
-        <p className="summary">
-          Run the next level to reveal a memory shard, or use the archive path
-          to unlock the full portfolio immediately.
-        </p>
-      </div>
-    );
-  }
-
+function RewardOverlay({
+  section,
+  allUnlocked,
+  onContinue,
+}: {
+  section: PortfolioSection;
+  allUnlocked: boolean;
+  onContinue: () => void;
+}) {
   return (
-    <article className="reward-card reward-reveal" key={section.id}>
-      <div className="reward-card-header">
-        <div>
-          <p className="eyebrow">Treasure opened</p>
+    <section className="reward-overlay" aria-live="polite">
+      <article className="reward-card reward-reveal" key={section.id}>
+        <div className="reward-card-header">
           <h2>{section.title}</h2>
+          <span className={section.status === "verified" ? "status verified" : "status pending"}>
+            {section.status === "verified" ? "Resume verified" : "Needs final copy"}
+          </span>
         </div>
-        <span className={section.status === "verified" ? "status verified" : "status pending"}>
-          {section.status === "verified" ? "Resume verified" : "Needs final copy"}
-        </span>
-      </div>
-      <div className="reward-body">
-        <SectionIllustration section={section} />
-        <div className="reward-copy">
-          <p className="summary">{section.summary}</p>
-          <ul>
-            {section.highlights.map((highlight) => (
-              <li key={highlight}>{highlight}</li>
-            ))}
-          </ul>
-          {section.links ? (
-            <div className="link-row" aria-label="Project links">
-              {section.links.map((link) => (
-                <a key={link.href} href={link.href} target="_blank" rel="noreferrer">
-                  {link.label}
-                </a>
+        <div className="reward-body">
+          <SectionIllustration section={section} />
+          <div className="reward-copy">
+            <p className="summary">{section.summary}</p>
+            <ul>
+              {section.highlights.map((highlight) => (
+                <li key={highlight}>{highlight}</li>
+              ))}
+            </ul>
+            {section.links ? (
+              <div className="link-row" aria-label="Project links">
+                {section.links.map((link) => (
+                  <a key={link.href} href={link.href} target="_blank" rel="noreferrer">
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            ) : null}
+            <div className="tag-row">
+              {section.tags.map((tag) => (
+                <span key={tag}>{tag}</span>
               ))}
             </div>
-          ) : null}
-          <div className="tag-row">
-            {section.tags.map((tag) => (
-              <span key={tag}>{tag}</span>
-            ))}
           </div>
         </div>
-      </div>
-    </article>
+        <button type="button" className="continue-button" onClick={onContinue}>
+          {allUnlocked ? "Back to game" : "Continue to next level"}
+        </button>
+      </article>
+    </section>
   );
 }
 
 function MemoryLog({
+  open,
   unlocked,
   selectedId,
+  onClose,
   onSelect,
   onUnlockAll,
   onReset,
 }: {
+  open: boolean;
   unlocked: PortfolioSectionId[];
   selectedId: PortfolioSectionId | null;
+  onClose: () => void;
   onSelect: (sectionId: PortfolioSectionId) => void;
   onUnlockAll: () => void;
   onReset: () => void;
 }) {
   return (
-    <aside className="quest-log" aria-label="Memory shard logs">
+    <aside className={open ? "quest-log open" : "quest-log"} aria-label="Memory shard logs">
       <div className="sidebar-header">
-        <div>
-          <p className="eyebrow">Left log</p>
-          <h2>Memory Shards</h2>
-        </div>
-        <span className="counter">
-          {unlocked.length}/{sections.length}
-        </span>
+        <h2>Memory Shards</h2>
+        <button type="button" className="icon-button close-log" onClick={onClose} aria-label="Close log">
+          ×
+        </button>
       </div>
+      <span className="counter">
+        {unlocked.length}/{sections.length}
+      </span>
       <div className="sidebar-actions">
         <button type="button" onClick={onUnlockAll}>
           Unlock all
@@ -312,6 +318,7 @@ function App() {
   const [mode, setMode] = useState<AppMode>("intro");
   const [unlocked, setUnlocked] = useState<PortfolioSectionId[]>(readStoredUnlocks);
   const [selectedId, setSelectedId] = useState<PortfolioSectionId | null>(null);
+  const [logOpen, setLogOpen] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
 
   const currentLevel = useMemo(() => {
@@ -341,98 +348,74 @@ function App() {
   const unlockAll = () => {
     persistUnlocks([...sectionOrder]);
     setSelectedId("about");
-    setMode("archive");
+    setLogOpen(false);
+    setMode("quest");
   };
 
   const resetQuest = () => {
     persistUnlocks([]);
     setSelectedId(null);
+    setLogOpen(false);
     setMode("quest");
   };
 
   const enterQuest = () => {
     setMode("quest");
-    if (unlocked.length > 0 && !selectedId) {
-      setSelectedId(unlocked[unlocked.length - 1]);
-    }
+    setSelectedId(null);
+  };
+
+  const selectFromLog = (sectionId: PortfolioSectionId) => {
+    setSelectedId(sectionId);
+    setLogOpen(false);
   };
 
   if (mode === "intro") {
-    return <IntroScreen onEnterQuest={enterQuest} onOpenArchive={unlockAll} />;
+    return <IntroScreen onEnterQuest={enterQuest} onOpenMemories={unlockAll} />;
   }
 
-  const nextLevelLabel = allUnlocked
-    ? "All memories restored"
-    : `Next treasure: ${currentLevel.rewardName}`;
-
   return (
-    <main className={`workspace ${mode}`}>
+    <main className="game-screen">
+      <MemoryQuestGame level={currentLevel} reducedMotion={reducedMotion} onComplete={unlockSection} />
+
+      <div className="game-overlay-hud">
+        <button
+          type="button"
+          className="icon-button log-toggle"
+          onClick={() => setLogOpen((open) => !open)}
+          aria-label="Open memory log"
+        >
+          ☰
+        </button>
+        <div className="objective-pill">
+          {allUnlocked ? "All memories restored" : `Next: ${currentLevel.rewardName}`}
+        </div>
+        <label className="motion-toggle">
+          <input
+            type="checkbox"
+            checked={reducedMotion}
+            onChange={(event) => setReducedMotion(event.target.checked)}
+          />
+          Calm
+        </label>
+      </div>
+
       <MemoryLog
+        open={logOpen}
         unlocked={unlocked}
         selectedId={selectedId}
-        onSelect={setSelectedId}
+        onClose={() => setLogOpen(false)}
+        onSelect={selectFromLog}
         onUnlockAll={unlockAll}
         onReset={resetQuest}
       />
 
-      <section className="mission-panel" aria-label="Game and unlocked section">
-        <header className="mission-header">
-          <div>
-            <p className="eyebrow">{mode === "archive" ? "Archive mode" : "Quest mode"}</p>
-            <h1>{mode === "archive" ? "Recovered Portfolio" : "Forest Run"}</h1>
-          </div>
-          <div className="mission-controls">
-            <button type="button" onClick={() => setMode(mode === "archive" ? "quest" : "archive")}>
-              {mode === "archive" ? "Return to game" : "Open archive"}
-            </button>
-            <label className="motion-toggle">
-              <input
-                type="checkbox"
-                checked={reducedMotion}
-                onChange={(event) => setReducedMotion(event.target.checked)}
-              />
-              Calm motion
-            </label>
-          </div>
-        </header>
-
-        {mode === "quest" ? (
-          <div className="game-panel scene-enter">
-            <div className="game-topbar">
-              <span>{nextLevelLabel}</span>
-              <span>Move: arrows/A-D · Jump: space/W/up · Open chest: touch it</span>
-            </div>
-            <MemoryQuestGame
-              level={currentLevel}
-              reducedMotion={reducedMotion}
-              onComplete={unlockSection}
-            />
-          </div>
-        ) : (
-          <div className="archive-map scene-enter" aria-label="Unlocked memory map">
-            {sections.map((section) => {
-              const isUnlocked = unlocked.includes(section.id);
-              return (
-                <button
-                  type="button"
-                  key={section.id}
-                  disabled={!isUnlocked}
-                  className={selectedId === section.id ? "map-treasure active" : "map-treasure"}
-                  onClick={() => setSelectedId(section.id)}
-                >
-                  <span className="box-icon" />
-                  <strong>{section.title}</strong>
-                  <small>{isUnlocked ? "Open memory" : "Locked"}</small>
-                </button>
-              );
-            })}
-          </div>
-        )}
-
-        <section className="reward-detail" aria-live="polite">
-          <RewardDetail section={selectedSection} />
-        </section>
-      </section>
+      {selectedSection ? (
+        <RewardOverlay
+          section={selectedSection}
+          allUnlocked={allUnlocked}
+          onContinue={() => setSelectedId(null)}
+        />
+      ) : null}
     </main>
   );
 }

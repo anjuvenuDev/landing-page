@@ -49,11 +49,11 @@ class MemoryQuestScene extends Phaser.Scene {
       tile.setOrigin(0.5, 0.5).refreshBody();
     }
 
-    this.player = this.physics.add.sprite(120, height - 148, "anjana-avatar");
+    this.player = this.physics.add.sprite(140, height - 176, "anjana-avatar");
     this.player.setCollideWorldBounds(true);
     this.player.setDragX(1200);
     this.player.setMaxVelocity(360, 720);
-    this.player.body?.setSize(34, 52).setOffset(10, 8);
+    this.player.body?.setSize(42, 70).setOffset(27, 36);
     this.cameras.main.startFollow(this.player, true, 0.08, 0.08, -160, 70);
     this.physics.add.collider(this.player, ground);
 
@@ -118,30 +118,72 @@ class MemoryQuestScene extends Phaser.Scene {
 
   private createPixelTextures() {
     const avatar = this.make.graphics({ x: 0, y: 0 }, false);
-    avatar.fillStyle(0x3a2118);
-    avatar.fillRect(18, 8, 26, 26);
-    avatar.fillStyle(0x9a5f3f);
-    avatar.fillRect(16, 18, 30, 26);
-    avatar.fillStyle(0x221915);
-    avatar.fillRect(12, 8, 10, 34);
-    avatar.fillRect(42, 10, 8, 32);
-    avatar.fillStyle(0xf8c49a);
-    avatar.fillRect(18, 20, 26, 24);
+    avatar.fillStyle(0x050507);
+    avatar.fillRect(22, 10, 54, 16);
+    avatar.fillRect(14, 24, 72, 24);
+    avatar.fillRect(8, 42, 20, 56);
+    avatar.fillRect(68, 42, 18, 58);
+    avatar.fillRect(22, 78, 16, 42);
+    avatar.fillRect(58, 76, 18, 44);
+    avatar.fillStyle(0x1b1b1f);
+    avatar.fillRect(26, 18, 12, 8);
+    avatar.fillRect(44, 14, 12, 8);
+    avatar.fillRect(62, 22, 12, 8);
+
+    avatar.fillStyle(0xd86616);
+    avatar.fillRect(22, 42, 54, 38);
+    avatar.fillRect(28, 78, 42, 18);
+    avatar.fillStyle(0xf28a2d);
+    avatar.fillRect(16, 54, 12, 24);
+    avatar.fillRect(70, 54, 12, 24);
+    avatar.fillRect(28, 48, 36, 18);
+    avatar.fillStyle(0xa63a0e);
+    avatar.fillRect(24, 80, 52, 8);
+    avatar.fillRect(66, 60, 10, 22);
+
+    avatar.fillStyle(0xffffff);
+    avatar.fillRect(28, 53, 13, 16);
+    avatar.fillRect(56, 53, 13, 16);
+    avatar.fillStyle(0x222126);
+    avatar.fillRect(32, 53, 8, 13);
+    avatar.fillRect(56, 53, 8, 13);
+    avatar.fillStyle(0xffffff);
+    avatar.fillRect(35, 54, 4, 4);
+    avatar.fillRect(59, 54, 4, 4);
     avatar.fillStyle(0x111111);
-    avatar.fillRect(20, 27, 8, 5);
-    avatar.fillRect(34, 27, 8, 5);
-    avatar.fillRect(27, 29, 8, 3);
-    avatar.fillStyle(0xff6f91);
-    avatar.fillRect(25, 39, 11, 4);
-    avatar.fillStyle(0x5f3dc4);
-    avatar.fillRect(16, 48, 30, 24);
-    avatar.fillStyle(0xffd166);
-    avatar.fillRect(12, 48, 8, 20);
-    avatar.fillRect(42, 48, 8, 20);
-    avatar.fillStyle(0x263238);
-    avatar.fillRect(18, 72, 10, 18);
-    avatar.fillRect(34, 72, 10, 18);
-    avatar.generateTexture("anjana-avatar", 64, 96);
+    avatar.fillRect(27, 51, 16, 4);
+    avatar.fillRect(54, 51, 16, 4);
+    avatar.fillRect(44, 56, 10, 3);
+    avatar.fillStyle(0xb0004d);
+    avatar.fillRect(68, 50, 6, 4);
+    avatar.fillRect(70, 54, 4, 7);
+    avatar.fillStyle(0xa63a0e);
+    avatar.fillRect(45, 69, 6, 5);
+    avatar.fillStyle(0x4b170c);
+    avatar.fillRect(39, 80, 20, 4);
+
+    avatar.fillStyle(0x069be5);
+    avatar.fillRect(32, 94, 34, 30);
+    avatar.fillStyle(0x1fb8ff);
+    avatar.fillRect(38, 88, 22, 16);
+    avatar.fillRect(34, 100, 10, 16);
+    avatar.fillStyle(0xd86616);
+    avatar.fillRect(20, 98, 12, 24);
+    avatar.fillRect(66, 98, 12, 24);
+    avatar.fillStyle(0xa63a0e);
+    avatar.fillRect(18, 116, 12, 8);
+    avatar.fillRect(70, 116, 10, 8);
+    avatar.fillStyle(0xa8d8e7);
+    avatar.fillRect(34, 124, 30, 26);
+    avatar.fillStyle(0x5e8794);
+    avatar.fillRect(38, 132, 8, 18);
+    avatar.fillRect(54, 132, 8, 18);
+    avatar.fillStyle(0x069be5);
+    avatar.fillRect(30, 150, 18, 7);
+    avatar.fillRect(52, 150, 18, 7);
+    avatar.fillStyle(0xc8d1d6);
+    avatar.fillRect(28, 158, 44, 8);
+    avatar.generateTexture("anjana-avatar", 96, 176);
 
     const ground = this.make.graphics({ x: 0, y: 0 }, false);
     ground.fillStyle(0x17251e);
@@ -297,7 +339,7 @@ class MemoryQuestScene extends Phaser.Scene {
 
   private resetPlayer() {
     if (!this.player || this.completed) return;
-    this.player.setPosition(Math.max(120, this.player.x - 260), this.scale.height - 148);
+    this.player.setPosition(Math.max(140, this.player.x - 260), this.scale.height - 176);
     this.player.setVelocity(0, 0);
     this.cameras.main.shake(120, 0.004);
   }
@@ -336,8 +378,8 @@ export function MemoryQuestGame({
     const game = new Phaser.Game({
       type: Phaser.AUTO,
       parent: containerRef.current,
-      width: 960,
-      height: 540,
+      width: window.innerWidth,
+      height: window.innerHeight,
       backgroundColor: level.palette.sky,
       pixelArt: true,
       roundPixels: true,
@@ -349,7 +391,7 @@ export function MemoryQuestGame({
         },
       },
       scale: {
-        mode: Phaser.Scale.FIT,
+        mode: Phaser.Scale.RESIZE,
         autoCenter: Phaser.Scale.CENTER_BOTH,
       },
       scene,
