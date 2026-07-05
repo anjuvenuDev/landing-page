@@ -18,6 +18,7 @@ class MemoryQuestScene extends Phaser.Scene {
   private reducedMotion = false;
   private progressBar?: Phaser.GameObjects.Rectangle;
   private questText?: Phaser.GameObjects.Text;
+  private chest?: Phaser.Physics.Arcade.Sprite;
 
   constructor(
     level: GameLevel,
@@ -69,7 +70,7 @@ class MemoryQuestScene extends Phaser.Scene {
     this.physics.add.overlap(this.player, shard, () => {
       if (this.completed) return;
       shard.disableBody(true, true);
-      this.revealPortal(height);
+      this.revealTreasure(height);
     });
 
     this.cursors = this.input.keyboard?.createCursorKeys();
@@ -178,14 +179,20 @@ class MemoryQuestScene extends Phaser.Scene {
     shard.fillRect(20, 10, 8, 8);
     shard.generateTexture("memory-shard", 52, 56);
 
-    const portal = this.make.graphics({ x: 0, y: 0 }, false);
-    portal.lineStyle(8, 0xc084fc);
-    portal.strokeRect(10, 8, 76, 104);
-    portal.lineStyle(5, 0xffd166);
-    portal.strokeRect(22, 22, 52, 80);
-    portal.fillStyle(0x20162f, 0.7);
-    portal.fillRect(24, 24, 48, 76);
-    portal.generateTexture("memory-portal", 96, 128);
+    const chest = this.make.graphics({ x: 0, y: 0 }, false);
+    chest.fillStyle(0x3a2118);
+    chest.fillRect(8, 30, 80, 44);
+    chest.fillStyle(0x9a5f3f);
+    chest.fillRect(14, 22, 68, 22);
+    chest.fillStyle(0xffd166);
+    chest.fillRect(8, 42, 80, 8);
+    chest.fillRect(42, 22, 12, 52);
+    chest.fillStyle(0x211a1d);
+    chest.fillRect(20, 34, 20, 8);
+    chest.fillRect(58, 34, 16, 8);
+    chest.fillStyle(0xf9e7b7);
+    chest.fillRect(46, 46, 8, 10);
+    chest.generateTexture("memory-chest", 96, 86);
   }
 
   private createForest(width: number, height: number) {
@@ -260,12 +267,14 @@ class MemoryQuestScene extends Phaser.Scene {
     }).setOrigin(0.5, 0.5).setScrollFactor(0);
   }
 
-  private revealPortal(height: number) {
-    const portal = this.physics.add.staticSprite(2040, height - 146, "memory-portal");
-    portal.refreshBody();
+  private revealTreasure(height: number) {
+    this.chest = this.physics.add.staticSprite(2040, height - 124, "memory-chest");
+    this.chest.refreshBody();
+    this.chest.setInteractive({ useHandCursor: true });
+    this.chest.on("pointerdown", () => this.openTreasure());
     if (!this.reducedMotion) {
       this.tweens.add({
-        targets: portal,
+        targets: this.chest,
         scaleX: 1.08,
         scaleY: 1.08,
         duration: 520,
@@ -273,8 +282,17 @@ class MemoryQuestScene extends Phaser.Scene {
         repeat: -1,
       });
     }
-    this.questText?.setText(`${this.level.rewardName} found. Enter the portal.`);
-    this.physics.add.overlap(this.player!, portal, () => this.completeLevel());
+    this.questText?.setText(`${this.level.rewardName} found. Press the chest.`);
+    this.physics.add.overlap(this.player!, this.chest, () => this.openTreasure());
+  }
+
+  private openTreasure() {
+    if (this.completed || !this.chest) return;
+    this.completed = true;
+    this.chest.setTint(0xffd166);
+    this.questText?.setText(`${this.level.rewardName} is opening...`);
+    this.cameras.main.flash(420, 255, 209, 102);
+    this.time.delayedCall(520, () => this.completeLevel());
   }
 
   private resetPlayer() {
@@ -285,8 +303,6 @@ class MemoryQuestScene extends Phaser.Scene {
   }
 
   private completeLevel() {
-    if (this.completed) return;
-    this.completed = true;
     this.questText?.setText(`${this.level.rewardName} unlocked.`);
     this.completeCallback(this.level.id);
   }

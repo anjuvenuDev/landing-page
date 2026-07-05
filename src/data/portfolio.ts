@@ -15,9 +15,15 @@ export type PortfolioSection = {
   rewardName: string;
   quest: string;
   status: "verified" | "needs-copy";
+  visual: "map" | "network" | "timeline" | "skills" | "compass" | "guilds" | "garden" | "trophy";
   summary: string;
   highlights: string[];
   tags: string[];
+  links?: {
+    label: string;
+    href: string;
+    type: "github" | "live" | "profile";
+  }[];
 };
 
 export type GameLevel = {
@@ -44,6 +50,7 @@ export const sections: PortfolioSection[] = [
     quest:
       "The forest hums her name. Guide Anjana toward the first memory shard.",
     status: "needs-copy",
+    visual: "map",
     summary:
       "Final personal introduction pending. Resume-backed facts: Anjana Venugopalan is an Integrated M.Tech CSE student at SSN College of Engineering in Chennai, building across product, frontend, analytics, and developer tooling.",
     highlights: [
@@ -61,6 +68,7 @@ export const sections: PortfolioSection[] = [
     quest:
       "A trail of unfinished inventions flickers ahead. Collect the shard of craft.",
     status: "verified",
+    visual: "network",
     summary:
       "Anjana builds practical products across assistive technology, commerce, dependency analysis, and architecture visualization.",
     highlights: [
@@ -70,6 +78,33 @@ export const sections: PortfolioSection[] = [
       "Code-Viz: Python CLI and PyPI package for visualizing code dependencies and software architecture.",
     ],
     tags: ["React", "Python", "Node.js", "ML", "CLI", "MongoDB"],
+    links: [
+      {
+        label: "Dysgraphia Pad repo",
+        href: "https://github.com/anjuvenuDev/dysgraphia_pad",
+        type: "github",
+      },
+      {
+        label: "Impact Analyzer repo",
+        href: "https://github.com/anjuvenuDev/impact-analyzer",
+        type: "github",
+      },
+      {
+        label: "Code-Viz repo",
+        href: "https://github.com/anjuvenuDev/code-viz",
+        type: "github",
+      },
+      {
+        label: "Handmade By Shweta live",
+        href: "https://handmadebyshweta.com",
+        type: "live",
+      },
+      {
+        label: "GitHub profile",
+        href: "https://github.com/anjuvenuDev",
+        type: "profile",
+      },
+    ],
   },
   {
     id: "work",
@@ -79,6 +114,7 @@ export const sections: PortfolioSection[] = [
     quest:
       "The woods become a product maze. Jump cleanly through the workflow gaps.",
     status: "verified",
+    visual: "timeline",
     summary:
       "Her experience spans AI analytics product development, frontend engineering, API integration, and production web interfaces.",
     highlights: [
@@ -98,6 +134,7 @@ export const sections: PortfolioSection[] = [
     quest:
       "Ancient runes rearrange into stacks and systems. Gather the right symbols.",
     status: "verified",
+    visual: "skills",
     summary:
       "Anjana's skill set combines product design, analytics, frontend/backend engineering, databases, and deployment platforms.",
     highlights: [
@@ -116,6 +153,7 @@ export const sections: PortfolioSection[] = [
     quest:
       "A quiet grove asks for the skills behind the code. Reach the lantern.",
     status: "needs-copy",
+    visual: "compass",
     summary:
       "Final soft-skills copy pending. Resume-backed signals include product ownership, direct founder collaboration, event coordination, code reviews, documentation, and cross-team debugging.",
     highlights: [
@@ -134,6 +172,7 @@ export const sections: PortfolioSection[] = [
     quest:
       "The forest opens into guild halls. Each banner marks a community she shaped.",
     status: "verified",
+    visual: "guilds",
     summary:
       "Anjana is active across technical, leadership, design, entrepreneurship, and event communities at SSN.",
     highlights: [
@@ -154,6 +193,7 @@ export const sections: PortfolioSection[] = [
     quest:
       "Past the code-lit path, a smaller trail waits for the things that keep her curious.",
     status: "needs-copy",
+    visual: "garden",
     summary:
       "Final hobbies and interests copy pending. This reward is ready for Anjana's personal interests, creative pursuits, and non-academic story.",
     highlights: [
@@ -170,6 +210,7 @@ export const sections: PortfolioSection[] = [
     quest:
       "The final thicket guards a bright archive. Finish the run and reclaim the proof.",
     status: "verified",
+    visual: "trophy",
     summary:
       "Her achievements show consistent academic strength, hackathon performance, machine learning competition results, and event leadership recognition.",
     highlights: [
@@ -203,4 +244,3 @@ export const gameLevels: GameLevel[] = sections.map((section, index) => ({
 }));
 
 export const sectionOrder = sections.map((section) => section.id);
-
