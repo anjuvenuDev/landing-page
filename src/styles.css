@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+@import "./avatar/pixelart-to-css.css";
 
 :root {
   color-scheme: dark;
@@ -238,223 +239,22 @@ h2 {
   place-items: center;
 }
 
-.pixel-avatar {
-  --avatar-pixel-size: 6px;
-  display: grid;
-  width: max-content;
-  image-rendering: pixelated;
-  filter: drop-shadow(10px 14px 0 rgba(0, 0, 0, 0.36));
-}
-
-.pixel-avatar span {
-  width: var(--avatar-pixel-size);
-  height: var(--avatar-pixel-size);
-}
-
 .gesture-avatar {
+  --avatar-scale: 1.25;
   position: relative;
-  width: max-content;
-  height: auto;
-  --avatar-pixel-size: clamp(5px, 0.72vw, 9px);
+  width: 255px;
+  height: 255px;
   image-rendering: pixelated;
   animation: avatarGesture 2.8s ease-in-out infinite;
+  filter: drop-shadow(10px 14px 0 rgba(0, 0, 0, 0.36));
+  transform-origin: center bottom;
 }
 
-.gesture-avatar .px {
+.gesture-avatar .pixelart-to-css {
   position: absolute;
+  left: 0;
+  top: 0;
   display: block;
-}
-
-.hair-back {
-  left: 50px;
-  top: 24px;
-  width: 160px;
-  height: 196px;
-  background: #050507;
-  box-shadow:
-    -18px 52px 0 #050507,
-    18px 54px 0 #050507;
-}
-
-.hair-crown {
-  left: 42px;
-  top: 12px;
-  width: 176px;
-  height: 72px;
-  background:
-    linear-gradient(#1b1b1f 0 0) 22px 12px / 54px 12px,
-    linear-gradient(#1b1b1f 0 0) 72px 6px / 56px 12px,
-    linear-gradient(#1b1b1f 0 0) 120px 18px / 38px 12px,
-    #050507;
-  background-repeat: no-repeat;
-}
-
-.hair-left-sheet {
-  left: 30px;
-  top: 76px;
-  width: 46px;
-  height: 168px;
-  background: #050507;
-}
-
-.hair-right-sheet {
-  right: 32px;
-  top: 78px;
-  width: 48px;
-  height: 164px;
-  background: #050507;
-}
-
-.face {
-  left: 66px;
-  top: 84px;
-  width: 128px;
-  height: 106px;
-  background: #d86616;
-  box-shadow:
-    inset 0 16px 0 #f28a2d,
-    inset 0 -14px 0 #a63a0e;
-}
-
-.ear {
-  top: 112px;
-  width: 22px;
-  height: 40px;
-  background: #f28a2d;
-}
-
-.left-ear {
-  left: 44px;
-}
-
-.right-ear {
-  right: 44px;
-}
-
-.eye {
-  top: 116px;
-  width: 30px;
-  height: 36px;
-  background:
-    linear-gradient(#fff 0 0) 15px 4px / 8px 8px,
-    linear-gradient(#222126 0 0) 8px 4px / 18px 26px,
-    #fff;
-  background-repeat: no-repeat;
-}
-
-.left-eye {
-  left: 80px;
-}
-
-.right-eye {
-  right: 80px;
-}
-
-.lens {
-  top: 110px;
-  width: 42px;
-  height: 32px;
-  border: 7px solid #111;
-}
-
-.left-lens {
-  left: 70px;
-}
-
-.right-lens {
-  right: 70px;
-}
-
-.nose {
-  left: 124px;
-  top: 152px;
-  width: 10px;
-  height: 8px;
-  background: #a63a0e;
-}
-
-.smile {
-  left: 106px;
-  top: 174px;
-  width: 48px;
-  height: 8px;
-  background: #4b170c;
-}
-
-.neck {
-  left: 112px;
-  top: 190px;
-  width: 36px;
-  height: 30px;
-  background: #d86616;
-}
-
-.top {
-  left: 82px;
-  top: 216px;
-  width: 96px;
-  height: 74px;
-  background:
-    linear-gradient(#1fb8ff 0 0) 28px 0 / 40px 22px,
-    linear-gradient(#069be5 0 0) 0 18px / 96px 56px;
-  background-repeat: no-repeat;
-}
-
-.sleeve {
-  top: 232px;
-  width: 24px;
-  height: 34px;
-  background: #069be5;
-}
-
-.left-sleeve {
-  left: 58px;
-}
-
-.right-sleeve {
-  right: 58px;
-}
-
-.arm {
-  top: 256px;
-  width: 22px;
-  height: 62px;
-  background: #d86616;
-}
-
-.left-arm {
-  left: 54px;
-  animation: introArmLeft 1.8s ease-in-out infinite;
-}
-
-.right-arm {
-  right: 54px;
-  animation: introArmRight 1.8s ease-in-out infinite;
-}
-
-.pants {
-  left: 88px;
-  top: 290px;
-  width: 84px;
-  height: 52px;
-  background:
-    linear-gradient(#5e8794 0 0) 32px 14px / 12px 38px,
-    #a8d8e7;
-}
-
-.shoe {
-  top: 342px;
-  width: 48px;
-  height: 12px;
-  background: #069be5;
-}
-
-.left-shoe {
-  left: 76px;
-}
-
-.right-shoe {
-  right: 76px;
 }
 
 .game-screen {
@@ -1173,30 +973,10 @@ h2 {
 @keyframes avatarGesture {
   0%,
   100% {
-    transform: translateY(0);
+    transform: translateY(0) scale(var(--avatar-scale));
   }
   50% {
-    transform: translateY(-12px);
-  }
-}
-
-@keyframes introArmLeft {
-  0%,
-  100% {
-    transform: rotate(0deg);
-  }
-  50% {
-    transform: rotate(8deg);
-  }
-}
-
-@keyframes introArmRight {
-  0%,
-  100% {
-    transform: rotate(0deg);
-  }
-  50% {
-    transform: rotate(-10deg);
+    transform: translateY(-12px) scale(var(--avatar-scale));
   }
 }
 
@@ -1262,7 +1042,7 @@ h2 {
   }
 
   .gesture-avatar {
-    --avatar-pixel-size: 5px;
+    --avatar-scale: 0.88;
   }
 
   .game-overlay-hud {

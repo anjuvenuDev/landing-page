@@ -20,7 +20,7 @@ The visual direction is inspired by the referenced Figma file's pixel-game mood:
 ### Theme Principles
 
 - **World:** Mystic forest, luminous fog, deep trees, small magical particles, quick platforming levels, and a detailed Figma-inspired pixel background.
-- **Avatar:** Shared pixel matrix used in both React and Phaser: brown girl, long black hair, warm brown/orange skin, cute glasses, large eyes, small smile, blue top, light pants, and a platformer-ready silhouette.
+- **Avatar:** CSS box-shadow pixel art for the intro avatar, matching the supplied brown girl reference with long black hair, cute glasses, large eyes, a small smile, blue top, and light pants. The game canvas keeps a Phaser texture for physics and collision.
 - **UI:** Pixel-framed overlays, blocky buttons, icon-triggered memory log drawer, quest text strip, and treasure boxes that reveal reward cards.
 - **Interaction:** Game-first entry with accessible unlock-all control for recruiters and keyboard-only users.
 - **Motion:** Typewriter narration, avatar gestures, fade/slide transitions, treasure reveal flashes, parallax background, short reward reveals, and reduced-motion support.

@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { gameLevels, sectionOrder, sections } from "./data/portfolio";
 import type { PortfolioSection, PortfolioSectionId } from "./data/portfolio";
-import { PixelAvatar } from "./avatar/PixelAvatar";
 import { MemoryQuestGame } from "./game/MemoryQuestGame";
 
 const storageKey = "anjana-memory-unlocks";
@@ -100,7 +99,9 @@ function IntroScreen({
           </div>
         </div>
         <div className="avatar-stage" aria-label="Pixel avatar of Anjana">
-          <PixelAvatar className="gesture-avatar" />
+          <div className="gesture-avatar" aria-hidden="true">
+            <span className="pixelart-to-css" />
+          </div>
         </div>
       </section>
     </main>
