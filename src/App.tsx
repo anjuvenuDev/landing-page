@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { gameLevels, sectionOrder, sections } from "./data/portfolio";
 import type { PortfolioSection, PortfolioSectionId } from "./data/portfolio";
+import { PixelAvatar } from "./avatar/PixelAvatar";
 import { MemoryQuestGame } from "./game/MemoryQuestGame";
 
 const storageKey = "anjana-memory-unlocks";
@@ -77,6 +78,9 @@ function IntroScreen({
       <section className="flashback-panel" aria-label="Story narration">
         <div className="intro-copy">
           <h1>Anjana Memory Quest</h1>
+          <button type="button" className="skip-narration" onClick={onEnterQuest}>
+            Skip
+          </button>
           <div className="typewriter" aria-live="polite">
             {visibleLines.map((line) => (
               <p key={line}>{line}</p>
@@ -96,30 +100,7 @@ function IntroScreen({
           </div>
         </div>
         <div className="avatar-stage" aria-label="Pixel avatar of Anjana">
-          <div className="gesture-avatar">
-            <span className="px hair-back" />
-            <span className="px hair-crown" />
-            <span className="px hair-left-sheet" />
-            <span className="px hair-right-sheet" />
-            <span className="px face" />
-            <span className="px ear left-ear" />
-            <span className="px ear right-ear" />
-            <span className="px eye left-eye" />
-            <span className="px eye right-eye" />
-            <span className="px lens left-lens" />
-            <span className="px lens right-lens" />
-            <span className="px nose" />
-            <span className="px smile" />
-            <span className="px neck" />
-            <span className="px top" />
-            <span className="px sleeve left-sleeve" />
-            <span className="px sleeve right-sleeve" />
-            <span className="px arm left-arm" />
-            <span className="px arm right-arm" />
-            <span className="px pants" />
-            <span className="px shoe left-shoe" />
-            <span className="px shoe right-shoe" />
-          </div>
+          <PixelAvatar className="gesture-avatar" />
         </div>
       </section>
     </main>

@@ -90,18 +90,17 @@ h2 {
   position: relative;
   display: grid;
   place-items: center;
-  padding: clamp(16px, 3vw, 42px);
+  padding: 0;
   background:
-    radial-gradient(circle at 28% 20%, rgba(255, 209, 102, 0.12), transparent 24rem),
-    radial-gradient(circle at 78% 28%, rgba(192, 132, 252, 0.16), transparent 26rem),
+    linear-gradient(90deg, rgba(8, 11, 14, 0.8) 0%, rgba(8, 11, 14, 0.36) 52%, rgba(8, 11, 14, 0.72) 100%),
+    linear-gradient(180deg, rgba(8, 11, 14, 0.16) 0%, rgba(8, 11, 14, 0.84) 100%),
+    url("/assets/figma-magic-cliffs.png") center / cover no-repeat,
     linear-gradient(135deg, #12231d 0%, #151d2d 48%, #211a1d 100%);
   animation: sceneFade 700ms ease both;
 }
 
 .intro-forest {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
+  display: none;
 }
 
 .intro-forest span {
@@ -144,30 +143,34 @@ h2 {
 .flashback-panel {
   position: relative;
   z-index: 1;
-  width: min(1280px, 100%);
-  min-height: min(760px, calc(100vh - 40px));
+  width: 100%;
+  height: 100%;
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
   gap: clamp(24px, 5vw, 72px);
   align-items: center;
-  padding: clamp(22px, 5vw, 62px);
-  background: rgba(33, 26, 29, 0.78);
-  border: 4px solid var(--paper);
-  box-shadow:
-    0 0 0 5px #37251f,
-    0 28px 80px rgba(0, 0, 0, 0.48);
+  padding: clamp(24px, 6vw, 86px);
+  background: transparent;
+  border: 0;
+  box-shadow: none;
   animation: panelRise 850ms ease both;
+}
+
+.intro-copy {
+  position: relative;
+  max-width: 760px;
 }
 
 .typewriter {
   min-height: 230px;
   margin-top: 30px;
-  padding: 20px;
-  background: rgba(16, 24, 32, 0.75);
-  border: 3px solid rgba(255, 209, 102, 0.8);
+  padding: 0;
+  background: transparent;
+  border: 0;
   color: #ffeec5;
   font-family: "Pixelify Sans", monospace;
   font-size: clamp(1.15rem, 2vw, 1.8rem);
+  text-shadow: 3px 3px 0 #111014;
 }
 
 .typewriter p {
@@ -197,7 +200,8 @@ h2 {
 
 .intro-actions button,
 .continue-button,
-.sidebar-actions button {
+.sidebar-actions button,
+.skip-narration {
   min-height: 46px;
   padding: 10px 16px;
   border: 3px solid var(--paper);
@@ -210,12 +214,21 @@ h2 {
 .intro-actions button:hover,
 .continue-button:hover,
 .sidebar-actions button:hover,
+.skip-narration:hover,
 .treasure:not(:disabled):hover,
 .link-row a:hover,
 .icon-button:hover {
   transform: translate(-2px, -2px);
   box-shadow: 7px 7px 0 #000;
   border-color: var(--gold);
+}
+
+.skip-narration {
+  position: fixed;
+  top: clamp(14px, 2vw, 24px);
+  right: clamp(14px, 2vw, 24px);
+  z-index: 3;
+  min-width: 82px;
 }
 
 .avatar-stage {
@@ -225,10 +238,24 @@ h2 {
   place-items: center;
 }
 
+.pixel-avatar {
+  --avatar-pixel-size: 6px;
+  display: grid;
+  width: max-content;
+  image-rendering: pixelated;
+  filter: drop-shadow(10px 14px 0 rgba(0, 0, 0, 0.36));
+}
+
+.pixel-avatar span {
+  width: var(--avatar-pixel-size);
+  height: var(--avatar-pixel-size);
+}
+
 .gesture-avatar {
   position: relative;
-  width: 260px;
-  height: 360px;
+  width: max-content;
+  height: auto;
+  --avatar-pixel-size: clamp(5px, 0.72vw, 9px);
   image-rendering: pixelated;
   animation: avatarGesture 2.8s ease-in-out infinite;
 }
@@ -1194,6 +1221,7 @@ h2 {
   .flashback-panel {
     grid-template-columns: 1fr;
     align-content: start;
+    justify-items: center;
     overflow-y: auto;
   }
 
@@ -1207,7 +1235,6 @@ h2 {
 }
 
 @media (max-width: 720px) {
-  .flashback-panel,
   .quest-log,
   .reward-card {
     border-width: 3px;
@@ -1217,8 +1244,12 @@ h2 {
   }
 
   .flashback-panel {
-    min-height: calc(100vh - 24px);
-    padding: 18px;
+    min-height: 100vh;
+    padding: 18px 18px 96px;
+  }
+
+  .intro-copy {
+    width: 100%;
   }
 
   .typewriter {
@@ -1226,8 +1257,12 @@ h2 {
   }
 
   .avatar-stage {
-    min-height: 330px;
-    transform: scale(0.72);
+    min-height: 270px;
+    transform: none;
+  }
+
+  .gesture-avatar {
+    --avatar-pixel-size: 5px;
   }
 
   .game-overlay-hud {

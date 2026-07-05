@@ -15,12 +15,12 @@ Anjana Memory Quest is a full-screen game-based technology portfolio for Anjana 
 
 ## Design System
 
-The visual direction is inspired by the referenced Figma file's pixel-game mood: layered fantasy forest, oversized pixel panels, HUD meters, reward chests, dark overlays, and quest text. Assets are original unless the Figma asset license is explicitly verified.
+The visual direction is inspired by the referenced Figma file's pixel-game mood: layered fantasy forest, oversized pixel panels, HUD meters, reward chests, dark overlays, and quest text. The current build uses a Figma-exported magic cliff background in the intro and game scene, with local pixel assets for the avatar, HUD, ground, obstacles, shard, and chest.
 
 ### Theme Principles
 
-- **World:** Mystic forest, luminous fog, deep trees, small magical particles, and quick platforming levels.
-- **Avatar:** Pixelated brown girl matching the supplied references: large black hair, warm brown/orange skin, large eyes, small smile, blue top, light pants, and subtle glasses.
+- **World:** Mystic forest, luminous fog, deep trees, small magical particles, quick platforming levels, and a detailed Figma-inspired pixel background.
+- **Avatar:** Shared pixel matrix used in both React and Phaser: brown girl, long black hair, warm brown/orange skin, cute glasses, large eyes, small smile, blue top, light pants, and a platformer-ready silhouette.
 - **UI:** Pixel-framed overlays, blocky buttons, icon-triggered memory log drawer, quest text strip, and treasure boxes that reveal reward cards.
 - **Interaction:** Game-first entry with accessible unlock-all control for recruiters and keyboard-only users.
 - **Motion:** Typewriter narration, avatar gestures, fade/slide transitions, treasure reveal flashes, parallax background, short reward reveals, and reduced-motion support.
@@ -46,7 +46,7 @@ The visual direction is inspired by the referenced Figma file's pixel-game mood:
 - Build major surfaces as square-edged pixel panels with double borders and hard shadows.
 - Keep copy readable in DOM panels rather than inside the canvas.
 - Use short in-game quest text; use the reward cards for longer portfolio evidence.
-- Avoid direct Figma asset export unless license status is confirmed.
+- Keep exported Figma inspiration assets isolated under `public/assets/` so they can be replaced with a licensed final background if needed.
 - Keep levels under a minute and place the reward shard in a clearly reachable path.
 - Keep the live app full-screen: intro first, then game as the single base screen.
 - Logs must stay hidden behind an icon until opened as a left-side overlay.
@@ -54,7 +54,7 @@ The visual direction is inspired by the referenced Figma file's pixel-game mood:
 
 ## Experience Flow
 
-1. **Flashback intro:** first-person story text types onto the screen while the pixel avatar gestures beside it.
+1. **Flashback intro:** first-person story text types directly over the full-screen forest while the pixel avatar gestures beside it; Skip enters the game immediately.
 2. **Choice:** visitors can enter the game or directly unlock the memory shards.
 3. **Game screen:** the game occupies the entire viewport.
 4. **Log drawer:** a single icon toggles the memory log over the left side of the game.

@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import Phaser from "phaser";
+import { avatarPixelPalette, avatarRows, avatarWidth } from "../avatar/pixelAvatar";
 import type { GameLevel } from "../data/portfolio";
 
 type MemoryQuestGameProps = {
@@ -32,6 +33,7 @@ class MemoryQuestScene extends Phaser.Scene {
   }
 
   preload() {
+    this.load.image("figma-forest", "/assets/figma-magic-cliffs.png");
     this.createPixelTextures();
   }
 
@@ -53,7 +55,7 @@ class MemoryQuestScene extends Phaser.Scene {
     this.player.setCollideWorldBounds(true);
     this.player.setDragX(1200);
     this.player.setMaxVelocity(360, 720);
-    this.player.body?.setSize(42, 70).setOffset(27, 36);
+    this.player.body?.setSize(48, 78).setOffset(52, 78);
     this.cameras.main.startFollow(this.player, true, 0.08, 0.08, -160, 70);
     this.physics.add.collider(this.player, ground);
 
@@ -117,73 +119,17 @@ class MemoryQuestScene extends Phaser.Scene {
   }
 
   private createPixelTextures() {
+    const avatarCell = 4;
     const avatar = this.make.graphics({ x: 0, y: 0 }, false);
-    avatar.fillStyle(0x050507);
-    avatar.fillRect(22, 10, 54, 16);
-    avatar.fillRect(14, 24, 72, 24);
-    avatar.fillRect(8, 42, 20, 56);
-    avatar.fillRect(68, 42, 18, 58);
-    avatar.fillRect(22, 78, 16, 42);
-    avatar.fillRect(58, 76, 18, 44);
-    avatar.fillStyle(0x1b1b1f);
-    avatar.fillRect(26, 18, 12, 8);
-    avatar.fillRect(44, 14, 12, 8);
-    avatar.fillRect(62, 22, 12, 8);
-
-    avatar.fillStyle(0xd86616);
-    avatar.fillRect(22, 42, 54, 38);
-    avatar.fillRect(28, 78, 42, 18);
-    avatar.fillStyle(0xf28a2d);
-    avatar.fillRect(16, 54, 12, 24);
-    avatar.fillRect(70, 54, 12, 24);
-    avatar.fillRect(28, 48, 36, 18);
-    avatar.fillStyle(0xa63a0e);
-    avatar.fillRect(24, 80, 52, 8);
-    avatar.fillRect(66, 60, 10, 22);
-
-    avatar.fillStyle(0xffffff);
-    avatar.fillRect(28, 53, 13, 16);
-    avatar.fillRect(56, 53, 13, 16);
-    avatar.fillStyle(0x222126);
-    avatar.fillRect(32, 53, 8, 13);
-    avatar.fillRect(56, 53, 8, 13);
-    avatar.fillStyle(0xffffff);
-    avatar.fillRect(35, 54, 4, 4);
-    avatar.fillRect(59, 54, 4, 4);
-    avatar.fillStyle(0x111111);
-    avatar.fillRect(27, 51, 16, 4);
-    avatar.fillRect(54, 51, 16, 4);
-    avatar.fillRect(44, 56, 10, 3);
-    avatar.fillStyle(0xb0004d);
-    avatar.fillRect(68, 50, 6, 4);
-    avatar.fillRect(70, 54, 4, 7);
-    avatar.fillStyle(0xa63a0e);
-    avatar.fillRect(45, 69, 6, 5);
-    avatar.fillStyle(0x4b170c);
-    avatar.fillRect(39, 80, 20, 4);
-
-    avatar.fillStyle(0x069be5);
-    avatar.fillRect(32, 94, 34, 30);
-    avatar.fillStyle(0x1fb8ff);
-    avatar.fillRect(38, 88, 22, 16);
-    avatar.fillRect(34, 100, 10, 16);
-    avatar.fillStyle(0xd86616);
-    avatar.fillRect(20, 98, 12, 24);
-    avatar.fillRect(66, 98, 12, 24);
-    avatar.fillStyle(0xa63a0e);
-    avatar.fillRect(18, 116, 12, 8);
-    avatar.fillRect(70, 116, 10, 8);
-    avatar.fillStyle(0xa8d8e7);
-    avatar.fillRect(34, 124, 30, 26);
-    avatar.fillStyle(0x5e8794);
-    avatar.fillRect(38, 132, 8, 18);
-    avatar.fillRect(54, 132, 8, 18);
-    avatar.fillStyle(0x069be5);
-    avatar.fillRect(30, 150, 18, 7);
-    avatar.fillRect(52, 150, 18, 7);
-    avatar.fillStyle(0xc8d1d6);
-    avatar.fillRect(28, 158, 44, 8);
-    avatar.generateTexture("anjana-avatar", 96, 176);
+    avatarRows.forEach((row, y) => {
+      [...row].forEach((pixel, x) => {
+        const color = avatarPixelPalette[pixel];
+        if (!color) return;
+        avatar.fillStyle(Phaser.Display.Color.HexStringToColor(color).color);
+        avatar.fillRect(x * avatarCell, y * avatarCell, avatarCell, avatarCell);
+      });
+    });
+    avatar.generateTexture("anjana-avatar", avatarWidth * avatarCell, avatarRows.length * avatarCell);
 
     const ground = this.make.graphics({ x: 0, y: 0 }, false);
     ground.fillStyle(0x17251e);
@@ -239,6 +185,18 @@ class MemoryQuestScene extends Phaser.Scene {
 
   private createForest(width: number, height: number) {
     this.cameras.main.setBackgroundColor(this.level.palette.sky);
+
+    const backdrop = this.add.image(width / 2, height / 2, "figma-forest")
+      .setDisplaySize(width * 1.28, height * 1.28)
+      .setScrollFactor(0.02)
+      .setAlpha(0.9);
+    const echoBackdrop = this.add.image(width * 1.25, height / 2, "figma-forest")
+      .setDisplaySize(width * 1.08, height * 1.08)
+      .setScrollFactor(0.18)
+      .setAlpha(0.28)
+      .setFlipX(true);
+    backdrop.setDepth(-30);
+    echoBackdrop.setDepth(-29);
 
     this.add.rectangle(width / 2, height / 2, width * 2, height, 0x1f5a3d, 0.16)
       .setScrollFactor(0.12);
