@@ -73,6 +73,7 @@ The implementation is intentionally committed in stages:
 
 - Move: `ArrowLeft`, `ArrowRight`, `A`, `D`
 - Jump: `Space`, `ArrowUp`, `W`
+- Mobile: touch buttons appear on smaller screens
 - Unlock all: visible button in the memory sidebar
 
 ## Content Source

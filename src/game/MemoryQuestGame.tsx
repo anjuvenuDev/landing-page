@@ -300,6 +300,16 @@ export function MemoryQuestGame({
   const containerRef = useRef<HTMLDivElement | null>(null);
   const gameRef = useRef<Phaser.Game | null>(null);
 
+  const sendKey = (type: "keydown" | "keyup", key: string, code: string) => {
+    window.dispatchEvent(
+      new KeyboardEvent(type, {
+        key,
+        code,
+        bubbles: true,
+      }),
+    );
+  };
+
   useEffect(() => {
     if (!containerRef.current) return;
 
@@ -338,5 +348,38 @@ export function MemoryQuestGame({
     };
   }, [level, onComplete, reducedMotion]);
 
-  return <div ref={containerRef} className="game-canvas" aria-label="Anjana Memory Quest game" />;
+  return (
+    <div className="game-wrap">
+      <div ref={containerRef} className="game-canvas" aria-label="Anjana Memory Quest game" />
+      <div className="touch-controls" aria-label="Touch game controls">
+        <button
+          type="button"
+          aria-label="Move left"
+          onPointerDown={() => sendKey("keydown", "ArrowLeft", "ArrowLeft")}
+          onPointerUp={() => sendKey("keyup", "ArrowLeft", "ArrowLeft")}
+          onPointerLeave={() => sendKey("keyup", "ArrowLeft", "ArrowLeft")}
+        >
+          ←
+        </button>
+        <button
+          type="button"
+          aria-label="Jump"
+          onPointerDown={() => sendKey("keydown", " ", "Space")}
+          onPointerUp={() => sendKey("keyup", " ", "Space")}
+          onPointerLeave={() => sendKey("keyup", " ", "Space")}
+        >
+          ↑
+        </button>
+        <button
+          type="button"
+          aria-label="Move right"
+          onPointerDown={() => sendKey("keydown", "ArrowRight", "ArrowRight")}
+          onPointerUp={() => sendKey("keyup", "ArrowRight", "ArrowRight")}
+          onPointerLeave={() => sendKey("keyup", "ArrowRight", "ArrowRight")}
+        >
+          →
+        </button>
+      </div>
+    </div>
+  );
 }

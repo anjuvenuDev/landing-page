@@ -196,6 +196,10 @@ h2 {
   accent-color: var(--rose);
 }
 
+.game-wrap {
+  position: relative;
+}
+
 .game-canvas {
   width: 100%;
   min-height: 540px;
@@ -211,6 +215,25 @@ h2 {
   width: 100%;
   height: auto;
   image-rendering: pixelated;
+}
+
+.touch-controls {
+  display: none;
+  position: absolute;
+  inset: auto 16px 16px auto;
+  gap: 8px;
+}
+
+.touch-controls button {
+  width: 48px;
+  height: 48px;
+  border: 3px solid var(--gold);
+  background: rgba(33, 26, 29, 0.88);
+  color: var(--paper);
+  font-family: "Pixelify Sans", monospace;
+  font-size: 1.5rem;
+  box-shadow: 4px 4px 0 #000;
+  touch-action: none;
 }
 
 .memory-sidebar {
@@ -445,6 +468,10 @@ h2 {
 
   .game-canvas {
     min-height: 330px;
+  }
+
+  .touch-controls {
+    display: flex;
   }
 
   .reward-list,
