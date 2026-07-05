@@ -40,6 +40,35 @@ The visual direction is inspired by the referenced Figma file's pixel-game mood:
 - Parchment panel: `#f9e7b7`
 - Ink: `#211a1d`
 
+### Pixel UI Rules
+
+- Build major surfaces as square-edged pixel panels with double borders and hard shadows.
+- Keep copy readable in DOM panels rather than inside the canvas.
+- Use short in-game quest text; use the reward cards for longer portfolio evidence.
+- Avoid direct Figma asset export unless license status is confirmed.
+- Keep levels under a minute and place the reward shard in a clearly reachable path.
+
+## Portfolio Sections
+
+- About: pending final personal introduction from Anjana.
+- Projects: resume-verified.
+- Work Experience: resume-verified.
+- Technical Skills: resume-verified.
+- Soft Skills: pending final copy from Anjana, with resume-backed signals used as temporary material.
+- Extra-curricular Activities: resume-verified.
+- Hobbies & Interests: pending final copy from Anjana.
+- Achievements: resume-verified.
+
+## Commit Plan
+
+The implementation is intentionally committed in stages:
+
+1. `Initialize React Vite portfolio project`
+2. `Build pixel game shell and portfolio layout`
+3. `Refine reward gating and design documentation`
+4. `Polish responsive quest experience`
+5. `Finalize verification and local run notes`
+
 ## Controls
 
 - Move: `ArrowLeft`, `ArrowRight`, `A`, `D`

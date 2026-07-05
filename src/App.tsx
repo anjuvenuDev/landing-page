@@ -18,7 +18,7 @@ function readStoredUnlocks(): PortfolioSectionId[] {
 
 function App() {
   const [unlocked, setUnlocked] = useState<PortfolioSectionId[]>(readStoredUnlocks);
-  const [selectedId, setSelectedId] = useState<PortfolioSectionId>("about");
+  const [selectedId, setSelectedId] = useState<PortfolioSectionId | null>(null);
   const [reducedMotion, setReducedMotion] = useState(false);
 
   const currentLevel = useMemo(() => {
@@ -26,7 +26,8 @@ function App() {
     return next ?? gameLevels[gameLevels.length - 1];
   }, [unlocked]);
 
-  const selectedSection = sections.find((section) => section.id === selectedId) ?? sections[0];
+  const selectedSection =
+    sections.find((section) => section.id === selectedId && unlocked.includes(section.id)) ?? null;
   const allUnlocked = unlocked.length === sections.length;
 
   const persistUnlocks = useCallback((nextUnlocks: PortfolioSectionId[]) => {
@@ -54,7 +55,7 @@ function App() {
 
   const resetQuest = () => {
     persistUnlocks([]);
-    setSelectedId("about");
+    setSelectedId(null);
   };
 
   const visibleRewards = sections.filter((section) => unlocked.includes(section.id));
@@ -150,6 +151,7 @@ function App() {
       </aside>
 
       <section className="reward-detail" aria-live="polite">
+        {selectedSection ? (
         <div className="reward-card">
           <div className="reward-card-header">
             <div>
@@ -178,6 +180,16 @@ function App() {
             ))}
           </div>
         </div>
+        ) : (
+          <div className="reward-card locked-detail">
+            <p className="eyebrow">Quest Start</p>
+            <h2>Recover the first memory</h2>
+            <p className="summary">
+              Play the short level to unlock the first portfolio section, or use
+              Unlock all if you are reviewing quickly.
+            </p>
+          </div>
+        )}
       </section>
     </main>
   );
