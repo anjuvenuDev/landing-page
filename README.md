@@ -1,13 +1,13 @@
 # Anjana Memory Quest
 
-Anjana Memory Quest is a full-screen game-based technology portfolio for Anjana Venugopalan. It opens with a first-person flashback narration, then lets visitors either enter a short forest runner game or directly unlock the memory archive.
+Anjana Memory Quest is a full-screen game-based technology portfolio for Anjana Venugopalan. It opens with a first-person flashback narration, then keeps the game as the only base screen while logs and portfolio memories layer over it.
 
 ## Implementation Plan
 
 1. Initialize a React + Vite + TypeScript project with Phaser for the game layer.
 2. Document the visual system: pixel forest world, quest HUD, reward panels, keyboard controls, fonts, colors, and animation rules.
-3. Build the flashback intro with typed narration, avatar gestures, and a choice between quest mode and archive mode.
-4. Add the game shell: controls, HUD, left-side log panel, and quick level loop.
+3. Build the flashback intro with typed narration, avatar gestures, and a choice between entering the quest or directly unlocking memory shards.
+4. Add the full-screen game shell: controls, HUD, icon-triggered log drawer, and quick level loop.
 5. Add the avatar, forest world, obstacles, collectibles, treasure chests, reward unlocks, and persistent revisit state.
 5. Fill verified resume-backed portfolio sections.
 6. Add personal sections after Anjana provides final copy for about, soft skills, hobbies, and any narrative refinements.
@@ -20,8 +20,8 @@ The visual direction is inspired by the referenced Figma file's pixel-game mood:
 ### Theme Principles
 
 - **World:** Mystic forest, luminous fog, deep trees, small magical particles, and quick platforming levels.
-- **Avatar:** Pixelated brown girl with cute glasses, expressive jump pose, warm outfit accents, and crisp 4px pixel styling.
-- **UI:** Pixel-framed panels, blocky buttons, memory log sidebar, quest text strip, and treasure boxes that reveal reward cards.
+- **Avatar:** Pixelated brown girl matching the supplied references: large black hair, warm brown/orange skin, large eyes, small smile, blue top, light pants, and subtle glasses.
+- **UI:** Pixel-framed overlays, blocky buttons, icon-triggered memory log drawer, quest text strip, and treasure boxes that reveal reward cards.
 - **Interaction:** Game-first entry with accessible unlock-all control for recruiters and keyboard-only users.
 - **Motion:** Typewriter narration, avatar gestures, fade/slide transitions, treasure reveal flashes, parallax background, short reward reveals, and reduced-motion support.
 
@@ -48,15 +48,18 @@ The visual direction is inspired by the referenced Figma file's pixel-game mood:
 - Use short in-game quest text; use the reward cards for longer portfolio evidence.
 - Avoid direct Figma asset export unless license status is confirmed.
 - Keep levels under a minute and place the reward shard in a clearly reachable path.
-- Keep the live app full-screen: intro first, then quest/archive workspace.
+- Keep the live app full-screen: intro first, then game as the single base screen.
+- Logs must stay hidden behind an icon until opened as a left-side overlay.
+- Portfolio sections appear over the game after a treasure unlock and close with Continue to next level.
 
 ## Experience Flow
 
 1. **Flashback intro:** first-person story text types onto the screen while the pixel avatar gestures beside it.
-2. **Choice:** visitors can enter the game or directly unlock the memory archive.
-3. **Quest mode:** the left panel holds memory logs; the main space holds the game and currently opened reward section.
-4. **Chest reveal:** each level ends by opening a treasure box, which unlocks a portfolio memory and animates the reward card in.
-5. **Archive mode:** all unlocked memories can be revisited through treasure boxes and illustrated section cards.
+2. **Choice:** visitors can enter the game or directly unlock the memory shards.
+3. **Game screen:** the game occupies the entire viewport.
+4. **Log drawer:** a single icon toggles the memory log over the left side of the game.
+5. **Chest reveal:** each level ends by opening a treasure box, which unlocks a portfolio memory over the same screen.
+6. **Continue:** the reward overlay closes and the next level takes over the full-screen game again.
 
 ## Portfolio Sections
 
