@@ -5,7 +5,7 @@ import { MemoryQuestGame } from "./game/MemoryQuestGame";
 
 const storageKey = "anjana-memory-unlocks";
 
-type AppMode = "intro" | "quest";
+type AppMode = "intro" | "game" | "browse";
 
 const narrationLines = [
   "I wake inside a forest that feels older than memory.",
@@ -188,10 +188,24 @@ function SectionIllustration({ section }: { section: PortfolioSection }) {
 
 function RewardOverlay({
   section,
+  mode,
+  position,
+  total,
+  canPrev,
+  canNext,
+  onPrev,
+  onNext,
   allUnlocked,
   onContinue,
 }: {
   section: PortfolioSection;
+  mode: Exclude<AppMode, "intro">;
+  position: number;
+  total: number;
+  canPrev: boolean;
+  canNext: boolean;
+  onPrev: () => void;
+  onNext: () => void;
   allUnlocked: boolean;
   onContinue: () => void;
 }) {
@@ -199,10 +213,17 @@ function RewardOverlay({
     <section className="reward-overlay" aria-live="polite">
       <article className="reward-card reward-reveal" key={section.id}>
         <div className="reward-card-header">
-          <h2>{section.title}</h2>
-          <span className={section.status === "verified" ? "status verified" : "status pending"}>
-            {section.status === "verified" ? "Resume verified" : "Needs final copy"}
-          </span>
+          <div>
+            <span className="memory-position">
+              {position}/{total}
+            </span>
+            <h2>{section.title}</h2>
+          </div>
+          <div className="reward-header-actions">
+            <span className={section.status === "verified" ? "status verified" : "status pending"}>
+              {section.status === "verified" ? "Resume verified" : "Needs final copy"}
+            </span>
+          </div>
         </div>
         <div className="reward-body">
           <SectionIllustration section={section} />
@@ -229,9 +250,17 @@ function RewardOverlay({
             </div>
           </div>
         </div>
-        <button type="button" className="continue-button" onClick={onContinue}>
-          {allUnlocked ? "Back to game" : "Continue to next level"}
-        </button>
+        <div className="reward-nav">
+          <button type="button" className="continue-button" onClick={onPrev} disabled={!canPrev}>
+            Prev
+          </button>
+          <button type="button" className="continue-button primary" onClick={onContinue}>
+            {mode === "browse" ? "Back to home" : allUnlocked ? "Back to game" : "Continue to next level"}
+          </button>
+          <button type="button" className="continue-button" onClick={onNext} disabled={!canNext}>
+            Next
+          </button>
+        </div>
       </article>
     </section>
   );
@@ -239,43 +268,52 @@ function RewardOverlay({
 
 function MemoryLog({
   open,
+  mode,
   unlocked,
   selectedId,
   onClose,
   onSelect,
-  onUnlockAll,
   onReset,
+  onHome,
 }: {
   open: boolean;
+  mode: Exclude<AppMode, "intro">;
   unlocked: PortfolioSectionId[];
   selectedId: PortfolioSectionId | null;
   onClose: () => void;
   onSelect: (sectionId: PortfolioSectionId) => void;
-  onUnlockAll: () => void;
   onReset: () => void;
+  onHome: () => void;
 }) {
+  const browseMode = mode === "browse";
+
   return (
-    <aside className={open ? "quest-log open" : "quest-log"} aria-label="Memory shard logs">
+    <aside
+      className={`${browseMode ? "quest-log browse-log" : "quest-log"} ${open || browseMode ? "open" : ""}`}
+      aria-label="Memory shard logs"
+    >
       <div className="sidebar-header">
-        <h2>Memory Shards</h2>
-        <button type="button" className="icon-button close-log" onClick={onClose} aria-label="Close log">
-          ×
-        </button>
+        <h2>{browseMode ? "All Memories" : "Memory Shards"}</h2>
+        {browseMode ? null : (
+          <button type="button" className="icon-button close-log" onClick={onClose} aria-label="Close log">
+            ×
+          </button>
+        )}
       </div>
       <span className="counter">
-        {unlocked.length}/{sections.length}
+        {browseMode ? sections.length : unlocked.length}/{sections.length}
       </span>
       <div className="sidebar-actions">
-        <button type="button" onClick={onUnlockAll}>
-          Unlock all
+        <button type="button" onClick={onHome}>
+          Home
         </button>
         <button type="button" onClick={onReset}>
-          Reset
+          {browseMode ? "Start game" : "Reset"}
         </button>
       </div>
       <nav className="treasure-list" aria-label="Unlocked treasure boxes">
         {sections.map((section) => {
-          const isUnlocked = unlocked.includes(section.id);
+          const isUnlocked = browseMode || unlocked.includes(section.id);
           const isActive = selectedId === section.id;
           return (
             <button
@@ -288,7 +326,7 @@ function MemoryLog({
               <span className="box-icon" />
               <span className="box-meta">Lvl {section.level}</span>
               <strong>{section.rewardName}</strong>
-              <small>{isUnlocked ? section.title : "Locked"}</small>
+              <small>{isUnlocked ? section.title : "Play to unlock"}</small>
             </button>
           );
         })}
@@ -309,8 +347,22 @@ function App() {
     return next ?? gameLevels[gameLevels.length - 1];
   }, [unlocked]);
 
+  const availableSections = useMemo(
+    () =>
+      sections.filter((section) =>
+        mode === "browse" ? true : unlocked.includes(section.id),
+      ),
+    [mode, unlocked],
+  );
+
   const selectedSection =
-    sections.find((section) => section.id === selectedId && unlocked.includes(section.id)) ?? null;
+    sections.find(
+      (section) =>
+        section.id === selectedId && (mode === "browse" || unlocked.includes(section.id)),
+    ) ?? null;
+  const selectedIndex = selectedSection
+    ? availableSections.findIndex((section) => section.id === selectedSection.id)
+    : -1;
   const allUnlocked = unlocked.length === sections.length;
 
   const persistUnlocks = useCallback((nextUnlocks: PortfolioSectionId[]) => {
@@ -328,39 +380,59 @@ function App() {
     });
   }, []);
 
-  const unlockAll = () => {
-    persistUnlocks([...sectionOrder]);
+  const openBrowseMode = () => {
+    setMode("browse");
     setSelectedId("about");
     setLogOpen(false);
-    setMode("quest");
   };
 
   const resetQuest = () => {
     persistUnlocks([]);
     setSelectedId(null);
     setLogOpen(false);
-    setMode("quest");
+    setMode("game");
   };
 
   const enterQuest = () => {
-    setMode("quest");
+    setMode("game");
     setSelectedId(null);
+  };
+
+  const goHome = () => {
+    setMode("intro");
+    setSelectedId(null);
+    setLogOpen(false);
   };
 
   const selectFromLog = (sectionId: PortfolioSectionId) => {
     setSelectedId(sectionId);
-    setLogOpen(false);
+    if (mode === "game") {
+      setLogOpen(false);
+    }
+  };
+
+  const moveSelected = (direction: -1 | 1) => {
+    if (selectedIndex < 0) return;
+    const nextSection = availableSections[selectedIndex + direction];
+    if (nextSection) {
+      setSelectedId(nextSection.id);
+    }
   };
 
   if (mode === "intro") {
-    return <IntroScreen onEnterQuest={enterQuest} onOpenMemories={unlockAll} />;
+    return <IntroScreen onEnterQuest={enterQuest} onOpenMemories={openBrowseMode} />;
   }
 
   return (
-    <main className="game-screen">
-      <MemoryQuestGame level={currentLevel} reducedMotion={reducedMotion} onComplete={unlockSection} />
+    <main className={mode === "browse" ? "game-screen browse-screen" : "game-screen"}>
+      <MemoryQuestGame
+        level={currentLevel}
+        reducedMotion={reducedMotion}
+        onComplete={unlockSection}
+        paused={mode === "browse"}
+      />
 
-      <div className="game-overlay-hud">
+      <div className={mode === "browse" ? "game-overlay-hud browse-hidden" : "game-overlay-hud"}>
         <button
           type="button"
           className="icon-button log-toggle"
@@ -384,19 +456,27 @@ function App() {
 
       <MemoryLog
         open={logOpen}
+        mode={mode}
         unlocked={unlocked}
         selectedId={selectedId}
         onClose={() => setLogOpen(false)}
         onSelect={selectFromLog}
-        onUnlockAll={unlockAll}
         onReset={resetQuest}
+        onHome={goHome}
       />
 
       {selectedSection ? (
         <RewardOverlay
           section={selectedSection}
+          mode={mode}
+          position={Math.max(1, selectedIndex + 1)}
+          total={availableSections.length}
+          canPrev={selectedIndex > 0}
+          canNext={selectedIndex >= 0 && selectedIndex < availableSections.length - 1}
+          onPrev={() => moveSelected(-1)}
+          onNext={() => moveSelected(1)}
           allUnlocked={allUnlocked}
-          onContinue={() => setSelectedId(null)}
+          onContinue={mode === "browse" ? goHome : () => setSelectedId(null)}
         />
       ) : null}
     </main>

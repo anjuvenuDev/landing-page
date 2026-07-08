@@ -7,6 +7,7 @@ type MemoryQuestGameProps = {
   level: GameLevel;
   reducedMotion: boolean;
   onComplete: (sectionId: GameLevel["id"]) => void;
+  paused?: boolean;
 };
 
 class MemoryQuestScene extends Phaser.Scene {
@@ -179,8 +180,9 @@ class MemoryQuestScene extends Phaser.Scene {
     chest.fillRect(46, 46, 8, 10);
     chest.generateTexture("memory-chest", 96, 86);
 
-    this.createTreeTexture("forest-tree-mid", 170, 250, 0x14251d, 0x1f5a3d, 0x6aa84f);
-    this.createTreeTexture("forest-tree-front", 190, 310, 0x211a1d, 0x315a45, 0x8ccf61);
+    this.createTreeTexture("forest-tree-mid", 172, 264, 0x3b2419, 0x0f3f2b, 0x8ccf61);
+    this.createTreeTexture("forest-tree-front", 212, 338, 0x4a2a1b, 0x165133, 0xe5f76a);
+    this.createRoundTreeTexture("forest-tree-round", 158, 216);
   }
 
   private createTreeTexture(
@@ -192,33 +194,80 @@ class MemoryQuestScene extends Phaser.Scene {
     highlightColor: number,
   ) {
     const tree = this.make.graphics({ x: 0, y: 0 }, false);
-    const trunkWidth = Math.floor(width * 0.18);
-    const trunkX = Math.floor(width * 0.48);
+    const center = Math.floor(width / 2);
+    const trunkWidth = Math.floor(width * 0.12);
+    const trunkX = center - Math.floor(trunkWidth / 2);
+    const baseY = height - 16;
 
-    tree.fillStyle(trunkColor, 0.96);
-    tree.fillRect(trunkX, Math.floor(height * 0.24), trunkWidth, Math.floor(height * 0.76));
-    tree.fillRect(trunkX - 14, Math.floor(height * 0.56), trunkWidth + 28, 18);
-    tree.fillRect(trunkX + trunkWidth - 4, Math.floor(height * 0.7), 28, 14);
-    tree.fillStyle(0x0b1512, 0.48);
-    tree.fillRect(trunkX + 8, Math.floor(height * 0.32), 8, Math.floor(height * 0.6));
-    tree.fillRect(trunkX + trunkWidth - 12, Math.floor(height * 0.42), 7, Math.floor(height * 0.48));
+    tree.fillStyle(0x111111, 0.95);
+    tree.fillRect(trunkX - 5, Math.floor(height * 0.3), trunkWidth + 10, Math.floor(height * 0.66));
+    tree.fillStyle(trunkColor, 1);
+    tree.fillRect(trunkX, Math.floor(height * 0.28), trunkWidth, Math.floor(height * 0.68));
+    tree.fillStyle(0x7c4a22, 0.82);
+    tree.fillRect(trunkX + 5, Math.floor(height * 0.34), 7, Math.floor(height * 0.55));
+    tree.fillStyle(0x25140d, 0.78);
+    tree.fillRect(trunkX + trunkWidth - 8, Math.floor(height * 0.38), 7, Math.floor(height * 0.5));
+    tree.fillRect(trunkX - 20, Math.floor(height * 0.66), trunkWidth + 36, 10);
+    tree.fillRect(trunkX + trunkWidth - 2, Math.floor(height * 0.78), 34, 9);
 
-    tree.fillStyle(canopyColor, 0.94);
-    tree.fillRect(Math.floor(width * 0.2), Math.floor(height * 0.06), Math.floor(width * 0.52), Math.floor(height * 0.22));
-    tree.fillRect(Math.floor(width * 0.08), Math.floor(height * 0.18), Math.floor(width * 0.76), Math.floor(height * 0.2));
-    tree.fillRect(Math.floor(width * 0.16), Math.floor(height * 0.34), Math.floor(width * 0.66), Math.floor(height * 0.18));
-    tree.fillRect(Math.floor(width * 0.3), Math.floor(height * 0.46), Math.floor(width * 0.5), Math.floor(height * 0.12));
+    [
+      { y: 18, half: 24, body: 20 },
+      { y: 48, half: 43, body: 28 },
+      { y: 82, half: 64, body: 32 },
+      { y: 122, half: 82, body: 35 },
+      { y: 166, half: 96, body: 38 },
+    ].forEach((tier, index) => {
+      const top = Math.min(tier.y, baseY - tier.body);
+      tree.fillStyle(0x07130d, 0.9);
+      tree.fillRect(center - tier.half - 8, top + tier.body - 4, tier.half * 2 + 16, 11);
+      tree.fillStyle(canopyColor, 0.98);
+      tree.fillRect(center - tier.half, top + 10, tier.half * 2, tier.body);
+      tree.fillRect(center - tier.half + 16, top, tier.half * 2 - 32, tier.body + 12);
+      tree.fillRect(center - tier.half - 10, top + tier.body - 8, 24, 12);
+      tree.fillRect(center + tier.half - 14, top + tier.body - 10, 26, 12);
 
-    tree.fillStyle(highlightColor, 0.72);
-    tree.fillRect(Math.floor(width * 0.32), Math.floor(height * 0.1), 34, 12);
-    tree.fillRect(Math.floor(width * 0.18), Math.floor(height * 0.24), 46, 10);
-    tree.fillRect(Math.floor(width * 0.5), Math.floor(height * 0.28), 42, 10);
-    tree.fillRect(Math.floor(width * 0.38), Math.floor(height * 0.41), 48, 9);
+      tree.fillStyle(highlightColor, index < 2 ? 0.92 : 0.76);
+      tree.fillRect(center - Math.floor(tier.half * 0.58), top + 10, 18 + index * 4, 8);
+      tree.fillRect(center - Math.floor(tier.half * 0.22), top + 20, 24 + index * 6, 7);
+      tree.fillRect(center + Math.floor(tier.half * 0.22), top + 14, 18 + index * 4, 7);
 
-    tree.fillStyle(0x0f221a, 0.78);
-    tree.fillRect(Math.floor(width * 0.1), Math.floor(height * 0.38), 28, 12);
-    tree.fillRect(Math.floor(width * 0.68), Math.floor(height * 0.2), 26, 12);
-    tree.fillRect(Math.floor(width * 0.24), Math.floor(height * 0.5), 34, 10);
+      tree.fillStyle(0x0b2418, 0.86);
+      tree.fillRect(center - tier.half + 8, top + tier.body - 2, 38 + index * 6, 9);
+      tree.fillRect(center + tier.half - 46 - index * 3, top + tier.body + 2, 32 + index * 4, 8);
+      tree.fillStyle(0x36a05f, 0.52);
+      tree.fillRect(center - tier.half + 28, top + tier.body - 18, 12, 8);
+      tree.fillRect(center + tier.half - 36, top + tier.body - 20, 10, 8);
+    });
+
+    tree.fillStyle(0x9de35f, 0.8);
+    tree.fillRect(center - 7, 6, 14, 9);
+    tree.fillRect(center - 18, 24, 12, 7);
+    tree.fillStyle(0x07130d, 0.95);
+    tree.fillRect(center - 64, baseY - 4, 128, 8);
+    tree.generateTexture(key, width, height);
+  }
+
+  private createRoundTreeTexture(key: string, width: number, height: number) {
+    const tree = this.make.graphics({ x: 0, y: 0 }, false);
+    const center = Math.floor(width / 2);
+    tree.fillStyle(0x111111, 0.92);
+    tree.fillRect(center - 12, Math.floor(height * 0.42), 25, Math.floor(height * 0.54));
+    tree.fillStyle(0x5a311f, 1);
+    tree.fillRect(center - 8, Math.floor(height * 0.4), 16, Math.floor(height * 0.56));
+    tree.fillStyle(0x83b342, 1);
+    tree.fillRect(center - 48, 22, 92, 34);
+    tree.fillRect(center - 62, 48, 120, 42);
+    tree.fillRect(center - 52, 84, 104, 38);
+    tree.fillStyle(0xf3ef64, 0.86);
+    tree.fillRect(center - 36, 24, 28, 10);
+    tree.fillRect(center + 8, 42, 34, 10);
+    tree.fillRect(center - 48, 68, 24, 9);
+    tree.fillStyle(0x0d4a3f, 0.82);
+    tree.fillRect(center - 62, 78, 36, 13);
+    tree.fillRect(center + 28, 88, 24, 12);
+    tree.fillStyle(0x24a45d, 0.72);
+    tree.fillRect(center - 14, 58, 18, 10);
+    tree.fillRect(center + 46, 62, 10, 10);
     tree.generateTexture(key, width, height);
   }
 
@@ -244,6 +293,13 @@ class MemoryQuestScene extends Phaser.Scene {
         .setOrigin(0.5, 1)
         .setScrollFactor(0.18)
         .setAlpha(0.62);
+    }
+
+    for (let x = 124; x < 2300; x += 310) {
+      this.add.image(x, height - 46, "forest-tree-round")
+        .setOrigin(0.5, 1)
+        .setScrollFactor(0.34)
+        .setAlpha(0.72);
     }
 
     for (let x = 90; x < 2300; x += 230) {
@@ -347,6 +403,7 @@ export function MemoryQuestGame({
   level,
   reducedMotion,
   onComplete,
+  paused = false,
 }: MemoryQuestGameProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const gameRef = useRef<Phaser.Game | null>(null);
@@ -398,6 +455,16 @@ export function MemoryQuestGame({
       }
     };
   }, [level, onComplete, reducedMotion]);
+
+  useEffect(() => {
+    const scene = gameRef.current?.scene.getScene("memory-quest");
+    if (!scene) return;
+    if (paused) {
+      scene.scene.pause();
+    } else {
+      scene.scene.resume();
+    }
+  }, [paused]);
 
   return (
     <div className="game-wrap">
