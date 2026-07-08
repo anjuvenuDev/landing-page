@@ -92,8 +92,7 @@ class MemoryQuestScene extends Phaser.Scene {
     const obstacles = this.physics.add.staticGroup();
     const gap = 500;
     for (let index = 0; index < this.level.obstacleCount; index += 1) {
-      const obstacle = obstacles.create(560 + index * gap, height - 118, theme.obstacle);
-      obstacle.setScale(1.14);
+      const obstacle = obstacles.create(560 + index * gap, height - 116, theme.obstacle);
       obstacle.setDepth(9);
       obstacle.refreshBody();
     }
@@ -198,39 +197,19 @@ class MemoryQuestScene extends Phaser.Scene {
     shard.generateTexture("memory-shard", 52, 56);
 
     const chest = this.make.graphics({ x: 0, y: 0 }, false);
-    chest.fillStyle(0x050505, 0.95);
-    chest.fillRect(9, 30, 108, 74);
-    chest.fillStyle(0xffc247, 1);
-    chest.fillRect(13, 20, 18, 74);
-    chest.fillRect(96, 20, 18, 74);
-    chest.fillRect(27, 14, 72, 18);
-    chest.fillRect(13, 52, 104, 12);
-    chest.fillStyle(0x5a2418, 1);
-    chest.fillRect(31, 24, 65, 26);
-    chest.fillRect(31, 66, 65, 28);
-    chest.fillStyle(0x8a3f25, 1);
-    chest.fillRect(36, 28, 54, 8);
-    chest.fillRect(36, 72, 54, 8);
-    chest.fillStyle(0x2a120e, 1);
-    chest.fillRect(38, 40, 50, 6);
-    chest.fillRect(38, 84, 50, 6);
-    chest.fillStyle(0xffe08a, 1);
-    chest.fillRect(17, 24, 10, 16);
-    chest.fillRect(101, 24, 9, 14);
-    chest.fillRect(32, 18, 18, 6);
-    chest.fillRect(70, 18, 20, 6);
-    chest.fillStyle(0x211a1d, 1);
-    chest.fillRect(75, 54, 24, 30);
-    chest.fillStyle(0xf9e7b7, 1);
-    chest.fillRect(82, 62, 7, 8);
-    chest.fillStyle(0x9a5f3f, 1);
-    chest.fillRect(39, 30, 8, 8);
-    chest.fillRect(58, 30, 8, 8);
-    chest.fillRect(77, 30, 8, 8);
-    chest.fillRect(39, 74, 8, 8);
-    chest.fillRect(58, 74, 8, 8);
-    chest.fillRect(77, 74, 8, 8);
-    chest.generateTexture("memory-chest", 128, 112);
+    chest.fillStyle(0x3a2118);
+    chest.fillRect(8, 30, 80, 44);
+    chest.fillStyle(0x9a5f3f);
+    chest.fillRect(14, 22, 68, 22);
+    chest.fillStyle(0xffd166);
+    chest.fillRect(8, 42, 80, 8);
+    chest.fillRect(42, 22, 12, 52);
+    chest.fillStyle(0x211a1d);
+    chest.fillRect(20, 34, 20, 8);
+    chest.fillRect(58, 34, 16, 8);
+    chest.fillStyle(0xf9e7b7);
+    chest.fillRect(46, 46, 8, 10);
+    chest.generateTexture("memory-chest", 96, 86);
 
     this.createTreeTexture("forest-tree-mid", 172, 264, 0x3b2419, 0x0f3f2b, 0x8ccf61);
     this.createTreeTexture("forest-tree-front", 212, 338, 0x4a2a1b, 0x165133, 0xe5f76a);
@@ -409,12 +388,6 @@ class MemoryQuestScene extends Phaser.Scene {
     this.add.rectangle(width / 2, Math.ceil(height * 0.32), width * 2, Math.ceil(height * 0.68), theme.horizon, 0.94)
       .setOrigin(0.5, 0)
       .setScrollFactor(0.02);
-    const backdropAlpha = theme.dressing === "canyon" ? 0.28 : theme.dressing === "sunset" ? 0.2 : 0.64;
-    this.add.image(width / 2, height / 2 + 22, "figma-forest")
-      .setDisplaySize(width * 1.16, height * 1.16)
-      .setScrollFactor(0.02)
-      .setAlpha(backdropAlpha)
-      .setDepth(-30);
 
     const cloud = (x: number, y: number, scale = 1, alpha = 0.82) => {
       const parts = [
@@ -444,13 +417,6 @@ class MemoryQuestScene extends Phaser.Scene {
       this.add.rectangle(x, y, w, 18, theme.grass).setOrigin(0, 0).setScrollFactor(scroll).setDepth(-2);
       this.add.rectangle(x, y + 18, w, h, theme.soil).setOrigin(0, 0).setScrollFactor(scroll).setDepth(-2);
       this.add.rectangle(x, y + 14, w, 8, 0x4a2d1f, 0.44).setOrigin(0, 0).setScrollFactor(scroll).setDepth(-1);
-      for (let px = x; px < x + w; px += 22) {
-        const lipHeight = px % 44 === 0 ? 8 : 5;
-        this.add.rectangle(px, y + 13, 14, lipHeight, 0xf7e1a7, 0.7)
-          .setOrigin(0, 0)
-          .setScrollFactor(scroll)
-          .setDepth(-1);
-      }
       for (let px = x + 12; px < x + w - 8; px += 34) {
         const rockY = y + 30 + ((px + this.level.level * 13) % Math.max(24, h - 24));
         this.add.rectangle(px, rockY, 18, 12, 0xb98b58, 0.62).setScrollFactor(scroll).setDepth(-1);
@@ -489,12 +455,10 @@ class MemoryQuestScene extends Phaser.Scene {
       this.add.rectangle(x - 18, y - 226, 44, 14, 0xe3e98e, 0.48).setScrollFactor(scroll);
     };
 
-    if (theme.dressing === "canyon" || theme.dressing === "sunset" || theme.dressing === "guild") {
-      cloud(330, 64, 1.25);
-      cloud(980, 118, 0.9, 0.66);
-      cloud(1560, 82, 1.12, 0.7);
-      cloud(2080, 132, 0.75, 0.52);
-    }
+    cloud(330, 64, 1.25);
+    cloud(980, 118, 0.9, 0.66);
+    cloud(1560, 82, 1.12, 0.7);
+    cloud(2080, 132, 0.75, 0.52);
 
     for (let x = -120; x < 2500; x += 420) {
       hill(x, height - 156, 320, 180, theme.far, 0.42, 0.09);
@@ -513,8 +477,8 @@ class MemoryQuestScene extends Phaser.Scene {
         this.add.rectangle(x + 42, height - 260, 16, 240, theme.mid, 0.62).setOrigin(0.5, 0).setScrollFactor(0.28);
       });
     } else if (theme.dressing === "canyon") {
-      [250, 1510, 2180].forEach((x) => deadTree(x, height - 74, 0xb69b60, 0.4));
-      [120, 1280].forEach((x) => palm(x, height - 76));
+      [220, 760, 1400, 2080].forEach((x) => deadTree(x, height - 74, 0xb69b60, 0.4));
+      [95, 1290].forEach((x) => palm(x, height - 76));
     } else if (theme.dressing === "crystal") {
       for (let x = 180; x < 2300; x += 380) {
         this.add.triangle(x, height - 82, 0, 96, 36, 0, 72, 96, theme.accent, 0.64).setScrollFactor(0.42);
@@ -544,22 +508,20 @@ class MemoryQuestScene extends Phaser.Scene {
       }
     }
 
-    if (theme.dressing === "moonForest" || theme.dressing === "deepForest" || theme.dressing === "crystal") {
-      for (let index = 0; index < 14; index += 1) {
-        const x = Phaser.Math.Between(80, 2240);
-        const y = Phaser.Math.Between(90, height - 230);
-        const dot = this.add.rectangle(x, y, 4, 4, theme.accent)
-          .setAlpha(0.58)
-          .setScrollFactor(0.75);
-        if (!this.reducedMotion) {
-          this.tweens.add({
-            targets: dot,
-            alpha: 0.18,
-            duration: Phaser.Math.Between(900, 1600),
-            yoyo: true,
-            repeat: -1,
-          });
-        }
+    for (let index = 0; index < 18; index += 1) {
+      const x = Phaser.Math.Between(40, 2240);
+      const y = Phaser.Math.Between(70, height - 180);
+      const dot = this.add.rectangle(x, y, 5, 5, theme.accent)
+        .setAlpha(0.75)
+        .setScrollFactor(0.75);
+      if (!this.reducedMotion) {
+        this.tweens.add({
+          targets: dot,
+          alpha: 0.25,
+          duration: Phaser.Math.Between(900, 1600),
+          yoyo: true,
+          repeat: -1,
+        });
       }
     }
   }
@@ -612,9 +574,9 @@ class MemoryQuestScene extends Phaser.Scene {
       backgroundColor: "#211a1d",
       padding: { x: 10, y: 5 },
     }).setOrigin(0.5).setDepth(11);
-    this.chest = this.physics.add.staticSprite(2040, height - 136, "memory-chest");
+    this.chest = this.physics.add.staticSprite(2040, height - 124, "memory-chest");
     this.chest.setDepth(12);
-    this.chest.setScale(1.08);
+    this.chest.setScale(1.18);
     this.chest.refreshBody();
     this.chest.setInteractive({ useHandCursor: true });
     this.chest.on("pointerdown", () => this.openTreasure());
