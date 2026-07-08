@@ -191,10 +191,13 @@ function RewardOverlay({
   mode,
   position,
   total,
-  canPrev,
-  canNext,
+  previousSection,
+  nextSection,
+  previousUnlocked,
+  nextUnlocked,
   onPrev,
   onNext,
+  onClose,
   allUnlocked,
   onContinue,
 }: {
@@ -202,16 +205,26 @@ function RewardOverlay({
   mode: Exclude<AppMode, "intro">;
   position: number;
   total: number;
-  canPrev: boolean;
-  canNext: boolean;
+  previousSection: PortfolioSection | null;
+  nextSection: PortfolioSection | null;
+  previousUnlocked: boolean;
+  nextUnlocked: boolean;
   onPrev: () => void;
   onNext: () => void;
+  onClose: () => void;
   allUnlocked: boolean;
   onContinue: () => void;
 }) {
+  const browseMode = mode === "browse";
+  const previousLocked = previousSection && !previousUnlocked && !browseMode;
+  const nextLocked = nextSection && !nextUnlocked && !browseMode;
+
   return (
     <section className="reward-overlay" aria-live="polite">
       <article className="reward-card reward-reveal" key={section.id}>
+        <button type="button" className="modal-close" onClick={onClose} aria-label="Close memory view">
+          x
+        </button>
         <div className="reward-card-header">
           <div>
             <span className="memory-position">
@@ -251,14 +264,34 @@ function RewardOverlay({
           </div>
         </div>
         <div className="reward-nav">
-          <button type="button" className="continue-button" onClick={onPrev} disabled={!canPrev}>
-            Prev
+          <button
+            type="button"
+            className={previousLocked ? "continue-button locked" : "continue-button"}
+            onClick={previousUnlocked || browseMode ? onPrev : undefined}
+            disabled={!previousSection}
+            aria-disabled={previousLocked ? true : undefined}
+          >
+            {previousSection
+              ? previousLocked
+                ? `Lvl ${previousSection.level} locked`
+                : `Prev: ${previousSection.title}`
+              : "No previous"}
           </button>
           <button type="button" className="continue-button primary" onClick={onContinue}>
             {mode === "browse" ? "Back to home" : allUnlocked ? "Back to game" : "Continue to next level"}
           </button>
-          <button type="button" className="continue-button" onClick={onNext} disabled={!canNext}>
-            Next
+          <button
+            type="button"
+            className={nextLocked ? "continue-button locked" : "continue-button"}
+            onClick={nextUnlocked || browseMode ? onNext : undefined}
+            disabled={!nextSection}
+            aria-disabled={nextLocked ? true : undefined}
+          >
+            {nextSection
+              ? nextLocked
+                ? `Lvl ${nextSection.level} locked - play to unlock`
+                : `Next: ${nextSection.title}`
+              : "No next"}
           </button>
         </div>
       </article>
@@ -347,22 +380,17 @@ function App() {
     return next ?? gameLevels[gameLevels.length - 1];
   }, [unlocked]);
 
-  const availableSections = useMemo(
-    () =>
-      sections.filter((section) =>
-        mode === "browse" ? true : unlocked.includes(section.id),
-      ),
-    [mode, unlocked],
-  );
-
   const selectedSection =
     sections.find(
       (section) =>
         section.id === selectedId && (mode === "browse" || unlocked.includes(section.id)),
     ) ?? null;
   const selectedIndex = selectedSection
-    ? availableSections.findIndex((section) => section.id === selectedSection.id)
+    ? sections.findIndex((section) => section.id === selectedSection.id)
     : -1;
+  const previousSection = selectedIndex > 0 ? sections[selectedIndex - 1] : null;
+  const nextSection =
+    selectedIndex >= 0 && selectedIndex < sections.length - 1 ? sections[selectedIndex + 1] : null;
   const allUnlocked = unlocked.length === sections.length;
 
   const persistUnlocks = useCallback((nextUnlocks: PortfolioSectionId[]) => {
@@ -413,9 +441,9 @@ function App() {
 
   const moveSelected = (direction: -1 | 1) => {
     if (selectedIndex < 0) return;
-    const nextSection = availableSections[selectedIndex + direction];
-    if (nextSection) {
-      setSelectedId(nextSection.id);
+    const destination = sections[selectedIndex + direction];
+    if (destination && (mode === "browse" || unlocked.includes(destination.id))) {
+      setSelectedId(destination.id);
     }
   };
 
@@ -470,11 +498,14 @@ function App() {
           section={selectedSection}
           mode={mode}
           position={Math.max(1, selectedIndex + 1)}
-          total={availableSections.length}
-          canPrev={selectedIndex > 0}
-          canNext={selectedIndex >= 0 && selectedIndex < availableSections.length - 1}
+          total={sections.length}
+          previousSection={previousSection}
+          nextSection={nextSection}
+          previousUnlocked={Boolean(previousSection && unlocked.includes(previousSection.id))}
+          nextUnlocked={Boolean(nextSection && unlocked.includes(nextSection.id))}
           onPrev={() => moveSelected(-1)}
           onNext={() => moveSelected(1)}
+          onClose={mode === "browse" ? goHome : () => setSelectedId(null)}
           allUnlocked={allUnlocked}
           onContinue={mode === "browse" ? goHome : () => setSelectedId(null)}
         />

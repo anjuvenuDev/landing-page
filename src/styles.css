@@ -328,7 +328,7 @@ h2 {
   inset: 18px 18px auto 18px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 12px;
   pointer-events: none;
 }
@@ -358,15 +358,19 @@ h2 {
 }
 
 .objective-pill {
-  max-width: min(58vw, 620px);
+  position: absolute;
+  top: 0;
+  right: 112px;
+  max-width: min(30vw, 360px);
   padding: 10px 14px;
   color: var(--gold);
   font-family: "Pixelify Sans", monospace;
-  font-size: clamp(0.9rem, 2vw, 1.25rem);
+  font-size: clamp(0.82rem, 1.4vw, 1rem);
   text-align: center;
 }
 
 .motion-toggle {
+  margin-left: auto;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -423,6 +427,11 @@ h2 {
   align-items: flex-start;
   justify-content: space-between;
   gap: 16px;
+}
+
+.reward-card-header {
+  gap: 64px;
+  padding-right: 48px;
 }
 
 .sidebar-header h2 {
@@ -528,8 +537,9 @@ h2 {
 }
 
 .reward-card {
-  width: min(1360px, 100%);
-  max-height: min(920px, calc(100vh - 32px));
+  position: relative;
+  width: min(1500px, calc(100vw - 28px));
+  max-height: calc(100vh - 28px);
   padding: clamp(20px, 2.6vw, 38px);
   overflow-y: auto;
   background: rgba(33, 26, 29, 0.94);
@@ -541,6 +551,21 @@ h2 {
 
 .browse-screen .reward-card {
   width: min(1280px, calc(100vw - min(440px, calc(100vw - 340px)) - 32px));
+}
+
+.modal-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 2;
+  width: 46px;
+  height: 46px;
+  border: 3px solid var(--paper);
+  background: #101820;
+  color: var(--gold);
+  box-shadow: 5px 5px 0 #000;
+  font-family: "Pixelify Sans", monospace;
+  font-size: 1.35rem;
 }
 
 .reward-reveal {
@@ -580,7 +605,7 @@ h2 {
 
 .reward-body {
   display: grid;
-  grid-template-columns: minmax(330px, 0.85fr) minmax(0, 1.25fr);
+  grid-template-columns: minmax(380px, 0.9fr) minmax(0, 1.35fr);
   gap: clamp(20px, 3vw, 36px);
   margin-top: 22px;
 }
@@ -639,7 +664,7 @@ h2 {
 
 .reward-nav {
   display: grid;
-  grid-template-columns: minmax(86px, 0.5fr) minmax(180px, 1fr) minmax(86px, 0.5fr);
+  grid-template-columns: minmax(180px, 0.8fr) minmax(180px, 0.8fr) minmax(220px, 1fr);
   gap: 12px;
   margin-top: 24px;
 }
@@ -659,9 +684,20 @@ h2 {
   box-shadow: 5px 5px 0 #000;
 }
 
+.continue-button.locked {
+  color: #f9e7b7;
+  background:
+    linear-gradient(135deg, rgba(255, 209, 102, 0.12), rgba(255, 111, 145, 0.1)),
+    #211a1d;
+  border-color: var(--rose);
+  opacity: 0.9;
+  box-shadow: 5px 5px 0 #000;
+  cursor: not-allowed;
+}
+
 .section-illustration {
   position: relative;
-  min-height: clamp(340px, 48vh, 560px);
+  min-height: clamp(400px, 54vh, 650px);
   background:
     linear-gradient(90deg, rgba(255, 209, 102, 0.08) 1px, transparent 1px),
     linear-gradient(180deg, rgba(255, 209, 102, 0.08) 1px, transparent 1px),
