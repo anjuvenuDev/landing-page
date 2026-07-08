@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import Phaser from "phaser";
-import { avatarPixelPalette, avatarRows, avatarWidth } from "../avatar/pixelAvatar";
+import { parseAvatarSprite } from "../avatar/cssPixelSprite";
 import type { GameLevel } from "../data/portfolio";
 
 type MemoryQuestGameProps = {
@@ -51,11 +51,12 @@ class MemoryQuestScene extends Phaser.Scene {
       tile.setOrigin(0.5, 0.5).refreshBody();
     }
 
-    this.player = this.physics.add.sprite(140, height - 176, "anjana-avatar");
+    this.player = this.physics.add.sprite(140, height - 172, "anjana-avatar");
+    this.player.setScale(0.72);
     this.player.setCollideWorldBounds(true);
     this.player.setDragX(1200);
     this.player.setMaxVelocity(360, 720);
-    this.player.body?.setSize(48, 78).setOffset(52, 78);
+    this.player.body?.setSize(54, 84).setOffset(100, 156);
     this.cameras.main.startFollow(this.player, true, 0.08, 0.08, -160, 70);
     this.physics.add.collider(this.player, ground);
 
@@ -119,17 +120,13 @@ class MemoryQuestScene extends Phaser.Scene {
   }
 
   private createPixelTextures() {
-    const avatarCell = 4;
+    const avatarSprite = parseAvatarSprite();
     const avatar = this.make.graphics({ x: 0, y: 0 }, false);
-    avatarRows.forEach((row, y) => {
-      [...row].forEach((pixel, x) => {
-        const color = avatarPixelPalette[pixel];
-        if (!color) return;
-        avatar.fillStyle(Phaser.Display.Color.HexStringToColor(color).color);
-        avatar.fillRect(x * avatarCell, y * avatarCell, avatarCell, avatarCell);
-      });
+    avatarSprite.pixels.forEach((pixel) => {
+      avatar.fillStyle(pixel.color, pixel.alpha);
+      avatar.fillRect(pixel.x, pixel.y, avatarSprite.cellSize, avatarSprite.cellSize);
     });
-    avatar.generateTexture("anjana-avatar", avatarWidth * avatarCell, avatarRows.length * avatarCell);
+    avatar.generateTexture("anjana-avatar", avatarSprite.width, avatarSprite.height);
 
     const ground = this.make.graphics({ x: 0, y: 0 }, false);
     ground.fillStyle(0x17251e);
@@ -181,6 +178,48 @@ class MemoryQuestScene extends Phaser.Scene {
     chest.fillStyle(0xf9e7b7);
     chest.fillRect(46, 46, 8, 10);
     chest.generateTexture("memory-chest", 96, 86);
+
+    this.createTreeTexture("forest-tree-mid", 170, 250, 0x14251d, 0x1f5a3d, 0x6aa84f);
+    this.createTreeTexture("forest-tree-front", 190, 310, 0x211a1d, 0x315a45, 0x8ccf61);
+  }
+
+  private createTreeTexture(
+    key: string,
+    width: number,
+    height: number,
+    trunkColor: number,
+    canopyColor: number,
+    highlightColor: number,
+  ) {
+    const tree = this.make.graphics({ x: 0, y: 0 }, false);
+    const trunkWidth = Math.floor(width * 0.18);
+    const trunkX = Math.floor(width * 0.48);
+
+    tree.fillStyle(trunkColor, 0.96);
+    tree.fillRect(trunkX, Math.floor(height * 0.24), trunkWidth, Math.floor(height * 0.76));
+    tree.fillRect(trunkX - 14, Math.floor(height * 0.56), trunkWidth + 28, 18);
+    tree.fillRect(trunkX + trunkWidth - 4, Math.floor(height * 0.7), 28, 14);
+    tree.fillStyle(0x0b1512, 0.48);
+    tree.fillRect(trunkX + 8, Math.floor(height * 0.32), 8, Math.floor(height * 0.6));
+    tree.fillRect(trunkX + trunkWidth - 12, Math.floor(height * 0.42), 7, Math.floor(height * 0.48));
+
+    tree.fillStyle(canopyColor, 0.94);
+    tree.fillRect(Math.floor(width * 0.2), Math.floor(height * 0.06), Math.floor(width * 0.52), Math.floor(height * 0.22));
+    tree.fillRect(Math.floor(width * 0.08), Math.floor(height * 0.18), Math.floor(width * 0.76), Math.floor(height * 0.2));
+    tree.fillRect(Math.floor(width * 0.16), Math.floor(height * 0.34), Math.floor(width * 0.66), Math.floor(height * 0.18));
+    tree.fillRect(Math.floor(width * 0.3), Math.floor(height * 0.46), Math.floor(width * 0.5), Math.floor(height * 0.12));
+
+    tree.fillStyle(highlightColor, 0.72);
+    tree.fillRect(Math.floor(width * 0.32), Math.floor(height * 0.1), 34, 12);
+    tree.fillRect(Math.floor(width * 0.18), Math.floor(height * 0.24), 46, 10);
+    tree.fillRect(Math.floor(width * 0.5), Math.floor(height * 0.28), 42, 10);
+    tree.fillRect(Math.floor(width * 0.38), Math.floor(height * 0.41), 48, 9);
+
+    tree.fillStyle(0x0f221a, 0.78);
+    tree.fillRect(Math.floor(width * 0.1), Math.floor(height * 0.38), 28, 12);
+    tree.fillRect(Math.floor(width * 0.68), Math.floor(height * 0.2), 26, 12);
+    tree.fillRect(Math.floor(width * 0.24), Math.floor(height * 0.5), 34, 10);
+    tree.generateTexture(key, width, height);
   }
 
   private createForest(width: number, height: number) {
@@ -198,24 +237,20 @@ class MemoryQuestScene extends Phaser.Scene {
     backdrop.setDepth(-30);
     echoBackdrop.setDepth(-29);
 
-    this.add.rectangle(width / 2, height / 2, width * 2, height, 0x1f5a3d, 0.16)
+    this.add.rectangle(width / 2, height / 2, width * 2, height, 0x1f5a3d, 0.1)
       .setScrollFactor(0.12);
     for (let x = 40; x < 2300; x += 170) {
-      this.add.rectangle(x, height - 250, 52, 320, 0x14251d)
+      this.add.image(x, height - 50, "forest-tree-mid")
         .setOrigin(0.5, 1)
-        .setScrollFactor(0.22);
-      this.add.rectangle(x - 28, height - 400, 116, 96, 0x1f5a3d)
-        .setOrigin(0.5, 0.5)
-        .setScrollFactor(0.22);
+        .setScrollFactor(0.18)
+        .setAlpha(0.62);
     }
 
     for (let x = 90; x < 2300; x += 230) {
-      this.add.rectangle(x, height - 170, 44, 260, 0x211a1d)
+      this.add.image(x, height - 44, "forest-tree-front")
         .setOrigin(0.5, 1)
-        .setScrollFactor(0.55);
-      this.add.rectangle(x + 34, height - 320, 126, 84, 0x315a45)
-        .setOrigin(0.5, 0.5)
-        .setScrollFactor(0.55);
+        .setScrollFactor(0.48)
+        .setAlpha(0.76);
     }
 
     for (let index = 0; index < 34; index += 1) {
@@ -297,7 +332,7 @@ class MemoryQuestScene extends Phaser.Scene {
 
   private resetPlayer() {
     if (!this.player || this.completed) return;
-    this.player.setPosition(Math.max(140, this.player.x - 260), this.scale.height - 176);
+    this.player.setPosition(Math.max(140, this.player.x - 260), this.scale.height - 172);
     this.player.setVelocity(0, 0);
     this.cameras.main.shake(120, 0.004);
   }

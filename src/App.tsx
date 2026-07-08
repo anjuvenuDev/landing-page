@@ -76,10 +76,7 @@ function IntroScreen({
       </div>
       <section className="flashback-panel" aria-label="Story narration">
         <div className="intro-copy">
-          <h1>Anjana Memory Quest</h1>
-          <button type="button" className="skip-narration" onClick={onEnterQuest}>
-            Skip
-          </button>
+          <h1>Anjana&apos;s Memory Quest</h1>
           <div className="typewriter" aria-live="polite">
             {visibleLines.map((line) => (
               <p key={line}>{line}</p>
@@ -89,6 +86,9 @@ function IntroScreen({
               <span className="cursor">_</span>
             </p>
           </div>
+          <button type="button" className="skip-narration" onClick={onEnterQuest}>
+            Skip
+          </button>
           <div className={complete ? "intro-actions visible" : "intro-actions"}>
             <button type="button" onClick={onEnterQuest}>
               Enter the game
@@ -101,6 +101,7 @@ function IntroScreen({
         <div className="avatar-stage" aria-label="Pixel avatar of Anjana">
           <div className="gesture-avatar" aria-hidden="true">
             <span className="pixelart-to-css" />
+            <span className="avatar-specs" />
           </div>
         </div>
       </section>
