@@ -13,23 +13,28 @@ type MemoryQuestGameProps = {
 type LevelTheme = {
   key: string;
   sky: number;
+  horizon: number;
+  cloud: number;
   far: number;
   mid: number;
   near: number;
+  soil: number;
+  grass: number;
+  water: number;
   accent: number;
   obstacle: string;
-  dressing: "forest" | "crystal" | "ruins" | "neon" | "thorn" | "guild" | "garden" | "archive";
+  dressing: "canyon" | "moonForest" | "sunset" | "deepForest" | "crystal" | "guild" | "garden" | "archive";
 };
 
 const levelThemes: LevelTheme[] = [
-  { key: "mistwood", sky: 0x83d6e8, far: 0x4a8f8f, mid: 0x1f5a3d, near: 0x14251d, accent: 0xffd166, obstacle: "obstacle-bramble", dressing: "forest" },
-  { key: "crystal", sky: 0x172034, far: 0x334c78, mid: 0x1f6f88, near: 0x10242b, accent: 0x80ffdb, obstacle: "obstacle-crystal", dressing: "crystal" },
-  { key: "ruins", sky: 0x20162f, far: 0x51405f, mid: 0x6a553f, near: 0x211a1d, accent: 0xc084fc, obstacle: "obstacle-pillar", dressing: "ruins" },
-  { key: "neon", sky: 0x10242b, far: 0x18475b, mid: 0x213b54, near: 0x0e1116, accent: 0x7dd3fc, obstacle: "obstacle-neon", dressing: "neon" },
-  { key: "rose", sky: 0x25172a, far: 0x6f3e5a, mid: 0x4a5536, near: 0x221821, accent: 0xff8fab, obstacle: "obstacle-thorn", dressing: "thorn" },
-  { key: "guild", sky: 0x14251d, far: 0x3b644f, mid: 0x7a5232, near: 0x243a2d, accent: 0xfacc15, obstacle: "obstacle-banner", dressing: "guild" },
-  { key: "moon", sky: 0x1c2130, far: 0x46617b, mid: 0x4a6234, near: 0x17251e, accent: 0xa7f3d0, obstacle: "obstacle-mushroom", dressing: "garden" },
-  { key: "archive", sky: 0x201820, far: 0x5b4b66, mid: 0x7a5735, near: 0x211a1d, accent: 0xf9a8d4, obstacle: "obstacle-trophy", dressing: "archive" },
+  { key: "canyon", sky: 0x68c6b4, horizon: 0xcfe68e, cloud: 0xf3f0a2, far: 0xb5c57d, mid: 0x9b7a4d, near: 0x5a3527, soil: 0x6d432f, grass: 0xf3dda4, water: 0x236ca8, accent: 0x8ccf61, obstacle: "obstacle-cactus", dressing: "canyon" },
+  { key: "night-jungle", sky: 0x1b6498, horizon: 0x633b9a, cloud: 0x264c93, far: 0x8b4f35, mid: 0x405d35, near: 0x23311f, soil: 0x5d3c2e, grass: 0x93b96a, water: 0x1f5f85, accent: 0xf5f5b8, obstacle: "obstacle-log", dressing: "moonForest" },
+  { key: "sunset-grove", sky: 0xe96847, horizon: 0xffb451, cloud: 0xffd06f, far: 0xb95a2c, mid: 0x71331f, near: 0x301817, soil: 0x4b261e, grass: 0xf0b236, water: 0x8a5a42, accent: 0xffe08a, obstacle: "obstacle-stump", dressing: "sunset" },
+  { key: "blue-woods", sky: 0x0b263c, horizon: 0x16455a, cloud: 0x2d6c79, far: 0x0d3144, mid: 0x123f4d, near: 0x061122, soil: 0x0f2630, grass: 0x5fb8b4, water: 0x174c66, accent: 0x80ffdb, obstacle: "obstacle-bramble", dressing: "deepForest" },
+  { key: "crystal", sky: 0x172034, horizon: 0x334c78, cloud: 0x7aa6c5, far: 0x334c78, mid: 0x1f6f88, near: 0x10242b, soil: 0x233144, grass: 0x80ffdb, water: 0x2a7fa0, accent: 0x80ffdb, obstacle: "obstacle-crystal", dressing: "crystal" },
+  { key: "guild", sky: 0x88c9a5, horizon: 0xd7e792, cloud: 0xf3f0a2, far: 0xa88750, mid: 0x7a5232, near: 0x243a2d, soil: 0x5d3b26, grass: 0xfacc15, water: 0x2f7185, accent: 0xfacc15, obstacle: "obstacle-banner", dressing: "guild" },
+  { key: "moon-garden", sky: 0x1c2130, horizon: 0x46617b, cloud: 0x8197a8, far: 0x46617b, mid: 0x4a6234, near: 0x17251e, soil: 0x35442f, grass: 0xa7f3d0, water: 0x356f8d, accent: 0xa7f3d0, obstacle: "obstacle-mushroom", dressing: "garden" },
+  { key: "archive", sky: 0x201820, horizon: 0x5b4b66, cloud: 0xb891a8, far: 0x5b4b66, mid: 0x7a5735, near: 0x211a1d, soil: 0x5d3c2e, grass: 0xf9a8d4, water: 0x553a58, accent: 0xf9a8d4, obstacle: "obstacle-trophy", dressing: "archive" },
 ];
 
 class MemoryQuestScene extends Phaser.Scene {
@@ -72,7 +77,7 @@ class MemoryQuestScene extends Phaser.Scene {
     const ground = this.physics.add.staticGroup();
     for (let x = 0; x < 2400; x += 64) {
       const tile = ground.create(x + 32, height - 52, "ground-tile");
-      tile.setOrigin(0.5, 0.5).refreshBody();
+      tile.setOrigin(0.5, 0.5).setVisible(false).refreshBody();
     }
 
     this.player = this.physics.add.sprite(140, height - 172, "anjana-avatar");
@@ -231,6 +236,52 @@ class MemoryQuestScene extends Phaser.Scene {
       obstacle.generateTexture(key, 88, 82);
     };
 
+    const cactus = this.make.graphics({ x: 0, y: 0 }, false);
+    cactus.fillStyle(0x050505, 0.8);
+    cactus.fillRect(10, 70, 72, 9);
+    cactus.fillStyle(0x2f7a4d, 1);
+    cactus.fillRect(38, 20, 18, 52);
+    cactus.fillRect(22, 42, 18, 12);
+    cactus.fillRect(18, 32, 12, 24);
+    cactus.fillRect(54, 36, 16, 12);
+    cactus.fillRect(66, 26, 12, 24);
+    cactus.fillStyle(0x9ee26f, 0.85);
+    cactus.fillRect(44, 24, 5, 42);
+    cactus.fillRect(23, 36, 4, 16);
+    cactus.fillRect(68, 30, 4, 16);
+    cactus.fillStyle(0xf3dda4, 1);
+    cactus.fillRect(16, 64, 62, 8);
+    cactus.generateTexture("obstacle-cactus", 92, 84);
+
+    const log = this.make.graphics({ x: 0, y: 0 }, false);
+    log.fillStyle(0x050505, 0.8);
+    log.fillRect(8, 70, 82, 8);
+    log.fillStyle(0x5d3c2e, 1);
+    log.fillRect(14, 46, 72, 24);
+    log.fillStyle(0x8a5a42, 1);
+    log.fillRect(20, 38, 60, 14);
+    log.fillStyle(0x2b1711, 1);
+    log.fillRect(24, 52, 18, 6);
+    log.fillRect(56, 52, 16, 6);
+    log.fillStyle(0xf5f5b8, 1);
+    log.fillRect(30, 16, 8, 28);
+    log.fillRect(54, 20, 8, 24);
+    log.generateTexture("obstacle-log", 98, 84);
+
+    const stump = this.make.graphics({ x: 0, y: 0 }, false);
+    stump.fillStyle(0x050505, 0.8);
+    stump.fillRect(8, 70, 78, 9);
+    stump.fillStyle(0x71331f, 1);
+    stump.fillRect(28, 30, 38, 42);
+    stump.fillStyle(0xb95a2c, 1);
+    stump.fillRect(22, 22, 50, 18);
+    stump.fillStyle(0xffe08a, 1);
+    stump.fillRect(36, 14, 8, 16);
+    stump.fillRect(54, 12, 8, 18);
+    stump.fillStyle(0x301817, 1);
+    stump.fillRect(36, 44, 22, 7);
+    stump.generateTexture("obstacle-stump", 94, 84);
+
     makeObstacle("obstacle-bramble", 0x44231d, 0xff6f91, 0x211a1d);
     makeObstacle("obstacle-crystal", 0x17475b, 0x80ffdb, 0x0e2430);
     makeObstacle("obstacle-pillar", 0x7a6b58, 0xc084fc, 0x2f2930);
@@ -331,98 +382,130 @@ class MemoryQuestScene extends Phaser.Scene {
     const theme = this.currentTheme();
     this.cameras.main.setBackgroundColor(theme.sky);
 
-    const backdrop = this.add.image(width / 2, height / 2, "figma-forest")
-      .setDisplaySize(width * 1.28, height * 1.28)
-      .setScrollFactor(0.02)
-      .setAlpha(theme.dressing === "forest" ? 0.72 : 0.22);
-    backdrop.setDepth(-30);
+    this.add.rectangle(width / 2, 0, width * 2, Math.ceil(height * 0.58), theme.sky)
+      .setOrigin(0.5, 0)
+      .setScrollFactor(0);
+    this.add.rectangle(width / 2, Math.ceil(height * 0.32), width * 2, Math.ceil(height * 0.68), theme.horizon, 0.94)
+      .setOrigin(0.5, 0)
+      .setScrollFactor(0.02);
 
-    for (let x = -120; x < 2500; x += 380) {
-      this.add.rectangle(x, height - 210, 260, 160, theme.far, 0.5)
+    const cloud = (x: number, y: number, scale = 1, alpha = 0.82) => {
+      const parts = [
+        [-44, 8, 72, 12],
+        [-10, -10, 96, 18],
+        [58, 8, 62, 12],
+        [16, -22, 44, 14],
+        [-84, 20, 52, 10],
+        [112, 20, 32, 8],
+      ];
+      parts.forEach(([dx, dy, w, h]) => {
+        this.add.rectangle(x + dx * scale, y + dy * scale, w * scale, h * scale, theme.cloud, alpha)
+          .setOrigin(0, 0)
+          .setScrollFactor(0.05);
+      });
+    };
+
+    const hill = (x: number, y: number, w: number, h: number, color: number, alpha: number, scroll: number) => {
+      this.add.rectangle(x, y, w, h, color, alpha).setOrigin(0.5, 1).setScrollFactor(scroll).setDepth(-24);
+      this.add.rectangle(x - w * 0.22, y - h * 0.22, w * 0.42, h * 0.2, color, alpha * 0.72)
         .setOrigin(0.5, 1)
-        .setScrollFactor(0.08)
-        .setDepth(-24);
-      this.add.rectangle(x + 80, height - 250, 130, 120, theme.mid, 0.34)
-        .setOrigin(0.5, 1)
-        .setScrollFactor(0.12)
+        .setScrollFactor(scroll)
         .setDepth(-23);
+    };
+
+    const dirtPlatform = (x: number, y: number, w: number, h: number, scroll = 0.48) => {
+      this.add.rectangle(x, y, w, 18, theme.grass).setOrigin(0, 0).setScrollFactor(scroll).setDepth(-2);
+      this.add.rectangle(x, y + 18, w, h, theme.soil).setOrigin(0, 0).setScrollFactor(scroll).setDepth(-2);
+      this.add.rectangle(x, y + 14, w, 8, 0x4a2d1f, 0.44).setOrigin(0, 0).setScrollFactor(scroll).setDepth(-1);
+      for (let px = x + 12; px < x + w - 8; px += 34) {
+        const rockY = y + 30 + ((px + this.level.level * 13) % Math.max(24, h - 24));
+        this.add.rectangle(px, rockY, 18, 12, 0xb98b58, 0.62).setScrollFactor(scroll).setDepth(-1);
+        this.add.rectangle(px + 10, rockY + 10, 14, 8, 0x3c241a, 0.48).setScrollFactor(scroll).setDepth(-1);
+      }
+    };
+
+    const water = (x: number, y: number, w: number) => {
+      this.add.rectangle(x, y, w, 56, theme.water, 0.88).setOrigin(0, 0).setScrollFactor(0.58).setDepth(-3);
+      for (let px = x; px < x + w; px += 42) {
+        this.add.rectangle(px, y + 8, 26, 5, 0x9fd6df, 0.72).setOrigin(0, 0).setScrollFactor(0.58).setDepth(-2);
+        this.add.rectangle(px + 10, y + 26, 26, 5, 0x174c66, 0.52).setOrigin(0, 0).setScrollFactor(0.58).setDepth(-2);
+      }
+    };
+
+    const deadTree = (x: number, y: number, color = theme.mid, scroll = 0.46) => {
+      this.add.rectangle(x, y - 112, 12, 112, color, 0.72).setOrigin(0.5, 0).setScrollFactor(scroll);
+      this.add.rectangle(x - 22, y - 90, 44, 8, color, 0.65).setOrigin(0.5, 0).setAngle(-28).setScrollFactor(scroll);
+      this.add.rectangle(x + 20, y - 76, 42, 8, color, 0.62).setOrigin(0.5, 0).setAngle(35).setScrollFactor(scroll);
+      this.add.rectangle(x + 8, y - 126, 34, 7, color, 0.66).setOrigin(0.5, 0).setAngle(48).setScrollFactor(scroll);
+    };
+
+    const palm = (x: number, y: number) => {
+      this.add.rectangle(x, y - 110, 16, 112, 0x7a5232, 0.95).setOrigin(0.5, 0).setScrollFactor(0.42);
+      this.add.rectangle(x - 40, y - 118, 80, 16, 0x2f7a4d, 0.9).setAngle(-20).setScrollFactor(0.42);
+      this.add.rectangle(x + 32, y - 124, 74, 16, 0x2f7a4d, 0.9).setAngle(24).setScrollFactor(0.42);
+      this.add.rectangle(x - 16, y - 144, 72, 14, 0x4ea765, 0.9).setAngle(-54).setScrollFactor(0.42);
+      this.add.rectangle(x + 6, y - 146, 70, 14, 0x4ea765, 0.9).setAngle(54).setScrollFactor(0.42);
+    };
+
+    const leafyTree = (x: number, y: number, scroll = 0.42) => {
+      this.add.rectangle(x, y - 136, 18, 140, 0x5d3c2e, 0.95).setOrigin(0.5, 0).setScrollFactor(scroll);
+      this.add.rectangle(x - 52, y - 178, 112, 40, theme.mid, 0.92).setScrollFactor(scroll);
+      this.add.rectangle(x - 34, y - 214, 120, 42, theme.grass, 0.86).setScrollFactor(scroll);
+      this.add.rectangle(x + 20, y - 184, 108, 38, theme.mid, 0.82).setScrollFactor(scroll);
+      this.add.rectangle(x - 18, y - 226, 44, 14, 0xe3e98e, 0.48).setScrollFactor(scroll);
+    };
+
+    cloud(330, 64, 1.25);
+    cloud(980, 118, 0.9, 0.66);
+    cloud(1560, 82, 1.12, 0.7);
+    cloud(2080, 132, 0.75, 0.52);
+
+    for (let x = -120; x < 2500; x += 420) {
+      hill(x, height - 156, 320, 180, theme.far, 0.42, 0.09);
+      hill(x + 185, height - 126, 260, 120, theme.mid, 0.22, 0.14);
     }
 
-    if (theme.dressing === "forest") {
-      for (let x = 90; x < 2300; x += 520) {
-        this.add.image(x, height - 48, "forest-tree-mid")
-          .setOrigin(0.5, 1)
-          .setScrollFactor(0.22)
-          .setAlpha(0.74);
-      }
-      for (let x = 430; x < 2300; x += 700) {
-        this.add.image(x, height - 46, "forest-tree-round")
-          .setOrigin(0.5, 1)
-          .setScrollFactor(0.34)
-          .setAlpha(0.82);
-      }
-      for (let x = 760; x < 2300; x += 620) {
-        this.add.image(x, height - 44, "forest-tree-front")
-          .setOrigin(0.5, 1)
-          .setScrollFactor(0.48)
-          .setAlpha(0.84);
-      }
-    }
-
-    if (theme.dressing === "crystal") {
-      for (let x = 180; x < 2300; x += 360) {
-        this.add.triangle(x, height - 84, 0, 88, 34, 0, 68, 88, theme.accent, 0.68)
-          .setScrollFactor(0.42)
-          .setDepth(-4);
-        this.add.rectangle(x + 38, height - 128, 16, 70, 0xffffff, 0.18).setScrollFactor(0.42);
-      }
-    }
-
-    if (theme.dressing === "ruins" || theme.dressing === "archive") {
-      for (let x = 210; x < 2300; x += 420) {
-        this.add.rectangle(x, height - 148, 54, 150, theme.mid, 0.76)
-          .setOrigin(0.5, 1)
-          .setScrollFactor(0.38);
-        this.add.rectangle(x, height - 300, 90, 24, theme.accent, 0.42)
-          .setOrigin(0.5, 1)
-          .setScrollFactor(0.38);
-      }
-    }
-
-    if (theme.dressing === "neon") {
-      for (let x = 140; x < 2300; x += 300) {
-        this.add.rectangle(x, height - 160, 22, 160, theme.accent, 0.54)
-          .setOrigin(0.5, 1)
-          .setScrollFactor(0.34);
-        this.add.rectangle(x + 42, height - 96, 72, 12, 0xff6f91, 0.55).setScrollFactor(0.42);
-      }
-    }
-
-    if (theme.dressing === "thorn" || theme.dressing === "garden") {
-      for (let x = 120; x < 2300; x += 330) {
-        this.add.rectangle(x, height - 76, 120, 18, theme.mid, 0.7).setScrollFactor(0.42);
-        this.add.rectangle(x - 34, height - 112, 12, 58, theme.accent, 0.48).setScrollFactor(0.42);
-        this.add.rectangle(x + 36, height - 128, 16, 78, theme.accent, 0.36).setScrollFactor(0.42);
-      }
-    }
-
-    if (theme.dressing === "guild") {
+    if (theme.dressing === "moonForest") {
+      this.add.rectangle(430, 95, 80, 128, theme.accent, 0.88).setAngle(18).setScrollFactor(0.03);
+      [90, 820, 1380, 2120].forEach((x) => leafyTree(x, height - 74, 0.36));
+    } else if (theme.dressing === "sunset") {
+      this.add.rectangle(width - 310, 130, 126, 126, 0xffcf70, 0.8).setScrollFactor(0.03);
+      [180, 620, 1180, 1720, 2200].forEach((x) => leafyTree(x, height - 74, 0.42));
+    } else if (theme.dressing === "deepForest") {
+      [80, 440, 880, 1340, 1780, 2200].forEach((x) => {
+        this.add.rectangle(x, height - 270, 20, 260, theme.near, 0.92).setOrigin(0.5, 0).setScrollFactor(0.22);
+        this.add.rectangle(x + 42, height - 260, 16, 240, theme.mid, 0.62).setOrigin(0.5, 0).setScrollFactor(0.28);
+      });
+    } else if (theme.dressing === "canyon") {
+      [220, 760, 1400, 2080].forEach((x) => deadTree(x, height - 74, 0xb69b60, 0.4));
+      [95, 1290].forEach((x) => palm(x, height - 76));
+    } else if (theme.dressing === "crystal") {
       for (let x = 180; x < 2300; x += 380) {
-        this.add.rectangle(x, height - 172, 16, 130, theme.near, 0.9)
-          .setOrigin(0.5, 1)
-          .setScrollFactor(0.42);
-        this.add.rectangle(x + 38, height - 250, 86, 62, theme.accent, 0.72)
-          .setOrigin(0.5, 0)
-          .setScrollFactor(0.42);
+        this.add.triangle(x, height - 82, 0, 96, 36, 0, 72, 96, theme.accent, 0.64).setScrollFactor(0.42);
+        this.add.triangle(x + 54, height - 74, 0, 72, 24, 0, 48, 72, 0xffffff, 0.22).setScrollFactor(0.42);
       }
+    } else {
+      [240, 880, 1540, 2140].forEach((x) => deadTree(x, height - 74, theme.mid, 0.42));
     }
 
-    this.add.rectangle(width / 2, height / 2, width * 2, height, theme.near, 0.08)
-      .setScrollFactor(0.12);
-    for (let x = 100; x < 2300; x += 460) {
-      this.add.rectangle(x, height - 44, 112, 8, theme.accent, 0.52)
-        .setOrigin(0.5, 1)
-        .setScrollFactor(0.65);
+    if (theme.dressing === "canyon") {
+      water(515, height - 74, 390);
+      dirtPlatform(0, height - 74, 440, 190, 0.6);
+      dirtPlatform(520, height - 198, 290, 96, 0.5);
+      dirtPlatform(910, height - 74, 420, 190, 0.6);
+      dirtPlatform(1420, height - 214, 300, 112, 0.48);
+      dirtPlatform(1820, height - 74, 520, 190, 0.6);
+      this.add.rectangle(620, height - 122, 120, 14, 0x7a5232, 0.95).setScrollFactor(0.5);
+      this.add.rectangle(620, height - 150, 120, 10, 0x7a5232, 0.95).setScrollFactor(0.5);
+      this.add.rectangle(564, height - 160, 10, 54, 0x5d3c2e, 0.95).setScrollFactor(0.5);
+      this.add.rectangle(682, height - 160, 10, 54, 0x5d3c2e, 0.95).setScrollFactor(0.5);
+    } else {
+      dirtPlatform(0, height - 74, 2400, 190, 0.58);
+      dirtPlatform(520, height - 210, 260, 92, 0.42);
+      dirtPlatform(1250, height - 230, 300, 108, 0.42);
+      if (theme.dressing === "moonForest" || theme.dressing === "deepForest") {
+        water(860, height - 74, 300);
+      }
     }
 
     for (let index = 0; index < 18; index += 1) {
