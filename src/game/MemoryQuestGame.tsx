@@ -23,6 +23,7 @@ type LevelTheme = {
   water: number;
   accent: number;
   obstacle: string;
+  background: string;
   dressing:
     | "sunset"
     | "moonMountain"
@@ -35,14 +36,14 @@ type LevelTheme = {
 };
 
 const levelThemes: LevelTheme[] = [
-  { key: "sunset", sky: 0xf36b48, horizon: 0xff9c3d, cloud: 0xffbd59, far: 0xc24824, mid: 0x7b2c1f, near: 0x2f1114, soil: 0x4b1918, grass: 0xf7a928, water: 0x7d4334, accent: 0xffd166, obstacle: "obstacle-stump", dressing: "sunset" },
-  { key: "moon-mountain", sky: 0x1c65a0, horizon: 0x6343a2, cloud: 0x274e8c, far: 0xa2643e, mid: 0x5f412b, near: 0x1e211f, soil: 0x3d3029, grass: 0x8eb06a, water: 0x245f86, accent: 0xf8f3b8, obstacle: "obstacle-log", dressing: "moonMountain" },
-  { key: "jungle", sky: 0x293b23, horizon: 0xa5d51b, cloud: 0xd2ff38, far: 0x587323, mid: 0x1f4429, near: 0x07151b, soil: 0x9a4326, grass: 0x69bd21, water: 0x224d3d, accent: 0xc7fb31, obstacle: "obstacle-bramble", dressing: "jungle" },
-  { key: "teal-forest", sky: 0x0e504f, horizon: 0x8fbfc0, cloud: 0x2b6864, far: 0x275754, mid: 0x1b3c39, near: 0x071918, soil: 0x5d3c2e, grass: 0x1fd69d, water: 0x215e61, accent: 0x8cebd4, obstacle: "obstacle-mushroom", dressing: "tealForest" },
-  { key: "blue-moon", sky: 0x03132a, horizon: 0x0b5361, cloud: 0x1e8491, far: 0x0e3546, mid: 0x0b2639, near: 0x020719, soil: 0x08101f, grass: 0x5fb8b4, water: 0x174c66, accent: 0xeaf9f5, obstacle: "obstacle-crystal", dressing: "blueMoon" },
-  { key: "mist-forest", sky: 0x0c1220, horizon: 0x5d7085, cloud: 0x324155, far: 0x35475a, mid: 0x1c2a36, near: 0x08131a, soil: 0x1a2530, grass: 0x37b06c, water: 0x253d4b, accent: 0x6ee7b7, obstacle: "obstacle-pillar", dressing: "mistForest" },
-  { key: "pine-forest", sky: 0x48b0a7, horizon: 0xd7f0d2, cloud: 0xb8ddd1, far: 0x6fb8ad, mid: 0x1b6f75, near: 0x092d4e, soil: 0x1e2d31, grass: 0x7bec8d, water: 0x267c87, accent: 0xb8ff7a, obstacle: "obstacle-banner", dressing: "pineForest" },
-  { key: "ember-archive", sky: 0x201820, horizon: 0x5b4b66, cloud: 0xb891a8, far: 0x5b4b66, mid: 0x7a5735, near: 0x211a1d, soil: 0x5d3c2e, grass: 0xf9a8d4, water: 0x553a58, accent: 0xf9a8d4, obstacle: "obstacle-trophy", dressing: "emberArchive" },
+  { key: "sunset", sky: 0xf36b48, horizon: 0xff9c3d, cloud: 0xffbd59, far: 0xc24824, mid: 0x7b2c1f, near: 0x2f1114, soil: 0x4b1918, grass: 0xf7a928, water: 0x7d4334, accent: 0xffd166, obstacle: "obstacle-stump", background: "level-bg-sunset", dressing: "sunset" },
+  { key: "moon-mountain", sky: 0x1c65a0, horizon: 0x6343a2, cloud: 0x274e8c, far: 0xa2643e, mid: 0x5f412b, near: 0x1e211f, soil: 0x3d3029, grass: 0x8eb06a, water: 0x245f86, accent: 0xf8f3b8, obstacle: "obstacle-log", background: "level-bg-moon-mountain", dressing: "moonMountain" },
+  { key: "jungle", sky: 0x293b23, horizon: 0xa5d51b, cloud: 0xd2ff38, far: 0x587323, mid: 0x1f4429, near: 0x07151b, soil: 0x9a4326, grass: 0x69bd21, water: 0x224d3d, accent: 0xc7fb31, obstacle: "obstacle-bramble", background: "level-bg-jungle", dressing: "jungle" },
+  { key: "teal-forest", sky: 0x0e504f, horizon: 0x8fbfc0, cloud: 0x2b6864, far: 0x275754, mid: 0x1b3c39, near: 0x071918, soil: 0x5d3c2e, grass: 0x1fd69d, water: 0x215e61, accent: 0x8cebd4, obstacle: "obstacle-mushroom", background: "level-bg-teal-forest", dressing: "tealForest" },
+  { key: "blue-moon", sky: 0x03132a, horizon: 0x0b5361, cloud: 0x1e8491, far: 0x0e3546, mid: 0x0b2639, near: 0x020719, soil: 0x08101f, grass: 0x5fb8b4, water: 0x174c66, accent: 0xeaf9f5, obstacle: "obstacle-crystal", background: "level-bg-blue-moon", dressing: "blueMoon" },
+  { key: "mist-forest", sky: 0x0c1220, horizon: 0x5d7085, cloud: 0x324155, far: 0x35475a, mid: 0x1c2a36, near: 0x08131a, soil: 0x1a2530, grass: 0x37b06c, water: 0x253d4b, accent: 0x6ee7b7, obstacle: "obstacle-pillar", background: "level-bg-mist-forest", dressing: "mistForest" },
+  { key: "pine-forest", sky: 0x48b0a7, horizon: 0xd7f0d2, cloud: 0xb8ddd1, far: 0x6fb8ad, mid: 0x1b6f75, near: 0x092d4e, soil: 0x1e2d31, grass: 0x7bec8d, water: 0x267c87, accent: 0xb8ff7a, obstacle: "obstacle-banner", background: "level-bg-pine-forest", dressing: "pineForest" },
+  { key: "ember-archive", sky: 0x201820, horizon: 0x5b4b66, cloud: 0xb891a8, far: 0x5b4b66, mid: 0x7a5735, near: 0x211a1d, soil: 0x5d3c2e, grass: 0xf9a8d4, water: 0x553a58, accent: 0xf9a8d4, obstacle: "obstacle-trophy", background: "level-bg-blue-moon", dressing: "emberArchive" },
 ];
 
 class MemoryQuestScene extends Phaser.Scene {
@@ -69,6 +70,13 @@ class MemoryQuestScene extends Phaser.Scene {
   }
 
   preload() {
+    this.load.image("level-bg-sunset", "/assets/levels/sunset.png");
+    this.load.image("level-bg-moon-mountain", "/assets/levels/moon-mountain.png");
+    this.load.image("level-bg-jungle", "/assets/levels/jungle.png");
+    this.load.image("level-bg-teal-forest", "/assets/levels/teal-forest.png");
+    this.load.image("level-bg-blue-moon", "/assets/levels/blue-moon.png");
+    this.load.image("level-bg-mist-forest", "/assets/levels/mist-forest.png");
+    this.load.image("level-bg-pine-forest", "/assets/levels/pine-forest.png");
     this.createPixelTextures();
   }
 
@@ -83,11 +91,11 @@ class MemoryQuestScene extends Phaser.Scene {
 
     const ground = this.physics.add.staticGroup();
     for (let x = 0; x < 2400; x += 64) {
-      const tile = ground.create(x + 32, height - 52, "ground-tile");
+      const tile = ground.create(x + 32, height - 72, "ground-tile");
       tile.setOrigin(0.5, 0.5).setVisible(false).refreshBody();
     }
 
-    this.player = this.physics.add.sprite(140, height - 172, "anjana-avatar");
+    this.player = this.physics.add.sprite(140, height - 196, "anjana-avatar");
     this.player.setScale(0.72);
     this.player.setDepth(20);
     this.player.setCollideWorldBounds(true);
@@ -120,6 +128,7 @@ class MemoryQuestScene extends Phaser.Scene {
     });
 
     this.cursors = this.input.keyboard?.createCursorKeys();
+    this.input.keyboard?.addCapture(["SPACE", "UP", "W", "A", "D", "LEFT", "RIGHT"]);
     this.wasd = this.input.keyboard?.addKeys("W,A,S,D") as Record<
       string,
       Phaser.Input.Keyboard.Key
@@ -154,7 +163,15 @@ class MemoryQuestScene extends Phaser.Scene {
       this.player.setAccelerationX(0);
     }
 
-    if (jump && this.player.body?.blocked.down) {
+    const body = this.player.body;
+    const velocityY = body instanceof Phaser.Physics.Arcade.Body ? body.velocity.y : 0;
+    const nearGround = this.player.y >= this.scale.height - 200 && Math.abs(velocityY) < 4;
+    const grounded =
+      Boolean(body?.blocked.down) ||
+      Boolean(body?.touching.down) ||
+      nearGround;
+
+    if (jump && grounded) {
       this.player.setVelocityY(-520);
     }
 
@@ -413,179 +430,13 @@ class MemoryQuestScene extends Phaser.Scene {
 
   private createForest(width: number, height: number) {
     const theme = this.currentTheme();
-    const worldWidth = 2400;
-    const groundY = height - 92;
     this.cameras.main.setBackgroundColor(theme.sky);
 
-    const fixedRect = (
-      x: number,
-      y: number,
-      w: number,
-      h: number,
-      color: number,
-      alpha = 1,
-      depth = -40,
-    ) => {
-      this.add.rectangle(x, y, w, h, color, alpha).setOrigin(0, 0).setScrollFactor(0).setDepth(depth);
-    };
-
-    const worldRect = (
-      x: number,
-      y: number,
-      w: number,
-      h: number,
-      color: number,
-      alpha = 1,
-      depth = -2,
-    ) => {
-      this.add.rectangle(x, y, w, h, color, alpha).setOrigin(0, 0).setDepth(depth);
-    };
-
-    const cloud = (x: number, y: number, color: number, alpha = 0.7) => {
-      [
-        [0, 14, 72, 14],
-        [38, 0, 96, 18],
-        [126, 16, 64, 12],
-        [76, 28, 122, 10],
-      ].forEach(([dx, dy, w, h]) => fixedRect(x + dx, y + dy, w, h, color, alpha, -36));
-    };
-
-    const sun = (x: number, y: number, size: number, color: number, depth = -35) => {
-      for (let row = 0; row < size; row += 10) {
-        const inset = Math.abs(row - size / 2) * 0.45;
-        fixedRect(x + inset, y + row, size - inset * 2, 10, color, 0.92, depth);
-      }
-    };
-
-    const mountain = (x: number, y: number, color: number, shadow: number) => {
-      this.add.triangle(x, y, 0, 260, 170, 0, 360, 260, color, 0.98)
-        .setOrigin(0, 1)
-        .setScrollFactor(0)
-        .setDepth(-31);
-      this.add.triangle(x + 124, y, 0, 220, 110, 10, 232, 220, shadow, 0.58)
-        .setOrigin(0, 1)
-        .setScrollFactor(0)
-        .setDepth(-30);
-      fixedRect(x + 155, y - 202, 68, 18, 0xd08b5d, 0.52, -29);
-      fixedRect(x + 204, y - 156, 48, 16, 0x2d5e3a, 0.44, -29);
-    };
-
-    const trunk = (x: number, y: number, h: number, color: number, high: number, depth = -20) => {
-      fixedRect(x, y - h, 34, h, color, 1, depth);
-      fixedRect(x + 9, y - h + 10, 7, h - 20, high, 0.54, depth + 1);
-      fixedRect(x + 26, y - h + 16, 6, h - 28, 0x120b0a, 0.36, depth + 1);
-    };
-
-    const leafyCrown = (x: number, y: number, color: number, high: number, shadow: number, depth = -18) => {
-      fixedRect(x - 74, y - 24, 150, 34, shadow, 0.92, depth);
-      fixedRect(x - 62, y - 58, 132, 42, color, 0.98, depth + 1);
-      fixedRect(x - 35, y - 88, 92, 38, color, 0.96, depth + 1);
-      fixedRect(x + 18, y - 46, 86, 30, shadow, 0.74, depth + 2);
-      fixedRect(x - 42, y - 76, 34, 10, high, 0.58, depth + 3);
-      fixedRect(x + 12, y - 66, 44, 10, high, 0.54, depth + 3);
-      fixedRect(x + 55, y - 28, 28, 8, high, 0.36, depth + 3);
-    };
-
-    const forestTree = (
-      x: number,
-      base: number,
-      h: number,
-      trunkColor: number,
-      leaf: number,
-      leafHigh: number,
-      leafShadow: number,
-      depth = -18,
-    ) => {
-      trunk(x, base, h, trunkColor, 0xb0703d, depth);
-      leafyCrown(x + 16, base - h + 18, leaf, leafHigh, leafShadow, depth + 1);
-    };
-
-    const pine = (x: number, base: number, scale: number, dark: number, high: number, depth = -22) => {
-      fixedRect(x + 26 * scale, base - 112 * scale, 12 * scale, 112 * scale, 0x5a3b2b, 1, depth);
-      for (let tier = 0; tier < 5; tier += 1) {
-        const y = base - (122 - tier * 24) * scale;
-        const w = (72 + tier * 24) * scale;
-        this.add.triangle(x + 32 * scale - w / 2, y + 40 * scale, 0, 42 * scale, w / 2, 0, w, 42 * scale, dark, 0.96)
-          .setOrigin(0, 0)
-          .setScrollFactor(0)
-          .setDepth(depth + tier);
-        fixedRect(x + 12 * scale, y + 26 * scale, 18 * scale, 7 * scale, high, 0.55, depth + tier + 1);
-      }
-    };
-
-    const ground = (grass: number, soil: number, rock: number) => {
-      worldRect(0, groundY, worldWidth, 18, grass, 1, -1);
-      worldRect(0, groundY + 18, worldWidth, height - groundY, soil, 1, -1);
-      worldRect(0, groundY + 30, worldWidth, 18, 0x1a0f12, 0.45, 0);
-      for (let x = 0; x < worldWidth; x += 42) {
-        const bump = x % 84 === 0 ? 0 : 7;
-        worldRect(x, groundY + 8 + bump, 24, 8, 0xf6c56a, 0.48, 0);
-        worldRect(x + 10, groundY + 46 + ((x / 42) % 3) * 12, 24, 14, rock, 0.72, 0);
-        worldRect(x + 32, groundY + 66 + ((x / 42) % 2) * 18, 18, 10, 0x120b0a, 0.42, 0);
-      }
-    };
-
-    fixedRect(0, 0, width, height, theme.sky, 1, -44);
-    fixedRect(0, height * 0.34, width, height * 0.66, theme.horizon, 1, -43);
-
-    if (theme.dressing === "sunset") {
-      fixedRect(0, 0, width, height * 0.42, 0xf36b48, 1, -44);
-      fixedRect(0, height * 0.26, width, height * 0.5, 0xff8a35, 0.9, -43);
-      sun(width * 0.62, height * 0.24, 118, 0xffd166, -37);
-      [80, 430, 840, 1260, 1660].forEach((x) => cloud(x, 92 + (x % 3) * 28, 0xffb04f, 0.46));
-      [40, 290, 560, 910, 1240, 1580, 1880].forEach((x) => forestTree(x, groundY + 8, 260 - (x % 3) * 34, 0x4f1f18, 0x9f381e, 0xff8a2d, 0x661e1c));
-      ground(0xf0a01e, 0x4b1918, 0x9d4d25);
-    } else if (theme.dressing === "moonMountain") {
-      fixedRect(0, 0, width, height * 0.58, 0x1c65a0, 1, -44);
-      fixedRect(0, height * 0.36, width, height * 0.34, 0x6343a2, 0.82, -43);
-      this.add.triangle(170, 92, 0, 130, 42, 0, 88, 130, 0xf8f3b8, 1).setScrollFactor(0).setDepth(-36);
-      fixedRect(205, 110, 48, 74, 0x1c65a0, 1, -35);
-      mountain(width - 560, groundY + 8, 0x9e6342, 0x4c2c22);
-      [55, 520, 960, 1460, 1860].forEach((x) => forestTree(x, groundY, 210, 0x3d271f, 0x7ca05e, 0xc3d88c, 0x456239));
-      ground(0x8eb06a, 0x3d3029, 0x7b5d4a);
-    } else if (theme.dressing === "jungle") {
-      fixedRect(0, 0, width, height, 0x293b23, 1, -44);
-      fixedRect(0, height * 0.16, width, height * 0.62, 0xa5d51b, 0.9, -43);
-      [0, 240, 520, 850, 1180, 1510, 1840].forEach((x) => {
-        trunk(x + 80, groundY + 4, 440, 0x234f5f, 0x5f95a4, -30);
-        fixedRect(x + 18, 54, 230, 74, 0x61b31e, 0.88, -29);
-        fixedRect(x - 20, 112, 240, 86, 0x1e3d25, 0.7, -28);
-      });
-      [60, 430, 820, 1280, 1720].forEach((x) => fixedRect(x, groundY - 86, 142, 32, 0x1c541d, 0.94, -3));
-      ground(0x69bd21, 0x9a4326, 0xd86931);
-    } else if (theme.dressing === "tealForest") {
-      fixedRect(0, 0, width, height, 0x0e504f, 1, -44);
-      fixedRect(0, height * 0.2, width, height * 0.5, 0x8fbfc0, 0.5, -43);
-      [0, 260, 560, 880, 1200, 1540, 1880].forEach((x) => forestTree(x + 20, groundY, 330, 0x7f5a35, 0x0d544d, 0x1fd69d, 0x092b28, -29));
-      [80, 460, 920, 1420, 1840].forEach((x) => fixedRect(x, groundY - 34, 94, 26, 0x0d544d, 0.86, -3));
-      ground(0x1fd69d, 0x19362f, 0x5b785f);
-    } else if (theme.dressing === "blueMoon") {
-      fixedRect(0, 0, width, height, 0x03132a, 1, -44);
-      sun(width * 0.52, 78, 56, 0xeaf9f5, -36);
-      fixedRect(width * 0.28, height * 0.2, width * 0.46, height * 0.42, 0x0b5361, 0.5, -42);
-      [70, 360, 720, 1060, 1390, 1710, 1980].forEach((x) => {
-        trunk(x, groundY + 6, 420, 0x082044, 0x255c7a, -28);
-        fixedRect(x - 30, 78, 120, 32, 0x03132a, 0.94, -27);
-      });
-      ground(0x5fb8b4, 0x08101f, 0x2f6072);
-    } else if (theme.dressing === "mistForest") {
-      fixedRect(0, 0, width, height, 0x0c1220, 1, -44);
-      fixedRect(0, height * 0.22, width, height * 0.52, 0x5d7085, 0.7, -43);
-      [120, 420, 780, 1120, 1460, 1780].forEach((x) => pine(x, groundY + 2, 1.1, 0x10251f, 0x31a05f, -26));
-      [0, 320, 680, 1040, 1380, 1720].forEach((x) => trunk(x, groundY + 6, 360, 0x263848, 0x52667a, -32));
-      ground(0x37b06c, 0x1a2530, 0x435565);
-    } else if (theme.dressing === "pineForest") {
-      fixedRect(0, 0, width, height, 0x48b0a7, 1, -44);
-      fixedRect(0, height * 0.34, width, height * 0.42, 0xd7f0d2, 0.72, -43);
-      [20, 220, 420, 660, 900, 1120, 1360, 1600, 1840].forEach((x, index) => {
-        pine(x, groundY + 10, 0.82 + (index % 3) * 0.14, index % 2 ? 0x1b6f75 : 0x092d4e, 0x7bec8d, -30 + (index % 3));
-      });
-      ground(0x7bec8d, 0x1e2d31, 0x4b6f62);
-    } else {
-      fixedRect(0, 0, width, height, 0x201820, 1, -44);
-      fixedRect(0, height * 0.2, width, height * 0.52, 0x5b4b66, 0.72, -43);
-      [150, 520, 890, 1260, 1630].forEach((x) => forestTree(x, groundY, 240, 0x5d3c2e, 0x7a5735, 0xf9a8d4, 0x211a1d, -26));
-      ground(0xf9a8d4, 0x5d3c2e, 0x8d6a52);
+    for (let x = 0; x < 2400; x += width) {
+      this.add.image(x, 0, theme.background)
+        .setOrigin(0, 0)
+        .setDisplaySize(width, height)
+        .setDepth(-40);
     }
   }
 
