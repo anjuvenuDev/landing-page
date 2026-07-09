@@ -35,6 +35,32 @@ type LevelTheme = {
     | "emberArchive";
 };
 
+type PlatformTexture = "course-platform-long" | "course-platform-bridge";
+type ObstacleTexture = "course-field-shrub" | "course-field-post" | "course-rock";
+
+type PlatformSpec = {
+  x: number;
+  y: number;
+  width: number;
+  texture: PlatformTexture;
+};
+
+type ObstacleSpec = {
+  x: number;
+  y: number;
+  texture: ObstacleTexture;
+  scale: number;
+};
+
+type CourseLayout = {
+  platforms: Phaser.Physics.Arcade.StaticGroup;
+  obstacles: ObstacleSpec[];
+  spawn: Phaser.Math.Vector2;
+  shard: Phaser.Math.Vector2;
+  chest: Phaser.Math.Vector2;
+  hazardY: number;
+};
+
 const levelThemes: LevelTheme[] = [
   { key: "asset-forest-night", sky: 0x1a2530, horizon: 0x5d7085, cloud: 0x324155, far: 0x35475a, mid: 0x1c2a36, near: 0x08131a, soil: 0x1a2530, grass: 0x37b06c, water: 0x253d4b, accent: 0x6ee7b7, obstacle: "obstacle-pillar", background: "level-bg-asset-forest-night", dressing: "mistForest" },
   { key: "asset-jungle", sky: 0x0e504f, horizon: 0x8fbfc0, cloud: 0x2b6864, far: 0x275754, mid: 0x1b3c39, near: 0x071918, soil: 0x5d3c2e, grass: 0x1fd69d, water: 0x215e61, accent: 0x8cebd4, obstacle: "obstacle-mushroom", background: "level-bg-asset-jungle", dressing: "tealForest" },
@@ -57,6 +83,9 @@ class MemoryQuestScene extends Phaser.Scene {
   private progressBar?: Phaser.GameObjects.Rectangle;
   private questText?: Phaser.GameObjects.Text;
   private chest?: Phaser.Physics.Arcade.Sprite;
+  private chestPoint = new Phaser.Math.Vector2(2040, 0);
+  private spawnPoint = new Phaser.Math.Vector2(140, 0);
+  private hazardY = 0;
 
   constructor(
     level: GameLevel,
@@ -76,6 +105,13 @@ class MemoryQuestScene extends Phaser.Scene {
     this.load.image("level-bg-asset-stars", "/assets/levels/asset-pack/stringstar-fields.png");
     this.load.image("level-bg-asset-cloud-one", "/assets/levels/asset-pack/clouds-one.png");
     this.load.image("level-bg-asset-cloud-two", "/assets/levels/asset-pack/clouds-two.png");
+    this.load.image("course-platform-long", "/assets/course/jungle-platform-long.png");
+    this.load.image("course-platform-bridge", "/assets/course/jungle-bridge.png");
+    this.load.image("course-field-bank", "/assets/course/field-bank.png");
+    this.load.image("course-field-tree", "/assets/course/field-tree.png");
+    this.load.image("course-field-shrub", "/assets/course/field-shrub.png");
+    this.load.image("course-field-post", "/assets/course/field-post.png");
+    this.load.image("course-rock", "/assets/course/mine-rock.png");
     this.createPixelTextures();
   }
 
@@ -88,42 +124,40 @@ class MemoryQuestScene extends Phaser.Scene {
     this.createForest(width, height);
     this.createHud(width, height);
 
-    const ground = this.physics.add.staticGroup();
-    for (let x = 0; x < 2400; x += 64) {
-      const tile = ground.create(x + 32, height - 72, "ground-tile");
-      tile.setOrigin(0.5, 0.5).setVisible(false).refreshBody();
-    }
+    const course = this.createCourse(height);
+    this.chestPoint = course.chest;
+    this.spawnPoint = course.spawn;
+    this.hazardY = course.hazardY;
 
-    this.player = this.physics.add.sprite(140, height - 196, "anjana-avatar");
+    this.player = this.physics.add.sprite(course.spawn.x, course.spawn.y, "anjana-avatar");
     this.player.setScale(0.72);
-    this.player.setDepth(20);
+    this.player.setDepth(30);
     this.player.setCollideWorldBounds(true);
     this.player.setDragX(1200);
     this.player.setMaxVelocity(360, 720);
     this.player.body?.setSize(54, 84).setOffset(100, 156);
     this.cameras.main.startFollow(this.player, true, 0.08, 0.08, -160, 70);
-    this.physics.add.collider(this.player, ground);
+    this.physics.add.collider(this.player, course.platforms);
 
     const obstacles = this.physics.add.staticGroup();
-    const gap = 500;
-    for (let index = 0; index < this.level.obstacleCount; index += 1) {
-      const obstacle = obstacles.create(560 + index * gap, height - 118, theme.obstacle);
-      obstacle.setScale(1.14);
-      obstacle.setDepth(9);
+    course.obstacles.forEach((item) => {
+      const obstacle = obstacles.create(item.x, item.y, item.texture);
+      obstacle.setScale(item.scale);
+      obstacle.setDepth(22);
       obstacle.refreshBody();
-    }
+    });
     this.physics.add.collider(this.player, obstacles, () => this.resetPlayer());
-    const movingHazards = this.createMovingHazards(height, theme);
+    const movingHazards = this.createMovingHazards(theme);
     if (movingHazards) {
       this.physics.add.overlap(this.player, movingHazards, () => this.resetPlayer());
     }
 
-    const shard = this.physics.add.staticSprite(1780, height - 174, "memory-shard");
+    const shard = this.physics.add.staticSprite(course.shard.x, course.shard.y, "memory-shard");
     shard.refreshBody();
     this.physics.add.overlap(this.player, shard, () => {
       if (this.completed) return;
       shard.disableBody(true, true);
-      this.revealTreasure(height);
+      this.revealTreasure();
     });
 
     this.cursors = this.input.keyboard?.createCursorKeys();
@@ -200,6 +234,11 @@ class MemoryQuestScene extends Phaser.Scene {
     ground.fillRect(12, 18, 12, 6);
     ground.fillRect(44, 24, 10, 6);
     ground.generateTexture("ground-tile", 64, 40);
+
+    const courseBody = this.make.graphics({ x: 0, y: 0 }, false);
+    courseBody.fillStyle(0xffffff, 0.01);
+    courseBody.fillRect(0, 0, 16, 16);
+    courseBody.generateTexture("course-body", 16, 16);
 
     const stump = this.make.graphics({ x: 0, y: 0 }, false);
     stump.fillStyle(0x44231d);
@@ -444,13 +483,98 @@ class MemoryQuestScene extends Phaser.Scene {
       .setDepth(-40);
   }
 
-  private createMovingHazards(height: number, theme: LevelTheme) {
+  private createCourse(height: number): CourseLayout {
+    const baseY = height - 114;
+    const lift = Math.min(this.level.level - 1, 5) * 10;
+    const pattern = (this.level.level - 1) % 4;
+    const platformSets: PlatformSpec[][] = [
+      [
+        { x: 0, y: baseY, width: 520, texture: "course-platform-long" },
+        { x: 620, y: baseY - 54, width: 310, texture: "course-platform-bridge" },
+        { x: 1040, y: baseY - 94, width: 380, texture: "course-platform-long" },
+        { x: 1540, y: baseY - 54, width: 310, texture: "course-platform-bridge" },
+        { x: 1950, y: baseY, width: 420, texture: "course-platform-long" },
+      ],
+      [
+        { x: 0, y: baseY, width: 460, texture: "course-platform-long" },
+        { x: 570, y: baseY - 78 - lift, width: 280, texture: "course-platform-long" },
+        { x: 980, y: baseY - 32, width: 340, texture: "course-platform-bridge" },
+        { x: 1470, y: baseY - 104 - lift, width: 330, texture: "course-platform-long" },
+        { x: 1950, y: baseY - 22, width: 420, texture: "course-platform-long" },
+      ],
+      [
+        { x: 0, y: baseY, width: 430, texture: "course-platform-long" },
+        { x: 540, y: baseY - 46, width: 260, texture: "course-platform-bridge" },
+        { x: 900, y: baseY - 118 - lift, width: 320, texture: "course-platform-long" },
+        { x: 1370, y: baseY - 70, width: 290, texture: "course-platform-bridge" },
+        { x: 1840, y: baseY - 8, width: 520, texture: "course-platform-long" },
+      ],
+      [
+        { x: 0, y: baseY, width: 500, texture: "course-platform-long" },
+        { x: 620, y: baseY - 116 - lift, width: 300, texture: "course-platform-long" },
+        { x: 1040, y: baseY - 58, width: 270, texture: "course-platform-bridge" },
+        { x: 1480, y: baseY - 138 - lift, width: 320, texture: "course-platform-long" },
+        { x: 1940, y: baseY - 26, width: 430, texture: "course-platform-long" },
+      ],
+    ];
+    const platforms = platformSets[pattern];
+    const platformGroup = this.physics.add.staticGroup();
+
+    platforms.forEach((platform, index) => {
+      const visualHeight = platform.texture === "course-platform-bridge" ? 72 : 92;
+      this.add.tileSprite(platform.x, platform.y, platform.width, visualHeight, platform.texture)
+        .setOrigin(0, 0)
+        .setDepth(8 + index);
+      const body = platformGroup.create(platform.x + platform.width / 2, platform.y + 18, "course-body");
+      body.setDisplaySize(platform.width - 10, 30);
+      body.setVisible(false);
+      body.refreshBody();
+    });
+
+    [
+      { x: 88, platform: platforms[0], texture: "course-field-tree", scale: 0.8 },
+      { x: 330, platform: platforms[0], texture: "course-field-shrub", scale: 0.9 },
+      { x: 1140, platform: platforms[2], texture: "course-field-bank", scale: 0.84 },
+      { x: 2040, platform: platforms[4], texture: "course-field-tree", scale: 0.7 },
+    ].forEach((prop) => {
+      this.add.image(prop.x, prop.platform.y + 6, prop.texture)
+        .setOrigin(0.5, 1)
+        .setScale(prop.scale)
+        .setDepth(6);
+    });
+
+    const obstacleSlots = [
+      { platform: platforms[1], offset: 130, texture: "course-field-shrub" as const, scale: 0.72 },
+      { platform: platforms[2], offset: 250, texture: "course-rock" as const, scale: 0.86 },
+      { platform: platforms[3], offset: 155, texture: "course-field-post" as const, scale: 0.7 },
+      { platform: platforms[4], offset: 170, texture: "course-field-shrub" as const, scale: 0.78 },
+    ];
+    const obstacles = obstacleSlots.slice(0, Math.min(this.level.obstacleCount, 4)).map((slot) => ({
+      x: slot.platform.x + Math.min(slot.offset, slot.platform.width - 80),
+      y: slot.platform.y - 18,
+      texture: slot.texture,
+      scale: slot.scale,
+    }));
+
+    const finalPlatform = platforms[4];
+    const midPlatform = platforms[3];
+    return {
+      platforms: platformGroup,
+      obstacles,
+      spawn: new Phaser.Math.Vector2(140, platforms[0].y - 82),
+      shard: new Phaser.Math.Vector2(midPlatform.x + midPlatform.width - 62, midPlatform.y - 42),
+      chest: new Phaser.Math.Vector2(finalPlatform.x + finalPlatform.width - 128, finalPlatform.y - 46),
+      hazardY: platforms[2].y - 42,
+    };
+  }
+
+  private createMovingHazards(theme: LevelTheme) {
     if (this.level.level < 3) return undefined;
 
     const group = this.physics.add.group({ allowGravity: false, immovable: true });
     const count = Math.min(2, Math.ceil((this.level.level - 2) / 3));
     for (let index = 0; index < count; index += 1) {
-      const hazard = group.create(880 + index * 620, height - 154, theme.obstacle) as Phaser.Physics.Arcade.Sprite;
+      const hazard = group.create(880 + index * 620, this.hazardY, theme.obstacle) as Phaser.Physics.Arcade.Sprite;
       hazard.setScale(0.88);
       hazard.setDepth(18);
       hazard.setImmovable(true);
@@ -505,22 +629,22 @@ class MemoryQuestScene extends Phaser.Scene {
     }).setOrigin(0.5, 0.5).setScrollFactor(0).setDepth(71);
   }
 
-  private revealTreasure(height: number) {
+  private revealTreasure() {
     const theme = this.currentTheme();
-    const glow = this.add.rectangle(2040, height - 136, 148, 172, theme.accent, 0.28)
+    const glow = this.add.rectangle(this.chestPoint.x, this.chestPoint.y, 148, 172, theme.accent, 0.28)
       .setDepth(10)
       .setScrollFactor(1);
-    const beam = this.add.rectangle(2040, height - 220, 56, 210, theme.accent, 0.16)
+    const beam = this.add.rectangle(this.chestPoint.x, this.chestPoint.y - 84, 56, 210, theme.accent, 0.16)
       .setDepth(8)
       .setScrollFactor(1);
-    const label = this.add.text(2040, height - 236, "OPEN", {
+    const label = this.add.text(this.chestPoint.x, this.chestPoint.y - 100, "OPEN", {
       fontFamily: "\"Pixelify Sans\", monospace",
       fontSize: "22px",
       color: `#${theme.accent.toString(16).padStart(6, "0")}`,
       backgroundColor: "#211a1d",
       padding: { x: 10, y: 5 },
     }).setOrigin(0.5).setDepth(11);
-    this.chest = this.physics.add.staticSprite(2040, height - 136, "memory-chest");
+    this.chest = this.physics.add.staticSprite(this.chestPoint.x, this.chestPoint.y, "memory-chest");
     this.chest.setDepth(12);
     this.chest.setScale(1.08);
     this.chest.refreshBody();
@@ -559,7 +683,7 @@ class MemoryQuestScene extends Phaser.Scene {
 
   private resetPlayer() {
     if (!this.player || this.completed) return;
-    this.player.setPosition(Math.max(140, this.player.x - 260), this.scale.height - 172);
+    this.player.setPosition(Math.max(this.spawnPoint.x, this.player.x - 260), this.spawnPoint.y);
     this.player.setVelocity(0, 0);
     this.cameras.main.shake(120, 0.004);
   }
