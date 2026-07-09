@@ -12,6 +12,7 @@ type MemoryQuestGameProps = {
 
 type LevelTheme = {
   key: string;
+  mode: "sunny" | "tall";
   sky: number;
   horizon: number;
   cloud: number;
@@ -35,20 +36,16 @@ type LevelTheme = {
     | "emberArchive";
 };
 
-type PlatformTexture = "course-platform-long" | "course-platform-bridge";
-type ObstacleTexture = "course-field-shrub" | "course-field-post" | "course-rock";
-
 type PlatformSpec = {
   x: number;
   y: number;
-  width: number;
-  texture: PlatformTexture;
+  tiles: number;
 };
 
 type ObstacleSpec = {
   x: number;
   y: number;
-  texture: ObstacleTexture;
+  texture: string;
   scale: number;
 };
 
@@ -62,14 +59,8 @@ type CourseLayout = {
 };
 
 const levelThemes: LevelTheme[] = [
-  { key: "asset-forest-night", sky: 0x1a2530, horizon: 0x5d7085, cloud: 0x324155, far: 0x35475a, mid: 0x1c2a36, near: 0x08131a, soil: 0x1a2530, grass: 0x37b06c, water: 0x253d4b, accent: 0x6ee7b7, obstacle: "obstacle-pillar", background: "level-bg-asset-forest-night", dressing: "mistForest" },
-  { key: "asset-jungle", sky: 0x0e504f, horizon: 0x8fbfc0, cloud: 0x2b6864, far: 0x275754, mid: 0x1b3c39, near: 0x071918, soil: 0x5d3c2e, grass: 0x1fd69d, water: 0x215e61, accent: 0x8cebd4, obstacle: "obstacle-mushroom", background: "level-bg-asset-jungle", dressing: "tealForest" },
-  { key: "asset-canopy", sky: 0x76d1f2, horizon: 0xd7f0d2, cloud: 0xb8ddd1, far: 0x6fb8ad, mid: 0x1b6f75, near: 0x092d4e, soil: 0x1e2d31, grass: 0x7bec8d, water: 0x267c87, accent: 0xb8ff7a, obstacle: "obstacle-banner", background: "level-bg-asset-canopy", dressing: "pineForest" },
-  { key: "asset-stars", sky: 0x2f5f93, horizon: 0x6ea4cf, cloud: 0x274e8c, far: 0x23446f, mid: 0x1d3557, near: 0x101419, soil: 0x2a2f45, grass: 0x8fb3d9, water: 0x245f86, accent: 0xf8f3b8, obstacle: "obstacle-log", background: "level-bg-asset-stars", dressing: "moonMountain" },
-  { key: "asset-cloud-one", sky: 0xa7dded, horizon: 0x9dd6ee, cloud: 0xd7f5ff, far: 0x8bc8dc, mid: 0x4b91a3, near: 0x1e3a46, soil: 0x4d5d62, grass: 0x6ee7b7, water: 0x3fa7c9, accent: 0xf9e7b7, obstacle: "obstacle-crystal", background: "level-bg-asset-cloud-one", dressing: "blueMoon" },
-  { key: "asset-cloud-two", sky: 0x6fc0ed, horizon: 0xb9eaff, cloud: 0xd7f5ff, far: 0x78bde2, mid: 0x327a9a, near: 0x17475b, soil: 0x2f4654, grass: 0x9ee26f, water: 0x267c87, accent: 0xffd166, obstacle: "obstacle-neon", background: "level-bg-asset-cloud-two", dressing: "blueMoon" },
-  { key: "asset-forest-return", sky: 0x0c1220, horizon: 0x5d7085, cloud: 0x324155, far: 0x35475a, mid: 0x1c2a36, near: 0x08131a, soil: 0x1a2530, grass: 0x37b06c, water: 0x253d4b, accent: 0xf9a8d4, obstacle: "obstacle-thorn", background: "level-bg-asset-forest-night", dressing: "mistForest" },
-  { key: "asset-star-archive", sky: 0x201820, horizon: 0x5b4b66, cloud: 0xb891a8, far: 0x5b4b66, mid: 0x7a5735, near: 0x211a1d, soil: 0x5d3c2e, grass: 0xf9a8d4, water: 0x553a58, accent: 0xf9a8d4, obstacle: "obstacle-trophy", background: "level-bg-asset-stars", dressing: "emberArchive" },
+  { key: "sunnyland-forest", mode: "sunny", sky: 0x9aa01f, horizon: 0xdde868, cloud: 0xb7c84c, far: 0x7d7723, mid: 0x4c4216, near: 0x2b1b0b, soil: 0x4b2d10, grass: 0xd9e45a, water: 0x5b7330, accent: 0xffd166, obstacle: "sunny-slug", background: "sunny-bg", dressing: "pineForest" },
+  { key: "sunnyland-tall", mode: "tall", sky: 0x1c332e, horizon: 0xb9f50e, cloud: 0x7ab51c, far: 0x28463f, mid: 0x1c3939, near: 0x0e1f22, soil: 0x44251c, grass: 0x75bf35, water: 0x21414a, accent: 0x9ef01a, obstacle: "sunny-slug", background: "tall-back", dressing: "mistForest" },
 ];
 
 class MemoryQuestScene extends Phaser.Scene {
@@ -86,6 +77,7 @@ class MemoryQuestScene extends Phaser.Scene {
   private chestPoint = new Phaser.Math.Vector2(2040, 0);
   private spawnPoint = new Phaser.Math.Vector2(140, 0);
   private hazardY = 0;
+  private hazardPoints: Phaser.Math.Vector2[] = [];
 
   constructor(
     level: GameLevel,
@@ -99,27 +91,32 @@ class MemoryQuestScene extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image("level-bg-asset-forest-night", "/assets/levels/asset-pack/forest-night.png");
-    this.load.image("level-bg-asset-jungle", "/assets/levels/asset-pack/jungle-parallax.png");
-    this.load.image("level-bg-asset-canopy", "/assets/levels/asset-pack/tree-canopy.png");
-    this.load.image("level-bg-asset-stars", "/assets/levels/asset-pack/stringstar-fields.png");
-    this.load.image("level-bg-asset-cloud-one", "/assets/levels/asset-pack/clouds-one.png");
-    this.load.image("level-bg-asset-cloud-two", "/assets/levels/asset-pack/clouds-two.png");
-    this.load.image("course-platform-long", "/assets/course/jungle-platform-long.png");
-    this.load.image("course-platform-bridge", "/assets/course/jungle-bridge.png");
-    this.load.image("course-field-bank", "/assets/course/field-bank.png");
-    this.load.image("course-field-tree", "/assets/course/field-tree.png");
-    this.load.image("course-field-shrub", "/assets/course/field-shrub.png");
-    this.load.image("course-field-post", "/assets/course/field-post.png");
-    this.load.image("course-rock", "/assets/course/mine-rock.png");
+    this.load.image("sunny-bg", "/assets/sunnyland/forest/background.png");
+    this.load.image("sunny-mid", "/assets/sunnyland/forest/middleground.png");
+    this.load.image("tall-back", "/assets/sunnyland/tall/back.png");
+    this.load.image("tall-far", "/assets/sunnyland/tall/far.png");
+    this.load.image("tall-middle", "/assets/sunnyland/tall/middle.png");
+    this.load.image("tall-platform-left", "/assets/sunnyland/tall/platform-left.png");
+    this.load.image("tall-platform-mid", "/assets/sunnyland/tall/platform-mid.png");
+    this.load.image("tall-platform-right", "/assets/sunnyland/tall/platform-right.png");
+    this.load.image("tall-block", "/assets/sunnyland/tall/block.png");
+    this.load.image("sunny-crate-plain", "/assets/sunnyland/crate-plain.png");
+    this.load.image("sunny-crate-ornate", "/assets/sunnyland/crate-ornate.png");
+    this.load.image("sunny-tree", "/assets/sunnyland/tree.png");
+    this.load.image("sunny-plant", "/assets/sunnyland/plant.png");
+    this.load.image("sunny-rock", "/assets/sunnyland/rock.png");
+    this.load.image("tall-plant", "/assets/sunnyland/tall/plant.png");
+    this.load.image("tall-rock", "/assets/sunnyland/tall/rock.png");
+    this.load.image("sunny-slug", "/assets/sunnyland/slug.png");
+    this.load.image("sunny-chest", "/assets/sunnyland/chest.png");
     this.createPixelTextures();
   }
 
   create() {
     const { width, height } = this.scale;
     const theme = this.currentTheme();
-    this.physics.world.setBounds(0, 0, 2300, height);
-    this.cameras.main.setBounds(0, 0, 2300, height);
+    this.physics.world.setBounds(0, 0, 3320, height + 420);
+    this.cameras.main.setBounds(0, 0, 3320, height);
 
     this.createForest(width, height);
     this.createHud(width, height);
@@ -130,9 +127,9 @@ class MemoryQuestScene extends Phaser.Scene {
     this.hazardY = course.hazardY;
 
     this.player = this.physics.add.sprite(course.spawn.x, course.spawn.y, "anjana-avatar");
-    this.player.setScale(0.72);
+    this.player.setScale(0.62);
     this.player.setDepth(30);
-    this.player.setCollideWorldBounds(true);
+    this.player.setCollideWorldBounds(false);
     this.player.setDragX(1200);
     this.player.setMaxVelocity(360, 720);
     this.player.body?.setSize(54, 84).setOffset(100, 156);
@@ -197,18 +194,17 @@ class MemoryQuestScene extends Phaser.Scene {
     }
 
     const body = this.player.body;
-    const velocityY = body instanceof Phaser.Physics.Arcade.Body ? body.velocity.y : 0;
-    const nearGround = this.player.y >= this.scale.height - 200 && Math.abs(velocityY) < 4;
-    const grounded =
-      Boolean(body?.blocked.down) ||
-      Boolean(body?.touching.down) ||
-      nearGround;
+    const grounded = Boolean(body?.blocked.down) || Boolean(body?.touching.down);
 
     if (jump && grounded) {
       this.player.setVelocityY(-520);
     }
 
-    const progress = Phaser.Math.Clamp(this.player.x / 1840, 0, 1);
+    if (this.player.y > this.scale.height + 180 || this.player.x < 28) {
+      this.resetPlayer();
+    }
+
+    const progress = Phaser.Math.Clamp(this.player.x / 3000, 0, 1);
     this.progressBar?.setDisplaySize(184 * progress, 10);
   }
 
@@ -469,122 +465,168 @@ class MemoryQuestScene extends Phaser.Scene {
   private createForest(width: number, height: number) {
     const theme = this.currentTheme();
     this.cameras.main.setBackgroundColor(theme.sky);
+    const layerScale = Math.max(3, height / 240);
 
-    const texture = this.textures.get(theme.background);
-    const source = texture.getSourceImage() as HTMLCanvasElement | HTMLImageElement;
-    const sourceWidth = source.width;
-    const sourceHeight = source.height;
-    const scale = Math.max(width / sourceWidth, height / sourceHeight);
+    if (theme.mode === "sunny") {
+      this.add.tileSprite(0, 0, width, height, "sunny-bg")
+        .setOrigin(0, 0)
+        .setTileScale(layerScale, layerScale)
+        .setScrollFactor(0)
+        .setDepth(-50);
+      this.add.tileSprite(0, 0, width, height, "sunny-mid")
+        .setOrigin(0, 0)
+        .setTileScale(layerScale, layerScale)
+        .setScrollFactor(0)
+        .setDepth(-42);
+      return;
+    }
 
-    this.add.image(width / 2, height / 2, theme.background)
-      .setOrigin(0.5, 0.5)
-      .setDisplaySize(sourceWidth * scale, sourceHeight * scale)
+    this.add.tileSprite(0, 0, width, height, "tall-back")
+      .setOrigin(0, 0)
+      .setTileScale(layerScale, layerScale)
       .setScrollFactor(0)
-      .setDepth(-40);
+      .setDepth(-50);
+    this.add.tileSprite(0, 0, width, height, "tall-far")
+      .setOrigin(0, 0)
+      .setTileScale(layerScale, layerScale)
+      .setScrollFactor(0)
+      .setDepth(-46);
+    this.add.tileSprite(0, 0, width, height, "tall-middle")
+      .setOrigin(0, 0)
+      .setTileScale(layerScale, layerScale)
+      .setScrollFactor(0)
+      .setDepth(-42);
   }
 
   private createCourse(height: number): CourseLayout {
-    const baseY = height - 114;
-    const lift = Math.min(this.level.level - 1, 5) * 10;
-    const pattern = (this.level.level - 1) % 4;
-    const platformSets: PlatformSpec[][] = [
-      [
-        { x: 0, y: baseY, width: 520, texture: "course-platform-long" },
-        { x: 620, y: baseY - 54, width: 310, texture: "course-platform-bridge" },
-        { x: 1040, y: baseY - 94, width: 380, texture: "course-platform-long" },
-        { x: 1540, y: baseY - 54, width: 310, texture: "course-platform-bridge" },
-        { x: 1950, y: baseY, width: 420, texture: "course-platform-long" },
-      ],
-      [
-        { x: 0, y: baseY, width: 460, texture: "course-platform-long" },
-        { x: 570, y: baseY - 78 - lift, width: 280, texture: "course-platform-long" },
-        { x: 980, y: baseY - 32, width: 340, texture: "course-platform-bridge" },
-        { x: 1470, y: baseY - 104 - lift, width: 330, texture: "course-platform-long" },
-        { x: 1950, y: baseY - 22, width: 420, texture: "course-platform-long" },
-      ],
-      [
-        { x: 0, y: baseY, width: 430, texture: "course-platform-long" },
-        { x: 540, y: baseY - 46, width: 260, texture: "course-platform-bridge" },
-        { x: 900, y: baseY - 118 - lift, width: 320, texture: "course-platform-long" },
-        { x: 1370, y: baseY - 70, width: 290, texture: "course-platform-bridge" },
-        { x: 1840, y: baseY - 8, width: 520, texture: "course-platform-long" },
-      ],
-      [
-        { x: 0, y: baseY, width: 500, texture: "course-platform-long" },
-        { x: 620, y: baseY - 116 - lift, width: 300, texture: "course-platform-long" },
-        { x: 1040, y: baseY - 58, width: 270, texture: "course-platform-bridge" },
-        { x: 1480, y: baseY - 138 - lift, width: 320, texture: "course-platform-long" },
-        { x: 1940, y: baseY - 26, width: 430, texture: "course-platform-long" },
-      ],
+    const theme = this.currentTheme();
+    const tileScale = this.courseScale(height);
+    const unit = 16 * tileScale;
+    const baseY = height - Math.max(126, unit * 2.2);
+    const lift = Math.min(this.level.level - 1, 5) * (unit * 0.34);
+    const platforms: PlatformSpec[] = [
+      { x: 0, y: baseY, tiles: 10 },
+      { x: unit * 11.6, y: baseY - unit * 1.45, tiles: 6 },
+      { x: unit * 19.6, y: baseY - unit * 2.55 - lift, tiles: 6 },
+      { x: unit * 27.7, y: baseY - unit * 1.7, tiles: 6 },
+      { x: unit * 35.8, y: baseY - unit * 0.35, tiles: 11 },
     ];
-    const platforms = platformSets[pattern];
     const platformGroup = this.physics.add.staticGroup();
 
-    platforms.forEach((platform, index) => {
-      const visualHeight = platform.texture === "course-platform-bridge" ? 72 : 92;
-      this.add.tileSprite(platform.x, platform.y, platform.width, visualHeight, platform.texture)
-        .setOrigin(0, 0)
-        .setDepth(8 + index);
-      const body = platformGroup.create(platform.x + platform.width / 2, platform.y + 18, "course-body");
-      body.setDisplaySize(platform.width - 10, 30);
-      body.setVisible(false);
-      body.refreshBody();
-    });
-
-    [
-      { x: 88, platform: platforms[0], texture: "course-field-tree", scale: 0.8 },
-      { x: 330, platform: platforms[0], texture: "course-field-shrub", scale: 0.9 },
-      { x: 1140, platform: platforms[2], texture: "course-field-bank", scale: 0.84 },
-      { x: 2040, platform: platforms[4], texture: "course-field-tree", scale: 0.7 },
-    ].forEach((prop) => {
-      this.add.image(prop.x, prop.platform.y + 6, prop.texture)
-        .setOrigin(0.5, 1)
-        .setScale(prop.scale)
-        .setDepth(6);
-    });
-
-    const obstacleSlots = [
-      { platform: platforms[1], offset: 130, texture: "course-field-shrub" as const, scale: 0.72 },
-      { platform: platforms[2], offset: 250, texture: "course-rock" as const, scale: 0.86 },
-      { platform: platforms[3], offset: 155, texture: "course-field-post" as const, scale: 0.7 },
-      { platform: platforms[4], offset: 170, texture: "course-field-shrub" as const, scale: 0.78 },
-    ];
-    const obstacles = obstacleSlots.slice(0, Math.min(this.level.obstacleCount, 4)).map((slot) => ({
-      x: slot.platform.x + Math.min(slot.offset, slot.platform.width - 80),
-      y: slot.platform.y - 18,
-      texture: slot.texture,
-      scale: slot.scale,
-    }));
+    platforms.forEach((platform) => this.drawPlatform(platformGroup, platform, tileScale));
+    this.addCourseDressing(platforms, tileScale, theme);
+    this.addBoxPlatform(platformGroup, platforms[1].x + unit * 3.2, platforms[1].y, tileScale, "sunny-crate-plain");
+    if (this.level.level > 2) {
+      this.addBoxPlatform(platformGroup, platforms[2].x + unit * 2.5, platforms[2].y, tileScale, "sunny-crate-ornate");
+    }
+    if (this.level.level > 4) {
+      this.addBoxPlatform(platformGroup, platforms[3].x + unit * 3.4, platforms[3].y, tileScale, "sunny-crate-plain");
+    }
 
     const finalPlatform = platforms[4];
     const midPlatform = platforms[3];
+    this.hazardPoints = [
+      new Phaser.Math.Vector2(platforms[2].x + unit * 3.5, platforms[2].y - unit * 0.28),
+      new Phaser.Math.Vector2(platforms[3].x + unit * 3.2, platforms[3].y - unit * 0.28),
+    ];
     return {
       platforms: platformGroup,
-      obstacles,
-      spawn: new Phaser.Math.Vector2(140, platforms[0].y - 82),
-      shard: new Phaser.Math.Vector2(midPlatform.x + midPlatform.width - 62, midPlatform.y - 42),
-      chest: new Phaser.Math.Vector2(finalPlatform.x + finalPlatform.width - 128, finalPlatform.y - 46),
-      hazardY: platforms[2].y - 42,
+      obstacles: [],
+      spawn: new Phaser.Math.Vector2(unit * 2.1, platforms[0].y - 100),
+      shard: new Phaser.Math.Vector2(midPlatform.x + unit * 4.8, midPlatform.y - unit * 0.88),
+      chest: new Phaser.Math.Vector2(finalPlatform.x + finalPlatform.tiles * unit - unit * 2.1, finalPlatform.y - unit * 0.72),
+      hazardY: platforms[2].y - unit * 0.48,
     };
+  }
+
+  private courseScale(height: number) {
+    return Phaser.Math.Clamp(Math.round(height / 260), 3, 4);
+  }
+
+  private drawPlatform(
+    platformGroup: Phaser.Physics.Arcade.StaticGroup,
+    platform: PlatformSpec,
+    tileScale: number,
+  ) {
+    const unit = 16 * tileScale;
+    const width = platform.tiles * unit;
+    this.add.image(platform.x, platform.y, "tall-platform-left")
+      .setOrigin(0, 0)
+      .setScale(tileScale)
+      .setDepth(12);
+    for (let index = 1; index < platform.tiles - 1; index += 1) {
+      this.add.image(platform.x + index * unit, platform.y, "tall-platform-mid")
+        .setOrigin(0, 0)
+        .setScale(tileScale)
+        .setDepth(12);
+    }
+    this.add.image(platform.x + (platform.tiles - 1) * unit, platform.y, "tall-platform-right")
+      .setOrigin(0, 0)
+      .setScale(tileScale)
+      .setDepth(12);
+
+    const body = platformGroup.create(platform.x + width / 2, platform.y + unit * 0.24, "course-body");
+    body.setDisplaySize(width - unit * 0.35, unit * 0.42);
+    body.setVisible(false);
+    body.refreshBody();
+  }
+
+  private addBoxPlatform(
+    platformGroup: Phaser.Physics.Arcade.StaticGroup,
+    x: number,
+    floorY: number,
+    tileScale: number,
+    texture: "sunny-crate-plain" | "sunny-crate-ornate",
+  ) {
+    const boxScale = tileScale / 2;
+    const box = platformGroup.create(x, floorY - 32 * boxScale, texture);
+    box.setOrigin(0.5, 1);
+    box.setScale(boxScale);
+    box.setDepth(18);
+    box.refreshBody();
+  }
+
+  private addCourseDressing(platforms: PlatformSpec[], tileScale: number, theme: LevelTheme) {
+    const unit = 16 * tileScale;
+    const propScale = tileScale / 2.4;
+    const first = platforms[0];
+    const final = platforms[4];
+    const treeTexture = theme.mode === "sunny" ? "sunny-tree" : "tall-plant";
+    const rockTexture = theme.mode === "sunny" ? "sunny-rock" : "tall-rock";
+
+    this.add.image(first.x + unit * 0.8, first.y + unit * 0.08, treeTexture)
+      .setOrigin(0.5, 1)
+      .setScale(theme.mode === "sunny" ? propScale * 0.88 : propScale)
+      .setAlpha(0.92)
+      .setDepth(7);
+    this.add.image(platforms[2].x + unit * 4.8, platforms[2].y + unit * 0.08, rockTexture)
+      .setOrigin(0.5, 1)
+      .setScale(propScale * 0.72)
+      .setDepth(15);
+    this.add.image(final.x + unit * 1.8, final.y + unit * 0.08, "sunny-plant")
+      .setOrigin(0.5, 1)
+      .setScale(propScale * 0.76)
+      .setDepth(15);
   }
 
   private createMovingHazards(theme: LevelTheme) {
     if (this.level.level < 3) return undefined;
 
     const group = this.physics.add.group({ allowGravity: false, immovable: true });
-    const count = Math.min(2, Math.ceil((this.level.level - 2) / 3));
+    const count = Math.min(this.hazardPoints.length, Math.ceil((this.level.level - 2) / 3));
     for (let index = 0; index < count; index += 1) {
-      const hazard = group.create(880 + index * 620, this.hazardY, theme.obstacle) as Phaser.Physics.Arcade.Sprite;
-      hazard.setScale(0.88);
+      const point = this.hazardPoints[index] ?? new Phaser.Math.Vector2(920 + index * 320, this.hazardY);
+      const hazard = group.create(point.x, point.y, theme.obstacle) as Phaser.Physics.Arcade.Sprite;
+      hazard.setScale(2.1);
       hazard.setDepth(18);
       hazard.setImmovable(true);
       if (hazard.body instanceof Phaser.Physics.Arcade.Body) {
         hazard.body.setAllowGravity(false);
-        hazard.body.setSize(62, 54);
+        hazard.body.setSize(24, 14);
       }
       this.tweens.add({
         targets: hazard,
-        x: hazard.x + 130 + index * 34,
+        x: hazard.x + 82 + index * 28,
         duration: 1450 - Math.min(this.level.level, 6) * 80,
         ease: "Sine.inOut",
         yoyo: true,
@@ -644,9 +686,9 @@ class MemoryQuestScene extends Phaser.Scene {
       backgroundColor: "#211a1d",
       padding: { x: 10, y: 5 },
     }).setOrigin(0.5).setDepth(11);
-    this.chest = this.physics.add.staticSprite(this.chestPoint.x, this.chestPoint.y, "memory-chest");
+    this.chest = this.physics.add.staticSprite(this.chestPoint.x, this.chestPoint.y, "sunny-chest");
     this.chest.setDepth(12);
-    this.chest.setScale(1.08);
+    this.chest.setScale(3.1);
     this.chest.refreshBody();
     this.chest.setInteractive({ useHandCursor: true });
     this.chest.on("pointerdown", () => this.openTreasure());
