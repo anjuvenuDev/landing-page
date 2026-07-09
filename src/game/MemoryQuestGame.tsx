@@ -36,14 +36,14 @@ type LevelTheme = {
 };
 
 const levelThemes: LevelTheme[] = [
-  { key: "sunset", sky: 0xf36b48, horizon: 0xff9c3d, cloud: 0xffbd59, far: 0xc24824, mid: 0x7b2c1f, near: 0x2f1114, soil: 0x4b1918, grass: 0xf7a928, water: 0x7d4334, accent: 0xffd166, obstacle: "obstacle-stump", background: "level-bg-sunset", dressing: "sunset" },
-  { key: "moon-mountain", sky: 0x1c65a0, horizon: 0x6343a2, cloud: 0x274e8c, far: 0xa2643e, mid: 0x5f412b, near: 0x1e211f, soil: 0x3d3029, grass: 0x8eb06a, water: 0x245f86, accent: 0xf8f3b8, obstacle: "obstacle-log", background: "level-bg-moon-mountain", dressing: "moonMountain" },
-  { key: "jungle", sky: 0x293b23, horizon: 0xa5d51b, cloud: 0xd2ff38, far: 0x587323, mid: 0x1f4429, near: 0x07151b, soil: 0x9a4326, grass: 0x69bd21, water: 0x224d3d, accent: 0xc7fb31, obstacle: "obstacle-bramble", background: "level-bg-jungle", dressing: "jungle" },
-  { key: "teal-forest", sky: 0x0e504f, horizon: 0x8fbfc0, cloud: 0x2b6864, far: 0x275754, mid: 0x1b3c39, near: 0x071918, soil: 0x5d3c2e, grass: 0x1fd69d, water: 0x215e61, accent: 0x8cebd4, obstacle: "obstacle-mushroom", background: "level-bg-teal-forest", dressing: "tealForest" },
-  { key: "blue-moon", sky: 0x03132a, horizon: 0x0b5361, cloud: 0x1e8491, far: 0x0e3546, mid: 0x0b2639, near: 0x020719, soil: 0x08101f, grass: 0x5fb8b4, water: 0x174c66, accent: 0xeaf9f5, obstacle: "obstacle-crystal", background: "level-bg-blue-moon", dressing: "blueMoon" },
-  { key: "mist-forest", sky: 0x0c1220, horizon: 0x5d7085, cloud: 0x324155, far: 0x35475a, mid: 0x1c2a36, near: 0x08131a, soil: 0x1a2530, grass: 0x37b06c, water: 0x253d4b, accent: 0x6ee7b7, obstacle: "obstacle-pillar", background: "level-bg-mist-forest", dressing: "mistForest" },
-  { key: "pine-forest", sky: 0x48b0a7, horizon: 0xd7f0d2, cloud: 0xb8ddd1, far: 0x6fb8ad, mid: 0x1b6f75, near: 0x092d4e, soil: 0x1e2d31, grass: 0x7bec8d, water: 0x267c87, accent: 0xb8ff7a, obstacle: "obstacle-banner", background: "level-bg-pine-forest", dressing: "pineForest" },
-  { key: "ember-archive", sky: 0x201820, horizon: 0x5b4b66, cloud: 0xb891a8, far: 0x5b4b66, mid: 0x7a5735, near: 0x211a1d, soil: 0x5d3c2e, grass: 0xf9a8d4, water: 0x553a58, accent: 0xf9a8d4, obstacle: "obstacle-trophy", background: "level-bg-blue-moon", dressing: "emberArchive" },
+  { key: "asset-forest-night", sky: 0x1a2530, horizon: 0x5d7085, cloud: 0x324155, far: 0x35475a, mid: 0x1c2a36, near: 0x08131a, soil: 0x1a2530, grass: 0x37b06c, water: 0x253d4b, accent: 0x6ee7b7, obstacle: "obstacle-pillar", background: "level-bg-asset-forest-night", dressing: "mistForest" },
+  { key: "asset-jungle", sky: 0x0e504f, horizon: 0x8fbfc0, cloud: 0x2b6864, far: 0x275754, mid: 0x1b3c39, near: 0x071918, soil: 0x5d3c2e, grass: 0x1fd69d, water: 0x215e61, accent: 0x8cebd4, obstacle: "obstacle-mushroom", background: "level-bg-asset-jungle", dressing: "tealForest" },
+  { key: "asset-canopy", sky: 0x76d1f2, horizon: 0xd7f0d2, cloud: 0xb8ddd1, far: 0x6fb8ad, mid: 0x1b6f75, near: 0x092d4e, soil: 0x1e2d31, grass: 0x7bec8d, water: 0x267c87, accent: 0xb8ff7a, obstacle: "obstacle-banner", background: "level-bg-asset-canopy", dressing: "pineForest" },
+  { key: "asset-stars", sky: 0x2f5f93, horizon: 0x6ea4cf, cloud: 0x274e8c, far: 0x23446f, mid: 0x1d3557, near: 0x101419, soil: 0x2a2f45, grass: 0x8fb3d9, water: 0x245f86, accent: 0xf8f3b8, obstacle: "obstacle-log", background: "level-bg-asset-stars", dressing: "moonMountain" },
+  { key: "asset-cloud-one", sky: 0xa7dded, horizon: 0x9dd6ee, cloud: 0xd7f5ff, far: 0x8bc8dc, mid: 0x4b91a3, near: 0x1e3a46, soil: 0x4d5d62, grass: 0x6ee7b7, water: 0x3fa7c9, accent: 0xf9e7b7, obstacle: "obstacle-crystal", background: "level-bg-asset-cloud-one", dressing: "blueMoon" },
+  { key: "asset-cloud-two", sky: 0x6fc0ed, horizon: 0xb9eaff, cloud: 0xd7f5ff, far: 0x78bde2, mid: 0x327a9a, near: 0x17475b, soil: 0x2f4654, grass: 0x9ee26f, water: 0x267c87, accent: 0xffd166, obstacle: "obstacle-neon", background: "level-bg-asset-cloud-two", dressing: "blueMoon" },
+  { key: "asset-forest-return", sky: 0x0c1220, horizon: 0x5d7085, cloud: 0x324155, far: 0x35475a, mid: 0x1c2a36, near: 0x08131a, soil: 0x1a2530, grass: 0x37b06c, water: 0x253d4b, accent: 0xf9a8d4, obstacle: "obstacle-thorn", background: "level-bg-asset-forest-night", dressing: "mistForest" },
+  { key: "asset-star-archive", sky: 0x201820, horizon: 0x5b4b66, cloud: 0xb891a8, far: 0x5b4b66, mid: 0x7a5735, near: 0x211a1d, soil: 0x5d3c2e, grass: 0xf9a8d4, water: 0x553a58, accent: 0xf9a8d4, obstacle: "obstacle-trophy", background: "level-bg-asset-stars", dressing: "emberArchive" },
 ];
 
 class MemoryQuestScene extends Phaser.Scene {
@@ -70,13 +70,12 @@ class MemoryQuestScene extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image("level-bg-sunset", "/assets/levels/sunset.png");
-    this.load.image("level-bg-moon-mountain", "/assets/levels/moon-mountain.png");
-    this.load.image("level-bg-jungle", "/assets/levels/jungle.png");
-    this.load.image("level-bg-teal-forest", "/assets/levels/teal-forest.png");
-    this.load.image("level-bg-blue-moon", "/assets/levels/blue-moon.png");
-    this.load.image("level-bg-mist-forest", "/assets/levels/mist-forest.png");
-    this.load.image("level-bg-pine-forest", "/assets/levels/pine-forest.png");
+    this.load.image("level-bg-asset-forest-night", "/assets/levels/asset-pack/forest-night.png");
+    this.load.image("level-bg-asset-jungle", "/assets/levels/asset-pack/jungle-parallax.png");
+    this.load.image("level-bg-asset-canopy", "/assets/levels/asset-pack/tree-canopy.png");
+    this.load.image("level-bg-asset-stars", "/assets/levels/asset-pack/stringstar-fields.png");
+    this.load.image("level-bg-asset-cloud-one", "/assets/levels/asset-pack/clouds-one.png");
+    this.load.image("level-bg-asset-cloud-two", "/assets/levels/asset-pack/clouds-two.png");
     this.createPixelTextures();
   }
 
