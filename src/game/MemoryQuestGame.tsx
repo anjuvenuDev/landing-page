@@ -432,12 +432,17 @@ class MemoryQuestScene extends Phaser.Scene {
     const theme = this.currentTheme();
     this.cameras.main.setBackgroundColor(theme.sky);
 
-    for (let x = 0; x < 2400; x += width) {
-      this.add.image(x, 0, theme.background)
-        .setOrigin(0, 0)
-        .setDisplaySize(width, height)
-        .setDepth(-40);
-    }
+    const texture = this.textures.get(theme.background);
+    const source = texture.getSourceImage() as HTMLCanvasElement | HTMLImageElement;
+    const sourceWidth = source.width;
+    const sourceHeight = source.height;
+    const scale = Math.max(width / sourceWidth, height / sourceHeight);
+
+    this.add.image(width / 2, height / 2, theme.background)
+      .setOrigin(0.5, 0.5)
+      .setDisplaySize(sourceWidth * scale, sourceHeight * scale)
+      .setScrollFactor(0)
+      .setDepth(-40);
   }
 
   private createMovingHazards(height: number, theme: LevelTheme) {
