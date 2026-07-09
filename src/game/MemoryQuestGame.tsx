@@ -75,7 +75,7 @@ class MemoryQuestScene extends Phaser.Scene {
   private questText?: Phaser.GameObjects.Text;
   private chest?: Phaser.Physics.Arcade.Sprite;
   private chestPoint = new Phaser.Math.Vector2(2040, 0);
-  private spawnPoint = new Phaser.Math.Vector2(140, 0);
+  private lastSafePosition = new Phaser.Math.Vector2(140, 0);
   private hazardY = 0;
   private hazardPoints: Phaser.Math.Vector2[] = [];
 
@@ -123,16 +123,22 @@ class MemoryQuestScene extends Phaser.Scene {
 
     const course = this.createCourse(height);
     this.chestPoint = course.chest;
-    this.spawnPoint = course.spawn;
+    this.lastSafePosition = course.spawn.clone();
     this.hazardY = course.hazardY;
 
     this.player = this.physics.add.sprite(course.spawn.x, course.spawn.y, "anjana-avatar");
     this.player.setScale(0.62);
     this.player.setDepth(30);
-    this.player.setCollideWorldBounds(false);
+    this.player.setOrigin(0.5, 1);
+    this.player.setCollideWorldBounds(true);
     this.player.setDragX(1200);
     this.player.setMaxVelocity(360, 720);
-    this.player.body?.setSize(54, 84).setOffset(100, 156);
+    const avatarSprite = parseAvatarSprite();
+    const bodyWidth = Math.max(48, Math.floor(avatarSprite.width * 0.34));
+    const bodyHeight = Math.max(78, Math.floor(avatarSprite.height * 0.34));
+    const bodyOffsetX = Math.floor((avatarSprite.width - bodyWidth) / 2);
+    const bodyOffsetY = Math.max(0, avatarSprite.height - bodyHeight - 8);
+    this.player.body?.setSize(bodyWidth, bodyHeight).setOffset(bodyOffsetX, bodyOffsetY);
     this.cameras.main.startFollow(this.player, true, 0.08, 0.08, -160, 70);
     this.physics.add.collider(this.player, course.platforms);
 
@@ -196,11 +202,15 @@ class MemoryQuestScene extends Phaser.Scene {
     const body = this.player.body;
     const grounded = Boolean(body?.blocked.down) || Boolean(body?.touching.down);
 
+    if (grounded) {
+      this.lastSafePosition.set(this.player.x, this.player.y);
+    }
+
     if (jump && grounded) {
       this.player.setVelocityY(-520);
     }
 
-    if (this.player.y > this.scale.height + 180 || this.player.x < 28) {
+    if (this.player.y > this.scale.height + 180) {
       this.resetPlayer();
     }
 
@@ -532,7 +542,7 @@ class MemoryQuestScene extends Phaser.Scene {
     return {
       platforms: platformGroup,
       obstacles: [],
-      spawn: new Phaser.Math.Vector2(unit * 2.1, platforms[0].y - 100),
+      spawn: new Phaser.Math.Vector2(unit * 2.1, platforms[0].y - 10),
       shard: new Phaser.Math.Vector2(midPlatform.x + unit * 4.8, midPlatform.y - unit * 0.88),
       chest: new Phaser.Math.Vector2(finalPlatform.x + finalPlatform.tiles * unit - unit * 2.1, finalPlatform.y - unit * 0.72),
       hazardY: platforms[2].y - unit * 0.48,
@@ -725,7 +735,7 @@ class MemoryQuestScene extends Phaser.Scene {
 
   private resetPlayer() {
     if (!this.player || this.completed) return;
-    this.player.setPosition(Math.max(this.spawnPoint.x, this.player.x - 260), this.spawnPoint.y);
+    this.player.setPosition(this.lastSafePosition.x, this.lastSafePosition.y);
     this.player.setVelocity(0, 0);
     this.cameras.main.shake(120, 0.004);
   }

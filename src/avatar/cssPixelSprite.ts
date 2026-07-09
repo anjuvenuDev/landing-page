@@ -23,8 +23,10 @@ export function parseAvatarSprite(): PixelSprite {
   const width = Number(avatarCss.match(/width:\s*(\d+)px/)?.[1] ?? 5);
   const height = Number(avatarCss.match(/height:\s*(\d+)px/)?.[1] ?? width);
   const pixels: PixelSprite["pixels"] = [];
-  let maxX = width;
-  let maxY = height;
+  let minX = Number.POSITIVE_INFINITY;
+  let minY = Number.POSITIVE_INFINITY;
+  let maxX = 0;
+  let maxY = 0;
 
   for (const match of avatarCss.matchAll(rgbaPattern)) {
     const [, xValue, yValue, redValue, greenValue, blueValue, alphaValue] = match;
@@ -44,14 +46,32 @@ export function parseAvatarSprite(): PixelSprite {
       color: (red << 16) + (green << 8) + blue,
       alpha,
     });
+    minX = Math.min(minX, x);
+    minY = Math.min(minY, y);
     maxX = Math.max(maxX, x + width);
     maxY = Math.max(maxY, y + height);
   }
 
+  if (!pixels.length) {
+    return {
+      cellSize: width,
+      width,
+      height,
+      pixels,
+    };
+  }
+
+  const offsetX = Number.isFinite(minX) ? minX : 0;
+  const offsetY = Number.isFinite(minY) ? minY : 0;
+
   return {
     cellSize: width,
-    width: maxX,
-    height: maxY,
-    pixels,
+    width: maxX - offsetX,
+    height: maxY - offsetY,
+    pixels: pixels.map((pixel) => ({
+      ...pixel,
+      x: pixel.x - offsetX,
+      y: pixel.y - offsetY,
+    })),
   };
 }
