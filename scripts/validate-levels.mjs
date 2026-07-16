@@ -3,6 +3,7 @@ const platformSurfaceInset = 16;
 const maxRunVelocity = 360;
 const jumpVelocity = 520;
 const gravity = 1150;
+const minimumPitUnits = 1.4;
 
 const viewportHeights = [520, 640, 768, 900];
 const levelCount = 8;
@@ -25,11 +26,11 @@ function buildCourse(level, height) {
   const baseY = height - Math.max(126, unit * 2.2);
   const lift = Math.min(level - 1, 5) * (unit * 0.14);
   const platforms = [
-    { x: 0, y: baseY, tiles: 12 },
-    { x: unit * 11.1, y: baseY - unit * 0.92, tiles: 8 },
-    { x: unit * 19.2, y: baseY - unit * 1.58 - lift, tiles: 8 },
-    { x: unit * 27.6, y: baseY - unit * 1.02, tiles: 8 },
-    { x: unit * 36.2, y: baseY - unit * 0.16, tiles: 12 },
+    { x: 0, y: baseY, tiles: 10 },
+    { x: unit * 12.35, y: baseY - unit * 0.76, tiles: 8 },
+    { x: unit * 22.55, y: baseY - unit * 1.32 - lift, tiles: 8 },
+    { x: unit * 32.35, y: baseY - unit * 0.88, tiles: 8 },
+    { x: unit * 42.4, y: baseY - unit * 0.12, tiles: 12 },
   ];
 
   const platformSurfaces = platforms.map((platform) => {
@@ -125,6 +126,8 @@ for (let level = 1; level <= levelCount; level += 1) {
     for (let index = 0; index < course.platformSurfaces.length - 1; index += 1) {
       const current = course.platformSurfaces[index];
       const next = course.platformSurfaces[index + 1];
+      const visiblePit = next.left - current.right;
+      assert(visiblePit >= course.unit * minimumPitUnits, `level ${level} height ${height}: platform ${index + 1} to ${index + 2} has no meaningful pit`);
       assert(canReach(current, next), `level ${level} height ${height}: platform ${index + 1} cannot reach platform ${index + 2}`);
     }
 
