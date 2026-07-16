@@ -73,6 +73,9 @@ const levelThemes: LevelTheme[] = [
 
 const avatarScale = 0.62;
 const platformSurfaceInset = 16;
+const maxRunVelocity = 360;
+const jumpVelocity = 520;
+const moveAcceleration = 900;
 
 class MemoryQuestScene extends Phaser.Scene {
   private player?: Phaser.Physics.Arcade.Sprite;
@@ -154,7 +157,7 @@ class MemoryQuestScene extends Phaser.Scene {
     this.player.setOrigin(0.5, 1);
     this.player.setCollideWorldBounds(true);
     this.player.setDragX(1200);
-    this.player.setMaxVelocity(360, 720);
+    this.player.setMaxVelocity(maxRunVelocity, 720);
     this.player.body?.setSize(bodyWidth, bodyHeight).setOffset(bodyOffsetX, bodyOffsetY);
     this.cameras.main.startFollow(this.player, true, 0.08, 0.08, -160, 70);
     this.physics.add.collider(this.player, course.platforms);
@@ -199,6 +202,11 @@ class MemoryQuestScene extends Phaser.Scene {
   update() {
     if (!this.player || !this.cursors || !this.wasd) return;
 
+    if (this.respawning) {
+      this.holdPlayerAtCheckpoint();
+      return;
+    }
+
     const left = this.cursors.left.isDown || this.wasd.A.isDown;
     const right = this.cursors.right.isDown || this.wasd.D.isDown;
     const jump =
@@ -207,10 +215,10 @@ class MemoryQuestScene extends Phaser.Scene {
       Phaser.Input.Keyboard.JustDown(this.wasd.W);
 
     if (left) {
-      this.player.setAccelerationX(-900);
+      this.player.setAccelerationX(-moveAcceleration);
       this.player.setFlipX(true);
     } else if (right) {
-      this.player.setAccelerationX(900);
+      this.player.setAccelerationX(moveAcceleration);
       this.player.setFlipX(false);
     } else {
       this.player.setAccelerationX(0);
@@ -230,7 +238,7 @@ class MemoryQuestScene extends Phaser.Scene {
     }
 
     if (jump && grounded) {
-      this.player.setVelocityY(-520);
+      this.player.setVelocityY(-jumpVelocity);
     }
 
     if (this.player.x < 32) {
@@ -541,13 +549,13 @@ class MemoryQuestScene extends Phaser.Scene {
     const tileScale = this.courseScale(height);
     const unit = 16 * tileScale;
     const baseY = height - Math.max(126, unit * 2.2);
-    const lift = Math.min(this.level.level - 1, 5) * (unit * 0.34);
+    const lift = Math.min(this.level.level - 1, 5) * (unit * 0.14);
     const platforms: PlatformSpec[] = [
-      { x: 0, y: baseY, tiles: 10 },
-      { x: unit * 11.6, y: baseY - unit * 1.45, tiles: 6 },
-      { x: unit * 19.6, y: baseY - unit * 2.55 - lift, tiles: 6 },
-      { x: unit * 27.7, y: baseY - unit * 1.7, tiles: 6 },
-      { x: unit * 35.8, y: baseY - unit * 0.35, tiles: 11 },
+      { x: 0, y: baseY, tiles: 12 },
+      { x: unit * 11.1, y: baseY - unit * 0.92, tiles: 8 },
+      { x: unit * 19.2, y: baseY - unit * 1.58 - lift, tiles: 8 },
+      { x: unit * 27.6, y: baseY - unit * 1.02, tiles: 8 },
+      { x: unit * 36.2, y: baseY - unit * 0.16, tiles: 12 },
     ];
     const platformGroup = this.physics.add.staticGroup();
     const safeSurfaces: SafeSurface[] = [];
@@ -559,8 +567,8 @@ class MemoryQuestScene extends Phaser.Scene {
     safeSurfaces.push(
       this.addBoxPlatform(
         platformGroup,
-        platforms[1].x + unit * 3.2,
-        platforms[1].y,
+        platforms[0].x + unit * 9.8,
+        platforms[0].y + platformSurfaceInset * tileScale,
         tileScale,
         "sunny-crate-plain",
       ),
@@ -569,8 +577,8 @@ class MemoryQuestScene extends Phaser.Scene {
       safeSurfaces.push(
         this.addBoxPlatform(
           platformGroup,
-          platforms[2].x + unit * 2.5,
-          platforms[2].y,
+          platforms[1].x + unit * 5.6,
+          platforms[1].y + platformSurfaceInset * tileScale,
           tileScale,
           "sunny-crate-ornate",
         ),
@@ -580,8 +588,8 @@ class MemoryQuestScene extends Phaser.Scene {
       safeSurfaces.push(
         this.addBoxPlatform(
           platformGroup,
-          platforms[3].x + unit * 3.4,
-          platforms[3].y,
+          platforms[3].x + unit * 5.5,
+          platforms[3].y + platformSurfaceInset * tileScale,
           tileScale,
           "sunny-crate-plain",
         ),
@@ -591,8 +599,8 @@ class MemoryQuestScene extends Phaser.Scene {
     const finalPlatform = platforms[4];
     const midPlatform = platforms[3];
     this.hazardPoints = [
-      new Phaser.Math.Vector2(platforms[2].x + unit * 3.5, platforms[2].y - unit * 0.28),
-      new Phaser.Math.Vector2(platforms[3].x + unit * 3.2, platforms[3].y - unit * 0.28),
+      new Phaser.Math.Vector2(platforms[2].x + unit * 3.6, platforms[2].y + platformSurfaceInset * tileScale - unit * 0.24),
+      new Phaser.Math.Vector2(platforms[3].x + unit * 3.4, platforms[3].y + platformSurfaceInset * tileScale - unit * 0.24),
     ];
     return {
       platforms: platformGroup,
@@ -601,7 +609,7 @@ class MemoryQuestScene extends Phaser.Scene {
       spawn: new Phaser.Math.Vector2(unit * 2.1, this.playerYForSurface(safeSurfaces[0].y)),
       shard: new Phaser.Math.Vector2(midPlatform.x + unit * 4.8, midPlatform.y - unit * 0.88),
       chest: new Phaser.Math.Vector2(finalPlatform.x + finalPlatform.tiles * unit - unit * 2.1, finalPlatform.y - unit * 0.72),
-      hazardY: platforms[2].y - unit * 0.48,
+      hazardY: platforms[2].y + platformSurfaceInset * tileScale - unit * 0.42,
     };
   }
 
@@ -652,24 +660,32 @@ class MemoryQuestScene extends Phaser.Scene {
   private addBoxPlatform(
     platformGroup: Phaser.Physics.Arcade.StaticGroup,
     x: number,
-    floorY: number,
+    surfaceY: number,
     tileScale: number,
     texture: "sunny-crate-plain" | "sunny-crate-ornate",
   ): SafeSurface {
     const boxScale = tileScale / 2;
-    const box = platformGroup.create(x, floorY, texture);
+    const boxHeight = 32 * boxScale;
+    const boxWidth = 32 * boxScale;
+    const boxTop = surfaceY - boxHeight;
+    const bodyHeight = Math.max(10, 6 * tileScale);
+
+    const box = this.add.image(x, surfaceY, texture);
     box.setOrigin(0.5, 1);
     box.setScale(boxScale);
     box.setDepth(18);
-    box.refreshBody();
 
-    const halfWidth = 16 * boxScale;
-    const top = floorY - 32 * boxScale;
+    const body = platformGroup.create(x, boxTop + bodyHeight / 2, "course-body");
+    body.setDisplaySize(boxWidth, bodyHeight);
+    body.setVisible(false);
+    body.refreshBody();
+
+    const halfWidth = boxWidth / 2;
     return {
       left: x - halfWidth,
       right: x + halfWidth,
-      y: top,
-      margin: Math.max(8, halfWidth * 0.35),
+      y: boxTop,
+      margin: Math.max(5, halfWidth * 0.18),
     };
   }
 
@@ -826,6 +842,15 @@ class MemoryQuestScene extends Phaser.Scene {
   private resetPlayer() {
     if (!this.player || this.completed || this.respawning) return;
     this.respawning = true;
+    this.holdPlayerAtCheckpoint();
+    this.cameras.main.shake(120, 0.004);
+    this.time.delayedCall(120, () => {
+      this.respawning = false;
+    });
+  }
+
+  private holdPlayerAtCheckpoint() {
+    if (!this.player) return;
     this.player.setPosition(this.lastSafePosition.x, this.lastSafePosition.y);
     if (this.player.body instanceof Phaser.Physics.Arcade.Body) {
       this.player.body.reset(this.lastSafePosition.x, this.lastSafePosition.y);
@@ -833,10 +858,6 @@ class MemoryQuestScene extends Phaser.Scene {
     this.player.setVelocity(0, 0);
     this.player.setAcceleration(0, 0);
     this.player.setAngularVelocity(0);
-    this.cameras.main.shake(120, 0.004);
-    this.time.delayedCall(220, () => {
-      this.respawning = false;
-    });
   }
 
   private completeLevel() {
