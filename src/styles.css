@@ -654,11 +654,32 @@ h2 {
   color: var(--rose);
 }
 
-.side-preview-body {
+.portfolio-content {
   display: grid;
-  grid-template-columns: minmax(430px, 0.95fr) minmax(0, 1.5fr);
+  grid-template-columns: minmax(340px, 0.82fr) minmax(0, 1.28fr);
   gap: clamp(22px, 3vw, 42px);
   margin-top: 18px;
+  min-height: 0;
+  align-items: stretch;
+}
+
+.portfolio-projects,
+.portfolio-timeline,
+.portfolio-skills,
+.portfolio-achievements {
+  grid-template-columns: minmax(250px, 0.52fr) minmax(0, 1.48fr);
+}
+
+.portfolio-slide {
+  height: 100%;
+  margin-top: 0;
+}
+
+.portfolio-copy {
+  min-width: 0;
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 8px;
 }
 
 .summary {
@@ -669,21 +690,360 @@ h2 {
   line-height: 1.45;
 }
 
-.side-preview-panel ul {
+.story-lines {
+  display: grid;
+  gap: 10px;
+  margin: 0 0 18px;
+}
+
+.story-lines p {
+  margin: 0;
+  padding: 13px 15px;
+  background: rgba(16, 24, 32, 0.58);
+  border-left: 4px solid var(--gold);
+  color: #f7dca9;
+  line-height: 1.48;
+}
+
+.portfolio-photo-frame {
+  position: relative;
+  min-height: clamp(430px, 58vh, 720px);
+  margin: 0;
+  overflow: hidden;
+  background: #101820;
+  border: 4px solid var(--paper);
+  box-shadow:
+    0 0 0 5px #37251f,
+    10px 10px 0 #000;
+  image-rendering: auto;
+}
+
+.portfolio-photo-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(rgba(255, 209, 102, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 209, 102, 0.08) 1px, transparent 1px);
+  background-size: 12px 12px;
+  mix-blend-mode: soft-light;
+}
+
+.portfolio-photo-frame img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.photo-phone {
+  width: min(390px, 100%);
+  justify-self: center;
+}
+
+.photo-phone img {
+  object-fit: cover;
+  object-position: 50% 0%;
+}
+
+.image-collage {
+  min-height: clamp(430px, 58vh, 720px);
+  display: grid;
+  grid-template-rows: 1fr 0.78fr;
+  gap: 16px;
+}
+
+.image-collage .portfolio-photo-frame {
+  min-height: 0;
+  height: 100%;
+}
+
+.image-collage .photo-wide {
+  min-height: 260px;
+}
+
+.project-portal,
+.company-stack {
+  position: relative;
+  min-height: clamp(360px, 52vh, 620px);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 50% 52%, rgba(128, 255, 219, 0.14), transparent 12rem),
+    linear-gradient(rgba(255, 255, 255, 0.04) 2px, transparent 2px),
+    #070a0d;
+  background-size: auto, 18px 18px, auto;
+  border: 4px solid var(--paper);
+  box-shadow:
+    0 0 0 5px #37251f,
+    10px 10px 0 #000;
+  image-rendering: pixelated;
+}
+
+.project-folder {
+  width: 112px;
+  height: 78px;
+  background:
+    linear-gradient(#53b7f5 0 0) 10px 0 / 50px 18px,
+    linear-gradient(#2f9bd7 0 0) 0 16px / 112px 62px,
+    linear-gradient(#84d7ff 0 0) 12px 26px / 88px 8px;
+  background-repeat: no-repeat;
+  border: 4px solid #041821;
+  box-shadow: 8px 8px 0 #000;
+}
+
+.project-hand {
+  position: absolute;
+  width: 170px;
+  height: 92px;
+  background:
+    radial-gradient(circle, #f9e7b7 2px, transparent 3px) 0 0 / 12px 12px;
+  opacity: 0.78;
+}
+
+.project-hand.left {
+  left: 8%;
+  transform: rotate(8deg);
+  clip-path: polygon(0 25%, 100% 42%, 100% 58%, 0 75%);
+}
+
+.project-hand.right {
+  right: 8%;
+  transform: rotate(-8deg);
+  clip-path: polygon(0 42%, 100% 25%, 100% 75%, 0 58%);
+}
+
+.company-stack {
+  align-content: center;
+  gap: 18px;
+  padding: 22px;
+}
+
+.company-token {
+  width: min(100%, 320px);
+  display: grid;
+  grid-template-columns: 74px 1fr;
+  align-items: center;
+  gap: 14px;
+  padding: 14px;
+  background: rgba(33, 26, 29, 0.88);
+  border: 3px solid rgba(255, 209, 102, 0.72);
+  box-shadow: 6px 6px 0 #000;
+}
+
+.company-token img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  background: #101820;
+  border: 2px solid rgba(249, 231, 183, 0.38);
+}
+
+.company-token span {
+  color: #fff4c7;
+  font-family: "Pixelify Sans", monospace;
+  font-size: clamp(1.05rem, 1.4vw, 1.4rem);
+}
+
+.memory-highlights {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
   padding: 0;
-  margin: 0;
+  margin: 0 0 18px;
   list-style: none;
 }
 
-.side-preview-panel li {
+.memory-highlights li {
   min-height: 72px;
   padding: 14px;
   background: rgba(16, 24, 32, 0.74);
   border: 3px solid rgba(249, 231, 183, 0.42);
   color: #f9e7b7;
+}
+
+.feature-card-grid,
+.project-card-grid,
+.work-roadmap,
+.skill-wall {
+  display: grid;
+  gap: 12px;
+  margin: 18px 0;
+}
+
+.feature-card-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.feature-card,
+.project-card,
+.work-step,
+.skill-group {
+  background:
+    linear-gradient(135deg, rgba(255, 209, 102, 0.07), transparent 46%),
+    rgba(16, 24, 32, 0.78);
+  border: 3px solid rgba(249, 231, 183, 0.5);
+  box-shadow: 5px 5px 0 #000;
+}
+
+.feature-card {
+  min-height: 142px;
+  padding: 15px;
+}
+
+.feature-card span,
+.project-role,
+.work-step-head span {
+  color: var(--gold);
+  font-family: "Pixelify Sans", monospace;
+}
+
+.feature-card h3,
+.project-card h3,
+.work-step h3,
+.skill-group h3 {
+  margin: 6px 0 8px;
+  color: #fff4c7;
+  font-family: "Pixelify Sans", monospace;
+  font-size: clamp(1.24rem, 1.55vw, 1.65rem);
+  line-height: 1;
+}
+
+.feature-card p,
+.project-card p,
+.work-step p {
+  margin: 0;
+  color: #f4ddb3;
+  line-height: 1.42;
+}
+
+.project-card-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.project-card {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  padding: 16px;
+}
+
+.stack-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.stack-row span {
+  padding: 5px 8px;
+  background: rgba(128, 255, 219, 0.1);
+  border: 2px solid rgba(128, 255, 219, 0.5);
+  color: #c8fff1;
+  font-family: "Pixelify Sans", monospace;
+  font-size: 0.86rem;
+}
+
+.project-links {
+  margin-top: 0;
+}
+
+.work-roadmap {
+  position: relative;
+}
+
+.work-roadmap::before {
+  content: "";
+  position: absolute;
+  left: 37px;
+  top: 28px;
+  bottom: 28px;
+  width: 6px;
+  background: var(--gold);
+  box-shadow: 3px 0 0 #000;
+}
+
+.work-step {
+  position: relative;
+  padding: 16px 16px 16px 92px;
+}
+
+.work-step::before {
+  content: "";
+  position: absolute;
+  left: 24px;
+  top: 32px;
+  width: 30px;
+  height: 30px;
+  background: var(--aqua);
+  border: 4px solid #101820;
+  box-shadow: 4px 4px 0 #000;
+}
+
+.work-step-head {
+  display: grid;
+  grid-template-columns: 58px 1fr;
+  gap: 12px;
+  align-items: center;
+}
+
+.work-step-head img {
+  width: 54px;
+  height: 54px;
+  object-fit: contain;
+  background: #101820;
+  border: 2px solid rgba(249, 231, 183, 0.5);
+}
+
+.work-step strong {
+  display: inline-block;
+  margin: 12px 0 8px;
+  color: var(--aqua);
+}
+
+.compact-list {
+  display: grid;
+  gap: 7px;
+  padding-left: 18px;
+  margin: 0;
+}
+
+.compact-list li {
+  color: #f9e7b7;
+  line-height: 1.36;
+}
+
+.skill-wall {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.skill-group {
+  padding: 14px;
+}
+
+.skill-group > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.skill-brick {
+  padding: 8px 10px;
+  background: #9a5f3f;
+  border: 2px solid #f9e7b7;
+  color: #fff4c7;
+  box-shadow: 3px 3px 0 #000;
+  font-family: "Pixelify Sans", monospace;
+  font-size: 0.92rem;
+}
+
+.skill-brick:nth-child(3n + 2) {
+  background: #315a45;
+}
+
+.skill-brick:nth-child(3n) {
+  background: #5f3dc4;
 }
 
 .tag-row,
@@ -813,47 +1173,21 @@ h2 {
   font-size: clamp(2.4rem, 5vw, 6.2rem);
 }
 
-.slide-body {
+.portfolio-slide {
   min-height: 0;
-  display: grid;
-  grid-template-columns: minmax(440px, 0.92fr) minmax(0, 1.08fr);
-  gap: clamp(24px, 3.4vw, 58px);
-  align-items: stretch;
 }
 
-.slide-body .section-illustration {
+.portfolio-slide .section-illustration,
+.portfolio-slide .portfolio-photo-frame,
+.portfolio-slide .project-portal,
+.portfolio-slide .company-stack,
+.portfolio-slide .image-collage {
   min-height: 0;
   height: 100%;
 }
 
-.slide-copy {
-  min-height: 0;
-  overflow-y: auto;
-  padding-right: 8px;
-}
-
-.slide-copy p {
-  margin: 0 0 22px;
-  color: #ffeec5;
-  font-size: clamp(1.18rem, 1.55vw, 1.85rem);
-  line-height: 1.45;
-}
-
-.slide-copy ul {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-  padding: 0;
-  margin: 0;
-  list-style: none;
-}
-
-.slide-copy li {
-  min-height: 86px;
-  padding: 16px;
-  background: rgba(16, 24, 32, 0.74);
-  border: 3px solid rgba(249, 231, 183, 0.42);
-  color: #f9e7b7;
+.portfolio-slide .summary {
+  font-size: clamp(1.18rem, 1.5vw, 1.72rem);
 }
 
 .slide-arrow,
@@ -1407,25 +1741,35 @@ h2 {
     overflow-y: auto;
   }
 
-  .side-preview-body {
+  .portfolio-content,
+  .portfolio-projects,
+  .portfolio-timeline,
+  .portfolio-skills,
+  .portfolio-achievements {
     grid-template-columns: 1fr;
   }
 
-  .side-preview-panel ul {
+  .memory-highlights,
+  .feature-card-grid,
+  .project-card-grid,
+  .skill-wall {
     grid-template-columns: 1fr;
   }
 
-  .slide-body {
-    grid-template-columns: 1fr;
+  .portfolio-slide {
     overflow-y: auto;
   }
 
-  .slide-body .section-illustration {
+  .portfolio-slide .section-illustration,
+  .portfolio-slide .portfolio-photo-frame,
+  .portfolio-slide .project-portal,
+  .portfolio-slide .company-stack,
+  .portfolio-slide .image-collage {
     min-height: 340px;
     height: auto;
   }
 
-  .slide-copy {
+  .portfolio-slide .portfolio-copy {
     overflow: visible;
   }
 }
@@ -1541,11 +1885,22 @@ h2 {
     font-size: clamp(2rem, 10vw, 3.8rem);
   }
 
-  .slide-body .section-illustration {
+  .portfolio-slide .section-illustration,
+  .portfolio-slide .portfolio-photo-frame,
+  .portfolio-slide .project-portal,
+  .portfolio-slide .company-stack,
+  .portfolio-slide .image-collage,
+  .portfolio-photo-frame,
+  .project-portal,
+  .company-stack,
+  .image-collage {
     min-height: 220px;
   }
 
-  .slide-copy ul {
+  .memory-highlights,
+  .feature-card-grid,
+  .project-card-grid,
+  .skill-wall {
     grid-template-columns: 1fr;
   }
 

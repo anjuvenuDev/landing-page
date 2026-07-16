@@ -199,6 +199,217 @@ function SectionIllustration({ section }: { section: PortfolioSection }) {
   );
 }
 
+function PortfolioVisual({ section }: { section: PortfolioSection }) {
+  if (section.images?.length) {
+    return (
+      <div className="image-collage" aria-label={`${section.title} photos`}>
+        {section.images.map((image) => (
+          <figure className={`portfolio-photo-frame photo-${image.variant ?? "wide"}`} key={image.src}>
+            <img src={image.src} alt={image.alt} style={{ objectPosition: image.position }} />
+          </figure>
+        ))}
+      </div>
+    );
+  }
+
+  if (section.image) {
+    return (
+      <figure className={`portfolio-photo-frame photo-${section.image.variant ?? "wide"}`}>
+        <img src={section.image.src} alt={section.image.alt} style={{ objectPosition: section.image.position }} />
+      </figure>
+    );
+  }
+
+  if (section.layout === "projects") {
+    return (
+      <div className="project-portal" aria-hidden="true">
+        <span className="project-hand left" />
+        <span className="project-folder" />
+        <span className="project-hand right" />
+      </div>
+    );
+  }
+
+  if (section.timeline?.length) {
+    return (
+      <div className="company-stack" aria-label="Work experience companies">
+        {section.timeline.map((step) => (
+          <div className="company-token" key={step.company}>
+            <img src={step.logo} alt={`${step.company} logo`} />
+            <span>{step.company}</span>
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  return <SectionIllustration section={section} />;
+}
+
+function PortfolioLinks({ section }: { section: PortfolioSection }) {
+  return (
+    <>
+      {section.links?.length ? (
+        <div className="link-row" aria-label={`${section.title} links`}>
+          {section.links.map((link) => (
+            <a key={link.href} href={link.href} target="_blank" rel="noreferrer">
+              {link.label}
+            </a>
+          ))}
+        </div>
+      ) : null}
+      <div className="tag-row">
+        {section.tags.map((tag) => (
+          <span key={tag}>{tag}</span>
+        ))}
+      </div>
+    </>
+  );
+}
+
+function FeatureCards({ section }: { section: PortfolioSection }) {
+  if (!section.featureCards?.length) return null;
+
+  return (
+    <div className="feature-card-grid">
+      {section.featureCards.map((card) => (
+        <article className="feature-card" key={`${card.title}-${card.label ?? ""}`}>
+          {card.label ? <span>{card.label}</span> : null}
+          <h3>{card.title}</h3>
+          <p>{card.body}</p>
+        </article>
+      ))}
+    </div>
+  );
+}
+
+function ProjectCards({ section }: { section: PortfolioSection }) {
+  if (!section.projectCards?.length) return null;
+
+  return (
+    <div className="project-card-grid">
+      {section.projectCards.map((project) => (
+        <article className="project-card" key={project.title}>
+          <div>
+            <span className="project-role">{project.role}</span>
+            <h3>{project.title}</h3>
+          </div>
+          <p>{project.description}</p>
+          <div className="stack-row">
+            {project.stack.map((tool) => (
+              <span key={tool}>{tool}</span>
+            ))}
+          </div>
+          <div className="link-row project-links" aria-label={`${project.title} links`}>
+            {project.links.map((link) => (
+              <a key={link.href} href={link.href} target="_blank" rel="noreferrer">
+                {link.label}
+              </a>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+  );
+}
+
+function WorkRoadmap({ section }: { section: PortfolioSection }) {
+  if (!section.timeline?.length) return null;
+
+  return (
+    <div className="work-roadmap">
+      {section.timeline.map((step) => (
+        <article className="work-step" key={step.company}>
+          <div className="work-step-head">
+            <img src={step.logo} alt={`${step.company} logo`} />
+            <div>
+              <span>{step.dates}</span>
+              <h3>{step.company}</h3>
+              <p>{step.role}</p>
+            </div>
+          </div>
+          <strong>{step.focus}</strong>
+          <ul className="compact-list">
+            {step.details.map((detail) => (
+              <li key={detail}>{detail}</li>
+            ))}
+          </ul>
+        </article>
+      ))}
+    </div>
+  );
+}
+
+function SkillWall({ section }: { section: PortfolioSection }) {
+  if (!section.skillGroups?.length) return null;
+
+  return (
+    <div className="skill-wall">
+      {section.skillGroups.map((group) => (
+        <section className="skill-group" key={group.title}>
+          <h3>{group.title}</h3>
+          <div>
+            {group.items.map((item) => (
+              <span className="skill-brick" key={item}>
+                {item}
+              </span>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+  );
+}
+
+function MemoryHighlights({ section }: { section: PortfolioSection }) {
+  const richLayouts = ["projects", "timeline", "skills"];
+  if (richLayouts.includes(section.layout) || !section.highlights.length) return null;
+
+  return (
+    <ul className="memory-highlights">
+      {section.highlights.map((highlight) => (
+        <li key={highlight}>{highlight}</li>
+      ))}
+    </ul>
+  );
+}
+
+function PortfolioCopy({ section }: { section: PortfolioSection }) {
+  return (
+    <div className="portfolio-copy">
+      <p className="summary">{section.summary}</p>
+      {section.story?.length ? (
+        <div className="story-lines">
+          {section.story.map((line) => (
+            <p key={line}>{line}</p>
+          ))}
+        </div>
+      ) : null}
+      <ProjectCards section={section} />
+      <WorkRoadmap section={section} />
+      <SkillWall section={section} />
+      <FeatureCards section={section} />
+      <MemoryHighlights section={section} />
+      <PortfolioLinks section={section} />
+    </div>
+  );
+}
+
+function PortfolioContent({
+  section,
+  mode,
+}: {
+  section: PortfolioSection;
+  mode: "preview" | "slide";
+}) {
+  return (
+    <div className={`portfolio-content portfolio-${section.layout} portfolio-${mode}`}>
+      <PortfolioVisual section={section} />
+      <PortfolioCopy section={section} />
+    </div>
+  );
+}
+
 function SidePreview({
   section,
   mode,
@@ -262,31 +473,7 @@ function SidePreview({
             </span>
           </div>
         </div>
-        <div className="side-preview-body">
-          <SectionIllustration section={section} />
-          <div className="side-preview-copy">
-            <p className="summary">{section.summary}</p>
-            <ul>
-              {section.highlights.map((highlight) => (
-                <li key={highlight}>{highlight}</li>
-              ))}
-            </ul>
-            {section.links ? (
-              <div className="link-row" aria-label="Project links">
-                {section.links.map((link) => (
-                  <a key={link.href} href={link.href} target="_blank" rel="noreferrer">
-                    {link.label}
-                  </a>
-                ))}
-              </div>
-            ) : null}
-            <div className="tag-row">
-              {section.tags.map((tag) => (
-                <span key={tag}>{tag}</span>
-              ))}
-            </div>
-          </div>
-        </div>
+        <PortfolioContent section={section} mode="preview" />
         <div className="side-preview-nav">
           <button
             type="button"
@@ -445,31 +632,7 @@ function FullscreenSlides({
           </span>
           <h2>{section.title}</h2>
         </header>
-        <div className="slide-body">
-          <SectionIllustration section={section} />
-          <div className="slide-copy">
-            <p>{section.summary}</p>
-            <ul>
-              {section.highlights.map((highlight) => (
-                <li key={highlight}>{highlight}</li>
-              ))}
-            </ul>
-            {section.links ? (
-              <div className="link-row" aria-label="Project links">
-                {section.links.map((link) => (
-                  <a key={link.href} href={link.href} target="_blank" rel="noreferrer">
-                    {link.label}
-                  </a>
-                ))}
-              </div>
-            ) : null}
-            <div className="tag-row">
-              {section.tags.map((tag) => (
-                <span key={tag}>{tag}</span>
-              ))}
-            </div>
-          </div>
-        </div>
+        <PortfolioContent section={section} mode="slide" />
       </article>
       <button
         type="button"
