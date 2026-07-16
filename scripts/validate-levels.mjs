@@ -4,6 +4,36 @@ const maxRunVelocity = 360;
 const jumpVelocity = 520;
 const gravity = 1150;
 const minimumPitUnits = 1.4;
+const coursePatterns = [
+  [
+    { x: 0, rise: 0, tiles: 10 },
+    { x: 12.35, rise: 0.76, tiles: 8 },
+    { x: 22.55, rise: 1.32, tiles: 8, lifted: true },
+    { x: 32.35, rise: 0.88, tiles: 8 },
+    { x: 42.4, rise: 0.12, tiles: 12 },
+  ],
+  [
+    { x: 0, rise: 0, tiles: 9 },
+    { x: 11.65, rise: 0.44, tiles: 7 },
+    { x: 20.85, rise: 1.04, tiles: 9, lifted: true },
+    { x: 32.15, rise: 1.48, tiles: 7 },
+    { x: 41.55, rise: 0.7, tiles: 11 },
+  ],
+  [
+    { x: 0, rise: 0, tiles: 11 },
+    { x: 13.45, rise: 1.02, tiles: 7 },
+    { x: 22.95, rise: 0.42, tiles: 8 },
+    { x: 32.9, rise: 1.22, tiles: 8, lifted: true },
+    { x: 43.15, rise: 0.38, tiles: 12 },
+  ],
+  [
+    { x: 0, rise: 0, tiles: 10 },
+    { x: 12.15, rise: 0.64, tiles: 8 },
+    { x: 22.4, rise: 1.5, tiles: 7, lifted: true },
+    { x: 31.75, rise: 0.64, tiles: 9 },
+    { x: 43.05, rise: 1.02, tiles: 10 },
+  ],
+];
 
 const viewportHeights = [520, 640, 768, 900];
 const levelCount = 8;
@@ -25,13 +55,12 @@ function buildCourse(level, height) {
   const unit = 16 * tileScale;
   const baseY = height - Math.max(126, unit * 2.2);
   const lift = Math.min(level - 1, 5) * (unit * 0.14);
-  const platforms = [
-    { x: 0, y: baseY, tiles: 10 },
-    { x: unit * 12.35, y: baseY - unit * 0.76, tiles: 8 },
-    { x: unit * 22.55, y: baseY - unit * 1.32 - lift, tiles: 8 },
-    { x: unit * 32.35, y: baseY - unit * 0.88, tiles: 8 },
-    { x: unit * 42.4, y: baseY - unit * 0.12, tiles: 12 },
-  ];
+  const pattern = coursePatterns[(level - 1) % coursePatterns.length];
+  const platforms = pattern.map((platform) => ({
+    x: platform.x * unit,
+    y: baseY - platform.rise * unit - (platform.lifted ? lift : 0),
+    tiles: platform.tiles,
+  }));
 
   const platformSurfaces = platforms.map((platform) => {
     const width = platform.tiles * unit;
@@ -47,41 +76,19 @@ function buildCourse(level, height) {
     };
   });
 
-  const crateSurfaces = [
-    boxSurface(platforms[0].x + unit * 9.8, platformSurfaces[0].y, tileScale),
-  ];
-  if (level > 2) {
-    crateSurfaces.push(boxSurface(platforms[1].x + unit * 5.6, platformSurfaces[1].y, tileScale));
-  }
-  if (level > 4) {
-    crateSurfaces.push(boxSurface(platforms[3].x + unit * 5.5, platformSurfaces[3].y, tileScale));
-  }
-
   const finalPlatform = platforms[4];
-  const midPlatform = platforms[3];
+  const finalSurfaceY = finalPlatform.y + platformSurfaceInset * tileScale;
+  const triggerX = finalPlatform.x + unit * Math.min(2.4, finalPlatform.tiles - 4.2);
+  const chestX = finalPlatform.x + unit * Math.min(6.5, finalPlatform.tiles - 2.2);
   return {
     tileScale,
     unit,
     platforms,
     platformSurfaces,
-    safeSurfaces: [...platformSurfaces, ...crateSurfaces],
+    safeSurfaces: platformSurfaces,
     spawn: { x: unit * 2.1, y: playerYForSurface(platformSurfaces[0].y) },
-    shard: { x: midPlatform.x + unit * 4.8, y: midPlatform.y - unit * 0.88 },
-    chest: { x: finalPlatform.x + finalPlatform.tiles * unit - unit * 2.1, y: finalPlatform.y - unit * 0.72 },
-  };
-}
-
-function boxSurface(x, surfaceY, tileScale) {
-  const boxScale = tileScale / 2;
-  const boxWidth = 32 * boxScale;
-  const boxHeight = 32 * boxScale;
-  const halfWidth = boxWidth / 2;
-  return {
-    kind: "crate",
-    left: x - halfWidth,
-    right: x + halfWidth,
-    y: surfaceY - boxHeight,
-    margin: Math.max(5, halfWidth * 0.18),
+    triggerBox: { x: triggerX, y: finalSurfaceY },
+    chest: { x: chestX, y: finalSurfaceY },
   };
 }
 
@@ -137,10 +144,12 @@ for (let level = 1; level <= levelCount; level += 1) {
       assert(Number.isFinite(surface.y), `level ${level} height ${height}: ${surface.kind} surface is not finite`);
     }
 
-    assert(course.shard.x > course.platformSurfaces[3].left, `level ${level} height ${height}: shard is before its platform`);
-    assert(course.shard.x < course.platformSurfaces[3].right, `level ${level} height ${height}: shard is past its platform`);
+    assert(course.triggerBox.x > last.left + last.margin, `level ${level} height ${height}: unlock box is before safe final platform`);
+    assert(course.triggerBox.x < last.right - last.margin, `level ${level} height ${height}: unlock box is past safe final platform`);
+    assert(course.triggerBox.y === last.y, `level ${level} height ${height}: unlock box is not on final surface`);
     assert(course.chest.x > last.left, `level ${level} height ${height}: chest is before final platform`);
     assert(course.chest.x < last.right, `level ${level} height ${height}: chest is past final platform`);
+    assert(course.chest.y === last.y, `level ${level} height ${height}: chest is not on final surface`);
 
     results.push(`level ${level} @ ${height}px`);
   }

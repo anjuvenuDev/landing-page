@@ -42,6 +42,13 @@ type PlatformSpec = {
   tiles: number;
 };
 
+type PlatformPatternSpec = {
+  x: number;
+  rise: number;
+  tiles: number;
+  lifted?: boolean;
+};
+
 type SafeSurface = {
   left: number;
   right: number;
@@ -61,9 +68,9 @@ type CourseLayout = {
   obstacles: ObstacleSpec[];
   safeSurfaces: SafeSurface[];
   spawn: Phaser.Math.Vector2;
-  shard: Phaser.Math.Vector2;
+  triggerBox: Phaser.Math.Vector2;
   chest: Phaser.Math.Vector2;
-  hazardY: number;
+  itemScale: number;
 };
 
 const levelThemes: LevelTheme[] = [
@@ -76,6 +83,36 @@ const platformSurfaceInset = 16;
 const maxRunVelocity = 360;
 const jumpVelocity = 520;
 const moveAcceleration = 900;
+const coursePatterns: PlatformPatternSpec[][] = [
+  [
+    { x: 0, rise: 0, tiles: 10 },
+    { x: 12.35, rise: 0.76, tiles: 8 },
+    { x: 22.55, rise: 1.32, tiles: 8, lifted: true },
+    { x: 32.35, rise: 0.88, tiles: 8 },
+    { x: 42.4, rise: 0.12, tiles: 12 },
+  ],
+  [
+    { x: 0, rise: 0, tiles: 9 },
+    { x: 11.65, rise: 0.44, tiles: 7 },
+    { x: 20.85, rise: 1.04, tiles: 9, lifted: true },
+    { x: 32.15, rise: 1.48, tiles: 7 },
+    { x: 41.55, rise: 0.7, tiles: 11 },
+  ],
+  [
+    { x: 0, rise: 0, tiles: 11 },
+    { x: 13.45, rise: 1.02, tiles: 7 },
+    { x: 22.95, rise: 0.42, tiles: 8 },
+    { x: 32.9, rise: 1.22, tiles: 8, lifted: true },
+    { x: 43.15, rise: 0.38, tiles: 12 },
+  ],
+  [
+    { x: 0, rise: 0, tiles: 10 },
+    { x: 12.15, rise: 0.64, tiles: 8 },
+    { x: 22.4, rise: 1.5, tiles: 7, lifted: true },
+    { x: 31.75, rise: 0.64, tiles: 9 },
+    { x: 43.05, rise: 1.02, tiles: 10 },
+  ],
+];
 
 class MemoryQuestScene extends Phaser.Scene {
   private player?: Phaser.Physics.Arcade.Sprite;
@@ -93,8 +130,6 @@ class MemoryQuestScene extends Phaser.Scene {
   private safeSurfaces: SafeSurface[] = [];
   private respawning = false;
   private avatarBodyBottomOffset = 0;
-  private hazardY = 0;
-  private hazardPoints: Phaser.Math.Vector2[] = [];
 
   constructor(
     level: GameLevel,
@@ -149,7 +184,6 @@ class MemoryQuestScene extends Phaser.Scene {
     this.chestPoint = course.chest;
     this.safeSurfaces = course.safeSurfaces;
     this.lastSafePosition = course.spawn.clone();
-    this.hazardY = course.hazardY;
 
     this.player = this.physics.add.sprite(course.spawn.x, course.spawn.y, "anjana-avatar");
     this.player.setScale(avatarScale);
@@ -170,16 +204,17 @@ class MemoryQuestScene extends Phaser.Scene {
       obstacle.refreshBody();
     });
     this.physics.add.collider(this.player, obstacles, () => this.resetPlayer());
-    const movingHazards = this.createMovingHazards(theme);
-    if (movingHazards) {
-      this.physics.add.overlap(this.player, movingHazards, () => this.resetPlayer());
-    }
 
-    const shard = this.physics.add.staticSprite(course.shard.x, course.shard.y, "memory-shard");
-    shard.refreshBody();
-    this.physics.add.overlap(this.player, shard, () => {
+    const unlockPrompt = this.createUnlockPrompt(course.triggerBox, theme);
+    const unlockBox = this.physics.add.staticSprite(course.triggerBox.x, course.triggerBox.y, "sunny-crate-ornate");
+    unlockBox.setOrigin(0.5, 1);
+    unlockBox.setScale(course.itemScale);
+    unlockBox.setDepth(22);
+    unlockBox.refreshBody();
+    this.physics.add.overlap(this.player, unlockBox, () => {
       if (this.completed) return;
-      shard.disableBody(true, true);
+      unlockBox.disableBody(true, true);
+      unlockPrompt.forEach((item) => item.destroy());
       this.revealTreasure();
     });
 
@@ -295,16 +330,6 @@ class MemoryQuestScene extends Phaser.Scene {
     stump.fillRect(36, 2, 8, 8);
     stump.generateTexture("thorn-stump", 64, 72);
     this.createObstacleTextures();
-
-    const shard = this.make.graphics({ x: 0, y: 0 }, false);
-    shard.fillStyle(0xffd166);
-    shard.fillRect(18, 0, 14, 8);
-    shard.fillRect(10, 8, 30, 12);
-    shard.fillRect(16, 20, 18, 18);
-    shard.fillRect(22, 38, 6, 10);
-    shard.fillStyle(0xffffff);
-    shard.fillRect(20, 10, 8, 8);
-    shard.generateTexture("memory-shard", 52, 56);
 
     const chest = this.make.graphics({ x: 0, y: 0 }, false);
     chest.fillStyle(0x050505, 0.95);
@@ -545,71 +570,35 @@ class MemoryQuestScene extends Phaser.Scene {
   }
 
   private createCourse(height: number): CourseLayout {
-    const theme = this.currentTheme();
     const tileScale = this.courseScale(height);
     const unit = 16 * tileScale;
     const baseY = height - Math.max(126, unit * 2.2);
     const lift = Math.min(this.level.level - 1, 5) * (unit * 0.14);
-    const platforms: PlatformSpec[] = [
-      { x: 0, y: baseY, tiles: 10 },
-      { x: unit * 12.35, y: baseY - unit * 0.76, tiles: 8 },
-      { x: unit * 22.55, y: baseY - unit * 1.32 - lift, tiles: 8 },
-      { x: unit * 32.35, y: baseY - unit * 0.88, tiles: 8 },
-      { x: unit * 42.4, y: baseY - unit * 0.12, tiles: 12 },
-    ];
+    const pattern = coursePatterns[(this.level.level - 1) % coursePatterns.length];
+    const platforms: PlatformSpec[] = pattern.map((platform) => ({
+      x: platform.x * unit,
+      y: baseY - platform.rise * unit - (platform.lifted ? lift : 0),
+      tiles: platform.tiles,
+    }));
     const platformGroup = this.physics.add.staticGroup();
     const safeSurfaces: SafeSurface[] = [];
 
     platforms.forEach((platform) => {
       safeSurfaces.push(this.drawPlatform(platformGroup, platform, tileScale));
     });
-    this.addCourseDressing(platforms, tileScale, theme);
-    safeSurfaces.push(
-      this.addBoxPlatform(
-        platformGroup,
-        platforms[0].x + unit * 9.8,
-        platforms[0].y + platformSurfaceInset * tileScale,
-        tileScale,
-        "sunny-crate-plain",
-      ),
-    );
-    if (this.level.level > 2) {
-      safeSurfaces.push(
-        this.addBoxPlatform(
-          platformGroup,
-          platforms[1].x + unit * 5.6,
-          platforms[1].y + platformSurfaceInset * tileScale,
-          tileScale,
-          "sunny-crate-ornate",
-        ),
-      );
-    }
-    if (this.level.level > 4) {
-      safeSurfaces.push(
-        this.addBoxPlatform(
-          platformGroup,
-          platforms[3].x + unit * 5.5,
-          platforms[3].y + platformSurfaceInset * tileScale,
-          tileScale,
-          "sunny-crate-plain",
-        ),
-      );
-    }
 
     const finalPlatform = platforms[4];
-    const midPlatform = platforms[3];
-    this.hazardPoints = [
-      new Phaser.Math.Vector2(platforms[2].x + unit * 3.6, platforms[2].y + platformSurfaceInset * tileScale - unit * 0.24),
-      new Phaser.Math.Vector2(platforms[3].x + unit * 3.4, platforms[3].y + platformSurfaceInset * tileScale - unit * 0.24),
-    ];
+    const finalSurfaceY = finalPlatform.y + platformSurfaceInset * tileScale;
+    const triggerX = finalPlatform.x + unit * Math.min(2.4, finalPlatform.tiles - 4.2);
+    const chestX = finalPlatform.x + unit * Math.min(6.5, finalPlatform.tiles - 2.2);
     return {
       platforms: platformGroup,
       obstacles: [],
       safeSurfaces,
       spawn: new Phaser.Math.Vector2(unit * 2.1, this.playerYForSurface(safeSurfaces[0].y)),
-      shard: new Phaser.Math.Vector2(midPlatform.x + unit * 4.8, midPlatform.y - unit * 0.88),
-      chest: new Phaser.Math.Vector2(finalPlatform.x + finalPlatform.tiles * unit - unit * 2.1, finalPlatform.y - unit * 0.72),
-      hazardY: platforms[2].y + platformSurfaceInset * tileScale - unit * 0.42,
+      triggerBox: new Phaser.Math.Vector2(triggerX, finalSurfaceY),
+      chest: new Phaser.Math.Vector2(chestX, finalSurfaceY),
+      itemScale: tileScale / 1.45,
     };
   }
 
@@ -657,88 +646,6 @@ class MemoryQuestScene extends Phaser.Scene {
     };
   }
 
-  private addBoxPlatform(
-    platformGroup: Phaser.Physics.Arcade.StaticGroup,
-    x: number,
-    surfaceY: number,
-    tileScale: number,
-    texture: "sunny-crate-plain" | "sunny-crate-ornate",
-  ): SafeSurface {
-    const boxScale = tileScale / 2;
-    const boxHeight = 32 * boxScale;
-    const boxWidth = 32 * boxScale;
-    const boxTop = surfaceY - boxHeight;
-    const bodyHeight = Math.max(10, 6 * tileScale);
-
-    const box = this.add.image(x, surfaceY, texture);
-    box.setOrigin(0.5, 1);
-    box.setScale(boxScale);
-    box.setDepth(18);
-
-    const body = platformGroup.create(x, boxTop + bodyHeight / 2, "course-body");
-    body.setDisplaySize(boxWidth, bodyHeight);
-    body.setVisible(false);
-    body.refreshBody();
-
-    const halfWidth = boxWidth / 2;
-    return {
-      left: x - halfWidth,
-      right: x + halfWidth,
-      y: boxTop,
-      margin: Math.max(5, halfWidth * 0.18),
-    };
-  }
-
-  private addCourseDressing(platforms: PlatformSpec[], tileScale: number, theme: LevelTheme) {
-    const unit = 16 * tileScale;
-    const propScale = tileScale / 2.4;
-    const first = platforms[0];
-    const final = platforms[4];
-    const treeTexture = theme.mode === "sunny" ? "sunny-tree" : "tall-plant";
-    const rockTexture = theme.mode === "sunny" ? "sunny-rock" : "tall-rock";
-
-    this.add.image(first.x + unit * 0.8, first.y + unit * 0.08, treeTexture)
-      .setOrigin(0.5, 1)
-      .setScale(theme.mode === "sunny" ? propScale * 0.88 : propScale)
-      .setAlpha(0.92)
-      .setDepth(7);
-    this.add.image(platforms[2].x + unit * 4.8, platforms[2].y + unit * 0.08, rockTexture)
-      .setOrigin(0.5, 1)
-      .setScale(propScale * 0.72)
-      .setDepth(15);
-    this.add.image(final.x + unit * 1.8, final.y + unit * 0.08, "sunny-plant")
-      .setOrigin(0.5, 1)
-      .setScale(propScale * 0.76)
-      .setDepth(15);
-  }
-
-  private createMovingHazards(theme: LevelTheme) {
-    if (this.level.level < 3) return undefined;
-
-    const group = this.physics.add.group({ allowGravity: false, immovable: true });
-    const count = Math.min(this.hazardPoints.length, Math.ceil((this.level.level - 2) / 3));
-    for (let index = 0; index < count; index += 1) {
-      const point = this.hazardPoints[index] ?? new Phaser.Math.Vector2(920 + index * 320, this.hazardY);
-      const hazard = group.create(point.x, point.y, theme.obstacle) as Phaser.Physics.Arcade.Sprite;
-      hazard.setScale(2.1);
-      hazard.setDepth(18);
-      hazard.setImmovable(true);
-      if (hazard.body instanceof Phaser.Physics.Arcade.Body) {
-        hazard.body.setAllowGravity(false);
-        hazard.body.setSize(24, 14);
-      }
-      this.tweens.add({
-        targets: hazard,
-        x: hazard.x + 82 + index * 28,
-        duration: 1450 - Math.min(this.level.level, 6) * 80,
-        ease: "Sine.inOut",
-        yoyo: true,
-        repeat: -1,
-      });
-    }
-    return group;
-  }
-
   private createHud(width: number, height: number) {
     const theme = this.currentTheme();
     const panel = this.add.rectangle(24, 22, 286, 72, 0x101419, 0.82)
@@ -774,46 +681,41 @@ class MemoryQuestScene extends Phaser.Scene {
     }).setOrigin(0.5, 0.5).setScrollFactor(0).setDepth(71);
   }
 
-  private revealTreasure() {
-    const theme = this.currentTheme();
-    const glow = this.add.rectangle(this.chestPoint.x, this.chestPoint.y, 148, 172, theme.accent, 0.28)
-      .setDepth(10)
-      .setScrollFactor(1);
-    const beam = this.add.rectangle(this.chestPoint.x, this.chestPoint.y - 84, 56, 210, theme.accent, 0.16)
-      .setDepth(8)
-      .setScrollFactor(1);
-    const label = this.add.text(this.chestPoint.x, this.chestPoint.y - 100, "OPEN", {
+  private createUnlockPrompt(point: Phaser.Math.Vector2, theme: LevelTheme) {
+    const label = this.add.text(point.x, point.y - 118, "TOUCH THIS", {
       fontFamily: "\"Pixelify Sans\", monospace",
-      fontSize: "22px",
-      color: `#${theme.accent.toString(16).padStart(6, "0")}`,
-      backgroundColor: "#211a1d",
-      padding: { x: 10, y: 5 },
-    }).setOrigin(0.5).setDepth(11);
-    this.chest = this.physics.add.staticSprite(this.chestPoint.x, this.chestPoint.y, "sunny-chest");
-    this.chest.setDepth(12);
-    this.chest.setScale(3.1);
-    this.chest.refreshBody();
-    this.chest.setInteractive({ useHandCursor: true });
-    this.chest.on("pointerdown", () => this.openTreasure());
+      fontSize: "18px",
+      color: "#211a1d",
+      backgroundColor: `#${theme.accent.toString(16).padStart(6, "0")}`,
+      padding: { x: 12, y: 7 },
+    }).setOrigin(0.5).setDepth(32);
+    const arrow = this.add.triangle(point.x, point.y - 72, 0, 0, 28, 0, 14, 28, theme.accent, 1)
+      .setOrigin(0.5)
+      .setDepth(32);
+
     if (!this.reducedMotion) {
       this.tweens.add({
-        targets: [this.chest, glow],
-        scaleX: 1.28,
-        scaleY: 1.28,
-        duration: 520,
-        yoyo: true,
-        repeat: -1,
-      });
-      this.tweens.add({
-        targets: [beam, label],
-        alpha: 0.42,
+        targets: [label, arrow],
         y: "-=8",
-        duration: 650,
+        duration: 620,
+        ease: "Sine.inOut",
         yoyo: true,
         repeat: -1,
       });
     }
-    this.questText?.setText(`${this.level.rewardName} found. Touch the glowing chest.`);
+
+    return [label, arrow];
+  }
+
+  private revealTreasure() {
+    this.chest = this.physics.add.staticSprite(this.chestPoint.x, this.chestPoint.y, "sunny-chest");
+    this.chest.setOrigin(0.5, 1);
+    this.chest.setDepth(24);
+    this.chest.setScale(this.courseScale(this.scale.height) / 1.15);
+    this.chest.refreshBody();
+    this.chest.setInteractive({ useHandCursor: true });
+    this.chest.on("pointerdown", () => this.openTreasure());
+    this.questText?.setText(`${this.level.rewardName} found. Touch the chest.`);
     this.physics.add.overlap(this.player!, this.chest, () => this.openTreasure());
   }
 
