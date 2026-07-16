@@ -225,13 +225,6 @@ class MemoryQuestScene extends Phaser.Scene {
       Phaser.Input.Keyboard.Key
     >;
 
-    this.add.text(width - 450, height - 62, "Move: arrows/A-D   Jump: space/W/up", {
-      fontFamily: "\"Pixelify Sans\", monospace",
-      fontSize: "16px",
-      color: "#f9e7b7",
-      backgroundColor: "#211a1d",
-      padding: { x: 12, y: 8 },
-    }).setScrollFactor(0).setDepth(80);
   }
 
   update() {
@@ -648,29 +641,32 @@ class MemoryQuestScene extends Phaser.Scene {
 
   private createHud(width: number) {
     const theme = this.currentTheme();
-    const panel = this.add.rectangle(24, 22, 286, 72, 0x101419, 0.82)
+    const panelX = 88;
+    const textX = panelX + 20;
+    const progressX = textX;
+    const panel = this.add.rectangle(panelX, 22, 286, 72, 0x101419, 0.82)
       .setOrigin(0, 0)
       .setScrollFactor(0)
       .setDepth(70);
     panel.setStrokeStyle(3, theme.accent);
 
-    this.add.text(44, 38, `LEVEL ${this.level.level}`, {
+    this.add.text(textX, 38, `LEVEL ${this.level.level}`, {
       fontFamily: "\"Pixelify Sans\", monospace",
       fontSize: "16px",
       color: `#${theme.accent.toString(16).padStart(6, "0")}`,
     }).setScrollFactor(0).setDepth(71);
-    this.add.text(44, 62, this.level.title.toUpperCase(), {
+    this.add.text(textX, 62, this.level.title.toUpperCase(), {
       fontFamily: "\"Pixelify Sans\", monospace",
       fontSize: "15px",
       color: "#f9e7b7",
       wordWrap: { width: 230 },
     }).setScrollFactor(0).setDepth(71);
 
-    this.add.rectangle(44, 84, 232, 5, 0x050505).setOrigin(0, 0).setScrollFactor(0).setDepth(71);
-    this.progressBar = this.add.rectangle(44, 84, 0, 5, theme.accent).setOrigin(0, 0).setScrollFactor(0).setDepth(72);
+    this.add.rectangle(progressX, 84, 232, 5, 0x050505).setOrigin(0, 0).setScrollFactor(0).setDepth(71);
+    this.progressBar = this.add.rectangle(progressX, 84, 0, 5, theme.accent).setOrigin(0, 0).setScrollFactor(0).setDepth(72);
     this.questText = this.add.text(width / 2, 30, this.level.quest, {
       fontFamily: "\"Pixelify Sans\", monospace",
-      fontSize: "16px",
+      fontSize: "20px",
       color: "#f9e7b7",
       align: "center",
       stroke: "#101419",

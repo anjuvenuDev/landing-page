@@ -213,7 +213,6 @@ function SidePreview({
   onClose,
   allUnlocked,
   onContinue,
-  onFullscreen,
 }: {
   section: PortfolioSection;
   mode: Exclude<AppMode, "intro" | "slides">;
@@ -228,7 +227,6 @@ function SidePreview({
   onClose: () => void;
   allUnlocked: boolean;
   onContinue: () => void;
-  onFullscreen: () => void;
 }) {
   const previewMode = mode === "preview";
   const previousLocked = previousSection && !previousUnlocked;
@@ -239,15 +237,6 @@ function SidePreview({
       <article className="side-preview-panel reward-reveal" key={section.id}>
         <button type="button" className="preview-close" onClick={onClose} aria-label="Close memory view">
           x
-        </button>
-        <button
-          type="button"
-          className="preview-expand"
-          onClick={onFullscreen}
-          aria-label="preview mode"
-          title="preview mode"
-        >
-          ⛶
         </button>
         <div className="side-preview-header">
           <div>
@@ -303,11 +292,11 @@ function SidePreview({
           </button>
           <button type="button" className="continue-button primary" onClick={onContinue}>
             {previewMode
-              ? "Back to game"
+              ? "Play again"
               : mode === "browse"
                 ? "Back to home"
                 : allUnlocked
-                  ? "Back to game"
+                  ? "Play again"
                   : "Continue"}
           </button>
           <button
@@ -338,7 +327,6 @@ function MemoryLog({
   onSelect,
   onReset,
   onHome,
-  onFullscreen,
 }: {
   open: boolean;
   mode: Exclude<AppMode, "intro" | "slides">;
@@ -348,7 +336,6 @@ function MemoryLog({
   onSelect: (sectionId: PortfolioSectionId) => void;
   onReset: () => void;
   onHome: () => void;
-  onFullscreen: () => void;
 }) {
   const browseMode = mode === "browse";
   const previewMode = mode === "preview";
@@ -360,15 +347,6 @@ function MemoryLog({
     >
       <div className="sidebar-header">
         <h2>{browseMode || previewMode ? "All Memories" : "Memory Shards"}</h2>
-        <button
-          type="button"
-          className="icon-button sidebar-preview"
-          onClick={onFullscreen}
-          aria-label="preview mode"
-          title="preview mode"
-        >
-          ⛶
-        </button>
         {browseMode || previewMode ? null : (
           <button type="button" className="icon-button close-log" onClick={onClose} aria-label="Close log">
             ×
@@ -535,11 +513,15 @@ function App() {
   const [logOpen, setLogOpen] = useState(false);
   const [gameRun, setGameRun] = useState(0);
   const [showCompletion, setShowCompletion] = useState(false);
+  const [replayLevelId, setReplayLevelId] = useState<PortfolioSectionId | null>(null);
 
   const currentLevel = useMemo(() => {
     const next = gameLevels.find((level) => !unlocked.includes(level.id));
     return next ?? gameLevels[gameLevels.length - 1];
   }, [unlocked]);
+  const displayedLevel = replayLevelId
+    ? gameLevels.find((level) => level.id === replayLevelId) ?? currentLevel
+    : currentLevel;
   const visibleSections = useMemo(
     () => sections.filter((section) => unlocked.includes(section.id)),
     [unlocked],
@@ -594,6 +576,7 @@ function App() {
     setSelectedId(null);
     setLogOpen(false);
     setShowCompletion(false);
+    setReplayLevelId(null);
     setGameRun((run) => run + 1);
     setMode("game");
   };
@@ -602,6 +585,7 @@ function App() {
     setMode("game");
     setSelectedId(null);
     setShowCompletion(false);
+    setReplayLevelId(null);
   };
 
   const goHome = () => {
@@ -617,6 +601,16 @@ function App() {
     setGameRun((run) => run + 1);
   };
 
+  const replaySelectedLevel = () => {
+    if (!selectedSection) return;
+    setReplayLevelId(selectedSection.id);
+    setSelectedId(null);
+    setLogOpen(false);
+    setShowCompletion(false);
+    setMode("game");
+    setGameRun((run) => run + 1);
+  };
+
   const getFirstVisibleSectionId = () =>
     selectedId && unlocked.includes(selectedId) ? selectedId : unlocked[0] ?? null;
 
@@ -624,6 +618,7 @@ function App() {
     setMode("game");
     setSelectedId(null);
     setLogOpen(false);
+    setReplayLevelId(null);
   };
 
   const enterSlidesMode = () => {
@@ -718,8 +713,8 @@ function App() {
       }
     >
       <MemoryQuestGame
-        key={`${currentLevel.id}-${gameRun}`}
-        level={currentLevel}
+        key={`${displayedLevel.id}-${gameRun}`}
+        level={displayedLevel}
         reducedMotion={false}
         onComplete={unlockSection}
         paused={mode === "browse" || mode === "preview" || mode === "slides"}
@@ -740,18 +735,23 @@ function App() {
         >
           ☰
         </button>
-        <div className="objective-pill">
-          {allUnlocked ? "All memories restored" : `Next: ${currentLevel.rewardName}`}
+        <div className="hud-right">
+          <div className="hud-actions">
+            <div className="objective-pill">
+              {allUnlocked ? "All memories restored" : `Next: ${currentLevel.rewardName}`}
+            </div>
+            <button
+              type="button"
+              className="icon-button restart-level"
+              onClick={restartLevel}
+              aria-label="Restart level"
+              title="Restart level"
+            >
+              ↻
+            </button>
+          </div>
+          <div className="controls-hint">Move: arrows/A-D · Jump: space/W/up</div>
         </div>
-        <button
-          type="button"
-          className="icon-button restart-level"
-          onClick={restartLevel}
-          aria-label="Restart level"
-          title="Restart level"
-        >
-          ↻
-        </button>
       </div>
 
       {mode !== "slides" ? (
@@ -764,7 +764,6 @@ function App() {
           onSelect={selectFromLog}
           onReset={resetQuest}
           onHome={goHome}
-          onFullscreen={enterSlidesMode}
         />
       ) : null}
 
@@ -807,12 +806,13 @@ function App() {
           allUnlocked={allUnlocked}
           onContinue={
             mode === "preview"
-              ? leavePreviewMode
+              ? replaySelectedLevel
               : mode === "browse"
                 ? goHome
-                : () => setSelectedId(null)
+                : allUnlocked
+                  ? replaySelectedLevel
+                  : () => setSelectedId(null)
           }
-          onFullscreen={enterSlidesMode}
         />
       ) : null}
     </main>
