@@ -321,7 +321,7 @@ function SidePreview({
               ? nextLocked
                 ? `Lvl ${nextSection.level} locked - play to unlock`
                 : `Next: ${nextSection.title}`
-              : "No next"}
+              : "Play to unlock"}
           </button>
         </div>
       </article>

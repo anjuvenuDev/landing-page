@@ -171,7 +171,7 @@ class MemoryQuestScene extends Phaser.Scene {
     this.cameras.main.setBounds(0, 0, 3320, height);
 
     this.createForest(width, height);
-    this.createHud(width, height);
+    this.createHud(width);
 
     const avatarSprite = parseAvatarSprite();
     const bodyWidth = Math.max(48, Math.floor(avatarSprite.width * 0.34));
@@ -646,7 +646,7 @@ class MemoryQuestScene extends Phaser.Scene {
     };
   }
 
-  private createHud(width: number, height: number) {
+  private createHud(width: number) {
     const theme = this.currentTheme();
     const panel = this.add.rectangle(24, 22, 286, 72, 0x101419, 0.82)
       .setOrigin(0, 0)
@@ -668,17 +668,16 @@ class MemoryQuestScene extends Phaser.Scene {
 
     this.add.rectangle(44, 84, 232, 5, 0x050505).setOrigin(0, 0).setScrollFactor(0).setDepth(71);
     this.progressBar = this.add.rectangle(44, 84, 0, 5, theme.accent).setOrigin(0, 0).setScrollFactor(0).setDepth(72);
-    this.add.rectangle(width / 2, height - 132, 540, 48, 0x101419, 0.82)
-      .setStrokeStyle(3, theme.accent)
-      .setScrollFactor(0)
-      .setDepth(70);
-    this.questText = this.add.text(width / 2, height - 132, this.level.quest, {
+    this.questText = this.add.text(width / 2, 30, this.level.quest, {
       fontFamily: "\"Pixelify Sans\", monospace",
       fontSize: "16px",
       color: "#f9e7b7",
       align: "center",
-      wordWrap: { width: 490 },
-    }).setOrigin(0.5, 0.5).setScrollFactor(0).setDepth(71);
+      stroke: "#101419",
+      strokeThickness: 6,
+      shadow: { offsetX: 3, offsetY: 3, color: "#000000", blur: 0, fill: true },
+      wordWrap: { width: Math.max(280, Math.min(620, width - 440)) },
+    }).setOrigin(0.5, 0).setScrollFactor(0).setDepth(71);
   }
 
   private createUnlockPrompt(point: Phaser.Math.Vector2, theme: LevelTheme) {
