@@ -199,7 +199,7 @@ function SectionIllustration({ section }: { section: PortfolioSection }) {
   );
 }
 
-function RewardOverlay({
+function SidePreview({
   section,
   mode,
   position,
@@ -236,21 +236,21 @@ function RewardOverlay({
   const nextLocked = nextSection && !nextUnlocked && !browseMode;
 
   return (
-    <section className="reward-overlay" aria-live="polite">
-      <article className="reward-card reward-reveal" key={section.id}>
-        <button type="button" className="modal-close" onClick={onClose} aria-label="Close memory view">
+    <section className="side-preview" aria-live="polite">
+      <article className="side-preview-panel reward-reveal" key={section.id}>
+        <button type="button" className="preview-close" onClick={onClose} aria-label="Close memory view">
           x
         </button>
         <button
           type="button"
-          className="modal-tool preview-tool"
+          className="preview-expand"
           onClick={onFullscreen}
           aria-label="preview mode"
           title="preview mode"
         >
           ⛶
         </button>
-        <div className="reward-card-header">
+        <div className="side-preview-header">
           <div>
             <span className="memory-position">
               {position}/{total}
@@ -263,9 +263,9 @@ function RewardOverlay({
             </span>
           </div>
         </div>
-        <div className="reward-body">
+        <div className="side-preview-body">
           <SectionIllustration section={section} />
-          <div className="reward-copy">
+          <div className="side-preview-copy">
             <p className="summary">{section.summary}</p>
             <ul>
               {section.highlights.map((highlight) => (
@@ -288,7 +288,7 @@ function RewardOverlay({
             </div>
           </div>
         </div>
-        <div className="reward-nav">
+        <div className="side-preview-nav">
           <button
             type="button"
             className={previousLocked ? "continue-button locked" : "continue-button"}
@@ -563,6 +563,8 @@ function App() {
 
   const unlockSection = useCallback((sectionId: PortfolioSectionId) => {
     setSelectedId(sectionId);
+    setMode("preview");
+    setLogOpen(false);
     setUnlocked((current) => {
       if (current.includes(sectionId)) return current;
       const next = sectionOrder.filter((id) => [...current, sectionId].includes(id));
@@ -637,6 +639,7 @@ function App() {
   const selectFromLog = (sectionId: PortfolioSectionId) => {
     setSelectedId(sectionId);
     if (mode === "game") {
+      setMode("preview");
       setLogOpen(false);
     }
   };
@@ -777,7 +780,7 @@ function App() {
       ) : null}
 
       {selectedSection && mode !== "slides" ? (
-        <RewardOverlay
+        <SidePreview
           section={selectedSection}
           mode={mode}
           position={Math.max(1, selectedIndex + 1)}
