@@ -8,6 +8,49 @@ export type PortfolioSectionId =
   | "hobbies"
   | "achievements";
 
+export type PortfolioLinkType = "github" | "live" | "profile" | "social" | "package";
+
+export type PortfolioLink = {
+  label: string;
+  href: string;
+  type: PortfolioLinkType;
+};
+
+export type PortfolioImage = {
+  src: string;
+  alt: string;
+  position?: string;
+  variant?: "portrait" | "wide" | "phone" | "collage";
+};
+
+export type FeatureCard = {
+  label?: string;
+  title: string;
+  body: string;
+};
+
+export type ProjectCard = {
+  title: string;
+  role: string;
+  description: string;
+  stack: string[];
+  links: PortfolioLink[];
+};
+
+export type WorkStep = {
+  company: string;
+  role: string;
+  dates: string;
+  logo: string;
+  focus: string;
+  details: string[];
+};
+
+export type SkillGroup = {
+  title: string;
+  items: string[];
+};
+
 export type PortfolioSection = {
   id: PortfolioSectionId;
   level: number;
@@ -16,14 +59,18 @@ export type PortfolioSection = {
   quest: string;
   status: "verified" | "needs-copy";
   visual: "map" | "network" | "timeline" | "skills" | "compass" | "guilds" | "garden" | "trophy";
+  layout: "image" | "projects" | "timeline" | "skills" | "diagram" | "gallery" | "achievements";
   summary: string;
+  story?: string[];
   highlights: string[];
   tags: string[];
-  links?: {
-    label: string;
-    href: string;
-    type: "github" | "live" | "profile";
-  }[];
+  image?: PortfolioImage;
+  images?: PortfolioImage[];
+  featureCards?: FeatureCard[];
+  projectCards?: ProjectCard[];
+  timeline?: WorkStep[];
+  skillGroups?: SkillGroup[];
+  links?: PortfolioLink[];
 };
 
 export type GameLevel = {
@@ -49,16 +96,44 @@ export const sections: PortfolioSection[] = [
     rewardName: "Memory of Self",
     quest:
       "The forest hums her name. Guide Anjana toward the first memory shard.",
-    status: "needs-copy",
+    status: "verified",
     visual: "map",
+    layout: "image",
+    image: {
+      src: "/assets/portfolio/about-anjana.jpg",
+      alt: "Anjana Venugopalan",
+      position: "50% 42%",
+      variant: "portrait",
+    },
     summary:
-      "Final personal introduction pending. Resume-backed facts: Anjana Venugopalan is an Integrated M.Tech CSE student at SSN College of Engineering in Chennai, building across product, frontend, analytics, and developer tooling.",
-    highlights: [
-      "Integrated M.Tech CSE student at Sri Sivasubramaniya Nadar College of Engineering.",
-      "Works across frontend engineering, product thinking, analytics, and developer tools.",
-      "Currently Associate Intern at Friday Intellytics.",
+      "Integrated M.Tech CSE student at SSN who builds at the intersection of AI, full-stack engineering, product thinking, and design.",
+    story: [
+      "I like understanding the full shape of a product: the user problem, the system behind it, and the small interaction details that make it feel natural.",
+      "My work moves across assistive AI, developer tools, web products, analytics workflows, and design-led experiences.",
     ],
-    tags: ["Product", "Frontend", "Analytics", "Developer tools"],
+    highlights: [
+      "5 Year Integrated M.Tech CSE student at SSN College of Engineering, Chennai.",
+      "Associate Intern at Friday Intellytics, working on product and development for an AI analytics platform.",
+      "Comfortable moving between code, user flows, debugging, and visual communication.",
+    ],
+    featureCards: [
+      {
+        label: "Builder",
+        title: "Product-minded engineer",
+        body: "Turns product ideas into flows, interfaces, and working software.",
+      },
+      {
+        label: "Explorer",
+        title: "AI + systems curiosity",
+        body: "Experiments with computer vision, analytics, developer tooling, and embedded systems.",
+      },
+      {
+        label: "Setup",
+        title: "Arch Linux convert",
+        body: "Dual-booted Arch alongside Windows and now builds most projects from that setup.",
+      },
+    ],
+    tags: ["Product", "AI", "Frontend", "Design", "Arch Linux"],
   },
   {
     id: "projects",
@@ -69,36 +144,92 @@ export const sections: PortfolioSection[] = [
       "A trail of unfinished inventions flickers ahead. Collect the shard of craft.",
     status: "verified",
     visual: "network",
+    layout: "projects",
     summary:
-      "Anjana builds practical products across assistive technology, commerce, dependency analysis, and architecture visualization.",
+      "A practical project trail across assistive technology, developer tooling, networking, and creative commerce.",
     highlights: [
-      "Assistive Writing Pad for Children with Dysgraphia: Python, computer vision, machine learning, and Raspberry Pi-based real-time handwriting feedback.",
-      "Handmade By Shweta: full-stack e-commerce platform using React, TypeScript, Node.js, MongoDB, Tailwind CSS, and REST APIs.",
-      "Code Impact Analyzer: npm package for identifying files, modules, and services affected by code changes.",
-      "Code-Viz: Python CLI and PyPI package for visualizing code dependencies and software architecture.",
+      "Builds products with a bias toward usability, scale, and real-world application.",
+      "Projects combine AI, full-stack development, CLI tooling, networking, and thoughtful interfaces.",
     ],
-    tags: ["React", "Python", "Node.js", "ML", "CLI", "MongoDB"],
+    projectCards: [
+      {
+        title: "Assistive Writing Pad",
+        role: "AI assistive technology",
+        description:
+          "A Raspberry Pi-based learning device for children with dysgraphia, using computer vision and ML to analyze handwriting and provide corrective feedback.",
+        stack: ["Python", "Computer Vision", "ML", "Raspberry Pi"],
+        links: [
+          {
+            label: "GitHub",
+            href: "https://github.com/anjuvenuDev/assistive-writing-pad",
+            type: "github",
+          },
+        ],
+      },
+      {
+        title: "Handmade By Shweta",
+        role: "Creative business web presence",
+        description:
+          "A responsive brand site for a handcrafted mandala art business, built to showcase work clearly and strengthen discoverability.",
+        stack: ["React", "TypeScript", "Responsive UI"],
+        links: [
+          {
+            label: "Repository",
+            href: "https://github.com/anjuvenuDev/mandala",
+            type: "github",
+          },
+          {
+            label: "Live site",
+            href: "https://handmadebyshweta.com",
+            type: "live",
+          },
+        ],
+      },
+      {
+        title: "Code Impact Analyzer",
+        role: "Developer tooling",
+        description:
+          "An npm package that identifies files and modules affected by code changes, making debugging and release planning easier.",
+        stack: ["JavaScript", "Node.js", "npm"],
+        links: [
+          {
+            label: "GitHub",
+            href: "https://github.com/anjuvenuDev/impact-analyzer",
+            type: "github",
+          },
+        ],
+      },
+      {
+        title: "Code-Viz",
+        role: "Architecture visualization CLI",
+        description:
+          "A Python CLI package that generates dependency graphs so unfamiliar codebases become easier to read and reason about.",
+        stack: ["Python", "CLI", "Graph Analysis", "PyPI"],
+        links: [
+          {
+            label: "GitHub",
+            href: "https://github.com/anjuvenuDev/code-viz",
+            type: "github",
+          },
+        ],
+      },
+      {
+        title: "PacketPi",
+        role: "Networking platform",
+        description:
+          "A Raspberry Pi-based packet crafting and analysis platform developed through a Nokia collaboration.",
+        stack: ["Raspberry Pi", "Networking", "Packet Analysis"],
+        links: [
+          {
+            label: "GitHub",
+            href: "https://github.com/anjuvenuDev/packetpi",
+            type: "github",
+          },
+        ],
+      },
+    ],
+    tags: ["AI", "React", "CLI", "Networking", "Developer tools"],
     links: [
-      {
-        label: "Dysgraphia Pad repo",
-        href: "https://github.com/anjuvenuDev/dysgraphia_pad",
-        type: "github",
-      },
-      {
-        label: "Impact Analyzer repo",
-        href: "https://github.com/anjuvenuDev/impact-analyzer",
-        type: "github",
-      },
-      {
-        label: "Code-Viz repo",
-        href: "https://github.com/anjuvenuDev/code-viz",
-        type: "github",
-      },
-      {
-        label: "Handmade By Shweta live",
-        href: "https://handmadebyshweta.com",
-        type: "live",
-      },
       {
         label: "GitHub profile",
         href: "https://github.com/anjuvenuDev",
@@ -115,14 +246,50 @@ export const sections: PortfolioSection[] = [
       "The woods become a product maze. Jump cleanly through the workflow gaps.",
     status: "verified",
     visual: "timeline",
+    layout: "timeline",
     summary:
-      "Her experience spans AI analytics product development, frontend engineering, API integration, and production web interfaces.",
+      "A growing path through frontend implementation, web product delivery, and AI analytics product ownership.",
     highlights: [
-      "Associate Intern at Friday Intellytics, May 2026 to present: product and development ownership for a desktop AI analytics application.",
-      "Converted founder vision into executable user flows, MVP workflows, and product features.",
-      "Designed and developed Friday's public-facing landing page.",
-      "Web Development Intern at Yhills, Jan 2025 to Mar 2025: React interfaces, API integration, code reviews, and documentation.",
-      "Frontend Developer Intern at NoShack Solutions, Jul 2024 to Aug 2024: REST API integration, React/JavaScript rendering, Node.js/Express and MongoDB-backed workflows.",
+      "Contributed across feature planning, implementation, testing, debugging, and product refinement.",
+      "Worked directly with founders, mentors, and teammates to convert requirements into usable software.",
+    ],
+    timeline: [
+      {
+        company: "NoShack Solutions",
+        role: "Frontend Developer Intern",
+        dates: "Jul 2024 - Aug 2024",
+        logo: "/assets/logos/noshack.svg",
+        focus: "Production frontend foundations",
+        details: [
+          "Integrated REST APIs into React and JavaScript screens.",
+          "Connected frontend modules with Node.js, Express, and MongoDB-backed services.",
+          "Supported dashboard workflows, testing, debugging, and UI optimization.",
+        ],
+      },
+      {
+        company: "Yhills",
+        role: "Web Development Intern",
+        dates: "Jan 2025 - Mar 2025",
+        logo: "/assets/logos/yhills.svg",
+        focus: "Responsive web delivery",
+        details: [
+          "Built responsive interfaces with HTML, CSS, JavaScript, and React.",
+          "Integrated APIs and improved data flow across product workflows.",
+          "Participated in code reviews, documentation, and collaborative debugging.",
+        ],
+      },
+      {
+        company: "Friday Intellytics",
+        role: "Associate Intern",
+        dates: "May 2026 - Present",
+        logo: "/assets/logos/friday-intellytics.svg",
+        focus: "AI analytics product ownership",
+        details: [
+          "Converted founder vision into user flows, MVP workflows, and product features.",
+          "Built workflows for connecting data sources, creating analysis pipelines, and interacting with insights conversationally.",
+          "Designed and developed the public-facing landing page while iterating on usability gaps.",
+        ],
+      },
     ],
     tags: ["Product", "React", "APIs", "MVP", "Debugging"],
   },
@@ -135,15 +302,32 @@ export const sections: PortfolioSection[] = [
       "Ancient runes rearrange into stacks and systems. Gather the right symbols.",
     status: "verified",
     visual: "skills",
+    layout: "skills",
     summary:
-      "Anjana's skill set combines product design, analytics, frontend/backend engineering, databases, and deployment platforms.",
+      "A toolset that spans product design, analytics, web engineering, databases, deployment, and system-level curiosity.",
     highlights: [
-      "Product and design: user flows, wireframing, agile development, UI/UX principles, feature planning, product thinking, Canva.",
-      "Analytics and data: SQL, Python, Pandas, NumPy, Matplotlib, SciPy, Scikit-learn, Seaborn, statistics.",
-      "Technical: JavaScript, TypeScript, Java, C, HTML, CSS, React.js, Vue.js, Node.js, Spring Boot, REST APIs.",
-      "Databases and platforms: MongoDB, SQL, Neo4j, Git, Linux, Vercel, Render.",
+      "Comfortable building across the frontend/backend boundary and grounding product ideas in implementation.",
+      "Uses Linux heavily, with Arch now serving as the main project environment.",
     ],
-    tags: ["TypeScript", "React", "Python", "SQL", "Spring Boot"],
+    skillGroups: [
+      {
+        title: "Product & Design",
+        items: ["User flows", "Wireframing", "UI/UX principles", "Feature planning", "Agile", "Canva"],
+      },
+      {
+        title: "Analytics & Data",
+        items: ["Python", "SQL", "Pandas", "NumPy", "SciPy", "Matplotlib", "Seaborn", "Scikit-learn", "Statistics"],
+      },
+      {
+        title: "Engineering",
+        items: ["JavaScript", "TypeScript", "Java", "C", "HTML", "CSS", "React", "Vue", "Node.js", "Spring Boot", "REST APIs"],
+      },
+      {
+        title: "Data & Platforms",
+        items: ["MongoDB", "SQL", "Neo4j", "Git", "Linux", "Vercel", "Render"],
+      },
+    ],
+    tags: ["TypeScript", "React", "Python", "SQL", "Linux"],
   },
   {
     id: "soft",
@@ -152,17 +336,35 @@ export const sections: PortfolioSection[] = [
     rewardName: "Memory of Voice",
     quest:
       "A quiet grove asks for the skills behind the code. Reach the lantern.",
-    status: "needs-copy",
+    status: "verified",
     visual: "compass",
+    layout: "diagram",
     summary:
-      "Final soft-skills copy pending. Resume-backed signals include product ownership, direct founder collaboration, event coordination, code reviews, documentation, and cross-team debugging.",
+      "Her non-technical strengths come from ownership-heavy internships, leadership roles, event work, and public communication.",
     highlights: [
-      "Product ownership and feature planning.",
-      "Direct stakeholder collaboration.",
-      "Event coordination and leadership.",
-      "Documentation, reviews, and iterative debugging.",
+      "Owns ambiguity by turning broad ideas into action plans, flows, and working features.",
+      "Communicates clearly across founders, mentors, teammates, designers, and student communities.",
+      "Adapts quickly across frontend work, product thinking, event management, and open-source contribution.",
     ],
-    tags: ["Leadership", "Communication", "Ownership", "Collaboration"],
+    featureCards: [
+      {
+        title: "Ownership",
+        body: "Takes responsibility for product workflows, user-facing issues, and delivery details.",
+      },
+      {
+        title: "Communication",
+        body: "Comfortable presenting, hosting, documenting, reviewing, and aligning people around work.",
+      },
+      {
+        title: "Collaboration",
+        body: "Works across teams and communities, from internships to student organizations.",
+      },
+      {
+        title: "Growth mindset",
+        body: "New to open source, accepted into GirlScript Summer of Code, with one PR merged and issues raised.",
+      },
+    ],
+    tags: ["Leadership", "Communication", "Ownership", "Collaboration", "Adaptability"],
   },
   {
     id: "activities",
@@ -173,17 +375,43 @@ export const sections: PortfolioSection[] = [
       "The forest opens into guild halls. Each banner marks a community she shaped.",
     status: "verified",
     visual: "guilds",
+    layout: "gallery",
+    images: [
+      {
+        src: "/assets/portfolio/activity-mic.jpg",
+        alt: "Anjana speaking at an event",
+        position: "50% 38%",
+        variant: "portrait",
+      },
+      {
+        src: "/assets/portfolio/activity-stage.jpg",
+        alt: "Anjana on stage with a microphone",
+        position: "54% 45%",
+        variant: "wide",
+      },
+    ],
     summary:
-      "Anjana is active across technical, leadership, design, entrepreneurship, and event communities at SSN.",
+      "Outside academics, Anjana is active in technical, design, leadership, entrepreneurship, and event communities at SSN.",
     highlights: [
       "Joint Event Coordinator, SSN ACE, 2025-26.",
       "Joint Secretary, SSN IEEE WIE, 2025.",
       "Full-Stack Development Core and Deputy PR Lead, SSN Coding Club, 2025-26.",
-      "Event Management member, SSN ACM, 2025-26.",
-      "Under Secretary General, SSN SNUC MUN, 2025.",
+      "Event Management member, SSN ACM; Under Secretary General, SSN SNUC MUN.",
       "Core Member, QFactorial; Junior Core, Gradient Design Club; Creative and PR Member, Lakshya E-Cell.",
     ],
-    tags: ["ACE", "IEEE WIE", "Coding Club", "ACM", "MUN"],
+    featureCards: [
+      {
+        label: "Community",
+        title: "Builder of student spaces",
+        body: "Organizes events, mentors peers, and helps shape technical communities beyond the classroom.",
+      },
+      {
+        label: "Stage",
+        title: "Comfortable with audiences",
+        body: "Compering, speaking, and hosting have strengthened confidence and clarity.",
+      },
+    ],
+    tags: ["ACE", "IEEE WIE", "Coding Club", "ACM", "MUN", "Gradient"],
   },
   {
     id: "hobbies",
@@ -192,15 +420,44 @@ export const sections: PortfolioSection[] = [
     rewardName: "Memory of Wonder",
     quest:
       "Past the code-lit path, a smaller trail waits for the things that keep her curious.",
-    status: "needs-copy",
+    status: "verified",
     visual: "garden",
+    layout: "gallery",
+    image: {
+      src: "/assets/portfolio/art-grid.png",
+      alt: "Anjana's art page art.anjjj",
+      variant: "phone",
+    },
     summary:
-      "Final hobbies and interests copy pending. This reward is ready for Anjana's personal interests, creative pursuits, and non-academic story.",
+      "Creativity has always existed alongside technology: traditional art, design leadership, and public speaking all shape how she builds.",
     highlights: [
-      "Awaiting final hobbies and interests from Anjana.",
-      "This section can include creative work, reading, games, design, music, public speaking, communities, or any personal anchors she wants recruiters to remember.",
+      "Works primarily with hand-drawn illustrations and mixed media.",
+      "Held a public art exhibition at age 14.",
+      "Leads the Gradient Design Club at SSN and mentors aspiring designers.",
+      "Enjoys being on stage through compering, hosting, and speaking before large audiences.",
     ],
-    tags: ["Pending copy", "Personal"],
+    featureCards: [
+      {
+        title: "Art",
+        body: "A long-running creative practice that sharpened patience, observation, and visual storytelling.",
+      },
+      {
+        title: "Design",
+        body: "Treats design as communication: making ideas accessible, memorable, and human.",
+      },
+      {
+        title: "Public speaking",
+        body: "Draws energy from hosting events and connecting with an audience.",
+      },
+    ],
+    links: [
+      {
+        label: "art.anjjj",
+        href: "https://www.instagram.com/art.anjjj/",
+        type: "social",
+      },
+    ],
+    tags: ["Art", "Design", "Public speaking", "Mixed media"],
   },
   {
     id: "achievements",
@@ -211,15 +468,40 @@ export const sections: PortfolioSection[] = [
       "The final thicket guards a bright archive. Finish the run and reclaim the proof.",
     status: "verified",
     visual: "trophy",
+    layout: "achievements",
     summary:
-      "Her achievements show consistent academic strength, hackathon performance, machine learning competition results, and event leadership recognition.",
+      "Academic consistency, technical curiosity, creative confidence, and leadership all show up across her milestones.",
     highlights: [
-      "Ranked 3rd in the Department of M.Tech CSE with 9.185/10 CGPA for 4 consecutive semesters.",
-      "Finalist in the Internal Smart India Hackathon under the Smart Healthcare Management System problem statement.",
-      "Top 15% Global Leaderboard in the Kaggle Spaceship Titanic ML Competition with approximately 82% accuracy.",
-      "Recognized multiple times for organizing and coordinating technical events under ACM, IEEE WIE, and ACE.",
+      "Ranked 3rd in the Department of M.Tech CSE with CGPA 9.185/10 for 4 consecutive semesters.",
+      "Finalist in Internal Smart India Hackathon under the Smart Healthcare Management System problem statement.",
+      "Top 15% globally in Kaggle Spaceship Titanic ML Competition with approximately 82% accuracy.",
+      "Accepted as a GirlScript Summer of Code contributor, with one PR merged and issues raised.",
+      "Served as School Pupil Leader and later took leadership roles across ACE, IEEE WIE, Coding Club, Gradient, and more.",
+      "Hosted a public art exhibition at age 14.",
     ],
-    tags: ["CGPA 9.185", "Hackathon", "Kaggle", "Leadership"],
+    featureCards: [
+      {
+        label: "Rank",
+        title: "3rd Department Rank",
+        body: "Integrated M.Tech CSE, SSN College of Engineering.",
+      },
+      {
+        label: "ML",
+        title: "Kaggle Top 15%",
+        body: "Spaceship Titanic competition, approximately 82% accuracy.",
+      },
+      {
+        label: "Build",
+        title: "SIH Finalist",
+        body: "Internal Smart India Hackathon, healthcare management problem statement.",
+      },
+      {
+        label: "Open Source",
+        title: "GSSoC Contributor",
+        body: "Accepted earlier this year; one PR merged and multiple issues raised.",
+      },
+    ],
+    tags: ["CGPA 9.185", "Hackathon", "Kaggle", "GSSoC", "Leadership"],
   },
 ];
 
