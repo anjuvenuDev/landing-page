@@ -150,8 +150,8 @@ h2 {
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(340px, 1.08fr);
-  gap: clamp(24px, 5vw, 72px);
+  grid-template-columns: minmax(0, 0.9fr) minmax(420px, 1.22fr);
+  gap: clamp(18px, 3vw, 48px);
   align-items: center;
   padding: clamp(24px, 6vw, 72px) clamp(28px, 5vw, 88px);
   background: transparent;
@@ -221,7 +221,9 @@ h2 {
 .skip-narration:hover,
 .treasure:not(:disabled):hover,
 .link-row a:hover,
-.icon-button:hover {
+.icon-button:hover,
+.hud-button:hover,
+.modal-tool:hover {
   transform: translate(-2px, -2px);
   box-shadow: 7px 7px 0 #000;
   border-color: var(--gold);
@@ -236,14 +238,15 @@ h2 {
 
 .avatar-stage {
   position: relative;
-  min-height: 460px;
+  min-height: 650px;
   display: grid;
   place-items: center;
-  justify-self: end;
+  justify-self: center;
+  transform: translateX(-4vw);
 }
 
 .gesture-avatar {
-  --avatar-scale: 1.6;
+  --avatar-scale: clamp(1.75, 0.95vw + 1.35, 2.35);
   position: relative;
   width: 255px;
   height: 255px;
@@ -339,7 +342,8 @@ h2 {
 
 .icon-button,
 .objective-pill,
-.motion-toggle {
+.motion-toggle,
+.hud-button {
   pointer-events: auto;
   border: 3px solid var(--paper);
   background: rgba(33, 26, 29, 0.88);
@@ -369,7 +373,8 @@ h2 {
   text-align: center;
 }
 
-.motion-toggle {
+.motion-toggle,
+.hud-button {
   margin-left: auto;
   display: inline-flex;
   align-items: center;
@@ -377,6 +382,11 @@ h2 {
   min-height: 52px;
   padding: 8px 12px;
   font-size: 0.9rem;
+}
+
+.hud-button {
+  color: var(--gold);
+  font-family: "Pixelify Sans", monospace;
 }
 
 .motion-toggle input {
@@ -431,7 +441,7 @@ h2 {
 
 .reward-card-header {
   gap: 64px;
-  padding-right: 48px;
+  padding-right: 104px;
 }
 
 .sidebar-header h2 {
@@ -529,7 +539,8 @@ h2 {
   animation: sceneFade 260ms ease both;
 }
 
-.browse-screen .reward-overlay {
+.browse-screen .reward-overlay,
+.preview-screen .reward-overlay {
   padding-left: min(440px, calc(100vw - 340px));
   background:
     radial-gradient(circle at 62% 50%, rgba(255, 209, 102, 0.14), transparent 34rem),
@@ -538,9 +549,9 @@ h2 {
 
 .reward-card {
   position: relative;
-  width: min(1500px, calc(100vw - 28px));
-  max-height: calc(100vh - 28px);
-  padding: clamp(20px, 2.6vw, 38px);
+  width: min(1720px, calc(100vw - 20px));
+  max-height: calc(100vh - 20px);
+  padding: clamp(18px, 2.2vw, 34px);
   overflow-y: auto;
   background: rgba(33, 26, 29, 0.94);
   border: 4px solid var(--paper);
@@ -549,8 +560,9 @@ h2 {
     0 24px 72px rgba(0, 0, 0, 0.58);
 }
 
-.browse-screen .reward-card {
-  width: min(1280px, calc(100vw - min(440px, calc(100vw - 340px)) - 32px));
+.browse-screen .reward-card,
+.preview-screen .reward-card {
+  width: min(1450px, calc(100vw - min(440px, calc(100vw - 340px)) - 24px));
 }
 
 .modal-close {
@@ -566,6 +578,21 @@ h2 {
   box-shadow: 5px 5px 0 #000;
   font-family: "Pixelify Sans", monospace;
   font-size: 1.35rem;
+}
+
+.modal-tool {
+  position: absolute;
+  top: 14px;
+  right: 68px;
+  z-index: 2;
+  width: 46px;
+  height: 46px;
+  border: 3px solid var(--paper);
+  background: #101820;
+  color: var(--gold);
+  box-shadow: 5px 5px 0 #000;
+  font-family: "Pixelify Sans", monospace;
+  font-size: 1.3rem;
 }
 
 .reward-reveal {
@@ -605,16 +632,17 @@ h2 {
 
 .reward-body {
   display: grid;
-  grid-template-columns: minmax(380px, 0.9fr) minmax(0, 1.35fr);
-  gap: clamp(20px, 3vw, 36px);
-  margin-top: 22px;
+  grid-template-columns: minmax(430px, 0.95fr) minmax(0, 1.5fr);
+  gap: clamp(22px, 3vw, 42px);
+  margin-top: 18px;
 }
 
 .summary {
   max-width: 76rem;
   margin: 0 0 18px;
   color: #ffeec5;
-  font-size: 1.02rem;
+  font-size: clamp(1.08rem, 1.15vw, 1.34rem);
+  line-height: 1.45;
 }
 
 .reward-card ul {
@@ -627,8 +655,8 @@ h2 {
 }
 
 .reward-card li {
-  min-height: 68px;
-  padding: 12px;
+  min-height: 72px;
+  padding: 14px;
   background: rgba(16, 24, 32, 0.74);
   border: 3px solid rgba(249, 231, 183, 0.42);
   color: #f9e7b7;
@@ -659,14 +687,17 @@ h2 {
 }
 
 .continue-button {
-  margin-top: 22px;
+  margin-top: 14px;
 }
 
 .reward-nav {
   display: grid;
-  grid-template-columns: minmax(180px, 0.8fr) minmax(180px, 0.8fr) minmax(220px, 1fr);
-  gap: 12px;
-  margin-top: 24px;
+  grid-template-columns: minmax(150px, 0.7fr) minmax(140px, 0.55fr) minmax(150px, 0.7fr);
+  gap: 10px;
+  margin-top: 16px;
+  max-width: 860px;
+  margin-left: auto;
+  opacity: 0.88;
 }
 
 .reward-nav .continue-button {
@@ -697,7 +728,7 @@ h2 {
 
 .section-illustration {
   position: relative;
-  min-height: clamp(400px, 54vh, 650px);
+  min-height: clamp(470px, 62vh, 740px);
   background:
     linear-gradient(90deg, rgba(255, 209, 102, 0.08) 1px, transparent 1px),
     linear-gradient(180deg, rgba(255, 209, 102, 0.08) 1px, transparent 1px),
@@ -1043,6 +1074,75 @@ h2 {
   bottom: 24%;
 }
 
+.completion-overlay {
+  position: absolute;
+  z-index: 26;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: clamp(18px, 4vw, 52px);
+  background:
+    radial-gradient(circle at 36% 42%, rgba(255, 209, 102, 0.2), transparent 28rem),
+    rgba(7, 10, 12, 0.58);
+  backdrop-filter: blur(3px);
+  animation: sceneFade 280ms ease both;
+}
+
+.completion-card {
+  width: min(1180px, calc(100vw - 28px));
+  min-height: min(620px, calc(100vh - 28px));
+  display: grid;
+  grid-template-columns: minmax(310px, 0.75fr) minmax(0, 1fr);
+  gap: clamp(22px, 4vw, 56px);
+  align-items: center;
+  padding: clamp(22px, 4vw, 56px);
+  background: rgba(33, 26, 29, 0.95);
+  border: 4px solid var(--paper);
+  box-shadow:
+    0 0 0 5px #37251f,
+    0 24px 72px rgba(0, 0, 0, 0.58);
+}
+
+.completion-avatar {
+  --avatar-scale: clamp(1.3, 1.5vw + 1, 2);
+  position: relative;
+  width: 255px;
+  height: 255px;
+  justify-self: center;
+  image-rendering: pixelated;
+  animation: avatarGesture 2s ease-in-out infinite;
+  filter: drop-shadow(10px 14px 0 rgba(0, 0, 0, 0.38));
+}
+
+.completion-avatar::after {
+  content: "!!!";
+  position: absolute;
+  top: -42px;
+  left: 88px;
+  color: var(--gold);
+  font-family: "Pixelify Sans", monospace;
+  font-size: 3rem;
+  text-shadow: 5px 5px 0 #000;
+  animation: questionBob 1.2s ease-in-out infinite;
+}
+
+.completion-copy h2 {
+  font-size: clamp(3rem, 7vw, 7rem);
+}
+
+.completion-copy p {
+  max-width: 58rem;
+  color: #ffeec5;
+  font-size: clamp(1.1rem, 1.7vw, 1.65rem);
+  line-height: 1.45;
+}
+
+.completion-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
 .touch-controls {
   display: none;
   position: absolute;
@@ -1160,11 +1260,13 @@ h2 {
     grid-template-columns: 1fr;
   }
 
-  .browse-screen .reward-overlay {
+  .browse-screen .reward-overlay,
+  .preview-screen .reward-overlay {
     padding-left: 300px;
   }
 
-  .browse-screen .reward-card {
+  .browse-screen .reward-card,
+  .preview-screen .reward-card {
     width: min(920px, calc(100vw - 324px));
   }
 }
@@ -1236,11 +1338,13 @@ h2 {
     align-items: end;
   }
 
-  .browse-screen .reward-overlay {
+  .browse-screen .reward-overlay,
+  .preview-screen .reward-overlay {
     padding: 42vh 10px 10px;
   }
 
-  .browse-screen .reward-card {
+  .browse-screen .reward-card,
+  .preview-screen .reward-card {
     width: 100%;
   }
 
@@ -1248,7 +1352,8 @@ h2 {
     max-height: calc(100vh - 20px);
   }
 
-  .browse-screen .reward-card {
+  .browse-screen .reward-card,
+  .preview-screen .reward-card {
     max-height: 56vh;
   }
 
@@ -1258,6 +1363,15 @@ h2 {
 
   .section-illustration {
     min-height: 220px;
+  }
+
+  .completion-card {
+    grid-template-columns: 1fr;
+    align-content: center;
+  }
+
+  .completion-avatar {
+    --avatar-scale: 1.05;
   }
 
   .reward-nav {

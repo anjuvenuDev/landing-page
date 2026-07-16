@@ -5,7 +5,7 @@ import { MemoryQuestGame } from "./game/MemoryQuestGame";
 
 const storageKey = "anjana-memory-unlocks";
 
-type AppMode = "intro" | "game" | "browse";
+type AppMode = "intro" | "game" | "browse" | "preview";
 
 const narrationLines = [
   "I wake inside a forest that feels older than memory.",
@@ -200,6 +200,7 @@ function RewardOverlay({
   onClose,
   allUnlocked,
   onContinue,
+  onPreview,
 }: {
   section: PortfolioSection;
   mode: Exclude<AppMode, "intro">;
@@ -214,8 +215,10 @@ function RewardOverlay({
   onClose: () => void;
   allUnlocked: boolean;
   onContinue: () => void;
+  onPreview: () => void;
 }) {
-  const browseMode = mode === "browse";
+  const browseMode = mode === "browse" || mode === "preview";
+  const previewMode = mode === "preview";
   const previousLocked = previousSection && !previousUnlocked && !browseMode;
   const nextLocked = nextSection && !nextUnlocked && !browseMode;
 
@@ -225,6 +228,27 @@ function RewardOverlay({
         <button type="button" className="modal-close" onClick={onClose} aria-label="Close memory view">
           x
         </button>
+        {previewMode ? (
+          <button
+            type="button"
+            className="modal-tool minimize-tool"
+            onClick={onClose}
+            aria-label="go back to game mode"
+            title="go back to game mode"
+          >
+            ⤢
+          </button>
+        ) : (
+          <button
+            type="button"
+            className="modal-tool preview-tool"
+            onClick={onPreview}
+            aria-label="preview mode"
+            title="preview mode"
+          >
+            ⛶
+          </button>
+        )}
         <div className="reward-card-header">
           <div>
             <span className="memory-position">
@@ -278,7 +302,13 @@ function RewardOverlay({
               : "No previous"}
           </button>
           <button type="button" className="continue-button primary" onClick={onContinue}>
-            {mode === "browse" ? "Back to home" : allUnlocked ? "Back to game" : "Continue to next level"}
+            {previewMode
+              ? "Back to game"
+              : mode === "browse"
+                ? "Back to home"
+                : allUnlocked
+                  ? "Back to game"
+                  : "Continue"}
           </button>
           <button
             type="button"
@@ -308,6 +338,7 @@ function MemoryLog({
   onSelect,
   onReset,
   onHome,
+  onPreview,
 }: {
   open: boolean;
   mode: Exclude<AppMode, "intro">;
@@ -317,36 +348,47 @@ function MemoryLog({
   onSelect: (sectionId: PortfolioSectionId) => void;
   onReset: () => void;
   onHome: () => void;
+  onPreview: () => void;
 }) {
   const browseMode = mode === "browse";
+  const previewMode = mode === "preview";
 
   return (
     <aside
-      className={`${browseMode ? "quest-log browse-log" : "quest-log"} ${open || browseMode ? "open" : ""}`}
+      className={`${browseMode || previewMode ? "quest-log browse-log" : "quest-log"} ${open || browseMode || previewMode ? "open" : ""}`}
       aria-label="Memory shard logs"
     >
       <div className="sidebar-header">
-        <h2>{browseMode ? "All Memories" : "Memory Shards"}</h2>
-        {browseMode ? null : (
+        <h2>{browseMode || previewMode ? "All Memories" : "Memory Shards"}</h2>
+        <button
+          type="button"
+          className="icon-button sidebar-preview"
+          onClick={onPreview}
+          aria-label={previewMode ? "go back to game mode" : "preview mode"}
+          title={previewMode ? "go back to game mode" : "preview mode"}
+        >
+          {previewMode ? "⤢" : "⛶"}
+        </button>
+        {browseMode || previewMode ? null : (
           <button type="button" className="icon-button close-log" onClick={onClose} aria-label="Close log">
             ×
           </button>
         )}
       </div>
       <span className="counter">
-        {browseMode ? sections.length : unlocked.length}/{sections.length}
+        {browseMode || previewMode ? sections.length : unlocked.length}/{sections.length}
       </span>
       <div className="sidebar-actions">
         <button type="button" onClick={onHome}>
           Home
         </button>
         <button type="button" onClick={onReset}>
-          {browseMode ? "Start game" : "Reset"}
+          {browseMode || previewMode ? "Start game" : "Reset"}
         </button>
       </div>
       <nav className="treasure-list" aria-label="Unlocked treasure boxes">
         {sections.map((section) => {
-          const isUnlocked = browseMode || unlocked.includes(section.id);
+          const isUnlocked = browseMode || previewMode || unlocked.includes(section.id);
           const isActive = selectedId === section.id;
           return (
             <button
@@ -368,12 +410,46 @@ function MemoryLog({
   );
 }
 
+function CompletionOverlay({
+  onPreview,
+  onClose,
+}: {
+  onPreview: () => void;
+  onClose: () => void;
+}) {
+  return (
+    <section className="completion-overlay" aria-live="polite">
+      <article className="completion-card">
+        <div className="completion-avatar" aria-hidden="true">
+          <span className="pixelart-to-css" />
+        </div>
+        <div className="completion-copy">
+          <h2>Hurray!</h2>
+          <p>
+            Thank you for helping me unlock every memory shard. My forest trail is complete, and
+            Anjana&apos;s portfolio is fully restored.
+          </p>
+          <div className="completion-actions">
+            <button type="button" className="continue-button primary" onClick={onPreview}>
+              View complete portfolio
+            </button>
+            <button type="button" className="continue-button" onClick={onClose}>
+              Stay in game
+            </button>
+          </div>
+        </div>
+      </article>
+    </section>
+  );
+}
+
 function App() {
   const [mode, setMode] = useState<AppMode>("intro");
   const [unlocked, setUnlocked] = useState<PortfolioSectionId[]>(readStoredUnlocks);
   const [selectedId, setSelectedId] = useState<PortfolioSectionId | null>(null);
   const [logOpen, setLogOpen] = useState(false);
-  const [reducedMotion, setReducedMotion] = useState(false);
+  const [gameRun, setGameRun] = useState(0);
+  const [showCompletion, setShowCompletion] = useState(false);
 
   const currentLevel = useMemo(() => {
     const next = gameLevels.find((level) => !unlocked.includes(level.id));
@@ -381,10 +457,11 @@ function App() {
   }, [unlocked]);
 
   const selectedSection =
-    sections.find(
-      (section) =>
-        section.id === selectedId && (mode === "browse" || unlocked.includes(section.id)),
-    ) ?? null;
+    sections.find((section) => {
+      if (section.id !== selectedId) return false;
+      if (mode === "browse" || mode === "preview") return true;
+      return unlocked.includes(section.id);
+    }) ?? null;
   const selectedIndex = selectedSection
     ? sections.findIndex((section) => section.id === selectedSection.id)
     : -1;
@@ -404,6 +481,9 @@ function App() {
       if (current.includes(sectionId)) return current;
       const next = sectionOrder.filter((id) => [...current, sectionId].includes(id));
       window.localStorage.setItem(storageKey, JSON.stringify(next));
+      if (next.length === sectionOrder.length) {
+        setShowCompletion(true);
+      }
       return next;
     });
   }, []);
@@ -418,16 +498,40 @@ function App() {
     persistUnlocks([]);
     setSelectedId(null);
     setLogOpen(false);
+    setShowCompletion(false);
+    setGameRun((run) => run + 1);
     setMode("game");
   };
 
   const enterQuest = () => {
     setMode("game");
     setSelectedId(null);
+    setShowCompletion(false);
   };
 
   const goHome = () => {
     setMode("intro");
+    setSelectedId(null);
+    setLogOpen(false);
+    setShowCompletion(false);
+  };
+
+  const restartLevel = () => {
+    setSelectedId(null);
+    setShowCompletion(false);
+    setGameRun((run) => run + 1);
+  };
+
+  const enterPreviewMode = () => {
+    const firstVisible = selectedId ?? unlocked[0] ?? sectionOrder[0];
+    setSelectedId(firstVisible);
+    setMode("preview");
+    setLogOpen(false);
+    setShowCompletion(false);
+  };
+
+  const leavePreviewMode = () => {
+    setMode("game");
     setSelectedId(null);
     setLogOpen(false);
   };
@@ -442,7 +546,7 @@ function App() {
   const moveSelected = (direction: -1 | 1) => {
     if (selectedIndex < 0) return;
     const destination = sections[selectedIndex + direction];
-    if (destination && (mode === "browse" || unlocked.includes(destination.id))) {
+    if (destination && (mode === "browse" || mode === "preview" || unlocked.includes(destination.id))) {
       setSelectedId(destination.id);
     }
   };
@@ -452,15 +556,24 @@ function App() {
   }
 
   return (
-    <main className={mode === "browse" ? "game-screen browse-screen" : "game-screen"}>
+    <main
+      className={
+        mode === "preview"
+          ? "game-screen preview-screen"
+          : mode === "browse"
+            ? "game-screen browse-screen"
+            : "game-screen"
+      }
+    >
       <MemoryQuestGame
+        key={`${currentLevel.id}-${gameRun}`}
         level={currentLevel}
-        reducedMotion={reducedMotion}
+        reducedMotion={false}
         onComplete={unlockSection}
-        paused={mode === "browse"}
+        paused={mode === "browse" || mode === "preview"}
       />
 
-      <div className={mode === "browse" ? "game-overlay-hud browse-hidden" : "game-overlay-hud"}>
+      <div className={mode === "browse" || mode === "preview" ? "game-overlay-hud browse-hidden" : "game-overlay-hud"}>
         <button
           type="button"
           className="icon-button log-toggle"
@@ -472,14 +585,9 @@ function App() {
         <div className="objective-pill">
           {allUnlocked ? "All memories restored" : `Next: ${currentLevel.rewardName}`}
         </div>
-        <label className="motion-toggle">
-          <input
-            type="checkbox"
-            checked={reducedMotion}
-            onChange={(event) => setReducedMotion(event.target.checked)}
-          />
-          Calm
-        </label>
+        <button type="button" className="hud-button restart-level" onClick={restartLevel}>
+          Restart level
+        </button>
       </div>
 
       <MemoryLog
@@ -491,7 +599,12 @@ function App() {
         onSelect={selectFromLog}
         onReset={resetQuest}
         onHome={goHome}
+        onPreview={mode === "preview" ? leavePreviewMode : enterPreviewMode}
       />
+
+      {showCompletion && allUnlocked && mode === "game" && !selectedSection ? (
+        <CompletionOverlay onPreview={enterPreviewMode} onClose={() => setShowCompletion(false)} />
+      ) : null}
 
       {selectedSection ? (
         <RewardOverlay
@@ -505,9 +618,22 @@ function App() {
           nextUnlocked={Boolean(nextSection && unlocked.includes(nextSection.id))}
           onPrev={() => moveSelected(-1)}
           onNext={() => moveSelected(1)}
-          onClose={mode === "browse" ? goHome : () => setSelectedId(null)}
+          onClose={
+            mode === "preview"
+              ? leavePreviewMode
+              : mode === "browse"
+                ? goHome
+                : () => setSelectedId(null)
+          }
           allUnlocked={allUnlocked}
-          onContinue={mode === "browse" ? goHome : () => setSelectedId(null)}
+          onContinue={
+            mode === "preview"
+              ? leavePreviewMode
+              : mode === "browse"
+                ? goHome
+                : () => setSelectedId(null)
+          }
+          onPreview={enterPreviewMode}
         />
       ) : null}
     </main>
