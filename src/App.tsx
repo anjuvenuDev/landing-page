@@ -230,10 +230,9 @@ function SidePreview({
   onContinue: () => void;
   onFullscreen: () => void;
 }) {
-  const browseMode = mode === "browse" || mode === "preview";
   const previewMode = mode === "preview";
-  const previousLocked = previousSection && !previousUnlocked && !browseMode;
-  const nextLocked = nextSection && !nextUnlocked && !browseMode;
+  const previousLocked = previousSection && !previousUnlocked;
+  const nextLocked = nextSection && !nextUnlocked;
 
   return (
     <section className="side-preview" aria-live="polite">
@@ -292,7 +291,7 @@ function SidePreview({
           <button
             type="button"
             className={previousLocked ? "continue-button locked" : "continue-button"}
-            onClick={previousUnlocked || browseMode ? onPrev : undefined}
+            onClick={previousUnlocked ? onPrev : undefined}
             disabled={!previousSection}
             aria-disabled={previousLocked ? true : undefined}
           >
@@ -314,7 +313,7 @@ function SidePreview({
           <button
             type="button"
             className={nextLocked ? "continue-button locked" : "continue-button"}
-            onClick={nextUnlocked || browseMode ? onNext : undefined}
+            onClick={nextUnlocked ? onNext : undefined}
             disabled={!nextSection}
             aria-disabled={nextLocked ? true : undefined}
           >
@@ -377,7 +376,7 @@ function MemoryLog({
         )}
       </div>
       <span className="counter">
-        {browseMode || previewMode ? sections.length : unlocked.length}/{sections.length}
+        {unlocked.length}/{sections.length}
       </span>
       <div className="sidebar-actions">
         <button type="button" onClick={onHome}>
@@ -389,7 +388,7 @@ function MemoryLog({
       </div>
       <nav className="treasure-list" aria-label="Unlocked treasure boxes">
         {sections.map((section) => {
-          const isUnlocked = browseMode || previewMode || unlocked.includes(section.id);
+          const isUnlocked = unlocked.includes(section.id);
           const isActive = selectedId === section.id;
           return (
             <button
@@ -541,19 +540,24 @@ function App() {
     const next = gameLevels.find((level) => !unlocked.includes(level.id));
     return next ?? gameLevels[gameLevels.length - 1];
   }, [unlocked]);
+  const visibleSections = useMemo(
+    () => sections.filter((section) => unlocked.includes(section.id)),
+    [unlocked],
+  );
 
   const selectedSection =
     sections.find((section) => {
       if (section.id !== selectedId) return false;
-      if (mode === "browse" || mode === "preview" || mode === "slides") return true;
       return unlocked.includes(section.id);
     }) ?? null;
   const selectedIndex = selectedSection
-    ? sections.findIndex((section) => section.id === selectedSection.id)
+    ? visibleSections.findIndex((section) => section.id === selectedSection.id)
     : -1;
-  const previousSection = selectedIndex > 0 ? sections[selectedIndex - 1] : null;
+  const previousSection = selectedIndex > 0 ? visibleSections[selectedIndex - 1] : null;
   const nextSection =
-    selectedIndex >= 0 && selectedIndex < sections.length - 1 ? sections[selectedIndex + 1] : null;
+    selectedIndex >= 0 && selectedIndex < visibleSections.length - 1
+      ? visibleSections[selectedIndex + 1]
+      : null;
   const allUnlocked = unlocked.length === sections.length;
 
   const persistUnlocks = useCallback((nextUnlocks: PortfolioSectionId[]) => {
@@ -578,7 +582,7 @@ function App() {
 
   const openBrowseMode = () => {
     setMode("browse");
-    setSelectedId("about");
+    setSelectedId(unlocked[0] ?? null);
     setLogOpen(false);
   };
 
@@ -610,7 +614,8 @@ function App() {
     setGameRun((run) => run + 1);
   };
 
-  const getFirstVisibleSectionId = () => selectedId ?? unlocked[0] ?? sectionOrder[0];
+  const getFirstVisibleSectionId = () =>
+    selectedId && unlocked.includes(selectedId) ? selectedId : unlocked[0] ?? null;
 
   const leavePreviewMode = () => {
     setMode("game");
@@ -620,6 +625,7 @@ function App() {
 
   const enterSlidesMode = () => {
     const firstVisible = getFirstVisibleSectionId();
+    if (!firstVisible) return;
     setSelectedId(firstVisible);
     setMode("slides");
     setLogOpen(false);
@@ -646,11 +652,8 @@ function App() {
 
   const moveSelected = (direction: -1 | 1) => {
     if (selectedIndex < 0) return;
-    const destination = sections[selectedIndex + direction];
-    if (
-      destination &&
-      (mode === "browse" || mode === "preview" || mode === "slides" || unlocked.includes(destination.id))
-    ) {
+    const destination = visibleSections[selectedIndex + direction];
+    if (destination) {
       setSelectedId(destination.id);
     }
   };
@@ -661,13 +664,13 @@ function App() {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "ArrowLeft") {
         event.preventDefault();
-        const destination = sections[selectedIndex - 1];
+        const destination = visibleSections[selectedIndex - 1];
         if (destination) setSelectedId(destination.id);
       }
 
       if (event.key === "ArrowRight") {
         event.preventDefault();
-        const destination = sections[selectedIndex + 1];
+        const destination = visibleSections[selectedIndex + 1];
         if (destination) setSelectedId(destination.id);
       }
 
@@ -680,7 +683,7 @@ function App() {
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [mode, selectedIndex]);
+  }, [mode, selectedIndex, visibleSections]);
 
   useEffect(() => {
     if (mode !== "slides") return undefined;
@@ -770,7 +773,7 @@ function App() {
         <FullscreenSlides
           section={selectedSection}
           position={Math.max(1, selectedIndex + 1)}
-          total={sections.length}
+          total={visibleSections.length}
           previousSection={previousSection}
           nextSection={nextSection}
           onPrev={() => moveSelected(-1)}
@@ -784,7 +787,7 @@ function App() {
           section={selectedSection}
           mode={mode}
           position={Math.max(1, selectedIndex + 1)}
-          total={sections.length}
+          total={visibleSections.length}
           previousSection={previousSection}
           nextSection={nextSection}
           previousUnlocked={Boolean(previousSection && unlocked.includes(previousSection.id))}
