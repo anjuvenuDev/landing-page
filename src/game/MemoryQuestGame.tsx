@@ -71,6 +71,9 @@ const levelThemes: LevelTheme[] = [
   { key: "sunnyland-tall", mode: "tall", sky: 0x1c332e, horizon: 0xb9f50e, cloud: 0x7ab51c, far: 0x28463f, mid: 0x1c3939, near: 0x0e1f22, soil: 0x44251c, grass: 0x75bf35, water: 0x21414a, accent: 0x9ef01a, obstacle: "sunny-slug", background: "tall-back", dressing: "mistForest" },
 ];
 
+const avatarScale = 0.62;
+const platformSurfaceInset = 16;
+
 class MemoryQuestScene extends Phaser.Scene {
   private player?: Phaser.Physics.Arcade.Sprite;
   private cursors?: Phaser.Types.Input.Keyboard.CursorKeys;
@@ -86,6 +89,7 @@ class MemoryQuestScene extends Phaser.Scene {
   private lastSafePosition = new Phaser.Math.Vector2(140, 0);
   private safeSurfaces: SafeSurface[] = [];
   private respawning = false;
+  private avatarBodyBottomOffset = 0;
   private hazardY = 0;
   private hazardPoints: Phaser.Math.Vector2[] = [];
 
@@ -131,6 +135,13 @@ class MemoryQuestScene extends Phaser.Scene {
     this.createForest(width, height);
     this.createHud(width, height);
 
+    const avatarSprite = parseAvatarSprite();
+    const bodyWidth = Math.max(48, Math.floor(avatarSprite.width * 0.34));
+    const bodyHeight = Math.max(78, Math.floor(avatarSprite.height * 0.34));
+    const bodyOffsetX = Math.floor((avatarSprite.width - bodyWidth) / 2);
+    const bodyOffsetY = Math.max(0, avatarSprite.height - bodyHeight);
+    this.avatarBodyBottomOffset = (bodyOffsetY + bodyHeight - avatarSprite.height) * avatarScale;
+
     const course = this.createCourse(height);
     this.chestPoint = course.chest;
     this.safeSurfaces = course.safeSurfaces;
@@ -138,17 +149,12 @@ class MemoryQuestScene extends Phaser.Scene {
     this.hazardY = course.hazardY;
 
     this.player = this.physics.add.sprite(course.spawn.x, course.spawn.y, "anjana-avatar");
-    this.player.setScale(0.62);
+    this.player.setScale(avatarScale);
     this.player.setDepth(30);
     this.player.setOrigin(0.5, 1);
     this.player.setCollideWorldBounds(true);
     this.player.setDragX(1200);
     this.player.setMaxVelocity(360, 720);
-    const avatarSprite = parseAvatarSprite();
-    const bodyWidth = Math.max(48, Math.floor(avatarSprite.width * 0.34));
-    const bodyHeight = Math.max(78, Math.floor(avatarSprite.height * 0.34));
-    const bodyOffsetX = Math.floor((avatarSprite.width - bodyWidth) / 2);
-    const bodyOffsetY = Math.max(0, avatarSprite.height - bodyHeight);
     this.player.body?.setSize(bodyWidth, bodyHeight).setOffset(bodyOffsetX, bodyOffsetY);
     this.cameras.main.startFollow(this.player, true, 0.08, 0.08, -160, 70);
     this.physics.add.collider(this.player, course.platforms);
@@ -220,7 +226,7 @@ class MemoryQuestScene extends Phaser.Scene {
         activeSurface.left + activeSurface.margin,
         activeSurface.right - activeSurface.margin,
       );
-      this.lastSafePosition.set(safeX, activeSurface.y);
+      this.lastSafePosition.set(safeX, this.playerYForSurface(activeSurface.y));
     }
 
     if (jump && grounded) {
@@ -592,7 +598,7 @@ class MemoryQuestScene extends Phaser.Scene {
       platforms: platformGroup,
       obstacles: [],
       safeSurfaces,
-      spawn: new Phaser.Math.Vector2(unit * 2.1, safeSurfaces[0].y),
+      spawn: new Phaser.Math.Vector2(unit * 2.1, this.playerYForSurface(safeSurfaces[0].y)),
       shard: new Phaser.Math.Vector2(midPlatform.x + unit * 4.8, midPlatform.y - unit * 0.88),
       chest: new Phaser.Math.Vector2(finalPlatform.x + finalPlatform.tiles * unit - unit * 2.1, finalPlatform.y - unit * 0.72),
       hazardY: platforms[2].y - unit * 0.48,
@@ -610,6 +616,7 @@ class MemoryQuestScene extends Phaser.Scene {
   ): SafeSurface {
     const unit = 16 * tileScale;
     const width = platform.tiles * unit;
+    const surfaceY = platform.y + platformSurfaceInset * tileScale;
     this.add.image(platform.x, platform.y, "tall-platform-left")
       .setOrigin(0, 0)
       .setScale(tileScale)
@@ -627,7 +634,7 @@ class MemoryQuestScene extends Phaser.Scene {
 
     const bodyHeight = unit * 0.42;
     const bodyWidth = width - unit * 0.16;
-    const body = platformGroup.create(platform.x + width / 2, platform.y + bodyHeight / 2, "course-body");
+    const body = platformGroup.create(platform.x + width / 2, surfaceY + bodyHeight / 2, "course-body");
     body.setDisplaySize(bodyWidth, bodyHeight);
     body.setVisible(false);
     body.refreshBody();
@@ -637,7 +644,7 @@ class MemoryQuestScene extends Phaser.Scene {
     return {
       left,
       right,
-      y: platform.y,
+      y: surfaceY,
       margin: Math.max(24, unit * 0.72),
     };
   }
@@ -820,8 +827,12 @@ class MemoryQuestScene extends Phaser.Scene {
     if (!this.player || this.completed || this.respawning) return;
     this.respawning = true;
     this.player.setPosition(this.lastSafePosition.x, this.lastSafePosition.y);
+    if (this.player.body instanceof Phaser.Physics.Arcade.Body) {
+      this.player.body.reset(this.lastSafePosition.x, this.lastSafePosition.y);
+    }
     this.player.setVelocity(0, 0);
     this.player.setAcceleration(0, 0);
+    this.player.setAngularVelocity(0);
     this.cameras.main.shake(120, 0.004);
     this.time.delayedCall(220, () => {
       this.respawning = false;
@@ -831,6 +842,10 @@ class MemoryQuestScene extends Phaser.Scene {
   private completeLevel() {
     this.questText?.setText(`${this.level.rewardName} unlocked.`);
     this.completeCallback(this.level.id);
+  }
+
+  private playerYForSurface(surfaceY: number) {
+    return surfaceY - this.avatarBodyBottomOffset;
   }
 }
 
