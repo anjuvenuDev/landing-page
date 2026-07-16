@@ -5,7 +5,7 @@ import { MemoryQuestGame } from "./game/MemoryQuestGame";
 
 const storageKey = "anjana-memory-unlocks";
 
-type AppMode = "intro" | "game" | "browse" | "preview";
+type AppMode = "intro" | "game" | "browse" | "preview" | "slides";
 
 const narrationLines = [
   "I wake inside a forest that feels older than memory.",
@@ -23,6 +23,19 @@ function readStoredUnlocks(): PortfolioSectionId[] {
     return parsed.filter((id) => sectionOrder.includes(id));
   } catch {
     return [];
+  }
+}
+
+function requestBrowserFullscreen() {
+  const target = document.documentElement;
+  if (target.requestFullscreen) {
+    void target.requestFullscreen().catch(() => undefined);
+  }
+}
+
+function exitBrowserFullscreen() {
+  if (document.fullscreenElement && document.exitFullscreen) {
+    void document.exitFullscreen().catch(() => undefined);
   }
 }
 
@@ -200,10 +213,10 @@ function RewardOverlay({
   onClose,
   allUnlocked,
   onContinue,
-  onPreview,
+  onFullscreen,
 }: {
   section: PortfolioSection;
-  mode: Exclude<AppMode, "intro">;
+  mode: Exclude<AppMode, "intro" | "slides">;
   position: number;
   total: number;
   previousSection: PortfolioSection | null;
@@ -215,7 +228,7 @@ function RewardOverlay({
   onClose: () => void;
   allUnlocked: boolean;
   onContinue: () => void;
-  onPreview: () => void;
+  onFullscreen: () => void;
 }) {
   const browseMode = mode === "browse" || mode === "preview";
   const previewMode = mode === "preview";
@@ -228,27 +241,15 @@ function RewardOverlay({
         <button type="button" className="modal-close" onClick={onClose} aria-label="Close memory view">
           x
         </button>
-        {previewMode ? (
-          <button
-            type="button"
-            className="modal-tool minimize-tool"
-            onClick={onClose}
-            aria-label="go back to game mode"
-            title="go back to game mode"
-          >
-            ⤢
-          </button>
-        ) : (
-          <button
-            type="button"
-            className="modal-tool preview-tool"
-            onClick={onPreview}
-            aria-label="preview mode"
-            title="preview mode"
-          >
-            ⛶
-          </button>
-        )}
+        <button
+          type="button"
+          className="modal-tool preview-tool"
+          onClick={onFullscreen}
+          aria-label="preview mode"
+          title="preview mode"
+        >
+          ⛶
+        </button>
         <div className="reward-card-header">
           <div>
             <span className="memory-position">
@@ -338,17 +339,17 @@ function MemoryLog({
   onSelect,
   onReset,
   onHome,
-  onPreview,
+  onFullscreen,
 }: {
   open: boolean;
-  mode: Exclude<AppMode, "intro">;
+  mode: Exclude<AppMode, "intro" | "slides">;
   unlocked: PortfolioSectionId[];
   selectedId: PortfolioSectionId | null;
   onClose: () => void;
   onSelect: (sectionId: PortfolioSectionId) => void;
   onReset: () => void;
   onHome: () => void;
-  onPreview: () => void;
+  onFullscreen: () => void;
 }) {
   const browseMode = mode === "browse";
   const previewMode = mode === "preview";
@@ -363,11 +364,11 @@ function MemoryLog({
         <button
           type="button"
           className="icon-button sidebar-preview"
-          onClick={onPreview}
-          aria-label={previewMode ? "go back to game mode" : "preview mode"}
-          title={previewMode ? "go back to game mode" : "preview mode"}
+          onClick={onFullscreen}
+          aria-label="preview mode"
+          title="preview mode"
         >
-          {previewMode ? "⤢" : "⛶"}
+          ⛶
         </button>
         {browseMode || previewMode ? null : (
           <button type="button" className="icon-button close-log" onClick={onClose} aria-label="Close log">
@@ -407,6 +408,91 @@ function MemoryLog({
         })}
       </nav>
     </aside>
+  );
+}
+
+function FullscreenSlides({
+  section,
+  position,
+  total,
+  previousSection,
+  nextSection,
+  onPrev,
+  onNext,
+  onExit,
+}: {
+  section: PortfolioSection;
+  position: number;
+  total: number;
+  previousSection: PortfolioSection | null;
+  nextSection: PortfolioSection | null;
+  onPrev: () => void;
+  onNext: () => void;
+  onExit: () => void;
+}) {
+  return (
+    <section className="portfolio-slides" aria-label="Portfolio preview">
+      <button
+        type="button"
+        className="slide-mode-button"
+        onClick={onExit}
+        aria-label="go back to game mode"
+        title="go back to game mode"
+      >
+        ⤢
+      </button>
+      <button
+        type="button"
+        className="slide-arrow slide-prev"
+        onClick={onPrev}
+        disabled={!previousSection}
+        aria-label="Previous slide"
+      >
+        &lt;
+      </button>
+      <article className="slide-page" key={section.id}>
+        <header className="slide-header">
+          <span>
+            {position}/{total}
+          </span>
+          <h2>{section.title}</h2>
+        </header>
+        <div className="slide-body">
+          <SectionIllustration section={section} />
+          <div className="slide-copy">
+            <p>{section.summary}</p>
+            <ul>
+              {section.highlights.map((highlight) => (
+                <li key={highlight}>{highlight}</li>
+              ))}
+            </ul>
+            {section.links ? (
+              <div className="link-row" aria-label="Project links">
+                {section.links.map((link) => (
+                  <a key={link.href} href={link.href} target="_blank" rel="noreferrer">
+                    {link.label}
+                  </a>
+                ))}
+              </div>
+            ) : null}
+            <div className="tag-row">
+              {section.tags.map((tag) => (
+                <span key={tag}>{tag}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </article>
+      <button
+        type="button"
+        className="slide-arrow slide-next"
+        onClick={onNext}
+        disabled={!nextSection}
+        aria-label="Next slide"
+      >
+        &gt;
+      </button>
+    </section>
   );
 }
 
@@ -459,7 +545,7 @@ function App() {
   const selectedSection =
     sections.find((section) => {
       if (section.id !== selectedId) return false;
-      if (mode === "browse" || mode === "preview") return true;
+      if (mode === "browse" || mode === "preview" || mode === "slides") return true;
       return unlocked.includes(section.id);
     }) ?? null;
   const selectedIndex = selectedSection
@@ -522,18 +608,30 @@ function App() {
     setGameRun((run) => run + 1);
   };
 
-  const enterPreviewMode = () => {
-    const firstVisible = selectedId ?? unlocked[0] ?? sectionOrder[0];
-    setSelectedId(firstVisible);
-    setMode("preview");
-    setLogOpen(false);
-    setShowCompletion(false);
-  };
+  const getFirstVisibleSectionId = () => selectedId ?? unlocked[0] ?? sectionOrder[0];
 
   const leavePreviewMode = () => {
     setMode("game");
     setSelectedId(null);
     setLogOpen(false);
+  };
+
+  const enterSlidesMode = () => {
+    const firstVisible = getFirstVisibleSectionId();
+    setSelectedId(firstVisible);
+    setMode("slides");
+    setLogOpen(false);
+    setShowCompletion(false);
+    requestBrowserFullscreen();
+  };
+
+  const leaveSlidesMode = () => {
+    if (!selectedId) {
+      setSelectedId(getFirstVisibleSectionId());
+    }
+    setMode("preview");
+    setLogOpen(false);
+    exitBrowserFullscreen();
   };
 
   const selectFromLog = (sectionId: PortfolioSectionId) => {
@@ -546,10 +644,53 @@ function App() {
   const moveSelected = (direction: -1 | 1) => {
     if (selectedIndex < 0) return;
     const destination = sections[selectedIndex + direction];
-    if (destination && (mode === "browse" || mode === "preview" || unlocked.includes(destination.id))) {
+    if (
+      destination &&
+      (mode === "browse" || mode === "preview" || mode === "slides" || unlocked.includes(destination.id))
+    ) {
       setSelectedId(destination.id);
     }
   };
+
+  useEffect(() => {
+    if (mode !== "slides") return undefined;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        const destination = sections[selectedIndex - 1];
+        if (destination) setSelectedId(destination.id);
+      }
+
+      if (event.key === "ArrowRight") {
+        event.preventDefault();
+        const destination = sections[selectedIndex + 1];
+        if (destination) setSelectedId(destination.id);
+      }
+
+      if (event.key === "Escape") {
+        event.preventDefault();
+        exitBrowserFullscreen();
+        setMode("preview");
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [mode, selectedIndex]);
+
+  useEffect(() => {
+    if (mode !== "slides") return undefined;
+
+    const handleFullscreenChange = () => {
+      if (!document.fullscreenElement) {
+        setMode("preview");
+      }
+    };
+
+    document.addEventListener("fullscreenchange", handleFullscreenChange);
+    return () => document.removeEventListener("fullscreenchange", handleFullscreenChange);
+  }, [mode]);
 
   if (mode === "intro") {
     return <IntroScreen onEnterQuest={enterQuest} onOpenMemories={openBrowseMode} />;
@@ -560,6 +701,8 @@ function App() {
       className={
         mode === "preview"
           ? "game-screen preview-screen"
+          : mode === "slides"
+            ? "game-screen slide-screen"
           : mode === "browse"
             ? "game-screen browse-screen"
             : "game-screen"
@@ -570,10 +713,16 @@ function App() {
         level={currentLevel}
         reducedMotion={false}
         onComplete={unlockSection}
-        paused={mode === "browse" || mode === "preview"}
+        paused={mode === "browse" || mode === "preview" || mode === "slides"}
       />
 
-      <div className={mode === "browse" || mode === "preview" ? "game-overlay-hud browse-hidden" : "game-overlay-hud"}>
+      <div
+        className={
+          mode === "browse" || mode === "preview" || mode === "slides"
+            ? "game-overlay-hud browse-hidden"
+            : "game-overlay-hud"
+        }
+      >
         <button
           type="button"
           className="icon-button log-toggle"
@@ -585,28 +734,49 @@ function App() {
         <div className="objective-pill">
           {allUnlocked ? "All memories restored" : `Next: ${currentLevel.rewardName}`}
         </div>
-        <button type="button" className="hud-button restart-level" onClick={restartLevel}>
-          Restart level
+        <button
+          type="button"
+          className="icon-button restart-level"
+          onClick={restartLevel}
+          aria-label="Restart level"
+          title="Restart level"
+        >
+          ↻
         </button>
       </div>
 
-      <MemoryLog
-        open={logOpen}
-        mode={mode}
-        unlocked={unlocked}
-        selectedId={selectedId}
-        onClose={() => setLogOpen(false)}
-        onSelect={selectFromLog}
-        onReset={resetQuest}
-        onHome={goHome}
-        onPreview={mode === "preview" ? leavePreviewMode : enterPreviewMode}
-      />
-
-      {showCompletion && allUnlocked && mode === "game" && !selectedSection ? (
-        <CompletionOverlay onPreview={enterPreviewMode} onClose={() => setShowCompletion(false)} />
+      {mode !== "slides" ? (
+        <MemoryLog
+          open={logOpen}
+          mode={mode}
+          unlocked={unlocked}
+          selectedId={selectedId}
+          onClose={() => setLogOpen(false)}
+          onSelect={selectFromLog}
+          onReset={resetQuest}
+          onHome={goHome}
+          onFullscreen={enterSlidesMode}
+        />
       ) : null}
 
-      {selectedSection ? (
+      {showCompletion && allUnlocked && mode === "game" && !selectedSection ? (
+        <CompletionOverlay onPreview={enterSlidesMode} onClose={() => setShowCompletion(false)} />
+      ) : null}
+
+      {selectedSection && mode === "slides" ? (
+        <FullscreenSlides
+          section={selectedSection}
+          position={Math.max(1, selectedIndex + 1)}
+          total={sections.length}
+          previousSection={previousSection}
+          nextSection={nextSection}
+          onPrev={() => moveSelected(-1)}
+          onNext={() => moveSelected(1)}
+          onExit={leaveSlidesMode}
+        />
+      ) : null}
+
+      {selectedSection && mode !== "slides" ? (
         <RewardOverlay
           section={selectedSection}
           mode={mode}
@@ -633,7 +803,7 @@ function App() {
                 ? goHome
                 : () => setSelectedId(null)
           }
-          onPreview={enterPreviewMode}
+          onFullscreen={enterSlidesMode}
         />
       ) : null}
     </main>

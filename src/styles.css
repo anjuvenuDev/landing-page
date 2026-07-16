@@ -90,6 +90,10 @@ h2 {
   overflow: hidden;
 }
 
+.game-screen {
+  --log-width: min(360px, calc(100vw - 36px));
+}
+
 .intro-screen {
   position: relative;
   display: grid;
@@ -222,7 +226,6 @@ h2 {
 .treasure:not(:disabled):hover,
 .link-row a:hover,
 .icon-button:hover,
-.hud-button:hover,
 .modal-tool:hover {
   transform: translate(-2px, -2px);
   box-shadow: 7px 7px 0 #000;
@@ -342,8 +345,7 @@ h2 {
 
 .icon-button,
 .objective-pill,
-.motion-toggle,
-.hud-button {
+.motion-toggle {
   pointer-events: auto;
   border: 3px solid var(--paper);
   background: rgba(33, 26, 29, 0.88);
@@ -364,7 +366,7 @@ h2 {
 .objective-pill {
   position: absolute;
   top: 0;
-  right: 112px;
+  right: 64px;
   max-width: min(30vw, 360px);
   padding: 10px 14px;
   color: var(--gold);
@@ -373,8 +375,7 @@ h2 {
   text-align: center;
 }
 
-.motion-toggle,
-.hud-button {
+.motion-toggle {
   margin-left: auto;
   display: inline-flex;
   align-items: center;
@@ -382,11 +383,6 @@ h2 {
   min-height: 52px;
   padding: 8px 12px;
   font-size: 0.9rem;
-}
-
-.hud-button {
-  color: var(--gold);
-  font-family: "Pixelify Sans", monospace;
 }
 
 .motion-toggle input {
@@ -401,7 +397,7 @@ h2 {
   left: 18px;
   top: 84px;
   bottom: 18px;
-  width: min(360px, calc(100vw - 36px));
+  width: var(--log-width);
   padding: 16px;
   overflow-y: auto;
   background: rgba(33, 26, 29, 0.94);
@@ -541,7 +537,7 @@ h2 {
 
 .browse-screen .reward-overlay,
 .preview-screen .reward-overlay {
-  padding-left: min(440px, calc(100vw - 340px));
+  padding: 18px 18px 18px calc(var(--log-width) + 42px);
   background:
     radial-gradient(circle at 62% 50%, rgba(255, 209, 102, 0.14), transparent 34rem),
     rgba(7, 10, 12, 0.5);
@@ -562,7 +558,7 @@ h2 {
 
 .browse-screen .reward-card,
 .preview-screen .reward-card {
-  width: min(1450px, calc(100vw - min(440px, calc(100vw - 340px)) - 24px));
+  width: min(1380px, calc(100vw - var(--log-width) - 78px));
 }
 
 .modal-close {
@@ -593,6 +589,12 @@ h2 {
   box-shadow: 5px 5px 0 #000;
   font-family: "Pixelify Sans", monospace;
   font-size: 1.3rem;
+}
+
+.restart-level {
+  margin-left: auto;
+  flex: 0 0 auto;
+  font-size: 1.75rem;
 }
 
 .reward-reveal {
@@ -737,6 +739,137 @@ h2 {
   border: 3px solid rgba(255, 209, 102, 0.72);
   overflow: hidden;
   image-rendering: pixelated;
+}
+
+.portfolio-slides {
+  position: absolute;
+  z-index: 42;
+  inset: 0;
+  display: grid;
+  grid-template-columns: clamp(52px, 6vw, 92px) minmax(0, 1fr) clamp(52px, 6vw, 92px);
+  align-items: center;
+  gap: 0;
+  padding: clamp(14px, 2.4vw, 34px) 0;
+  background:
+    radial-gradient(circle at 50% 18%, rgba(255, 209, 102, 0.12), transparent 36rem),
+    linear-gradient(135deg, rgba(16, 24, 32, 0.98), rgba(33, 26, 29, 0.98));
+  animation: sceneFade 220ms ease both;
+}
+
+.slide-page {
+  width: 100%;
+  height: min(100%, calc(100vh - clamp(28px, 4.8vw, 68px)));
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: clamp(14px, 2vw, 26px);
+  padding: clamp(18px, 3vw, 42px);
+  overflow: hidden;
+  background: rgba(33, 26, 29, 0.88);
+  border: 4px solid var(--paper);
+  box-shadow:
+    0 0 0 5px #37251f,
+    0 24px 72px rgba(0, 0, 0, 0.6);
+}
+
+.slide-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.slide-header span {
+  flex: 0 0 auto;
+  color: var(--gold);
+  font-family: "Pixelify Sans", monospace;
+  font-size: clamp(1rem, 1.3vw, 1.35rem);
+}
+
+.slide-header h2 {
+  flex: 1 1 auto;
+  text-align: left;
+  font-size: clamp(2.4rem, 5vw, 6.2rem);
+}
+
+.slide-body {
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(440px, 0.92fr) minmax(0, 1.08fr);
+  gap: clamp(24px, 3.4vw, 58px);
+  align-items: stretch;
+}
+
+.slide-body .section-illustration {
+  min-height: 0;
+  height: 100%;
+}
+
+.slide-copy {
+  min-height: 0;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+.slide-copy p {
+  margin: 0 0 22px;
+  color: #ffeec5;
+  font-size: clamp(1.18rem, 1.55vw, 1.85rem);
+  line-height: 1.45;
+}
+
+.slide-copy ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.slide-copy li {
+  min-height: 86px;
+  padding: 16px;
+  background: rgba(16, 24, 32, 0.74);
+  border: 3px solid rgba(249, 231, 183, 0.42);
+  color: #f9e7b7;
+}
+
+.slide-arrow,
+.slide-mode-button {
+  border: 0;
+  background: transparent;
+  color: var(--gold);
+  font-family: "Pixelify Sans", monospace;
+  text-shadow: 5px 5px 0 #000;
+  box-shadow: none;
+}
+
+.slide-arrow {
+  width: 100%;
+  height: 100%;
+  min-height: 180px;
+  display: grid;
+  place-items: center;
+  font-size: clamp(3.8rem, 8vw, 8rem);
+}
+
+.slide-arrow:disabled {
+  opacity: 0.22;
+  transform: none;
+  cursor: not-allowed;
+}
+
+.slide-mode-button {
+  position: absolute;
+  right: 18px;
+  top: 18px;
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  color: rgba(255, 209, 102, 0.75);
+  font-size: 1.65rem;
 }
 
 .section-illustration::before {
@@ -1262,12 +1395,26 @@ h2 {
 
   .browse-screen .reward-overlay,
   .preview-screen .reward-overlay {
-    padding-left: 300px;
+    padding: 14px 14px 14px calc(var(--log-width) + 32px);
   }
 
   .browse-screen .reward-card,
   .preview-screen .reward-card {
-    width: min(920px, calc(100vw - 324px));
+    width: min(920px, calc(100vw - var(--log-width) - 58px));
+  }
+
+  .slide-body {
+    grid-template-columns: 1fr;
+    overflow-y: auto;
+  }
+
+  .slide-body .section-illustration {
+    min-height: 340px;
+    height: auto;
+  }
+
+  .slide-copy {
+    overflow: visible;
   }
 }
 
@@ -1319,6 +1466,12 @@ h2 {
     min-height: 46px;
   }
 
+  .restart-level {
+    width: 46px;
+    height: 46px;
+    font-size: 1.45rem;
+  }
+
   .quest-log {
     top: 70px;
     left: 10px;
@@ -1363,6 +1516,44 @@ h2 {
 
   .section-illustration {
     min-height: 220px;
+  }
+
+  .portfolio-slides {
+    grid-template-columns: 46px minmax(0, 1fr) 46px;
+    padding: 10px 0;
+  }
+
+  .slide-page {
+    height: calc(100vh - 20px);
+    padding: 14px;
+    border-width: 3px;
+  }
+
+  .slide-header {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .slide-header h2 {
+    font-size: clamp(2rem, 10vw, 3.8rem);
+  }
+
+  .slide-body .section-illustration {
+    min-height: 220px;
+  }
+
+  .slide-copy ul {
+    grid-template-columns: 1fr;
+  }
+
+  .slide-arrow {
+    min-height: 120px;
+    font-size: 3rem;
+  }
+
+  .slide-mode-button {
+    right: 8px;
+    top: 8px;
   }
 
   .completion-card {
