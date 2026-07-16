@@ -72,10 +72,10 @@ function useTypewriter(lines: string[]) {
 
 function IntroScreen({
   onEnterQuest,
-  onOpenMemories,
+  onSkipToProfile,
 }: {
   onEnterQuest: () => void;
-  onOpenMemories: () => void;
+  onSkipToProfile: () => void;
 }) {
   const { visibleLines, activeLine, complete } = useTypewriter(narrationLines);
 
@@ -106,8 +106,8 @@ function IntroScreen({
             <button type="button" onClick={onEnterQuest}>
               Enter the game
             </button>
-            <button type="button" onClick={onOpenMemories}>
-              Unlock memory shards
+            <button type="button" onClick={onSkipToProfile}>
+              Skip to profile
             </button>
           </div>
         </div>
@@ -580,10 +580,13 @@ function App() {
     });
   }, []);
 
-  const openBrowseMode = () => {
-    setMode("browse");
-    setSelectedId(unlocked[0] ?? null);
+  const skipToProfile = () => {
+    persistUnlocks([...sectionOrder]);
+    setSelectedId(sectionOrder[0]);
+    setMode("slides");
     setLogOpen(false);
+    setShowCompletion(false);
+    requestBrowserFullscreen();
   };
 
   const resetQuest = () => {
@@ -699,7 +702,7 @@ function App() {
   }, [mode]);
 
   if (mode === "intro") {
-    return <IntroScreen onEnterQuest={enterQuest} onOpenMemories={openBrowseMode} />;
+    return <IntroScreen onEnterQuest={enterQuest} onSkipToProfile={skipToProfile} />;
   }
 
   return (
