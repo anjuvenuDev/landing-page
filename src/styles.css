@@ -226,7 +226,8 @@ h2 {
 .treasure:not(:disabled):hover,
 .link-row a:hover,
 .icon-button:hover,
-.preview-close:hover {
+.preview-close:hover,
+.preview-expand:hover {
   transform: translate(-2px, -2px);
   box-shadow: 7px 7px 0 #000;
   border-color: var(--gold);
@@ -591,6 +592,21 @@ h2 {
   box-shadow: 5px 5px 0 #000;
   font-family: "Pixelify Sans", monospace;
   font-size: 1.35rem;
+}
+
+.preview-expand {
+  position: absolute;
+  top: 14px;
+  right: 68px;
+  z-index: 2;
+  width: 46px;
+  height: 46px;
+  border: 3px solid var(--paper);
+  background: #101820;
+  color: var(--gold);
+  box-shadow: 5px 5px 0 #000;
+  font-family: "Pixelify Sans", monospace;
+  font-size: 1.3rem;
 }
 
 .restart-level {

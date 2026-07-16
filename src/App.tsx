@@ -213,6 +213,7 @@ function SidePreview({
   onClose,
   allUnlocked,
   onContinue,
+  onFullscreen,
 }: {
   section: PortfolioSection;
   mode: Exclude<AppMode, "intro" | "slides">;
@@ -227,6 +228,7 @@ function SidePreview({
   onClose: () => void;
   allUnlocked: boolean;
   onContinue: () => void;
+  onFullscreen: () => void;
 }) {
   const previewMode = mode === "preview";
   const previousLocked = previousSection && !previousUnlocked;
@@ -237,6 +239,15 @@ function SidePreview({
       <article className="side-preview-panel reward-reveal" key={section.id}>
         <button type="button" className="preview-close" onClick={onClose} aria-label="Close memory view">
           x
+        </button>
+        <button
+          type="button"
+          className="preview-expand"
+          onClick={onFullscreen}
+          aria-label="Open fullscreen preview"
+          title="preview mode"
+        >
+          ⛶
         </button>
         <div className="side-preview-header">
           <div>
@@ -813,6 +824,7 @@ function App() {
                   ? replaySelectedLevel
                   : () => setSelectedId(null)
           }
+          onFullscreen={enterSlidesMode}
         />
       ) : null}
     </main>
