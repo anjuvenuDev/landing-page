@@ -42,6 +42,13 @@ type PlatformSpec = {
   tiles: number;
 };
 
+type SafeSurface = {
+  left: number;
+  right: number;
+  y: number;
+  margin: number;
+};
+
 type ObstacleSpec = {
   x: number;
   y: number;
@@ -52,6 +59,7 @@ type ObstacleSpec = {
 type CourseLayout = {
   platforms: Phaser.Physics.Arcade.StaticGroup;
   obstacles: ObstacleSpec[];
+  safeSurfaces: SafeSurface[];
   spawn: Phaser.Math.Vector2;
   shard: Phaser.Math.Vector2;
   chest: Phaser.Math.Vector2;
@@ -76,6 +84,8 @@ class MemoryQuestScene extends Phaser.Scene {
   private chest?: Phaser.Physics.Arcade.Sprite;
   private chestPoint = new Phaser.Math.Vector2(2040, 0);
   private lastSafePosition = new Phaser.Math.Vector2(140, 0);
+  private safeSurfaces: SafeSurface[] = [];
+  private respawning = false;
   private hazardY = 0;
   private hazardPoints: Phaser.Math.Vector2[] = [];
 
@@ -123,6 +133,7 @@ class MemoryQuestScene extends Phaser.Scene {
 
     const course = this.createCourse(height);
     this.chestPoint = course.chest;
+    this.safeSurfaces = course.safeSurfaces;
     this.lastSafePosition = course.spawn.clone();
     this.hazardY = course.hazardY;
 
@@ -137,7 +148,7 @@ class MemoryQuestScene extends Phaser.Scene {
     const bodyWidth = Math.max(48, Math.floor(avatarSprite.width * 0.34));
     const bodyHeight = Math.max(78, Math.floor(avatarSprite.height * 0.34));
     const bodyOffsetX = Math.floor((avatarSprite.width - bodyWidth) / 2);
-    const bodyOffsetY = Math.max(0, avatarSprite.height - bodyHeight - 8);
+    const bodyOffsetY = Math.max(0, avatarSprite.height - bodyHeight);
     this.player.body?.setSize(bodyWidth, bodyHeight).setOffset(bodyOffsetX, bodyOffsetY);
     this.cameras.main.startFollow(this.player, true, 0.08, 0.08, -160, 70);
     this.physics.add.collider(this.player, course.platforms);
@@ -202,15 +213,26 @@ class MemoryQuestScene extends Phaser.Scene {
     const body = this.player.body;
     const grounded = Boolean(body?.blocked.down) || Boolean(body?.touching.down);
 
-    if (grounded) {
-      this.lastSafePosition.set(this.player.x, this.player.y);
+    const activeSurface = grounded && !this.respawning ? this.findSafeSurface() : undefined;
+    if (activeSurface) {
+      const safeX = Phaser.Math.Clamp(
+        this.player.x,
+        activeSurface.left + activeSurface.margin,
+        activeSurface.right - activeSurface.margin,
+      );
+      this.lastSafePosition.set(safeX, activeSurface.y);
     }
 
     if (jump && grounded) {
       this.player.setVelocityY(-520);
     }
 
-    if (this.player.y > this.scale.height + 180) {
+    if (this.player.x < 32) {
+      this.player.setX(32);
+      this.player.setVelocityX(Math.max(0, this.player.body?.velocity.x ?? 0));
+    }
+
+    if (this.player.y > this.scale.height + 160) {
       this.resetPlayer();
     }
 
@@ -522,15 +544,42 @@ class MemoryQuestScene extends Phaser.Scene {
       { x: unit * 35.8, y: baseY - unit * 0.35, tiles: 11 },
     ];
     const platformGroup = this.physics.add.staticGroup();
+    const safeSurfaces: SafeSurface[] = [];
 
-    platforms.forEach((platform) => this.drawPlatform(platformGroup, platform, tileScale));
+    platforms.forEach((platform) => {
+      safeSurfaces.push(this.drawPlatform(platformGroup, platform, tileScale));
+    });
     this.addCourseDressing(platforms, tileScale, theme);
-    this.addBoxPlatform(platformGroup, platforms[1].x + unit * 3.2, platforms[1].y, tileScale, "sunny-crate-plain");
+    safeSurfaces.push(
+      this.addBoxPlatform(
+        platformGroup,
+        platforms[1].x + unit * 3.2,
+        platforms[1].y,
+        tileScale,
+        "sunny-crate-plain",
+      ),
+    );
     if (this.level.level > 2) {
-      this.addBoxPlatform(platformGroup, platforms[2].x + unit * 2.5, platforms[2].y, tileScale, "sunny-crate-ornate");
+      safeSurfaces.push(
+        this.addBoxPlatform(
+          platformGroup,
+          platforms[2].x + unit * 2.5,
+          platforms[2].y,
+          tileScale,
+          "sunny-crate-ornate",
+        ),
+      );
     }
     if (this.level.level > 4) {
-      this.addBoxPlatform(platformGroup, platforms[3].x + unit * 3.4, platforms[3].y, tileScale, "sunny-crate-plain");
+      safeSurfaces.push(
+        this.addBoxPlatform(
+          platformGroup,
+          platforms[3].x + unit * 3.4,
+          platforms[3].y,
+          tileScale,
+          "sunny-crate-plain",
+        ),
+      );
     }
 
     const finalPlatform = platforms[4];
@@ -542,7 +591,8 @@ class MemoryQuestScene extends Phaser.Scene {
     return {
       platforms: platformGroup,
       obstacles: [],
-      spawn: new Phaser.Math.Vector2(unit * 2.1, platforms[0].y - 10),
+      safeSurfaces,
+      spawn: new Phaser.Math.Vector2(unit * 2.1, safeSurfaces[0].y),
       shard: new Phaser.Math.Vector2(midPlatform.x + unit * 4.8, midPlatform.y - unit * 0.88),
       chest: new Phaser.Math.Vector2(finalPlatform.x + finalPlatform.tiles * unit - unit * 2.1, finalPlatform.y - unit * 0.72),
       hazardY: platforms[2].y - unit * 0.48,
@@ -557,7 +607,7 @@ class MemoryQuestScene extends Phaser.Scene {
     platformGroup: Phaser.Physics.Arcade.StaticGroup,
     platform: PlatformSpec,
     tileScale: number,
-  ) {
+  ): SafeSurface {
     const unit = 16 * tileScale;
     const width = platform.tiles * unit;
     this.add.image(platform.x, platform.y, "tall-platform-left")
@@ -575,10 +625,21 @@ class MemoryQuestScene extends Phaser.Scene {
       .setScale(tileScale)
       .setDepth(12);
 
-    const body = platformGroup.create(platform.x + width / 2, platform.y + unit * 0.24, "course-body");
-    body.setDisplaySize(width - unit * 0.35, unit * 0.42);
+    const bodyHeight = unit * 0.42;
+    const bodyWidth = width - unit * 0.16;
+    const body = platformGroup.create(platform.x + width / 2, platform.y + bodyHeight / 2, "course-body");
+    body.setDisplaySize(bodyWidth, bodyHeight);
     body.setVisible(false);
     body.refreshBody();
+
+    const left = platform.x + (width - bodyWidth) / 2;
+    const right = left + bodyWidth;
+    return {
+      left,
+      right,
+      y: platform.y,
+      margin: Math.max(24, unit * 0.72),
+    };
   }
 
   private addBoxPlatform(
@@ -587,13 +648,22 @@ class MemoryQuestScene extends Phaser.Scene {
     floorY: number,
     tileScale: number,
     texture: "sunny-crate-plain" | "sunny-crate-ornate",
-  ) {
+  ): SafeSurface {
     const boxScale = tileScale / 2;
-    const box = platformGroup.create(x, floorY - 32 * boxScale, texture);
+    const box = platformGroup.create(x, floorY, texture);
     box.setOrigin(0.5, 1);
     box.setScale(boxScale);
     box.setDepth(18);
     box.refreshBody();
+
+    const halfWidth = 16 * boxScale;
+    const top = floorY - 32 * boxScale;
+    return {
+      left: x - halfWidth,
+      right: x + halfWidth,
+      y: top,
+      margin: Math.max(8, halfWidth * 0.35),
+    };
   }
 
   private addCourseDressing(platforms: PlatformSpec[], tileScale: number, theme: LevelTheme) {
@@ -733,11 +803,29 @@ class MemoryQuestScene extends Phaser.Scene {
     this.time.delayedCall(520, () => this.completeLevel());
   }
 
+  private findSafeSurface() {
+    if (!this.player?.body) return undefined;
+
+    const body = this.player.body as Phaser.Physics.Arcade.Body;
+    const footX = this.player.x;
+    const footY = body.bottom;
+    return this.safeSurfaces.find((surface) => {
+      const inside = footX >= surface.left + surface.margin && footX <= surface.right - surface.margin;
+      const aligned = Math.abs(footY - surface.y) <= 14;
+      return inside && aligned;
+    });
+  }
+
   private resetPlayer() {
-    if (!this.player || this.completed) return;
+    if (!this.player || this.completed || this.respawning) return;
+    this.respawning = true;
     this.player.setPosition(this.lastSafePosition.x, this.lastSafePosition.y);
     this.player.setVelocity(0, 0);
+    this.player.setAcceleration(0, 0);
     this.cameras.main.shake(120, 0.004);
+    this.time.delayedCall(220, () => {
+      this.respawning = false;
+    });
   }
 
   private completeLevel() {
