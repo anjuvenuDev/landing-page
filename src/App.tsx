@@ -504,6 +504,59 @@ function MemoryHighlights({ section }: { section: PortfolioSection }) {
   );
 }
 
+function PortfolioMap({
+  activeId,
+  unlocked,
+  onSelect,
+  onHome,
+}: {
+  activeId: PortfolioSectionId;
+  unlocked: PortfolioSectionId[];
+  onSelect: (sectionId: PortfolioSectionId) => void;
+  onHome: () => void;
+}) {
+  return (
+    <aside className="portfolio-map" aria-label="Portfolio game map">
+      <h2>Game Map</h2>
+      <nav className="portfolio-map-path" aria-label="Memory map">
+        {sections.map((section, index) => {
+          const isUnlocked = unlocked.includes(section.id);
+          const isActive = section.id === activeId;
+          return (
+            <button
+              type="button"
+              className={`map-node node-${index + 1}${isActive ? " active" : ""}`}
+              key={section.id}
+              disabled={!isUnlocked}
+              onClick={() => onSelect(section.id)}
+            >
+              <span className="map-node-pad">
+                <img src={isActive ? "/assets/sunnyland/chest.png" : "/assets/sunnyland/crate-ornate.png"} alt="" />
+              </span>
+              <strong>{section.level}: {section.rewardName.replace("Memory of ", "")}</strong>
+              <small>{isUnlocked ? section.title : "Play to unlock"}</small>
+            </button>
+          );
+        })}
+      </nav>
+      <div className="portfolio-map-actions">
+        <button type="button" onClick={onHome} aria-label="Home">
+          <span className="map-action-icon">⌂</span>
+          Home
+        </button>
+        <span className="map-action-chip" aria-label="Game guide">
+          <span className="map-action-icon">◈</span>
+          Guide
+        </span>
+        <span className="map-action-chip" aria-label="Quest log">
+          <span className="map-action-icon">▣</span>
+          Log
+        </span>
+      </div>
+    </aside>
+  );
+}
+
 function PortfolioCopy({ section }: { section: PortfolioSection }) {
   const aboutParagraph =
     section.id === "about" && section.story?.length
@@ -578,6 +631,9 @@ function SidePreview({
   allUnlocked,
   onContinue,
   onFullscreen,
+  unlocked,
+  onSelectSection,
+  onHome,
 }: {
   section: PortfolioSection;
   mode: Exclude<AppMode, "intro" | "slides">;
@@ -593,6 +649,9 @@ function SidePreview({
   allUnlocked: boolean;
   onContinue: () => void;
   onFullscreen: () => void;
+  unlocked: PortfolioSectionId[];
+  onSelectSection: (sectionId: PortfolioSectionId) => void;
+  onHome: () => void;
 }) {
   const previewMode = mode === "preview";
   const previousLocked = previousSection && !previousUnlocked;
@@ -600,6 +659,7 @@ function SidePreview({
 
   return (
     <section className="side-preview" aria-live="polite">
+      <PortfolioMap activeId={section.id} unlocked={unlocked} onSelect={onSelectSection} onHome={onHome} />
       <article className="side-preview-panel reward-reveal" key={section.id}>
         <button type="button" className="preview-close" onClick={onClose} aria-label="Close memory view">
           x
@@ -615,9 +675,13 @@ function SidePreview({
         </button>
         <div className="side-preview-header">
           <h2>{section.title}</h2>
-          <span className="memory-position" aria-label={`Memory ${position} of ${total}`}>
-            {position}/{total}
-          </span>
+          <div className="quest-progress" aria-label={`Memory ${position} of ${total}`}>
+            <span>Quest Progress</span>
+            <div>
+              <i style={{ width: `${(position / total) * 100}%` }} />
+            </div>
+            <strong>{position}/{total}</strong>
+          </div>
         </div>
         <PortfolioContent section={section} mode="preview" />
         <div className="side-preview-nav">
@@ -1072,7 +1136,7 @@ function App() {
         </div>
       </div>
 
-      {mode !== "slides" ? (
+      {mode !== "slides" && mode !== "preview" ? (
         <MemoryLog
           open={logOpen}
           mode={mode}
@@ -1132,6 +1196,9 @@ function App() {
                   : () => setSelectedId(null)
           }
           onFullscreen={enterSlidesMode}
+          unlocked={unlocked}
+          onSelectSection={selectFromLog}
+          onHome={goHome}
         />
       ) : null}
     </main>

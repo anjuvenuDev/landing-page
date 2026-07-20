@@ -143,7 +143,7 @@ export const sections: PortfolioSection[] = [
   {
     id: "projects",
     level: 2,
-    title: "Projects",
+    title: "Anjana's Projects",
     rewardName: "Memory of Making",
     quest:
       "A trail of unfinished inventions flickers ahead. Collect the shard of craft.",
