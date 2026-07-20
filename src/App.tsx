@@ -424,11 +424,13 @@ function PortfolioCopy({ section }: { section: PortfolioSection }) {
           </div>
         ) : null}
       </div>
-      <div className="portfolio-modules">
+      <div className="portfolio-primary">
         <ProjectCards section={section} />
         <WorkRoadmap section={section} />
         <SkillWall section={section} />
         <FeatureCards section={section} />
+      </div>
+      <div className="portfolio-secondary">
         <MemoryHighlights section={section} />
         <PortfolioLinks section={section} />
       </div>

@@ -112,7 +112,7 @@ export const sections: PortfolioSection[] = [
       "With a strong academic record and hands-on experience across artificial intelligence, full-stack development, product engineering, and computer vision, she enjoys working at the intersection of innovation and usability.",
       "What began as a fascination with programming has evolved into a broader interest in designing complete digital experiences. From conceptualizing products and architecting software to refining user interactions, Anjana enjoys understanding every layer of the development process.",
       "She believes that successful technology is not defined solely by its technical sophistication, but by how naturally it fits into people's lives.",
-      "Her work is guided by curiosity, creativity, and a constant desire to learn. Whether developing AI-powered assistive technologies, building scalable web applications, or experimenting with embedded systems, she approaches every project with equal parts analytical thinking and design intuition.",
+      "Her work is guided by curiosity, creativity, and a constant desire to learn.",
       "Anjana hopes to contribute to products that combine intelligent technology with thoughtful design, making complex systems more accessible, intuitive, and human-centered.",
     ],
     highlights: [
