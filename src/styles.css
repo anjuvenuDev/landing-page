@@ -604,6 +604,14 @@ h2 {
     0 24px 72px rgba(0, 0, 0, 0.58);
 }
 
+.side-preview-panel:has(.portfolio-projects),
+.slide-page:has(.portfolio-projects) {
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 209, 102, 0.66) rgba(16, 24, 32, 0.54);
+}
+
 .preview-close {
   position: absolute;
   top: 12px;
@@ -663,6 +671,7 @@ h2 {
 }
 
 .portfolio-content {
+  --portfolio-gap: clamp(8px, 1vw, 14px);
   display: grid;
   grid-template-columns: minmax(310px, 27%) minmax(0, 1fr);
   grid-template-rows: auto auto auto;
@@ -676,6 +685,12 @@ h2 {
   color: #f9e7b7;
   font-size: clamp(0.72rem, 0.78vw, 0.98rem);
   line-height: 1.28;
+}
+
+.text-highlight {
+  color: #fff4c7;
+  font-weight: 800;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.65);
 }
 
 .portfolio-slide {
@@ -876,6 +891,84 @@ h2 {
   box-shadow: 8px 8px 0 #000;
 }
 
+.contribution-board {
+  place-items: stretch;
+  align-content: center;
+  gap: clamp(8px, 1vw, 14px);
+  padding: clamp(12px, 1.4vw, 20px);
+  background:
+    radial-gradient(circle at 50% 88%, rgba(57, 211, 83, 0.18), transparent 13rem),
+    linear-gradient(rgba(48, 54, 61, 0.54) 2px, transparent 2px),
+    #05090d;
+  background-size: auto, 100% 24px, auto;
+}
+
+.contribution-months {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  color: #7d8590;
+  font-family: "Pixelify Sans", monospace;
+  font-size: clamp(0.58rem, 0.64vw, 0.8rem);
+}
+
+.contribution-grid {
+  display: grid;
+  grid-template-columns: repeat(20, minmax(0, 1fr));
+  gap: clamp(3px, 0.28vw, 5px);
+}
+
+.contribution-cell {
+  aspect-ratio: 1;
+  background: #101820;
+  border: 1px solid rgba(48, 54, 61, 0.76);
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+}
+
+.contribution-cell.level-1 {
+  background: #0e4429;
+}
+
+.contribution-cell.level-2 {
+  background: #006d32;
+}
+
+.contribution-cell.level-3 {
+  background: #26a641;
+}
+
+.contribution-cell.level-4 {
+  background: #39d353;
+}
+
+.contribution-caption {
+  display: inline-flex;
+  align-items: center;
+  justify-self: start;
+  gap: 8px;
+  max-width: 100%;
+  padding: 7px 9px;
+  background: rgba(16, 24, 32, 0.9);
+  border: 2px solid rgba(57, 211, 83, 0.64);
+  color: #d6ffe2;
+  font-family: "Pixelify Sans", monospace;
+  font-size: clamp(0.62rem, 0.72vw, 0.88rem);
+}
+
+.github-glyph,
+.link-icon {
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 auto;
+  width: 25px;
+  height: 25px;
+  border: 2px solid currentColor;
+  background: #0d1117;
+  color: inherit;
+  font-family: "Pixelify Sans", monospace;
+  font-size: 0.62rem;
+  line-height: 1;
+}
+
 .project-hand {
   position: absolute;
   width: 104px;
@@ -1014,7 +1107,60 @@ h2 {
 }
 
 .portfolio-projects .project-card-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+}
+
+.portfolio-projects .portfolio-media {
+  grid-row: 1;
+  min-height: clamp(250px, 32vh, 390px);
+}
+
+.portfolio-projects .portfolio-primary {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  overflow: visible;
+}
+
+.portfolio-projects .portfolio-secondary {
+  grid-row: 3;
+  overflow: visible;
+}
+
+.portfolio-projects .portfolio-content,
+.portfolio-projects.portfolio-content {
+  overflow: visible;
+}
+
+.portfolio-projects .project-card {
+  gap: 6px;
+  padding: 9px;
+  border-width: 2px;
+}
+
+.portfolio-projects .project-card-head {
+  grid-template-columns: 34px 1fr;
+}
+
+.portfolio-projects .project-card h3 {
+  font-size: clamp(0.92rem, 0.94vw, 1.14rem);
+}
+
+.portfolio-projects .project-card p {
+  line-height: 1.22;
+}
+
+.portfolio-projects .project-detail-list {
+  gap: 4px;
+}
+
+.portfolio-projects .project-detail-list li {
+  padding-top: 4px;
+  padding-bottom: 4px;
+  border-width: 1px;
+}
+
+.portfolio-projects .stack-row span {
+  font-size: 0.68rem;
 }
 
 .project-card {
@@ -1176,7 +1322,10 @@ h2 {
 }
 
 .tag-row span,
-.link-row a {
+.portfolio-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
   padding: 5px 8px;
   background: #101820;
   border: 2px solid var(--magic);
@@ -1185,10 +1334,40 @@ h2 {
   text-decoration: none;
 }
 
-.link-row a {
+.portfolio-link {
+  min-height: 36px;
   border-color: var(--gold);
   color: var(--gold);
   box-shadow: 4px 4px 0 #000;
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease,
+    background 160ms ease;
+}
+
+.portfolio-link:hover,
+.portfolio-link:focus-visible {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 #000;
+  background: rgba(255, 209, 102, 0.14);
+}
+
+.portfolio-link.link-profile {
+  padding: 8px 12px;
+  border: 3px solid #39d353;
+  background:
+    linear-gradient(135deg, rgba(57, 211, 83, 0.18), rgba(255, 209, 102, 0.1)),
+    #0d1117;
+  color: #d6ffe2;
+}
+
+.portfolio-link.link-profile .link-icon {
+  color: #39d353;
+}
+
+.project-links .portfolio-link {
+  min-height: 32px;
+  padding: 4px 7px;
 }
 
 .continue-button {
