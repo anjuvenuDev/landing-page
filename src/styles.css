@@ -614,9 +614,9 @@ h2 {
   position: relative;
   display: grid;
   grid-template-rows: repeat(8, minmax(0, 1fr));
-  gap: 7px;
+  gap: 8px;
   min-height: 0;
-  padding: 12px 14px;
+  padding: 12px;
 }
 
 .portfolio-map-path::before {
@@ -624,9 +624,8 @@ h2 {
   position: absolute;
   top: 34px;
   bottom: 34px;
-  left: 50%;
+  left: 42px;
   width: 8px;
-  transform: translateX(-50%);
   background:
     linear-gradient(#d8c8a3 0 0) center / 3px 100% no-repeat,
     rgba(33, 26, 29, 0.36);
@@ -641,7 +640,7 @@ h2 {
   grid-template-rows: 1fr 1fr;
   align-items: center;
   gap: 0 8px;
-  width: min(92%, 235px);
+  width: 100%;
   min-height: 58px;
   padding: 5px 8px;
   border: 0;
@@ -652,11 +651,11 @@ h2 {
 }
 
 .map-node:nth-child(even) {
-  justify-self: end;
+  justify-self: stretch;
 }
 
 .map-node:nth-child(odd) {
-  justify-self: start;
+  justify-self: stretch;
 }
 
 .map-node-pad {
@@ -900,17 +899,20 @@ h2 {
   --portfolio-gap: clamp(8px, 1vw, 14px);
   display: grid;
   grid-template-columns: clamp(260px, 24vw, 420px) minmax(0, 1fr);
-  grid-template-rows: auto minmax(0, 1fr) auto;
+  grid-template-rows: auto auto auto;
   column-gap: var(--portfolio-gap);
   row-gap: var(--portfolio-gap);
   height: 100%;
   margin-top: 0;
   min-height: 0;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
   align-content: start;
   color: #f9e7b7;
   font-size: clamp(0.82rem, 0.82vw, 1rem);
   line-height: 1.28;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 209, 102, 0.66) rgba(16, 24, 32, 0.54);
 }
 
 .text-highlight {
@@ -925,11 +927,11 @@ h2 {
 }
 
 .portfolio-slide .portfolio-media {
-  height: 100%;
+  height: clamp(180px, 25vh, 315px);
 }
 
 .portfolio-preview .portfolio-media {
-  height: 100%;
+  height: clamp(180px, 25vh, 315px);
 }
 
 .portfolio-copy {
@@ -1836,41 +1838,41 @@ h2 {
   border: 2px dashed rgba(249, 231, 183, 0.22);
 }
 
-.map-node,
-.network-node,
-.network-core,
-.timeline-dot,
-.skill-orbit,
-.compass-label,
-.guild-banner,
-.garden-stem,
-.garden-moon,
-.trophy-cup,
-.trophy-base,
-.spark {
+.section-illustration .map-node,
+.section-illustration .network-node,
+.section-illustration .network-core,
+.section-illustration .timeline-dot,
+.section-illustration .skill-orbit,
+.section-illustration .compass-label,
+.section-illustration .guild-banner,
+.section-illustration .garden-stem,
+.section-illustration .garden-moon,
+.section-illustration .trophy-cup,
+.section-illustration .trophy-base,
+.section-illustration .spark {
   position: absolute;
   display: block;
 }
 
-.map-node {
+.section-illustration .map-node {
   width: 28px;
   height: 28px;
   background: var(--gold);
   box-shadow: 4px 4px 0 #000;
 }
 
-.map-node.start {
+.section-illustration .map-node.start {
   left: 18%;
   top: 62%;
 }
 
-.map-node.college {
+.section-illustration .map-node.college {
   left: 46%;
   top: 36%;
   background: var(--aqua);
 }
 
-.map-node.product {
+.section-illustration .map-node.product {
   right: 18%;
   top: 56%;
   background: var(--rose);
@@ -1886,7 +1888,7 @@ h2 {
   transform: rotate(-8deg);
 }
 
-.network-core {
+.section-illustration .network-core {
   left: calc(50% - 36px);
   top: calc(50% - 36px);
   width: 72px;
@@ -1895,8 +1897,8 @@ h2 {
   box-shadow: 0 0 0 8px rgba(192, 132, 252, 0.24);
 }
 
-.network-node,
-.skill-orbit {
+.section-illustration .network-node,
+.section-illustration .skill-orbit {
   width: 54px;
   height: 42px;
   display: grid;
@@ -1907,27 +1909,27 @@ h2 {
   font-family: "Pixelify Sans", monospace;
 }
 
-.network-node.n1 {
+.section-illustration .network-node.n1 {
   left: 16%;
   top: 20%;
 }
 
-.network-node.n2 {
+.section-illustration .network-node.n2 {
   right: 16%;
   top: 20%;
 }
 
-.network-node.n3 {
+.section-illustration .network-node.n3 {
   left: 18%;
   bottom: 18%;
 }
 
-.network-node.n4 {
+.section-illustration .network-node.n4 {
   right: 18%;
   bottom: 18%;
 }
 
-.timeline-line {
+.section-illustration .timeline-line {
   position: absolute;
   left: 18%;
   top: 50%;
@@ -1936,7 +1938,7 @@ h2 {
   background: var(--gold);
 }
 
-.timeline-dot {
+.section-illustration .timeline-dot {
   top: calc(50% - 34px);
   width: 92px;
   height: 68px;
@@ -1949,19 +1951,19 @@ h2 {
   font-size: 0.82rem;
 }
 
-.timeline-dot.d1 {
+.section-illustration .timeline-dot.d1 {
   left: 12%;
 }
 
-.timeline-dot.d2 {
+.section-illustration .timeline-dot.d2 {
   left: calc(50% - 46px);
 }
 
-.timeline-dot.d3 {
+.section-illustration .timeline-dot.d3 {
   right: 12%;
 }
 
-.skill-bar {
+.section-illustration .skill-bar {
   position: absolute;
   left: 16%;
   height: 22px;
@@ -1969,37 +1971,37 @@ h2 {
   box-shadow: 4px 4px 0 #000;
 }
 
-.skill-bar.b1 {
+.section-illustration .skill-bar.b1 {
   top: 24%;
   width: 68%;
 }
 
-.skill-bar.b2 {
+.section-illustration .skill-bar.b2 {
   top: 42%;
   width: 56%;
 }
 
-.skill-bar.b3 {
+.section-illustration .skill-bar.b3 {
   top: 60%;
   width: 74%;
 }
 
-.skill-orbit.o1 {
+.section-illustration .skill-orbit.o1 {
   right: 12%;
   top: 12%;
 }
 
-.skill-orbit.o2 {
+.section-illustration .skill-orbit.o2 {
   left: 14%;
   bottom: 14%;
 }
 
-.skill-orbit.o3 {
+.section-illustration .skill-orbit.o3 {
   right: 20%;
   bottom: 18%;
 }
 
-.compass-ring {
+.section-illustration .compass-ring {
   position: absolute;
   left: calc(50% - 84px);
   top: calc(50% - 84px);
@@ -2009,7 +2011,7 @@ h2 {
   box-shadow: inset 0 0 0 8px rgba(128, 255, 219, 0.2);
 }
 
-.compass-needle {
+.section-illustration .compass-needle {
   position: absolute;
   left: calc(50% - 8px);
   top: calc(50% - 78px);
@@ -2019,34 +2021,34 @@ h2 {
   transform: rotate(38deg);
 }
 
-.compass-label {
+.section-illustration .compass-label {
   padding: 5px 8px;
   background: #101820;
   border: 2px solid var(--paper);
   font-family: "Pixelify Sans", monospace;
 }
 
-.north {
+.section-illustration .north {
   left: 44%;
   top: 10%;
 }
 
-.east {
+.section-illustration .east {
   right: 8%;
   top: 48%;
 }
 
-.south {
+.section-illustration .south {
   left: 43%;
   bottom: 8%;
 }
 
-.west {
+.section-illustration .west {
   left: 7%;
   top: 48%;
 }
 
-.guild-banner {
+.section-illustration .guild-banner {
   width: 86px;
   height: 112px;
   display: grid;
@@ -2058,36 +2060,36 @@ h2 {
   box-shadow: 5px 5px 0 #000;
 }
 
-.guild-banner.g1 {
+.section-illustration .guild-banner.g1 {
   left: 12%;
   top: 20%;
 }
 
-.guild-banner.g2 {
+.section-illustration .guild-banner.g2 {
   left: 34%;
   top: 34%;
   background: #1f5a3d;
 }
 
-.guild-banner.g3 {
+.section-illustration .guild-banner.g3 {
   right: 34%;
   top: 22%;
   background: #9a5f3f;
 }
 
-.guild-banner.g4 {
+.section-illustration .guild-banner.g4 {
   right: 12%;
   top: 38%;
   background: #263238;
 }
 
-.garden-stem {
+.section-illustration .garden-stem {
   bottom: 22%;
   width: 18px;
   background: var(--moss);
 }
 
-.garden-stem::before {
+.section-illustration .garden-stem::before {
   content: "";
   position: absolute;
   left: -20px;
@@ -2097,22 +2099,22 @@ h2 {
   background: var(--rose);
 }
 
-.garden-stem.s1 {
+.section-illustration .garden-stem.s1 {
   left: 28%;
   height: 96px;
 }
 
-.garden-stem.s2 {
+.section-illustration .garden-stem.s2 {
   left: 50%;
   height: 128px;
 }
 
-.garden-stem.s3 {
+.section-illustration .garden-stem.s3 {
   right: 28%;
   height: 82px;
 }
 
-.garden-moon {
+.section-illustration .garden-moon {
   right: 14%;
   top: 14%;
   width: 66px;
@@ -2121,7 +2123,7 @@ h2 {
   box-shadow: -18px 0 0 #101820;
 }
 
-.trophy-cup {
+.section-illustration .trophy-cup {
   left: calc(50% - 70px);
   top: 22%;
   width: 140px;
@@ -2133,7 +2135,7 @@ h2 {
   background-repeat: no-repeat;
 }
 
-.trophy-base {
+.section-illustration .trophy-base {
   left: calc(50% - 54px);
   top: 58%;
   width: 108px;
@@ -2142,24 +2144,24 @@ h2 {
   box-shadow: 0 22px 0 #3a2118;
 }
 
-.spark {
+.section-illustration .spark {
   width: 18px;
   height: 18px;
   background: var(--aqua);
   animation: blink 900ms steps(2, start) infinite;
 }
 
-.spark.sp1 {
+.section-illustration .spark.sp1 {
   left: 22%;
   top: 22%;
 }
 
-.spark.sp2 {
+.section-illustration .spark.sp2 {
   right: 24%;
   top: 30%;
 }
 
-.spark.sp3 {
+.section-illustration .spark.sp3 {
   left: 30%;
   bottom: 24%;
 }
