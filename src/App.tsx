@@ -410,24 +410,28 @@ function PortfolioCopy({ section }: { section: PortfolioSection }) {
 
   return (
     <div className="portfolio-copy">
-      {aboutParagraph ? (
-        <p className="summary about-single-paragraph">{aboutParagraph}</p>
-      ) : (
-        <p className="summary">{section.summary}</p>
-      )}
-      {!aboutParagraph && section.story?.length ? (
-        <div className="story-lines">
-          {section.story.map((line) => (
-            <p key={line}>{line}</p>
-          ))}
-        </div>
-      ) : null}
-      <ProjectCards section={section} />
-      <WorkRoadmap section={section} />
-      <SkillWall section={section} />
-      <FeatureCards section={section} />
-      <MemoryHighlights section={section} />
-      <PortfolioLinks section={section} />
+      <div className="portfolio-narrative">
+        {aboutParagraph ? (
+          <p className="summary about-single-paragraph">{aboutParagraph}</p>
+        ) : (
+          <p className="summary">{section.summary}</p>
+        )}
+        {!aboutParagraph && section.story?.length ? (
+          <div className="story-lines">
+            {section.story.map((line) => (
+              <p key={line}>{line}</p>
+            ))}
+          </div>
+        ) : null}
+      </div>
+      <div className="portfolio-modules">
+        <ProjectCards section={section} />
+        <WorkRoadmap section={section} />
+        <SkillWall section={section} />
+        <FeatureCards section={section} />
+        <MemoryHighlights section={section} />
+        <PortfolioLinks section={section} />
+      </div>
     </div>
   );
 }
@@ -441,7 +445,9 @@ function PortfolioContent({
 }) {
   return (
     <div className={`portfolio-content portfolio-${section.layout} portfolio-${mode}`}>
-      <PortfolioVisual section={section} />
+      <div className="portfolio-media">
+        <PortfolioVisual section={section} />
+      </div>
       <PortfolioCopy section={section} />
     </div>
   );

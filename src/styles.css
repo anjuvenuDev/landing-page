@@ -662,11 +662,19 @@ h2 {
 }
 
 .portfolio-content {
-  display: block;
+  display: grid;
+  grid-template-columns: minmax(210px, 24%) minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr);
+  column-gap: clamp(18px, 2.2vw, 30px);
+  row-gap: clamp(10px, 1.3vw, 18px);
   height: 100%;
   margin-top: 14px;
   min-height: 0;
   overflow: hidden;
+  align-content: start;
+  color: #f9e7b7;
+  font-size: clamp(0.72rem, 0.78vw, 0.98rem);
+  line-height: 1.28;
 }
 
 .portfolio-slide {
@@ -674,34 +682,57 @@ h2 {
   margin-top: 0;
 }
 
-.portfolio-content::after {
-  content: "";
-  display: block;
-  clear: both;
+.portfolio-slide .portfolio-media {
+  height: clamp(150px, 24vh, 255px);
+}
+
+.portfolio-preview .portfolio-media {
+  height: clamp(145px, 24vh, 250px);
 }
 
 .portfolio-copy {
+  display: contents;
+}
+
+.portfolio-narrative {
+  grid-column: 2;
+  grid-row: 1;
   min-width: 0;
-  height: 100%;
   min-height: 0;
   overflow: hidden;
-  padding-right: 0;
-  color: #f9e7b7;
-  font-size: clamp(0.68rem, 0.76vw, 0.94rem);
-  line-height: 1.27;
+  align-self: start;
+}
+
+.portfolio-modules {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  min-width: 0;
+  min-height: 0;
+  display: grid;
+  align-content: start;
+  gap: clamp(8px, 1vw, 12px);
+  overflow: hidden;
+}
+
+.portfolio-media {
+  grid-column: 1;
+  grid-row: 1;
+  width: 100%;
+  height: clamp(155px, 26vh, 275px);
+  min-height: 0;
+  align-self: start;
 }
 
 .summary {
   max-width: 76rem;
-  margin: 0 0 10px;
+  margin: 0;
   color: #ffeec5;
-  font-size: clamp(0.86rem, 0.96vw, 1.14rem);
+  font-size: clamp(0.9rem, 1vw, 1.18rem);
   line-height: 1.34;
 }
 
 .about-single-paragraph {
-  margin-bottom: 12px;
-  font-size: clamp(0.82rem, 0.92vw, 1.08rem);
+  font-size: clamp(0.9rem, 1vw, 1.18rem);
   line-height: 1.32;
   text-align: left;
 }
@@ -738,11 +769,10 @@ h2 {
 
 .portfolio-photo-frame {
   position: relative;
-  float: left;
-  width: min(29%, 292px);
-  height: clamp(150px, 26vh, 260px);
+  width: 100%;
+  height: 100%;
   min-height: 0;
-  margin: 0 18px 10px 0;
+  margin: 0;
   overflow: hidden;
   background: #101820;
   border: 4px solid var(--paper);
@@ -772,7 +802,7 @@ h2 {
 }
 
 .photo-phone {
-  width: min(25%, 230px);
+  width: 100%;
 }
 
 .photo-phone img {
@@ -781,14 +811,13 @@ h2 {
 }
 
 .image-collage {
-  float: left;
-  width: min(31%, 320px);
-  height: clamp(160px, 28vh, 280px);
+  width: 100%;
+  height: 100%;
   min-height: 0;
   display: grid;
   grid-template-rows: 1fr 0.78fr;
   gap: 8px;
-  margin: 0 18px 10px 0;
+  margin: 0;
 }
 
 .image-collage .portfolio-photo-frame {
@@ -803,11 +832,10 @@ h2 {
 .project-portal,
 .company-stack {
   position: relative;
-  float: left;
-  width: min(26%, 270px);
-  height: clamp(140px, 24vh, 240px);
+  width: 100%;
+  height: 100%;
   min-height: 0;
-  margin: 0 18px 10px 0;
+  margin: 0;
   display: grid;
   place-items: center;
   overflow: hidden;
@@ -893,7 +921,7 @@ h2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 7px;
   padding: 0;
-  margin: 10px 0;
+  margin: 0;
   list-style: none;
 }
 
@@ -915,7 +943,7 @@ h2 {
 .skill-wall {
   display: grid;
   gap: 8px;
-  margin: 10px 0;
+  margin: 0;
 }
 
 .feature-card-grid {
@@ -1129,7 +1157,7 @@ h2 {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: 9px;
+  margin-top: 0;
 }
 
 .tag-row span,
@@ -1190,11 +1218,10 @@ h2 {
 
 .section-illustration {
   position: relative;
-  float: left;
-  width: min(28%, 280px);
-  height: clamp(145px, 25vh, 245px);
+  width: 100%;
+  height: 100%;
   min-height: 0;
-  margin: 0 18px 10px 0;
+  margin: 0;
   background:
     linear-gradient(90deg, rgba(255, 209, 102, 0.08) 1px, transparent 1px),
     linear-gradient(180deg, rgba(255, 209, 102, 0.08) 1px, transparent 1px),
@@ -1271,7 +1298,7 @@ h2 {
 .portfolio-slide .company-stack,
 .portfolio-slide .image-collage {
   min-height: 0;
-  height: clamp(130px, 23vh, 235px);
+  height: 100%;
 }
 
 .portfolio-slide .summary {
@@ -1835,6 +1862,20 @@ h2 {
   .portfolio-skills,
   .portfolio-achievements {
     grid-template-columns: 1fr;
+    grid-template-rows: auto auto minmax(0, 1fr);
+    overflow-y: auto;
+  }
+
+  .portfolio-media,
+  .portfolio-narrative,
+  .portfolio-modules {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .portfolio-media {
+    width: min(100%, 360px);
+    height: 240px;
   }
 
   .memory-highlights,
@@ -1848,17 +1889,8 @@ h2 {
     overflow-y: auto;
   }
 
-  .portfolio-slide .section-illustration,
-  .portfolio-slide .portfolio-photo-frame,
-  .portfolio-slide .project-portal,
-  .portfolio-slide .company-stack,
-  .portfolio-slide .image-collage {
-    min-height: 340px;
-    height: auto;
-  }
-
-  .portfolio-slide .portfolio-copy {
-    overflow: visible;
+  .portfolio-slide .portfolio-media {
+    height: 240px;
   }
 }
 
@@ -1982,7 +2014,12 @@ h2 {
   .project-portal,
   .company-stack,
   .image-collage {
-    min-height: 220px;
+    min-height: 0;
+  }
+
+  .portfolio-media,
+  .portfolio-slide .portfolio-media {
+    height: 220px;
   }
 
   .memory-highlights,
