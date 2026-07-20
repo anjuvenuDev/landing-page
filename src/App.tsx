@@ -295,6 +295,13 @@ function ProjectCards({ section }: { section: PortfolioSection }) {
             <h3>{project.title}</h3>
           </div>
           <p>{project.description}</p>
+          {project.details?.length ? (
+            <ul className="compact-list project-detail-list">
+              {project.details.map((detail) => (
+                <li key={detail}>{detail}</li>
+              ))}
+            </ul>
+          ) : null}
           <div className="stack-row">
             {project.stack.map((tool) => (
               <span key={tool}>{tool}</span>
@@ -362,8 +369,7 @@ function SkillWall({ section }: { section: PortfolioSection }) {
 }
 
 function MemoryHighlights({ section }: { section: PortfolioSection }) {
-  const richLayouts = ["projects", "timeline", "skills"];
-  if (richLayouts.includes(section.layout) || !section.highlights.length) return null;
+  if (!section.highlights.length) return null;
 
   return (
     <ul className="memory-highlights">

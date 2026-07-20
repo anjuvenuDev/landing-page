@@ -667,7 +667,7 @@ h2 {
 .portfolio-timeline,
 .portfolio-skills,
 .portfolio-achievements {
-  grid-template-columns: minmax(250px, 0.52fr) minmax(0, 1.48fr);
+  grid-template-columns: minmax(230px, 0.44fr) minmax(0, 1.56fr);
 }
 
 .portfolio-slide {
@@ -691,18 +691,47 @@ h2 {
 }
 
 .story-lines {
+  position: relative;
   display: grid;
-  gap: 10px;
+  gap: 12px;
   margin: 0 0 18px;
+  padding-left: 18px;
+}
+
+.story-lines::before {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 8px;
+  bottom: 8px;
+  width: 4px;
+  background: linear-gradient(var(--gold), var(--aqua), var(--rose));
+  box-shadow: 3px 0 0 #000;
 }
 
 .story-lines p {
+  position: relative;
   margin: 0;
-  padding: 13px 15px;
-  background: rgba(16, 24, 32, 0.58);
+  padding: 13px 15px 13px 17px;
+  background:
+    linear-gradient(135deg, rgba(255, 209, 102, 0.08), transparent 42%),
+    rgba(16, 24, 32, 0.58);
+  border: 2px solid rgba(249, 231, 183, 0.28);
   border-left: 4px solid var(--gold);
   color: #f7dca9;
-  line-height: 1.48;
+  font-size: clamp(0.98rem, 1.05vw, 1.14rem);
+  line-height: 1.5;
+}
+
+.story-lines p::before {
+  content: "";
+  position: absolute;
+  left: -29px;
+  top: 18px;
+  width: 12px;
+  height: 12px;
+  background: var(--gold);
+  box-shadow: 3px 3px 0 #000;
 }
 
 .portfolio-photo-frame {
@@ -852,7 +881,7 @@ h2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
   padding: 0;
-  margin: 0 0 18px;
+  margin: 18px 0;
   list-style: none;
 }
 
@@ -923,11 +952,38 @@ h2 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.portfolio-projects .project-card-grid {
+  grid-template-columns: 1fr;
+}
+
 .project-card {
   display: grid;
   align-content: start;
   gap: 12px;
   padding: 16px;
+}
+
+.project-detail-list {
+  padding-left: 0;
+  list-style: none;
+}
+
+.project-detail-list li {
+  position: relative;
+  padding: 9px 10px 9px 24px;
+  background: rgba(249, 231, 183, 0.06);
+  border: 2px solid rgba(249, 231, 183, 0.22);
+}
+
+.project-detail-list li::before {
+  content: "";
+  position: absolute;
+  left: 9px;
+  top: 17px;
+  width: 7px;
+  height: 7px;
+  background: var(--aqua);
+  box-shadow: 2px 2px 0 #000;
 }
 
 .stack-row {

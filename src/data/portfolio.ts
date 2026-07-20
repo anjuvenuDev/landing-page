@@ -33,6 +33,7 @@ export type ProjectCard = {
   title: string;
   role: string;
   description: string;
+  details?: string[];
   stack: string[];
   links: PortfolioLink[];
 };
@@ -106,26 +107,30 @@ export const sections: PortfolioSection[] = [
       variant: "portrait",
     },
     summary:
-      "Integrated M.Tech CSE student at SSN who builds at the intersection of AI, full-stack engineering, product thinking, and design.",
+      "Anjana Venugopalan is a 5 Year Integrated M.Tech CSE student at SSN College of Engineering, Chennai, driven by a passion for building technology that creates meaningful impact.",
     story: [
-      "I like understanding the full shape of a product: the user problem, the system behind it, and the small interaction details that make it feel natural.",
-      "My work moves across assistive AI, developer tools, web products, analytics workflows, and design-led experiences.",
+      "With a strong academic record and hands-on experience across artificial intelligence, full-stack development, product engineering, and computer vision, she enjoys working at the intersection of innovation and usability.",
+      "What began as a fascination with programming has evolved into a broader interest in designing complete digital experiences. From conceptualizing products and architecting software to refining user interactions, Anjana enjoys understanding every layer of the development process.",
+      "She believes that successful technology is not defined solely by its technical sophistication, but by how naturally it fits into people's lives.",
+      "Her work is guided by curiosity, creativity, and a constant desire to learn. Whether developing AI-powered assistive technologies, building scalable web applications, or experimenting with embedded systems, she approaches every project with equal parts analytical thinking and design intuition.",
+      "Anjana hopes to contribute to products that combine intelligent technology with thoughtful design, making complex systems more accessible, intuitive, and human-centered.",
     ],
     highlights: [
-      "5 Year Integrated M.Tech CSE student at SSN College of Engineering, Chennai.",
-      "Associate Intern at Friday Intellytics, working on product and development for an AI analytics platform.",
-      "Comfortable moving between code, user flows, debugging, and visual communication.",
+      "Master of Technology, Computer Science and Engineering at Sri Sivasubramaniya Nadar College of Engineering, August 2023 - July 2028.",
+      "Relevant courses include Data Science and Analytics, Machine Learning, Database Management Systems, Applied Optimization Techniques, Software Construction, Design and Analysis of Algorithms, and Data Structures and Algorithms.",
+      "Standard 12 AISSCE: 482/500 = 96.4%. Standard 10 AISSCE: 489/500 = 97.8%.",
+      "Dual-booted her laptop with Arch Linux alongside Windows because she was done with Windows, and now primarily builds projects on Arch.",
     ],
     featureCards: [
       {
-        label: "Builder",
-        title: "Product-minded engineer",
-        body: "Turns product ideas into flows, interfaces, and working software.",
+        label: "Academic base",
+        title: "CSE foundation",
+        body: "Her coursework and project work span algorithms, databases, analytics, machine learning, optimization, software construction, and full-stack systems.",
       },
       {
-        label: "Explorer",
-        title: "AI + systems curiosity",
-        body: "Experiments with computer vision, analytics, developer tooling, and embedded systems.",
+        label: "Builder",
+        title: "Technology with usability",
+        body: "She is drawn to the full lifecycle of products: from ideas and architecture to user flows, UI details, and real-world usefulness.",
       },
       {
         label: "Setup",
@@ -146,17 +151,26 @@ export const sections: PortfolioSection[] = [
     visual: "network",
     layout: "projects",
     summary:
-      "A practical project trail across assistive technology, developer tooling, networking, and creative commerce.",
+      "Anjana enjoys building products that solve practical problems while balancing technical depth with thoughtful user experience.",
+    story: [
+      "Her work spans artificial intelligence, networking, developer tooling, and full-stack web development, with every project driven by a focus on usability, scalability, and real-world application.",
+      "Across every project, her goal remains the same: to build technology that is technically robust, thoughtfully designed, and genuinely useful to the people who use it.",
+    ],
     highlights: [
-      "Builds products with a bias toward usability, scale, and real-world application.",
-      "Projects combine AI, full-stack development, CLI tooling, networking, and thoughtful interfaces.",
+      "Projects span AI-powered assistive technology, responsive business websites, npm tooling, Python CLI architecture visualization, and Raspberry Pi networking systems.",
+      "The common thread is practical software that can be used, understood, shipped, and improved.",
     ],
     projectCards: [
       {
-        title: "Assistive Writing Pad",
-        role: "AI assistive technology",
+        title: "Assistive Writing Pad for Children with Dysgraphia",
+        role: "Python, Computer Vision, Machine Learning, Raspberry Pi",
         description:
-          "A Raspberry Pi-based learning device for children with dysgraphia, using computer vision and ML to analyze handwriting and provide corrective feedback.",
+          "An AI-powered assistive learning device, currently under active development, that analyzes handwriting in real time and provides personalized corrective feedback for children with dysgraphia.",
+        details: [
+          "Combines computer vision, handwriting recognition, machine learning, and embedded computing on Raspberry Pi.",
+          "Explores how intelligent systems can make learning more accessible for children with writing difficulties.",
+          "Continues to evolve through improvements in recognition accuracy, user interface design, and model performance.",
+        ],
         stack: ["Python", "Computer Vision", "ML", "Raspberry Pi"],
         links: [
           {
@@ -168,10 +182,14 @@ export const sections: PortfolioSection[] = [
       },
       {
         title: "Handmade By Shweta",
-        role: "Creative business web presence",
+        role: "React.js, TypeScript, Node.js, MongoDB, Tailwind CSS, REST APIs",
         description:
-          "A responsive brand site for a handcrafted mandala art business, built to showcase work clearly and strengthen discoverability.",
-        stack: ["React", "TypeScript", "Responsive UI"],
+          "A business web experience for a handcrafted mandala art brand, built to strengthen the artist's online presence, showcase work through a clean responsive interface, and improve visibility.",
+        details: [
+          "The project emphasized thoughtful UI design, responsive development, and creating a digital experience that reflected the artist's unique creative identity.",
+          "The implementation also includes product discovery and purchase workflows, a responsive product catalog, search, filtering, shopping workflows, and production deployment.",
+        ],
+        stack: ["React", "TypeScript", "Node.js", "MongoDB", "Tailwind CSS", "REST APIs"],
         links: [
           {
             label: "Repository",
@@ -187,9 +205,13 @@ export const sections: PortfolioSection[] = [
       },
       {
         title: "Code Impact Analyzer",
-        role: "Developer tooling",
+        role: "JavaScript, Node.js, npm",
         description:
-          "An npm package that identifies files and modules affected by code changes, making debugging and release planning easier.",
+          "An npm package that identifies files, modules, and services affected by code changes to simplify debugging and release planning.",
+        details: [
+          "Built repository-wide dependency and change impact analysis.",
+          "Designed to support faster debugging, safer releases, and better developer decision-making.",
+        ],
         stack: ["JavaScript", "Node.js", "npm"],
         links: [
           {
@@ -201,9 +223,13 @@ export const sections: PortfolioSection[] = [
       },
       {
         title: "Code-Viz",
-        role: "Architecture visualization CLI",
+        role: "Python, Graph Analysis, CLI Development, PyPI",
         description:
-          "A Python CLI package that generates dependency graphs so unfamiliar codebases become easier to read and reason about.",
+          "A Python CLI tool that generates dependency graphs and architectural visualizations, helping developers better understand unfamiliar codebases and navigate complex software systems.",
+        details: [
+          "Developed and published as a Python CLI package.",
+          "Generated dependency graphs to help developers analyze architecture, identify module relationships, and improve onboarding into unfamiliar repositories.",
+        ],
         stack: ["Python", "CLI", "Graph Analysis", "PyPI"],
         links: [
           {
@@ -215,9 +241,12 @@ export const sections: PortfolioSection[] = [
       },
       {
         title: "PacketPi",
-        role: "Networking platform",
+        role: "Raspberry Pi networking collaboration",
         description:
-          "A Raspberry Pi-based packet crafting and analysis platform developed through a Nokia collaboration.",
+          "A Raspberry Pi-based network packet crafting and analysis platform developed as part of a collaboration with Nokia.",
+        details: [
+          "Continues the same project pattern: practical tooling, systems curiosity, and hands-on experimentation with real-world technology.",
+        ],
         stack: ["Raspberry Pi", "Networking", "Packet Analysis"],
         links: [
           {
@@ -248,50 +277,61 @@ export const sections: PortfolioSection[] = [
     visual: "timeline",
     layout: "timeline",
     summary:
-      "A growing path through frontend implementation, web product delivery, and AI analytics product ownership.",
+      "Through multiple internships, Anjana has gained experience working in fast-paced product environments, contributing to software development from both engineering and product perspectives.",
+    story: [
+      "As an Associate Intern at Friday Intellytics, she works directly with the founder to shape an AI-powered analytics platform from the ground up.",
+      "Previously, during her internship at Yhills, she focused on building responsive React applications, integrating APIs, and collaborating with teams to develop scalable web solutions while following industry-standard development practices.",
+      "Her internship at NoShack Solutions introduced her to production frontend development, where she worked on REST API integration, interactive user interfaces, internal dashboards, and application optimization.",
+      "These experiences have shaped her into an engineer who enjoys taking ownership, collaborating across teams, and contributing throughout the entire product lifecycle.",
+    ],
     highlights: [
-      "Contributed across feature planning, implementation, testing, debugging, and product refinement.",
-      "Worked directly with founders, mentors, and teammates to convert requirements into usable software.",
+      "Her Friday Intellytics responsibilities extend beyond implementation, encompassing product planning, workflow design, feature development, usability improvements, testing, debugging, and the creation of the company's public-facing landing page.",
+      "The work path moves from production frontend foundations to responsive product delivery and then to AI analytics product ownership.",
     ],
     timeline: [
-      {
-        company: "NoShack Solutions",
-        role: "Frontend Developer Intern",
-        dates: "Jul 2024 - Aug 2024",
-        logo: "/assets/logos/noshack.svg",
-        focus: "Production frontend foundations",
-        details: [
-          "Integrated REST APIs into React and JavaScript screens.",
-          "Connected frontend modules with Node.js, Express, and MongoDB-backed services.",
-          "Supported dashboard workflows, testing, debugging, and UI optimization.",
-        ],
-      },
-      {
-        company: "Yhills",
-        role: "Web Development Intern",
-        dates: "Jan 2025 - Mar 2025",
-        logo: "/assets/logos/yhills.svg",
-        focus: "Responsive web delivery",
-        details: [
-          "Built responsive interfaces with HTML, CSS, JavaScript, and React.",
-          "Integrated APIs and improved data flow across product workflows.",
-          "Participated in code reviews, documentation, and collaborative debugging.",
-        ],
-      },
       {
         company: "Friday Intellytics",
         role: "Associate Intern",
         dates: "May 2026 - Present",
         logo: "/assets/logos/friday-intellytics.svg",
-        focus: "AI analytics product ownership",
+        focus: "AI-powered analytics platform from product strategy to implementation",
         details: [
-          "Converted founder vision into user flows, MVP workflows, and product features.",
-          "Built workflows for connecting data sources, creating analysis pipelines, and interacting with insights conversationally.",
-          "Designed and developed the public-facing landing page while iterating on usability gaps.",
+          "Owned product and development responsibilities for Friday's desktop application, contributing across feature planning, implementation, testing, debugging, and product refinement.",
+          "Collaborated directly with the founder to convert the vision of an AI-powered analytics platform into executable user flows, product features, and MVP workflows.",
+          "Designed and developed the company's public-facing landing page, translating product positioning into a responsive and user-centric web experience.",
+          "Built and refined workflows that help users connect data sources, create analysis pipelines, and interact with insights through a conversational interface.",
+          "Improved application usability by identifying workflow gaps, resolving user-facing issues, and iterating on features based on internal feedback.",
+        ],
+      },
+      {
+        company: "Yhills",
+        role: "Web Development Intern (Remote)",
+        dates: "Jan 2025 - Mar 2025",
+        logo: "/assets/logos/yhills.svg",
+        focus: "Responsive user-facing web interfaces and scalable web workflows",
+        details: [
+          "Developed responsive, user-facing web interfaces using HTML, CSS, JavaScript, and React, with focus on usability, performance, and consistent user experience.",
+          "Integrated APIs with frontend components to enable smooth data flow across product workflows and improve end-to-end feature functionality.",
+          "Collaborated with mentors and teammates to understand requirements, debug user-facing issues, and deliver functional web features.",
+          "Participated in code reviews and documentation to ensure maintainable and scalable code.",
+        ],
+      },
+      {
+        company: "NoShack Solutions",
+        role: "Frontend Developer Intern",
+        dates: "Jul 2024 - Aug 2024",
+        logo: "/assets/logos/noshack.svg",
+        focus: "Production frontend development and dashboard workflows",
+        details: [
+          "Integrated REST APIs with the frontend and optimized data rendering in React and JavaScript.",
+          "Worked with HTML + CSS for frontend modules and contributed to building interactive user-facing screens.",
+          "Connected frontend pages with MongoDB-backed backend services using Node.js and Express.",
+          "Assisted in developing internal dashboards and improving UI workflows based on client requirements.",
+          "Collaborated with team members on debugging, testing, and enhancing system performance.",
         ],
       },
     ],
-    tags: ["Product", "React", "APIs", "MVP", "Debugging"],
+    tags: ["Product planning", "React", "APIs", "MVP workflows", "Debugging"],
   },
   {
     id: "tech",
@@ -304,30 +344,47 @@ export const sections: PortfolioSection[] = [
     visual: "skills",
     layout: "skills",
     summary:
-      "A toolset that spans product design, analytics, web engineering, databases, deployment, and system-level curiosity.",
+      "Anjana enjoys learning technologies not simply for the sake of mastering frameworks, but for understanding how they work together to build meaningful products.",
+    story: [
+      "Her technical expertise includes Python, JavaScript, TypeScript, Java, C, SQL, React, Vue, Node.js, Spring Boot, MongoDB, REST APIs, Git, Linux, and modern deployment platforms.",
+      "She has also worked extensively with machine learning, data analytics, and scientific computing libraries including Scikit-learn, Pandas, NumPy, SciPy, and Matplotlib.",
+      "Alongside engineering, she has developed a strong interest in product thinking, UI/UX principles, feature planning, Agile development, and creating intuitive user experiences that bridge technical functionality with thoughtful design.",
+      "A personal part of that technical journey: she dual-booted her laptop to accommodate Arch Linux alongside Windows, and now primarily does her projects on Arch.",
+    ],
     highlights: [
-      "Comfortable building across the frontend/backend boundary and grounding product ideas in implementation.",
-      "Uses Linux heavily, with Arch now serving as the main project environment.",
+      "The skill set is organized as a system: product and design for shaping the experience, analytics and data for reasoning, engineering for building, and platforms for shipping.",
     ],
     skillGroups: [
       {
         title: "Product & Design",
-        items: ["User flows", "Wireframing", "UI/UX principles", "Feature planning", "Agile", "Canva"],
+        items: ["User Flows", "Wireframing", "Agile Development", "UI/UX Principles", "Feature Planning", "Product Thinking", "Canva"],
       },
       {
         title: "Analytics & Data",
-        items: ["Python", "SQL", "Pandas", "NumPy", "SciPy", "Matplotlib", "Seaborn", "Scikit-learn", "Statistics"],
+        items: ["SQL", "Python", "Pandas", "NumPy", "Matplotlib", "SciPy", "Scikit-learn", "Seaborn", "Statistics"],
       },
       {
-        title: "Engineering",
-        items: ["JavaScript", "TypeScript", "Java", "C", "HTML", "CSS", "React", "Vue", "Node.js", "Spring Boot", "REST APIs"],
+        title: "Technical",
+        items: ["JavaScript", "TypeScript", "Java", "C", "HTML", "CSS", "React.js", "Vue.js", "Node.js", "Spring Boot", "REST APIs"],
       },
       {
-        title: "Data & Platforms",
+        title: "Databases & Platforms",
         items: ["MongoDB", "SQL", "Neo4j", "Git", "Linux", "Vercel", "Render"],
       },
     ],
-    tags: ["TypeScript", "React", "Python", "SQL", "Linux"],
+    featureCards: [
+      {
+        label: "Certificates",
+        title: "Full-stack learning",
+        body: "Completed The Complete Full-Stack Web Development Bootcamp and a Value-Added Course in Full Stack Web App Development using Spring Boot and Vue.js.",
+      },
+      {
+        label: "Environment",
+        title: "Arch-first workflow",
+        body: "Her Linux setup is not just a tag; it is part of how she experiments, builds, and ships projects.",
+      },
+    ],
+    tags: ["Python", "TypeScript", "React.js", "SQL", "Linux", "Product Thinking"],
   },
   {
     id: "soft",
@@ -340,31 +397,35 @@ export const sections: PortfolioSection[] = [
     visual: "compass",
     layout: "diagram",
     summary:
-      "Her non-technical strengths come from ownership-heavy internships, leadership roles, event work, and public communication.",
+      "Beyond technical expertise, Anjana believes that impactful products are built through collaboration, empathy, and effective communication.",
+    story: [
+      "Her leadership experiences across student organizations and internships have strengthened her ability to manage teams, coordinate large-scale events, communicate across diverse groups, and take ownership of responsibilities.",
+      "She enjoys solving problems collaboratively, adapting quickly to new challenges, and approaching projects with curiosity and a growth mindset.",
+      "Whether leading an event, brainstorming product ideas, or working alongside developers and designers, she values clarity, accountability, and continuous learning.",
+      "She also stepped into open source this year after being accepted as a GirlScript Summer of Code contributor; as someone new to open source, she has one PR merged and has raised a few issues.",
+    ],
     highlights: [
-      "Owns ambiguity by turning broad ideas into action plans, flows, and working features.",
-      "Communicates clearly across founders, mentors, teammates, designers, and student communities.",
-      "Adapts quickly across frontend work, product thinking, event management, and open-source contribution.",
+      "Leadership, communication, ownership, collaboration, adaptability, clarity, accountability, empathy, and continuous learning are presented here as lived habits rather than one-word claims.",
     ],
     featureCards: [
       {
-        title: "Ownership",
-        body: "Takes responsibility for product workflows, user-facing issues, and delivery details.",
+        title: "Leadership",
+        body: "Student organization roles and internships have trained her to manage teams, coordinate responsibilities, and make decisions under real constraints.",
       },
       {
         title: "Communication",
-        body: "Comfortable presenting, hosting, documenting, reviewing, and aligning people around work.",
+        body: "She communicates across diverse groups: founders, mentors, teammates, developers, designers, event volunteers, and student communities.",
       },
       {
         title: "Collaboration",
-        body: "Works across teams and communities, from internships to student organizations.",
+        body: "She enjoys solving problems collaboratively and adapts quickly when projects, teams, or requirements change.",
       },
       {
         title: "Growth mindset",
-        body: "New to open source, accepted into GirlScript Summer of Code, with one PR merged and issues raised.",
+        body: "Her GSSoC start reflects her willingness to enter new technical communities, learn in public, and contribute incrementally.",
       },
     ],
-    tags: ["Leadership", "Communication", "Ownership", "Collaboration", "Adaptability"],
+    tags: ["Leadership", "Empathy", "Communication", "Ownership", "Adaptability", "Growth mindset"],
   },
   {
     id: "activities",
@@ -391,27 +452,36 @@ export const sections: PortfolioSection[] = [
       },
     ],
     summary:
-      "Outside academics, Anjana is active in technical, design, leadership, entrepreneurship, and event communities at SSN.",
+      "Outside academics, Anjana is deeply involved in the technical and creative communities at SSN.",
+    story: [
+      "Over the years, she has held leadership positions across several student organizations, including serving as Joint Secretary of IEEE Women in Engineering (WIE), Joint Event Coordinator of SSN ACE, Deputy PR Lead and Full Stack Core Member of the SSN Coding Club, Under Secretary General of SSN SNUC MUN, and a core member of multiple technical and entrepreneurship clubs.",
+      "These experiences have allowed her to organize large-scale technical events, mentor peers, manage teams, and contribute to initiatives that strengthen the student community.",
+      "Her involvement beyond the classroom reflects a genuine enthusiasm for building communities, fostering collaboration, and creating opportunities for others to learn and grow.",
+    ],
     highlights: [
-      "Joint Event Coordinator, SSN ACE, 2025-26.",
+      "Joint Event Coordinator, SSN ACE (ACE Office Bearer), 2025-26.",
       "Joint Secretary, SSN IEEE WIE, 2025.",
-      "Full-Stack Development Core and Deputy PR Lead, SSN Coding Club, 2025-26.",
-      "Event Management member, SSN ACM; Under Secretary General, SSN SNUC MUN.",
-      "Core Member, QFactorial; Junior Core, Gradient Design Club; Creative and PR Member, Lakshya E-Cell.",
+      "Full-Stack Development Core, SSN Coding Club, 2025-26.",
+      "Deputy PR Lead, SSN Coding Club, 2025-26.",
+      "Event Management member, SSN ACM, 2025-26.",
+      "Under Secretary General, SSN SNUC MUN, 2025.",
+      "Core Member, QFactorial, 2025.",
+      "Junior Core, Gradient Design Club (SDC), 2025.",
+      "Creative and PR Member, Lakshya E-Cell Entrepreneurship Club, 2025-26.",
     ],
     featureCards: [
       {
         label: "Community",
-        title: "Builder of student spaces",
-        body: "Organizes events, mentors peers, and helps shape technical communities beyond the classroom.",
+        title: "Building student spaces",
+        body: "Her roles combine event planning, mentoring, team management, design support, public relations, and technical community work.",
       },
       {
-        label: "Stage",
-        title: "Comfortable with audiences",
-        body: "Compering, speaking, and hosting have strengthened confidence and clarity.",
+        label: "Impact",
+        title: "Beyond participation",
+        body: "The focus is not only attending clubs, but strengthening the student community through repeat responsibility.",
       },
     ],
-    tags: ["ACE", "IEEE WIE", "Coding Club", "ACM", "MUN", "Gradient"],
+    tags: ["SSN ACE", "IEEE WIE", "Coding Club", "ACM", "MUN", "Gradient", "Lakshya"],
   },
   {
     id: "hobbies",
@@ -429,25 +499,33 @@ export const sections: PortfolioSection[] = [
       variant: "phone",
     },
     summary:
-      "Creativity has always existed alongside technology: traditional art, design leadership, and public speaking all shape how she builds.",
+      "For Anjana, creativity has always existed alongside technology.",
+    story: [
+      "She found expression through traditional art. Working primarily with hand-drawn illustrations and mixed media, art has been an integral part of her life from an early age.",
+      "At the age of 14, she held her own public art exhibition, an experience that not only strengthened her artistic confidence but also shaped the way she approaches creativity and problem-solving today.",
+      "Her interest in design naturally evolved alongside her technical journey. As the Head of the Gradient Design Club at SSN, she leads the college's design community, mentors aspiring designers, and oversees the visual identity of student initiatives and events.",
+      "Through this role, she has developed a deeper appreciation for design as a tool for communication, accessibility, and storytelling.",
+      "Beyond art and design, Anjana enjoys being on stage. Whether compering events, hosting programs, or speaking before large audiences, she finds energy in engaging with people and creating memorable experiences.",
+      "Years of public speaking have strengthened her confidence, communication skills, and ability to connect with diverse audiences.",
+      "Looking ahead, she hopes to build a career where technology and design complement one another. Her long-term vision is to create products that are not only technically innovative but also intuitive, visually thoughtful, and centered around the people who use them.",
+    ],
     highlights: [
-      "Works primarily with hand-drawn illustrations and mixed media.",
-      "Held a public art exhibition at age 14.",
-      "Leads the Gradient Design Club at SSN and mentors aspiring designers.",
-      "Enjoys being on stage through compering, hosting, and speaking before large audiences.",
+      "Traditional art and mixed media remain a long-running creative practice.",
+      "Design leadership at Gradient connects her creative identity to her technical journey.",
+      "Public speaking, compering, and hosting shape how she communicates with people.",
     ],
     featureCards: [
       {
         title: "Art",
-        body: "A long-running creative practice that sharpened patience, observation, and visual storytelling.",
+        body: "A practice built around hand-drawn illustration, mixed media, patience, observation, and visual storytelling.",
       },
       {
         title: "Design",
-        body: "Treats design as communication: making ideas accessible, memorable, and human.",
+        body: "A tool for communication, accessibility, storytelling, and creating memorable student initiatives.",
       },
       {
-        title: "Public speaking",
-        body: "Draws energy from hosting events and connecting with an audience.",
+        title: "Stage",
+        body: "Compering and speaking help her engage people directly and create experiences that feel alive.",
       },
     ],
     links: [
@@ -457,7 +535,7 @@ export const sections: PortfolioSection[] = [
         type: "social",
       },
     ],
-    tags: ["Art", "Design", "Public speaking", "Mixed media"],
+    tags: ["Traditional art", "Mixed media", "Gradient Design Club", "Public speaking", "Storytelling"],
   },
   {
     id: "achievements",
@@ -470,38 +548,48 @@ export const sections: PortfolioSection[] = [
     visual: "trophy",
     layout: "achievements",
     summary:
-      "Academic consistency, technical curiosity, creative confidence, and leadership all show up across her milestones.",
+      "Anjana's journey has been shaped by a balance of academic excellence, technical curiosity, creative expression, and leadership.",
+    story: [
+      "As of the sixth semester, she holds the 3rd Department Rank in the Integrated M.Tech Computer Science and Engineering program at Sri Sivasubramaniya Nadar College of Engineering, maintaining a CGPA of 9.237/10 through consistent academic performance.",
+      "Her leadership journey began well before college when she served as the School Pupil Leader (Head Girl), representing the student body and leading school-wide initiatives.",
+      "Since then, she has continued to take on leadership roles across multiple student organizations at SSN, including serving as Joint Secretary of IEEE Women in Engineering, Joint Event Coordinator of SSN ACE, and currently leading the Gradient Design Club.",
+      "These experiences have strengthened her ability to manage teams, organize large-scale events, and foster collaborative communities.",
+      "Her technical accomplishments include being a Finalist in the Internal Smart India Hackathon and securing a position in the Top 15% globally in Kaggle's Spaceship Titanic Machine Learning Competition.",
+      "Outside engineering, creativity has remained a defining part of her identity. At the age of 14, she hosted her own art exhibition, an early milestone that continues to influence her approach to design, communication, and product thinking.",
+      "For Anjana, success is measured not only by academic achievements or technical projects, but by continuously learning, leading with purpose, and creating work that leaves a meaningful impact.",
+      "She was also accepted as a GirlScript Summer of Code contributor earlier this year, with one PR merged and a few issues raised as she begins contributing to open source.",
+    ],
     highlights: [
-      "Ranked 3rd in the Department of M.Tech CSE with CGPA 9.185/10 for 4 consecutive semesters.",
-      "Finalist in Internal Smart India Hackathon under the Smart Healthcare Management System problem statement.",
-      "Top 15% globally in Kaggle Spaceship Titanic ML Competition with approximately 82% accuracy.",
-      "Accepted as a GirlScript Summer of Code contributor, with one PR merged and issues raised.",
-      "Served as School Pupil Leader and later took leadership roles across ACE, IEEE WIE, Coding Club, Gradient, and more.",
+      "Ranked 3rd in the Department of M.Tech CSE with a CGPA of 9.237/10 as of the sixth semester.",
+      "Finalist in the Internal Smart India Hackathon under the Smart Healthcare Management System problem statement.",
+      "Placed in the Top 15% Global Leaderboard in the Kaggle Spaceship Titanic ML Competition, achieving approximately 82% accuracy.",
+      "Recognized multiple times for excellence in organizing and coordinating technical events under ACM, IEEE WIE, and ACE.",
+      "Served as School Pupil Leader (Head Girl) and later continued leadership across SSN student organizations.",
       "Hosted a public art exhibition at age 14.",
     ],
     featureCards: [
       {
-        label: "Rank",
+        label: "Academics",
         title: "3rd Department Rank",
-        body: "Integrated M.Tech CSE, SSN College of Engineering.",
+        body: "Integrated M.Tech CSE, SSN College of Engineering, with consistent academic performance recorded across the uploaded documents.",
       },
       {
         label: "ML",
         title: "Kaggle Top 15%",
-        body: "Spaceship Titanic competition, approximately 82% accuracy.",
+        body: "Spaceship Titanic Machine Learning Competition, approximately 82% accuracy.",
       },
       {
-        label: "Build",
-        title: "SIH Finalist",
-        body: "Internal Smart India Hackathon, healthcare management problem statement.",
+        label: "Hackathon",
+        title: "Internal SIH Finalist",
+        body: "Finalist under the Smart Healthcare Management System problem statement.",
       },
       {
         label: "Open Source",
         title: "GSSoC Contributor",
-        body: "Accepted earlier this year; one PR merged and multiple issues raised.",
+        body: "Accepted earlier this year; one pull request merged and a few issues raised.",
       },
     ],
-    tags: ["CGPA 9.185", "Hackathon", "Kaggle", "GSSoC", "Leadership"],
+    tags: ["CGPA 9.237", "Department Rank", "Kaggle", "Smart India Hackathon", "GSSoC", "Leadership", "Art exhibition"],
   },
 ];
 
