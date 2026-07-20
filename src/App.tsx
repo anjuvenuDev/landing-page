@@ -21,101 +21,6 @@ const inventoryAssets = {
   plainCrate: "/assets/sunnyland/crate-plain.png",
 };
 
-const highlightPhrases = [
-  "5 Year Integrated M.Tech CSE",
-  "SSN College of Engineering",
-  "artificial intelligence",
-  "full-stack development",
-  "product engineering",
-  "computer vision",
-  "meaningful impact",
-  "human-centered",
-  "AI-powered",
-  "Raspberry Pi",
-  "React.js",
-  "TypeScript",
-  "Node.js",
-  "MongoDB",
-  "Tailwind CSS",
-  "REST APIs",
-  "npm package",
-  "Python CLI",
-  "Friday Intellytics",
-  "Yhills",
-  "NoShack Solutions",
-  "product lifecycle",
-  "Arch Linux",
-  "GirlScript Summer of Code",
-  "GSSoC",
-  "IEEE Women in Engineering",
-  "SSN ACE",
-  "SSN Coding Club",
-  "Gradient Design Club",
-  "public art exhibition",
-  "3rd Department Rank",
-  "CGPA of 9.237/10",
-  "Smart India Hackathon",
-  "Top 15%",
-  "Kaggle",
-  "School Pupil Leader",
-].sort((a, b) => b.length - a.length);
-
-const escapedHighlightPhrases = highlightPhrases.map((phrase) =>
-  phrase.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"),
-);
-const highlightRegex = new RegExp(`(${escapedHighlightPhrases.join("|")})`, "gi");
-
-const contributionLevels = [
-  0, 1, 2, 0, 3, 4, 1, 0, 2, 3, 0, 1, 4, 2, 0, 3, 1, 0,
-  1, 3, 4, 1, 0, 2, 3, 4, 1, 0, 2, 4, 3, 1, 0, 2, 3, 1,
-  2, 4, 1, 0, 3, 2, 0, 1, 4, 3, 2, 0, 1, 3, 4, 0, 2, 1,
-  0, 2, 3, 4, 1, 0, 2, 1, 3, 4, 0, 2, 1, 3, 0, 4, 2, 1,
-  3, 1, 0, 2, 4, 3, 1, 0, 2, 1, 4, 3, 0, 2, 4, 1, 0, 3,
-  1, 0, 3, 4, 2, 1, 0, 2, 3, 1, 0, 4, 2, 3, 1, 0, 2, 4,
-  2, 4, 3, 1, 0, 2, 1, 3, 4, 0, 2, 1, 3, 4, 2, 0, 1, 3,
-  0, 1, 2, 3, 4, 1, 0, 2, 3, 0, 4, 2, 1, 0, 3, 4, 2, 1,
-];
-
-function HighlightText({ text }: { text: string }) {
-  if (!text) return null;
-
-  return (
-    <>
-      {text.split(highlightRegex).map((part, index) => {
-        const highlighted = highlightPhrases.some((phrase) => phrase.toLowerCase() === part.toLowerCase());
-        return highlighted ? (
-          <strong className="text-highlight" key={`${part}-${index}`}>
-            {part}
-          </strong>
-        ) : (
-          part
-        );
-      })}
-    </>
-  );
-}
-
-function ProjectContributionBoard() {
-  return (
-    <div className="project-portal contribution-board" aria-hidden="true">
-      <div className="contribution-months">
-        {["Dec", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug"].map((month) => (
-          <span key={month}>{month}</span>
-        ))}
-      </div>
-      <div className="contribution-grid">
-        {contributionLevels.map((level, index) => (
-          <span className={`contribution-cell level-${level}`} key={`${level}-${index}`} />
-        ))}
-      </div>
-      <div className="contribution-caption">
-        <span className="github-glyph">GH</span>
-        <span>project commits, experiments, and shipped builds</span>
-      </div>
-    </div>
-  );
-}
-
 function readStoredUnlocks(): PortfolioSectionId[] {
   try {
     const stored = window.localStorage.getItem(storageKey);
@@ -322,7 +227,13 @@ function PortfolioVisual({ section }: { section: PortfolioSection }) {
   }
 
   if (section.layout === "projects") {
-    return <ProjectContributionBoard />;
+    return (
+      <div className="project-portal" aria-hidden="true">
+        <span className="project-hand left" />
+        <span className="project-folder" />
+        <span className="project-hand right" />
+      </div>
+    );
   }
 
   if (section.timeline?.length) {
@@ -347,11 +258,8 @@ function PortfolioLinks({ section }: { section: PortfolioSection }) {
       {section.links?.length ? (
         <div className="link-row" aria-label={`${section.title} links`}>
           {section.links.map((link) => (
-            <a className={`portfolio-link link-${link.type}`} key={link.href} href={link.href} target="_blank" rel="noreferrer">
-              <span className="link-icon" aria-hidden="true">
-                {link.type === "github" || link.type === "profile" ? "GH" : "↗"}
-              </span>
-              <span>{link.label}</span>
+            <a key={link.href} href={link.href} target="_blank" rel="noreferrer">
+              {link.label}
             </a>
           ))}
         </div>
@@ -379,9 +287,7 @@ function FeatureCards({ section }: { section: PortfolioSection }) {
           <InventoryToken />
           <div>
             <h3>{card.title}</h3>
-            <p>
-              <HighlightText text={card.body} />
-            </p>
+            <p>{card.body}</p>
           </div>
         </article>
       ))}
@@ -403,15 +309,11 @@ function ProjectCards({ section }: { section: PortfolioSection }) {
               <p className="project-role">{project.role}</p>
             </div>
           </div>
-          <p>
-            <HighlightText text={project.description} />
-          </p>
+          <p>{project.description}</p>
           {project.details?.length ? (
             <ul className="compact-list project-detail-list">
               {project.details.map((detail) => (
-                <li key={detail}>
-                  <HighlightText text={detail} />
-                </li>
+                <li key={detail}>{detail}</li>
               ))}
             </ul>
           ) : null}
@@ -422,11 +324,8 @@ function ProjectCards({ section }: { section: PortfolioSection }) {
           </div>
           <div className="link-row project-links" aria-label={`${project.title} links`}>
             {project.links.map((link) => (
-              <a className={`portfolio-link link-${link.type}`} key={link.href} href={link.href} target="_blank" rel="noreferrer">
-                <span className="link-icon" aria-hidden="true">
-                  {link.type === "github" || link.type === "profile" ? "GH" : "↗"}
-                </span>
-                <span>{link.label}</span>
+              <a key={link.href} href={link.href} target="_blank" rel="noreferrer">
+                {link.label}
               </a>
             ))}
           </div>
@@ -452,14 +351,10 @@ function WorkRoadmap({ section }: { section: PortfolioSection }) {
               </p>
             </div>
           </div>
-          <strong>
-            <HighlightText text={step.focus} />
-          </strong>
+          <strong>{step.focus}</strong>
           <ul className="compact-list">
             {step.details.map((detail) => (
-              <li key={detail}>
-                <HighlightText text={detail} />
-              </li>
+              <li key={detail}>{detail}</li>
             ))}
           </ul>
         </article>
@@ -500,9 +395,7 @@ function MemoryHighlights({ section }: { section: PortfolioSection }) {
       {section.highlights.map((highlight) => (
         <li key={highlight}>
           <InventoryToken type="plainCrate" />
-          <span>
-            <HighlightText text={highlight} />
-          </span>
+          <span>{highlight}</span>
         </li>
       ))}
     </ul>
@@ -519,20 +412,14 @@ function PortfolioCopy({ section }: { section: PortfolioSection }) {
     <div className="portfolio-copy">
       <div className="portfolio-narrative">
         {aboutParagraph ? (
-          <p className="summary about-single-paragraph">
-            <HighlightText text={aboutParagraph} />
-          </p>
+          <p className="summary about-single-paragraph">{aboutParagraph}</p>
         ) : (
-          <p className="summary">
-            <HighlightText text={section.summary} />
-          </p>
+          <p className="summary">{section.summary}</p>
         )}
         {!aboutParagraph && section.story?.length ? (
           <div className="story-lines">
             {section.story.map((line) => (
-              <p key={line}>
-                <HighlightText text={line} />
-              </p>
+              <p key={line}>{line}</p>
             ))}
           </div>
         ) : null}
@@ -544,8 +431,8 @@ function PortfolioCopy({ section }: { section: PortfolioSection }) {
         <FeatureCards section={section} />
       </div>
       <div className="portfolio-secondary">
-        <PortfolioLinks section={section} />
         <MemoryHighlights section={section} />
+        <PortfolioLinks section={section} />
       </div>
     </div>
   );
