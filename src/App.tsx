@@ -15,6 +15,12 @@ const narrationLines = [
   "Come with me through the woods. Help me remember who I am becoming.",
 ];
 
+const inventoryAssets = {
+  chest: "/assets/sunnyland/chest.png",
+  crate: "/assets/sunnyland/crate-ornate.png",
+  plainCrate: "/assets/sunnyland/crate-plain.png",
+};
+
 function readStoredUnlocks(): PortfolioSectionId[] {
   try {
     const stored = window.localStorage.getItem(storageKey);
@@ -267,6 +273,10 @@ function PortfolioLinks({ section }: { section: PortfolioSection }) {
   );
 }
 
+function InventoryToken({ type = "crate" }: { type?: keyof typeof inventoryAssets }) {
+  return <img className="inventory-token" src={inventoryAssets[type]} alt="" aria-hidden="true" />;
+}
+
 function FeatureCards({ section }: { section: PortfolioSection }) {
   if (!section.featureCards?.length) return null;
 
@@ -274,9 +284,11 @@ function FeatureCards({ section }: { section: PortfolioSection }) {
     <div className="feature-card-grid">
       {section.featureCards.map((card) => (
         <article className="feature-card" key={`${card.title}-${card.label ?? ""}`}>
-          {card.label ? <span>{card.label}</span> : null}
-          <h3>{card.title}</h3>
-          <p>{card.body}</p>
+          <InventoryToken />
+          <div>
+            <h3>{card.title}</h3>
+            <p>{card.body}</p>
+          </div>
         </article>
       ))}
     </div>
@@ -290,9 +302,12 @@ function ProjectCards({ section }: { section: PortfolioSection }) {
     <div className="project-card-grid">
       {section.projectCards.map((project) => (
         <article className="project-card" key={project.title}>
-          <div>
-            <span className="project-role">{project.role}</span>
-            <h3>{project.title}</h3>
+          <div className="project-card-head">
+            <InventoryToken type="chest" />
+            <div>
+              <h3>{project.title}</h3>
+              <p className="project-role">{project.role}</p>
+            </div>
           </div>
           <p>{project.description}</p>
           {project.details?.length ? (
@@ -330,9 +345,10 @@ function WorkRoadmap({ section }: { section: PortfolioSection }) {
           <div className="work-step-head">
             <img src={step.logo} alt={`${step.company} logo`} />
             <div>
-              <span>{step.dates}</span>
               <h3>{step.company}</h3>
-              <p>{step.role}</p>
+              <p className="work-meta">
+                {step.role} · {step.dates}
+              </p>
             </div>
           </div>
           <strong>{step.focus}</strong>
@@ -354,7 +370,10 @@ function SkillWall({ section }: { section: PortfolioSection }) {
     <div className="skill-wall">
       {section.skillGroups.map((group) => (
         <section className="skill-group" key={group.title}>
-          <h3>{group.title}</h3>
+          <div className="skill-group-head">
+            <InventoryToken type="plainCrate" />
+            <h3>{group.title}</h3>
+          </div>
           <div>
             {group.items.map((item) => (
               <span className="skill-brick" key={item}>
@@ -374,17 +393,29 @@ function MemoryHighlights({ section }: { section: PortfolioSection }) {
   return (
     <ul className="memory-highlights">
       {section.highlights.map((highlight) => (
-        <li key={highlight}>{highlight}</li>
+        <li key={highlight}>
+          <InventoryToken type="plainCrate" />
+          <span>{highlight}</span>
+        </li>
       ))}
     </ul>
   );
 }
 
 function PortfolioCopy({ section }: { section: PortfolioSection }) {
+  const aboutParagraph =
+    section.id === "about" && section.story?.length
+      ? [section.summary, ...section.story].join(" ")
+      : null;
+
   return (
     <div className="portfolio-copy">
-      <p className="summary">{section.summary}</p>
-      {section.story?.length ? (
+      {aboutParagraph ? (
+        <p className="summary about-single-paragraph">{aboutParagraph}</p>
+      ) : (
+        <p className="summary">{section.summary}</p>
+      )}
+      {!aboutParagraph && section.story?.length ? (
         <div className="story-lines">
           {section.story.map((line) => (
             <p key={line}>{line}</p>
@@ -467,17 +498,10 @@ function SidePreview({
           ⛶
         </button>
         <div className="side-preview-header">
-          <div>
-            <span className="memory-position">
-              {position}/{total}
-            </span>
-            <h2>{section.title}</h2>
-          </div>
-          <div className="reward-header-actions">
-            <span className={section.status === "verified" ? "status verified" : "status pending"}>
-              {section.status === "verified" ? "Resume verified" : "Needs final copy"}
-            </span>
-          </div>
+          <h2>{section.title}</h2>
+          <span className="memory-position" aria-label={`Memory ${position} of ${total}`}>
+            {position}/{total}
+          </span>
         </div>
         <PortfolioContent section={section} mode="preview" />
         <div className="side-preview-nav">
@@ -633,10 +657,8 @@ function FullscreenSlides({
       </button>
       <article className="slide-page" key={section.id}>
         <header className="slide-header">
-          <span>
-            {position}/{total}
-          </span>
           <h2>{section.title}</h2>
+          <span aria-label={`Memory ${position} of ${total}`}>{position}/{total}</span>
         </header>
         <PortfolioContent section={section} mode="slide" />
       </article>
