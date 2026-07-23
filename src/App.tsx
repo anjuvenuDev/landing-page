@@ -122,6 +122,33 @@ function readStoredUnlocks(): PortfolioSectionId[] {
   }
 }
 
+function readInitialExperience() {
+  const storedUnlocks = readStoredUnlocks();
+  const params = new URLSearchParams(window.location.search);
+  const requestedSection = params.get("section") as PortfolioSectionId | null;
+  const requestedView = params.get("view");
+  const hasRequestedSection = requestedSection ? sectionOrder.includes(requestedSection) : false;
+
+  if ((requestedView === "preview" || requestedView === "slides") && hasRequestedSection) {
+    const unlocked =
+      params.get("unlock") === "all"
+        ? [...sectionOrder]
+        : sectionOrder.filter((id) => storedUnlocks.includes(id) || id === requestedSection);
+
+    return {
+      mode: requestedView as AppMode,
+      selectedId: requestedSection,
+      unlocked,
+    };
+  }
+
+  return {
+    mode: "intro" as AppMode,
+    selectedId: null as PortfolioSectionId | null,
+    unlocked: storedUnlocks,
+  };
+}
+
 function requestBrowserFullscreen() {
   const target = document.documentElement;
   if (target.requestFullscreen) {
@@ -889,9 +916,10 @@ function CompletionOverlay({
 }
 
 function App() {
-  const [mode, setMode] = useState<AppMode>("intro");
-  const [unlocked, setUnlocked] = useState<PortfolioSectionId[]>(readStoredUnlocks);
-  const [selectedId, setSelectedId] = useState<PortfolioSectionId | null>(null);
+  const [initialExperience] = useState(readInitialExperience);
+  const [mode, setMode] = useState<AppMode>(initialExperience.mode);
+  const [unlocked, setUnlocked] = useState<PortfolioSectionId[]>(initialExperience.unlocked);
+  const [selectedId, setSelectedId] = useState<PortfolioSectionId | null>(initialExperience.selectedId);
   const [logOpen, setLogOpen] = useState(false);
   const [gameRun, setGameRun] = useState(0);
   const [showCompletion, setShowCompletion] = useState(false);
