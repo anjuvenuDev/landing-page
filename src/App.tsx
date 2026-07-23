@@ -298,9 +298,9 @@ function SectionIllustration({ section }: { section: PortfolioSection }) {
 function PortfolioVisual({ section }: { section: PortfolioSection }) {
   if (section.images?.length) {
     return (
-      <div className="image-collage" aria-label={`${section.title} photos`}>
+      <div className={`image-collage collage-${section.id}`} aria-label={`${section.title} photos`}>
         {section.images.map((image) => (
-          <figure className={`portfolio-photo-frame photo-${image.variant ?? "wide"}`} key={image.src}>
+          <figure className={`portfolio-photo-frame photo-${image.variant ?? "wide"} media-${section.id}`} key={image.src}>
             <img src={image.src} alt={image.alt} style={{ objectPosition: image.position }} />
           </figure>
         ))}
@@ -310,7 +310,7 @@ function PortfolioVisual({ section }: { section: PortfolioSection }) {
 
   if (section.image) {
     return (
-      <figure className={`portfolio-photo-frame photo-${section.image.variant ?? "wide"}`}>
+      <figure className={`portfolio-photo-frame photo-${section.image.variant ?? "wide"} media-${section.id}`}>
         <img src={section.image.src} alt={section.image.alt} style={{ objectPosition: section.image.position }} />
       </figure>
     );
@@ -344,7 +344,7 @@ function PortfolioLinks({ section }: { section: PortfolioSection }) {
           {section.links.map((link) => (
             <a className={`portfolio-link link-${link.type}`} key={link.href} href={link.href} target="_blank" rel="noreferrer">
               <span className="link-icon" aria-hidden="true">
-                {link.type === "github" || link.type === "profile" ? "GH" : "GO"}
+                {link.type === "github" || link.type === "profile" ? "GH" : link.type === "social" ? "IG" : "GO"}
               </span>
               <span>{link.label}</span>
             </a>
@@ -419,7 +419,7 @@ function ProjectCards({ section }: { section: PortfolioSection }) {
             {project.links.map((link) => (
               <a className={`portfolio-link link-${link.type}`} key={link.href} href={link.href} target="_blank" rel="noreferrer">
                 <span className="link-icon" aria-hidden="true">
-                  {link.type === "github" || link.type === "profile" ? "GH" : "GO"}
+                  {link.type === "github" || link.type === "profile" ? "GH" : link.type === "package" ? "NPM" : "GO"}
                 </span>
                 <span>{link.label}</span>
               </a>
@@ -607,7 +607,7 @@ function PortfolioContent({
   mode: "preview" | "slide";
 }) {
   return (
-    <div className={`portfolio-content portfolio-${section.layout} portfolio-${mode}`}>
+    <div className={`portfolio-content portfolio-${section.layout} portfolio-${mode} section-${section.id}`}>
       <div className="portfolio-media">
         <PortfolioVisual section={section} />
       </div>
