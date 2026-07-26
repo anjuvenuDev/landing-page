@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { gameLevels, sectionOrder, sections } from "./data/portfolio";
-import type { PortfolioSection, PortfolioSectionId } from "./data/portfolio";
+import type { PortfolioLinkType, PortfolioSection, PortfolioSectionId } from "./data/portfolio";
 import { MemoryQuestGame } from "./game/MemoryQuestGame";
 
 const storageKey = "anjana-memory-unlocks";
@@ -371,7 +371,7 @@ function PortfolioLinks({ section }: { section: PortfolioSection }) {
           {section.links.map((link) => (
             <a className={`portfolio-link link-${link.type}`} key={link.href} href={link.href} target="_blank" rel="noreferrer">
               <span className="link-icon" aria-hidden="true">
-                {link.type === "github" || link.type === "profile" ? "GH" : link.type === "social" ? "IG" : "GO"}
+                <LinkGlyph type={link.type} />
               </span>
               <span>{link.label}</span>
             </a>
@@ -384,6 +384,55 @@ function PortfolioLinks({ section }: { section: PortfolioSection }) {
         ))}
       </div>
     </>
+  );
+}
+
+function LinkGlyph({ type }: { type: PortfolioLinkType }) {
+  if (type === "github" || type === "profile") {
+    return (
+      <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+        <path
+          fill="currentColor"
+          d="M12 2C6.48 2 2 6.59 2 12.25c0 4.53 2.86 8.37 6.84 9.73.5.1.68-.22.68-.49v-1.8c-2.78.62-3.37-1.22-3.37-1.22-.45-1.18-1.1-1.49-1.1-1.49-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.9 1.56 2.35 1.11 2.92.85.09-.67.35-1.11.63-1.37-2.22-.26-4.55-1.14-4.55-5.07 0-1.12.39-2.04 1.03-2.76-.1-.26-.45-1.31.1-2.73 0 0 .84-.28 2.75 1.05a9.35 9.35 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.42.2 2.47.1 2.73.64.72 1.03 1.64 1.03 2.76 0 3.94-2.34 4.8-4.57 5.06.36.32.68.95.68 1.92v2.84c0 .27.18.59.69.49A10.23 10.23 0 0 0 22 12.25C22 6.59 17.52 2 12 2Z"
+        />
+      </svg>
+    );
+  }
+
+  if (type === "social") {
+    return (
+      <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+        <path
+          fill="none"
+          stroke="currentColor"
+          strokeLinecap="square"
+          strokeLinejoin="miter"
+          strokeWidth="2.4"
+          d="M7 3.5h10A3.5 3.5 0 0 1 20.5 7v10a3.5 3.5 0 0 1-3.5 3.5H7A3.5 3.5 0 0 1 3.5 17V7A3.5 3.5 0 0 1 7 3.5Z"
+        />
+        <path
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.4"
+          d="M15.4 12a3.4 3.4 0 1 1-6.8 0 3.4 3.4 0 0 1 6.8 0Z"
+        />
+        <path fill="currentColor" d="M17.4 6.3h1.9v1.9h-1.9z" />
+      </svg>
+    );
+  }
+
+  if (type === "package") {
+    return (
+      <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+        <path fill="currentColor" d="M3 6h18v12H3V6Zm3 3v6h3v-3h2v3h3V9h-3v3H9V9H6Zm11 0v6h2V9h-2Z" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+      <path fill="currentColor" d="M5 5h9v3H8v8h8v-6h3v9H5V5Zm10 0h4v4h-2V8.4l-6.3 6.3-1.4-1.4L15.6 7H15V5Z" />
+    </svg>
   );
 }
 
@@ -446,7 +495,7 @@ function ProjectCards({ section }: { section: PortfolioSection }) {
             {project.links.map((link) => (
               <a className={`portfolio-link link-${link.type}`} key={link.href} href={link.href} target="_blank" rel="noreferrer">
                 <span className="link-icon" aria-hidden="true">
-                  {link.type === "github" || link.type === "profile" ? "GH" : link.type === "package" ? "NPM" : "GO"}
+                  <LinkGlyph type={link.type} />
                 </span>
                 <span>{link.label}</span>
               </a>
@@ -584,44 +633,75 @@ function PortfolioMap({
   );
 }
 
-function PortfolioCopy({ section }: { section: PortfolioSection }) {
+function NarrativeBlock({ section }: { section: PortfolioSection }) {
   const aboutParagraph =
     section.id === "about" && section.story?.length
       ? [section.summary, ...section.story].join(" ")
       : null;
 
   return (
-    <div className="portfolio-copy">
-      <div className="portfolio-narrative">
-        {aboutParagraph ? (
-          <p className="summary about-single-paragraph">
-            <HighlightText text={aboutParagraph} />
-          </p>
-        ) : (
-          <p className="summary">
-            <HighlightText text={section.summary} />
-          </p>
-        )}
-        {!aboutParagraph && section.story?.length ? (
-          <div className="story-lines">
-            {section.story.map((line) => (
-              <p key={line}>
-                <HighlightText text={line} />
-              </p>
-            ))}
-          </div>
-        ) : null}
-      </div>
-      <div className="portfolio-primary">
-        <ProjectCards section={section} />
-        <WorkRoadmap section={section} />
-        <SkillWall section={section} />
-        <FeatureCards section={section} />
-      </div>
-      <div className="portfolio-secondary">
+    <div className="memory-story portfolio-narrative">
+      {aboutParagraph ? (
+        <p className="summary about-single-paragraph">
+          <HighlightText text={aboutParagraph} />
+        </p>
+      ) : (
+        <p className="summary">
+          <HighlightText text={section.summary} />
+        </p>
+      )}
+      {!aboutParagraph && section.story?.length ? (
+        <div className="story-lines">
+          {section.story.map((line) => (
+            <p key={line}>
+              <HighlightText text={line} />
+            </p>
+          ))}
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
+function MemoryMain({ section }: { section: PortfolioSection }) {
+  return (
+    <div className="memory-main portfolio-primary">
+      <ProjectCards section={section} />
+      <WorkRoadmap section={section} />
+      <SkillWall section={section} />
+      <FeatureCards section={section} />
+    </div>
+  );
+}
+
+function MemoryDetails({ section }: { section: PortfolioSection }) {
+  return (
+    <div className="memory-details portfolio-secondary">
+      <div className="memory-actions">
         <PortfolioLinks section={section} />
-        <MemoryHighlights section={section} />
       </div>
+      <MemoryHighlights section={section} />
+    </div>
+  );
+}
+
+function PortfolioCopy({
+  section,
+  mode,
+}: {
+  section: PortfolioSection;
+  mode: "preview" | "slide";
+}) {
+  return (
+    <div className={`portfolio-copy memory-layout memory-${section.id} memory-${section.layout} memory-${mode}`}>
+      <div className="memory-hero">
+        <div className="memory-visual portfolio-media">
+          <PortfolioVisual section={section} />
+        </div>
+        <NarrativeBlock section={section} />
+      </div>
+      <MemoryMain section={section} />
+      <MemoryDetails section={section} />
     </div>
   );
 }
@@ -635,10 +715,7 @@ function PortfolioContent({
 }) {
   return (
     <div className={`portfolio-content portfolio-${section.layout} portfolio-${mode} section-${section.id}`}>
-      <div className="portfolio-media">
-        <PortfolioVisual section={section} />
-      </div>
-      <PortfolioCopy section={section} />
+      <PortfolioCopy section={section} mode={mode} />
     </div>
   );
 }
