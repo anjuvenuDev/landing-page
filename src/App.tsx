@@ -92,19 +92,19 @@ function HighlightText({ text }: { text: string }) {
 
 function ProjectContributionBoard() {
   return (
-    <div className="project-portal contribution-board" aria-hidden="true">
-      <div className="contribution-months">
+    <div className="qd-project-portal" aria-hidden="true">
+      <div className="qd-contribution-months">
         {["Dec", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"].map((month) => (
           <span key={month}>{month}</span>
         ))}
       </div>
-      <div className="contribution-grid">
+      <div className="qd-contribution-grid">
         {contributionLevels.map((level, index) => (
-          <span className={`contribution-cell level-${level}`} key={`${level}-${index}`} />
+          <span className={`qd-contribution-cell qd-level-${level}`} key={`${level}-${index}`} />
         ))}
       </div>
-      <div className="contribution-caption">
-        <span className="github-glyph">GH</span>
+      <div className="qd-contribution-caption">
+        <span className="qd-github-glyph">GH</span>
         <span>repositories, commits, experiments</span>
       </div>
     </div>
@@ -247,75 +247,75 @@ function IntroScreen({
 
 function SectionIllustration({ section }: { section: PortfolioSection }) {
   return (
-    <div className={`section-illustration ${section.visual}`} aria-hidden="true">
+    <div className={`qd-illustration qd-visual-${section.visual}`} aria-hidden="true">
       {section.visual === "map" ? (
         <>
-          <span className="map-node start" />
-          <span className="map-node college" />
-          <span className="map-node product" />
-          <span className="map-path" />
+          <span className="qd-map-node qd-start" />
+          <span className="qd-map-node qd-college" />
+          <span className="qd-map-node qd-product" />
+          <span className="qd-map-path" />
         </>
       ) : null}
       {section.visual === "network" ? (
         <>
-          <span className="network-core" />
-          <span className="network-node n1">CV</span>
-          <span className="network-node n2">ML</span>
-          <span className="network-node n3">API</span>
-          <span className="network-node n4">CLI</span>
+          <span className="qd-network-core" />
+          <span className="qd-network-node qd-n1">CV</span>
+          <span className="qd-network-node qd-n2">ML</span>
+          <span className="qd-network-node qd-n3">API</span>
+          <span className="qd-network-node qd-n4">CLI</span>
         </>
       ) : null}
       {section.visual === "timeline" ? (
         <>
-          <span className="timeline-line" />
-          <span className="timeline-dot d1">NoShack</span>
-          <span className="timeline-dot d2">Yhills</span>
-          <span className="timeline-dot d3">Friday</span>
+          <span className="qd-timeline-line" />
+          <span className="qd-timeline-dot qd-d1">NoShack</span>
+          <span className="qd-timeline-dot qd-d2">Yhills</span>
+          <span className="qd-timeline-dot qd-d3">Friday</span>
         </>
       ) : null}
       {section.visual === "skills" ? (
         <>
-          <span className="skill-bar b1" />
-          <span className="skill-bar b2" />
-          <span className="skill-bar b3" />
-          <span className="skill-orbit o1">TS</span>
-          <span className="skill-orbit o2">SQL</span>
-          <span className="skill-orbit o3">Py</span>
+          <span className="qd-skill-bar qd-b1" />
+          <span className="qd-skill-bar qd-b2" />
+          <span className="qd-skill-bar qd-b3" />
+          <span className="qd-skill-orbit qd-o1">TS</span>
+          <span className="qd-skill-orbit qd-o2">SQL</span>
+          <span className="qd-skill-orbit qd-o3">Py</span>
         </>
       ) : null}
       {section.visual === "compass" ? (
         <>
-          <span className="compass-ring" />
-          <span className="compass-needle" />
-          <span className="compass-label north">Own</span>
-          <span className="compass-label east">Lead</span>
-          <span className="compass-label south">Ship</span>
-          <span className="compass-label west">Listen</span>
+          <span className="qd-compass-ring" />
+          <span className="qd-compass-needle" />
+          <span className="qd-compass-label qd-north">Own</span>
+          <span className="qd-compass-label qd-east">Lead</span>
+          <span className="qd-compass-label qd-south">Ship</span>
+          <span className="qd-compass-label qd-west">Listen</span>
         </>
       ) : null}
       {section.visual === "guilds" ? (
         <>
-          <span className="guild-banner g1">ACE</span>
-          <span className="guild-banner g2">WIE</span>
-          <span className="guild-banner g3">ACM</span>
-          <span className="guild-banner g4">MUN</span>
+          <span className="qd-guild-banner qd-g1">ACE</span>
+          <span className="qd-guild-banner qd-g2">WIE</span>
+          <span className="qd-guild-banner qd-g3">ACM</span>
+          <span className="qd-guild-banner qd-g4">MUN</span>
         </>
       ) : null}
       {section.visual === "garden" ? (
         <>
-          <span className="garden-stem s1" />
-          <span className="garden-stem s2" />
-          <span className="garden-stem s3" />
-          <span className="garden-moon" />
+          <span className="qd-garden-stem qd-s1" />
+          <span className="qd-garden-stem qd-s2" />
+          <span className="qd-garden-stem qd-s3" />
+          <span className="qd-garden-moon" />
         </>
       ) : null}
       {section.visual === "trophy" ? (
         <>
-          <span className="trophy-cup" />
-          <span className="trophy-base" />
-          <span className="spark sp1" />
-          <span className="spark sp2" />
-          <span className="spark sp3" />
+          <span className="qd-trophy-cup" />
+          <span className="qd-trophy-base" />
+          <span className="qd-spark qd-sp1" />
+          <span className="qd-spark qd-sp2" />
+          <span className="qd-spark qd-sp3" />
         </>
       ) : null}
     </div>
@@ -325,9 +325,9 @@ function SectionIllustration({ section }: { section: PortfolioSection }) {
 function PortfolioVisual({ section }: { section: PortfolioSection }) {
   if (section.images?.length) {
     return (
-      <div className={`image-collage collage-${section.id}`} aria-label={`${section.title} photos`}>
+      <div className={`qd-collage qd-collage-${section.id}`} aria-label={`${section.title} photos`}>
         {section.images.map((image) => (
-          <figure className={`portfolio-photo-frame photo-${image.variant ?? "wide"} media-${section.id}`} key={image.src}>
+          <figure className={`qd-photo qd-photo-${image.variant ?? "wide"} qd-media-${section.id}`} key={image.src}>
             <img src={image.src} alt={image.alt} style={{ objectPosition: image.position }} />
           </figure>
         ))}
@@ -337,7 +337,7 @@ function PortfolioVisual({ section }: { section: PortfolioSection }) {
 
   if (section.image) {
     return (
-      <figure className={`portfolio-photo-frame photo-${section.image.variant ?? "wide"} media-${section.id}`}>
+      <figure className={`qd-photo qd-photo-${section.image.variant ?? "wide"} qd-media-${section.id}`}>
         <img src={section.image.src} alt={section.image.alt} style={{ objectPosition: section.image.position }} />
       </figure>
     );
@@ -349,9 +349,9 @@ function PortfolioVisual({ section }: { section: PortfolioSection }) {
 
   if (section.timeline?.length) {
     return (
-      <div className="company-stack" aria-label="Work experience companies">
+      <div className="qd-company-stack" aria-label="Work experience companies">
         {section.timeline.map((step) => (
-          <div className="company-token" key={step.company}>
+          <div className="qd-company-token" key={step.company}>
             <img src={step.logo} alt={`${step.company} logo`} />
             <span>{step.company}</span>
           </div>
@@ -367,10 +367,10 @@ function PortfolioLinks({ section }: { section: PortfolioSection }) {
   return (
     <>
       {section.links?.length ? (
-        <div className="link-row" aria-label={`${section.title} links`}>
+        <div className="qd-link-row" aria-label={`${section.title} links`}>
           {section.links.map((link) => (
-            <a className={`portfolio-link link-${link.type}`} key={link.href} href={link.href} target="_blank" rel="noreferrer">
-              <span className="link-icon" aria-hidden="true">
+            <a className={`qd-link qd-link-${link.type}`} key={link.href} href={link.href} target="_blank" rel="noreferrer">
+              <span className="qd-link-icon" aria-hidden="true">
                 <LinkGlyph type={link.type} />
               </span>
               <span>{link.label}</span>
@@ -378,7 +378,7 @@ function PortfolioLinks({ section }: { section: PortfolioSection }) {
           ))}
         </div>
       ) : null}
-      <div className="tag-row">
+      <div className="qd-tag-row">
         {section.tags.map((tag) => (
           <span key={tag}>{tag}</span>
         ))}
@@ -437,16 +437,16 @@ function LinkGlyph({ type }: { type: PortfolioLinkType }) {
 }
 
 function InventoryToken({ type = "crate" }: { type?: keyof typeof inventoryAssets }) {
-  return <img className="inventory-token" src={inventoryAssets[type]} alt="" aria-hidden="true" />;
+  return <img className="qd-token" src={inventoryAssets[type]} alt="" aria-hidden="true" />;
 }
 
 function FeatureCards({ section }: { section: PortfolioSection }) {
   if (!section.featureCards?.length) return null;
 
   return (
-    <div className="feature-card-grid">
+    <div className="qd-feature-grid">
       {section.featureCards.map((card) => (
-        <article className="feature-card" key={`${card.title}-${card.label ?? ""}`}>
+        <article className="qd-feature-card" key={`${card.title}-${card.label ?? ""}`}>
           <InventoryToken />
           <div>
             <h3>{card.title}</h3>
@@ -464,21 +464,21 @@ function ProjectCards({ section }: { section: PortfolioSection }) {
   if (!section.projectCards?.length) return null;
 
   return (
-    <div className="project-card-grid">
+    <div className="qd-project-grid">
       {section.projectCards.map((project) => (
-        <article className="project-card" key={project.title}>
-          <div className="project-card-head">
+        <article className="qd-project-card" key={project.title}>
+          <div className="qd-project-card-head">
             <InventoryToken type="chest" />
             <div>
               <h3>{project.title}</h3>
-              <p className="project-role">{project.role}</p>
+              <p className="qd-project-role">{project.role}</p>
             </div>
           </div>
           <p>
             <HighlightText text={project.description} />
           </p>
           {project.details?.length ? (
-            <ul className="compact-list project-detail-list">
+            <ul className="qd-compact-list qd-project-detail-list">
               {project.details.map((detail) => (
                 <li key={detail}>
                   <HighlightText text={detail} />
@@ -486,15 +486,15 @@ function ProjectCards({ section }: { section: PortfolioSection }) {
               ))}
             </ul>
           ) : null}
-          <div className="stack-row">
+          <div className="qd-stack-row">
             {project.stack.map((tool) => (
               <span key={tool}>{tool}</span>
             ))}
           </div>
-          <div className="link-row project-links" aria-label={`${project.title} links`}>
+          <div className="qd-link-row qd-project-links" aria-label={`${project.title} links`}>
             {project.links.map((link) => (
-              <a className={`portfolio-link link-${link.type}`} key={link.href} href={link.href} target="_blank" rel="noreferrer">
-                <span className="link-icon" aria-hidden="true">
+              <a className={`qd-link qd-link-${link.type}`} key={link.href} href={link.href} target="_blank" rel="noreferrer">
+                <span className="qd-link-icon" aria-hidden="true">
                   <LinkGlyph type={link.type} />
                 </span>
                 <span>{link.label}</span>
@@ -511,14 +511,14 @@ function WorkRoadmap({ section }: { section: PortfolioSection }) {
   if (!section.timeline?.length) return null;
 
   return (
-    <div className="work-roadmap">
+    <div className="qd-work-roadmap">
       {section.timeline.map((step) => (
-        <article className="work-step" key={step.company}>
-          <div className="work-step-head">
+        <article className="qd-work-step" key={step.company}>
+          <div className="qd-work-step-head">
             <img src={step.logo} alt={`${step.company} logo`} />
             <div>
               <h3>{step.company}</h3>
-              <p className="work-meta">
+              <p className="qd-work-meta">
                 {step.role} · {step.dates}
               </p>
             </div>
@@ -526,7 +526,7 @@ function WorkRoadmap({ section }: { section: PortfolioSection }) {
           <strong>
             <HighlightText text={step.focus} />
           </strong>
-          <ul className="compact-list">
+          <ul className="qd-compact-list">
             {step.details.map((detail) => (
               <li key={detail}>
                 <HighlightText text={detail} />
@@ -543,16 +543,16 @@ function SkillWall({ section }: { section: PortfolioSection }) {
   if (!section.skillGroups?.length) return null;
 
   return (
-    <div className="skill-wall">
+    <div className="qd-skill-wall">
       {section.skillGroups.map((group) => (
-        <section className="skill-group" key={group.title}>
-          <div className="skill-group-head">
+        <section className="qd-skill-group" key={group.title}>
+          <div className="qd-skill-group-head">
             <InventoryToken type="plainCrate" />
             <h3>{group.title}</h3>
           </div>
           <div>
             {group.items.map((item) => (
-              <span className="skill-brick" key={item}>
+              <span className="qd-skill-brick" key={item}>
                 {item}
               </span>
             ))}
@@ -567,9 +567,9 @@ function MemoryHighlights({ section }: { section: PortfolioSection }) {
   if (!section.highlights.length) return null;
 
   return (
-    <ul className="memory-highlights">
+    <ul className="qd-note-grid">
       {section.highlights.map((highlight) => (
-        <li key={highlight}>
+        <li className="qd-note" key={highlight}>
           <InventoryToken type="plainCrate" />
           <span>
             <HighlightText text={highlight} />
@@ -640,18 +640,18 @@ function NarrativeBlock({ section }: { section: PortfolioSection }) {
       : null;
 
   return (
-    <div className="memory-story portfolio-narrative">
+    <div className="qd-story">
       {aboutParagraph ? (
-        <p className="summary about-single-paragraph">
+        <p className="qd-summary qd-about-paragraph">
           <HighlightText text={aboutParagraph} />
         </p>
       ) : (
-        <p className="summary">
+        <p className="qd-summary">
           <HighlightText text={section.summary} />
         </p>
       )}
       {!aboutParagraph && section.story?.length ? (
-        <div className="story-lines">
+        <div className="qd-story-lines">
           {section.story.map((line) => (
             <p key={line}>
               <HighlightText text={line} />
@@ -665,7 +665,7 @@ function NarrativeBlock({ section }: { section: PortfolioSection }) {
 
 function MemoryMain({ section }: { section: PortfolioSection }) {
   return (
-    <div className="memory-main portfolio-primary">
+    <div className="qd-main">
       <ProjectCards section={section} />
       <WorkRoadmap section={section} />
       <SkillWall section={section} />
@@ -676,8 +676,8 @@ function MemoryMain({ section }: { section: PortfolioSection }) {
 
 function MemoryDetails({ section }: { section: PortfolioSection }) {
   return (
-    <div className="memory-details portfolio-secondary">
-      <div className="memory-actions">
+    <div className="qd-details">
+      <div className="qd-actions">
         <PortfolioLinks section={section} />
       </div>
       <MemoryHighlights section={section} />
@@ -693,9 +693,9 @@ function PortfolioCopy({
   mode: "preview" | "slide";
 }) {
   return (
-    <div className={`portfolio-copy memory-layout memory-${section.id} memory-${section.layout} memory-${mode}`}>
-      <div className="memory-hero">
-        <div className="memory-visual portfolio-media">
+    <div className={`qd-copy qd-${section.id} qd-layout-${section.layout} qd-mode-${mode}`}>
+      <div className="qd-hero">
+        <div className="qd-media">
           <PortfolioVisual section={section} />
         </div>
         <NarrativeBlock section={section} />
@@ -714,7 +714,7 @@ function PortfolioContent({
   mode: "preview" | "slide";
 }) {
   return (
-    <div className={`portfolio-content portfolio-${section.layout} portfolio-${mode} section-${section.id}`}>
+    <div className={`qd-content qd-content-${section.id} qd-content-${section.layout} qd-content-${mode}`}>
       <PortfolioCopy section={section} mode={mode} />
     </div>
   );
