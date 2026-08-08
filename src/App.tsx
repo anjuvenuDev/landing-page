@@ -270,9 +270,11 @@ function IntroScreen({
               </p>
             </div>
           </div>
-          <button type="button" className="skip-narration" onClick={skip}>
-            Skip intro
-          </button>
+          {!complete ? (
+            <button type="button" className="skip-narration" onClick={skip}>
+              Skip intro
+            </button>
+          ) : null}
         </div>
         <div className="quest-cover-menu">
           <div className={complete ? "intro-actions visible" : "intro-actions"}>
@@ -757,22 +759,25 @@ function PortfolioButtonLink({ link }: { link: NonNullable<PortfolioSection["lin
 function AboutMemory({ section }: { section: PortfolioSection }) {
   const education = [
     {
-      mark: "01",
-      title: "SSN College of Engineering",
-      detail: "Integrated M.Tech CSE, Chennai",
+      mark: "SSN",
+      title: "Integrated M.Tech CSE",
+      detail: "Sri Sivasubramaniya Nadar College of Engineering, Chennai",
       stats: "Aug 2023 - Jul 2028 | CGPA 9.237/10 | Department Rank 3",
+      note: "Coursework spans data analytics, machine learning, databases, optimization, software construction, algorithms, and data structures.",
     },
     {
-      mark: "02",
+      mark: "XII",
       title: "Senior Secondary",
       detail: "AISSCE",
       stats: "482/500 | 96.4%",
+      note: "Built the academic base for analytical problem solving and technical depth.",
     },
     {
-      mark: "03",
+      mark: "X",
       title: "Secondary School",
       detail: "AISSE",
       stats: "489/500 | 97.8%",
+      note: "A strong early foundation before the long CSE quest began.",
     },
   ];
 
@@ -796,17 +801,12 @@ function AboutMemory({ section }: { section: PortfolioSection }) {
               <strong>
                 <HighlightText text={item.stats} />
               </strong>
+              <small>{item.note}</small>
             </div>
           </article>
         ))}
       </div>
       <div className="mq-about-footer">
-        <article className="mq-paper-note mq-course-note">
-          <InventoryToken type="plainCrate" />
-          <span>
-            <HighlightText text={section.highlights[0]} />
-          </span>
-        </article>
         <article className="mq-fun-fact">
           <span className="mq-fun-icon">⌁</span>
           <div>
@@ -817,7 +817,6 @@ function AboutMemory({ section }: { section: PortfolioSection }) {
           </div>
         </article>
       </div>
-      <ChipRow items={section.tags} />
     </div>
   );
 }
@@ -830,7 +829,6 @@ function ProjectsMemory({ section }: { section: PortfolioSection }) {
       <div className="mq-project-topbar">
         <ProjectContributionBoard />
         <div className="mq-project-command">
-          <p>&gt; building practical products from messy problems</p>
           {profileLink ? <PortfolioButtonLink link={profileLink} /> : null}
         </div>
       </div>
@@ -895,7 +893,6 @@ function WorkMemory({ section }: { section: PortfolioSection }) {
           </article>
         ))}
       </div>
-      <ChipRow items={section.tags} />
     </div>
   );
 }
@@ -956,19 +953,22 @@ function LeadershipMemory({ section }: { section: PortfolioSection }) {
           </figure>
         ))}
       </div>
-      <div className="mq-leadership-cards">
-        {section.highlights.map((highlight) => {
+      <div className="mq-leadership-ledger" aria-label="Leadership timeline">
+        {section.highlights.map((highlight, index) => {
           const [title, ...rest] = highlight.split(". ");
           return (
-            <article className="mq-leadership-card" key={highlight}>
-              <h3>
-                <HighlightText text={title.replace(/\.$/, "")} />
-              </h3>
-              {rest.length ? (
-                <p>
-                  <HighlightText text={rest.join(". ")} />
-                </p>
-              ) : null}
+            <article className="mq-leadership-row" key={highlight}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <div>
+                <h3>
+                  <HighlightText text={title.replace(/\.$/, "")} />
+                </h3>
+                {rest.length ? (
+                  <p>
+                    <HighlightText text={rest.join(". ")} />
+                  </p>
+                ) : null}
+              </div>
             </article>
           );
         })}

@@ -284,9 +284,9 @@ export const sections: PortfolioSection[] = [
         logo: "/assets/logos/friday-intellytics.svg",
         focus: "AI analytics product ownership",
         details: [
-          "Selected from 25+ candidates after an approximately 6-hour evaluation across analytics, system design, AI-agent development, and product ideation.",
-          "Owned desktop app enhancements across data integration, authentication, exports, and UI workflows.",
-          "Worked directly with the founder on feature planning, MVP workflows, testing, debugging, product refinement, stakeholder discovery, and beta registration.",
+          "Selected from 25+ candidates through a 6-hour evaluation covering analytics, system design, AI agents, and product ideation.",
+          "Owned desktop app improvements across data integration, authentication, exports, and UI workflows.",
+          "Worked with the founder on feature planning, MVP flows, testing, beta registration, and product refinement.",
         ],
       },
     ],

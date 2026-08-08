@@ -10424,3 +10424,2429 @@ body {
     overflow: auto;
   }
 }
+
+/* Memory Quest precision inventory pass */
+.preview-screen .side-preview {
+  inset: clamp(8px, 0.8vw, 16px);
+  grid-template-columns: clamp(270px, 18vw, 350px) minmax(0, 1fr);
+  gap: clamp(8px, 0.75vw, 14px);
+}
+
+.preview-screen .portfolio-map {
+  padding: clamp(9px, 0.75vw, 14px);
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: 10px;
+}
+
+.preview-screen .portfolio-map h2 {
+  height: clamp(52px, 5.4vh, 72px);
+  margin: 0;
+  font-size: clamp(1.55rem, 1.65vw, 2.15rem);
+}
+
+.preview-screen .portfolio-map-path {
+  height: auto;
+  display: grid;
+  grid-template-rows: repeat(8, minmax(0, 1fr));
+  gap: 4px;
+  padding: clamp(8px, 0.8vw, 14px) clamp(10px, 0.9vw, 16px);
+}
+
+.preview-screen .portfolio-map-path::before {
+  top: 7%;
+  bottom: 7%;
+  left: 50%;
+  height: auto;
+  width: 5px;
+}
+
+.preview-screen .portfolio-map .map-node {
+  position: relative;
+  top: auto;
+  right: auto;
+  bottom: auto;
+  left: auto;
+  z-index: 1;
+  width: min(92%, 184px);
+  min-height: 0;
+  height: 100%;
+  max-height: 78px;
+  align-self: center;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 8px;
+  padding: 6px;
+  border: 3px solid rgba(241, 211, 154, 0.74);
+  border-radius: 8px 18px 8px 18px;
+  background: rgba(6, 20, 18, 0.88);
+  box-shadow: 4px 4px 0 #080604;
+  opacity: 1;
+}
+
+.preview-screen .portfolio-map .map-node:nth-child(odd) {
+  justify-self: start;
+}
+
+.preview-screen .portfolio-map .map-node:nth-child(even) {
+  justify-self: end;
+}
+
+.preview-screen .portfolio-map .map-node-pad {
+  width: clamp(40px, 3.2vw, 58px);
+  height: clamp(40px, 3.2vw, 58px);
+  margin: 0;
+  border-width: 3px;
+}
+
+.preview-screen .portfolio-map .map-node strong {
+  width: auto;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #fff6c8;
+  font-size: clamp(0.78rem, 0.72vw, 0.95rem);
+  line-height: 1.1;
+  text-align: left;
+}
+
+.preview-screen .portfolio-map .map-node small {
+  display: block;
+  margin-top: 3px;
+  color: #d7f6cf;
+  font-size: clamp(0.55rem, 0.5vw, 0.68rem);
+  line-height: 1.12;
+}
+
+.preview-screen .portfolio-map .map-node:disabled {
+  filter: grayscale(0.55);
+  opacity: 0.58;
+}
+
+.preview-screen .portfolio-map .map-node.active {
+  border-color: #ffe59c;
+  background: rgba(23, 57, 45, 0.95);
+  box-shadow: 0 0 0 4px rgba(126, 255, 211, 0.16), 5px 5px 0 #080604;
+}
+
+.preview-screen .portfolio-map .map-node.active .map-node-pad {
+  box-shadow: none;
+}
+
+.preview-screen .portfolio-map-actions {
+  height: clamp(52px, 5.8vh, 68px);
+  margin: 0;
+}
+
+.preview-screen .side-preview-panel,
+.slide-screen .slide-page {
+  --mq-panel-pad: clamp(17px, 1.28vw, 28px);
+  padding: var(--mq-panel-pad);
+}
+
+.preview-screen .side-preview-header,
+.slide-screen .slide-header {
+  margin: 0 clamp(112px, 7.2vw, 148px) clamp(8px, 0.7vw, 14px) 0;
+}
+
+.preview-screen .side-preview-header h2,
+.slide-screen .slide-header h2 {
+  font-size: clamp(2.45rem, 2.85vw, 4.35rem);
+  line-height: 0.92;
+}
+
+.preview-screen .quest-progress {
+  margin-top: 4px;
+}
+
+.preview-screen .preview-close,
+.preview-screen .preview-expand,
+.slide-screen .slide-mode-button {
+  width: clamp(48px, 3.1vw, 64px);
+  height: clamp(48px, 3.1vw, 64px);
+}
+
+.preview-screen .side-preview-panel > .qd-content,
+.slide-screen .slide-page > .qd-content,
+.qd-content {
+  display: block;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.mq-page {
+  --mq-gap: clamp(9px, 0.65vw, 14px);
+  overflow: hidden;
+  font-size: clamp(1.02rem, 0.9vw, 1.2rem);
+  line-height: 1.24;
+}
+
+.slide-screen .mq-page {
+  font-size: clamp(1.13rem, 1vw, 1.38rem);
+}
+
+.mq-page h3 {
+  line-height: 1.08;
+}
+
+.mq-photo-card,
+.mq-paper-note,
+.mq-project-card,
+.mq-work-card,
+.mq-skill-widget,
+.mq-soft-card,
+.mq-leadership-row,
+.mq-hobby-card,
+.mq-achievement-card {
+  border-radius: 10px 22px 10px 22px;
+}
+
+.mq-photo-card {
+  display: grid;
+  place-items: center;
+  padding: clamp(6px, 0.55vw, 10px);
+}
+
+.mq-photo-card img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.mq-chip-row {
+  gap: clamp(5px, 0.45vw, 8px);
+  min-width: 0;
+}
+
+.mq-chip {
+  min-height: clamp(24px, 2.5vh, 31px);
+  padding: 5px 10px;
+  border-radius: 999px;
+  border-color: rgba(154, 240, 217, 0.7);
+  background: rgba(66, 139, 120, 0.48);
+  color: #edfff7;
+  font-size: 0.76em;
+  box-shadow: 2px 2px 0 rgba(4, 8, 9, 0.9);
+}
+
+.mq-button-link {
+  min-height: clamp(36px, 3.8vh, 46px);
+  border-radius: 10px 18px 10px 18px;
+  background:
+    linear-gradient(135deg, rgba(122, 255, 214, 0.15), transparent 54%),
+    rgba(6, 17, 20, 0.94);
+}
+
+.mq-link-profile {
+  border-color: rgba(126, 255, 211, 0.9);
+  background:
+    radial-gradient(circle at 17px 50%, rgba(126, 255, 211, 0.2), transparent 22px),
+    rgba(5, 20, 24, 0.96);
+}
+
+.mq-about {
+  grid-template-rows: minmax(0, 1.42fr) minmax(0, 0.74fr) minmax(76px, 0.22fr);
+}
+
+.mq-about-hero {
+  grid-template-columns: clamp(260px, 28%, 410px) minmax(0, 1fr);
+  align-items: stretch;
+}
+
+.mq-about-photo img {
+  object-fit: contain;
+  object-position: center bottom;
+}
+
+.mq-intro-paragraph {
+  max-width: none;
+  align-self: start;
+  padding-top: 4px;
+  font-size: clamp(1.08rem, 1vw, 1.32rem);
+  line-height: 1.32;
+}
+
+.slide-screen .mq-intro-paragraph {
+  font-size: clamp(1.18rem, 1.08vw, 1.5rem);
+}
+
+.mq-education-map {
+  grid-template-columns: 1.24fr 0.88fr 0.88fr;
+  align-items: stretch;
+}
+
+.mq-education-map::before {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.mq-map-card {
+  align-content: center;
+  padding: clamp(12px, 0.9vw, 18px);
+  overflow: hidden;
+}
+
+.mq-map-card h3 {
+  font-size: clamp(1.05rem, 1vw, 1.28rem);
+}
+
+.mq-map-card p,
+.mq-map-card strong,
+.mq-map-card small {
+  line-height: 1.18;
+}
+
+.mq-map-card small {
+  display: block;
+  margin-top: 7px;
+  color: #dcefc7;
+  font-size: 0.78em;
+}
+
+.mq-map-marker {
+  width: clamp(42px, 3.4vw, 54px);
+  height: clamp(42px, 3.4vw, 54px);
+  font-size: 0.78em;
+}
+
+.mq-about-footer {
+  grid-template-columns: 1fr;
+}
+
+.mq-about-footer .mq-fun-fact {
+  width: min(100%, 820px);
+  justify-self: center;
+  padding: clamp(10px, 0.8vw, 14px) clamp(14px, 1vw, 18px);
+}
+
+.mq-projects {
+  grid-template-rows: clamp(94px, 13%, 132px) minmax(0, 1fr);
+}
+
+.mq-project-topbar {
+  grid-template-columns: minmax(250px, 0.38fr) minmax(0, 1fr);
+}
+
+.mq-projects .qd-project-portal {
+  min-height: 0;
+  padding: 10px;
+}
+
+.mq-project-command {
+  padding: clamp(12px, 0.9vw, 18px);
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.mq-project-command p {
+  font-size: clamp(1.08rem, 1vw, 1.34rem);
+  line-height: 1.2;
+}
+
+.mq-project-cards {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: minmax(0, 1fr);
+}
+
+.mq-project-card:nth-child(1),
+.mq-project-card:nth-child(2) {
+  grid-column: span 6;
+}
+
+.mq-project-card:nth-child(n + 3) {
+  grid-column: span 4;
+}
+
+.mq-project-card {
+  overflow: hidden;
+  padding: clamp(10px, 0.75vw, 15px);
+  grid-template-rows: auto auto minmax(0, 1fr) auto auto;
+  gap: clamp(6px, 0.45vw, 9px);
+  align-content: start;
+}
+
+.mq-project-title-row {
+  gap: 9px;
+}
+
+.mq-project-title-row h3 {
+  font-size: clamp(0.98rem, 0.9vw, 1.2rem);
+}
+
+.mq-project-title-row p {
+  font-size: 0.66em;
+}
+
+.mq-project-description {
+  font-size: 0.84em;
+  line-height: 1.2;
+}
+
+.mq-project-card .mq-bullet-list {
+  overflow: hidden;
+  gap: 5px;
+}
+
+.mq-project-card .mq-bullet-list li,
+.mq-work-card .mq-bullet-list li {
+  padding: 7px 8px 7px 18px;
+  border: 1px solid rgba(241, 211, 154, 0.26);
+  border-radius: 8px;
+  background: rgba(244, 220, 160, 0.06);
+  font-size: 0.76em;
+  line-height: 1.18;
+}
+
+.mq-project-card .mq-chip-row {
+  max-height: 58px;
+  overflow: hidden;
+}
+
+.mq-project-card .mq-chip {
+  min-height: 23px;
+  padding: 4px 8px;
+  font-size: 0.6em;
+}
+
+.mq-card-actions {
+  margin-top: auto;
+  align-items: end;
+}
+
+.mq-card-actions .mq-button-link {
+  min-height: 34px;
+  padding: 6px 10px;
+  font-size: 0.68em;
+}
+
+.mq-work-track {
+  gap: clamp(12px, 1vw, 22px);
+}
+
+.mq-work-card {
+  overflow: hidden;
+  padding: clamp(14px, 1vw, 22px);
+  grid-template-rows: auto auto auto minmax(0, 1fr);
+  align-content: start;
+}
+
+.mq-work-head {
+  grid-template-columns: clamp(48px, 3.7vw, 62px) minmax(0, 1fr);
+  padding-right: clamp(42px, 3.5vw, 60px);
+}
+
+.mq-work-head h3 {
+  font-size: clamp(1.08rem, 1.05vw, 1.34rem);
+}
+
+.mq-work-node {
+  top: clamp(12px, 0.9vw, 18px);
+  right: clamp(12px, 0.9vw, 18px);
+  width: clamp(38px, 3vw, 48px);
+  height: clamp(38px, 3vw, 48px);
+}
+
+.mq-work-date {
+  padding: 5px 10px;
+  font-size: 0.72em;
+}
+
+.mq-work-focus {
+  font-size: 0.92em;
+  line-height: 1.2;
+}
+
+.mq-work-card .mq-bullet-list {
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+}
+
+.mq-work-card .mq-bullet-list li {
+  display: flex;
+  align-items: center;
+}
+
+.mq-skill-grid {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-rows: 1.05fr repeat(2, 0.95fr);
+}
+
+.mq-skill-widget {
+  overflow: hidden;
+  align-content: start;
+  padding: clamp(14px, 0.95vw, 20px);
+}
+
+.mq-skill-widget:nth-child(1),
+.mq-skill-widget:nth-child(2) {
+  grid-column: span 6;
+}
+
+.mq-skill-widget:nth-child(3),
+.mq-skill-widget:nth-child(4),
+.mq-skill-widget:nth-child(5) {
+  grid-column: span 4;
+}
+
+.mq-skill-widget:nth-child(6),
+.mq-skill-widget:nth-child(7) {
+  grid-column: span 6;
+}
+
+.mq-skill-widget .mq-chip-row {
+  align-content: start;
+}
+
+.mq-skill-widget .mq-chip {
+  font-size: 0.78em;
+}
+
+.mq-soft {
+  grid-template-rows: minmax(0, 1fr) minmax(78px, 0.2fr) auto;
+}
+
+.mq-soft-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+}
+
+.mq-soft-card {
+  overflow: hidden;
+  align-content: start;
+  padding: clamp(16px, 1vw, 22px);
+}
+
+.mq-soft-card h3 {
+  font-size: clamp(1.12rem, 1.08vw, 1.38rem);
+}
+
+.mq-soft-card p {
+  font-size: 0.88em;
+  line-height: 1.2;
+}
+
+.mq-soft-notes {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.mq-leadership {
+  grid-template-columns: clamp(260px, 24%, 390px) minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr) auto;
+}
+
+.mq-leadership-media {
+  grid-template-rows: minmax(0, 1fr) minmax(0, 0.72fr);
+}
+
+.mq-leader-photo {
+  border-radius: 22px 8px 22px 8px;
+  background:
+    radial-gradient(circle at 50% 42%, rgba(255, 248, 210, 0.72), transparent 54%),
+    rgba(8, 18, 20, 0.76);
+}
+
+.mq-leader-photo img {
+  object-fit: contain;
+  object-position: center bottom;
+}
+
+.mq-leadership-ledger {
+  min-height: 0;
+  display: grid;
+  grid-template-rows: repeat(8, minmax(0, 1fr));
+  gap: clamp(7px, 0.48vw, 10px);
+}
+
+.mq-leadership-row {
+  min-height: 0;
+  padding: clamp(8px, 0.65vw, 12px);
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+  border: 2px solid rgba(241, 211, 154, 0.58);
+  background:
+    linear-gradient(90deg, rgba(255, 215, 110, 0.08), transparent 38%),
+    rgba(8, 24, 24, 0.84);
+  box-shadow: 4px 4px 0 rgba(5, 5, 4, 0.82);
+  overflow: hidden;
+}
+
+.mq-leadership-row > span {
+  width: clamp(34px, 2.6vw, 46px);
+  height: clamp(34px, 2.6vw, 46px);
+  display: grid;
+  place-items: center;
+  border: 2px solid rgba(255, 229, 156, 0.8);
+  border-radius: 50%;
+  background: rgba(18, 44, 39, 0.95);
+  color: #ffd76e;
+  font-size: 0.72em;
+}
+
+.mq-leadership-row h3 {
+  color: #fff6c8;
+  font-size: clamp(0.94rem, 0.86vw, 1.13rem);
+}
+
+.mq-leadership-row p {
+  margin-top: 3px;
+  color: #eddcb0;
+  font-size: 0.72em;
+  line-height: 1.16;
+}
+
+.mq-leadership > .mq-chip-row {
+  grid-column: 1 / -1;
+  overflow: hidden;
+}
+
+.mq-hobbies {
+  grid-template-columns: clamp(245px, 23%, 360px) minmax(0, 1fr);
+}
+
+.mq-phone-frame {
+  aspect-ratio: 0.45;
+  align-self: stretch;
+  background: rgba(2, 8, 10, 0.92);
+}
+
+.mq-phone-frame img {
+  width: 100%;
+  height: 112%;
+  object-fit: cover;
+  object-position: 50% 50%;
+  transform: translateY(-5.2%);
+}
+
+.mq-hobby-body {
+  grid-template-rows: auto minmax(0, 0.76fr) minmax(0, 0.82fr) auto;
+}
+
+.mq-hobby-story {
+  font-size: clamp(1.06rem, 0.98vw, 1.3rem);
+}
+
+.mq-hobby-card,
+.mq-hobby-notes .mq-paper-note {
+  overflow: hidden;
+}
+
+.mq-hobby-card p,
+.mq-hobby-notes .mq-paper-note {
+  font-size: 0.82em;
+  line-height: 1.2;
+}
+
+.mq-achievements {
+  grid-template-rows: minmax(0, 0.74fr) minmax(0, 1fr) auto;
+}
+
+.mq-achievement-card {
+  overflow: hidden;
+  align-content: start;
+}
+
+.mq-achievement-card p {
+  font-size: 0.78em;
+  line-height: 1.18;
+}
+
+.mq-achievement-list .mq-paper-note {
+  overflow: hidden;
+  font-size: 0.8em;
+  line-height: 1.18;
+}
+
+.preview-screen .side-preview-nav {
+  margin-top: clamp(8px, 0.65vw, 12px);
+  padding-top: clamp(8px, 0.65vw, 12px);
+}
+
+.preview-screen .side-preview-nav .continue-button {
+  min-height: clamp(50px, 4.6vh, 66px);
+  padding: 8px 12px;
+  font-size: clamp(0.78rem, 0.72vw, 0.92rem);
+  line-height: 1.12;
+}
+
+@media (min-width: 1600px) and (min-height: 900px) {
+  .mq-page {
+    --mq-gap: clamp(12px, 0.72vw, 18px);
+  }
+
+  .mq-project-description {
+    font-size: 0.9em;
+  }
+
+  .mq-project-card .mq-bullet-list li,
+  .mq-work-card .mq-bullet-list li {
+    font-size: 0.8em;
+  }
+}
+
+@media (max-width: 1280px), (max-height: 820px) {
+  .preview-screen .side-preview {
+    grid-template-columns: 1fr;
+  }
+
+  .preview-screen .portfolio-map {
+    display: none;
+  }
+
+  .preview-screen .side-preview-panel,
+  .slide-screen .slide-page {
+    overflow: auto;
+  }
+
+  .preview-screen .side-preview-panel > .qd-content,
+  .slide-screen .slide-page > .qd-content,
+  .qd-content {
+    overflow: visible;
+  }
+}
+
+/* Memory Quest final section polish */
+.preview-screen .side-preview {
+  grid-template-columns: clamp(280px, 18vw, 360px) minmax(0, 1fr);
+}
+
+.preview-screen .side-preview-panel,
+.slide-screen .slide-page {
+  --mq-panel-pad: clamp(16px, 1.15vw, 26px);
+  padding: var(--mq-panel-pad);
+}
+
+.preview-screen .side-preview-header,
+.slide-screen .slide-header {
+  margin-right: clamp(118px, 7vw, 150px);
+  margin-bottom: clamp(7px, 0.58vw, 12px);
+}
+
+.preview-screen .side-preview-header h2,
+.slide-screen .slide-header h2 {
+  font-size: clamp(2.35rem, 2.7vw, 4.15rem);
+}
+
+.preview-screen .side-preview-panel > .qd-content,
+.slide-screen .slide-page > .qd-content,
+.qd-content {
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.mq-page {
+  --mq-gap: clamp(9px, 0.7vw, 14px);
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  font-size: clamp(1.08rem, 0.98vw, 1.32rem);
+  line-height: 1.3;
+}
+
+.slide-screen .mq-page {
+  font-size: clamp(1.18rem, 1.08vw, 1.5rem);
+}
+
+.mq-page * {
+  min-width: 0;
+}
+
+.mq-page p,
+.mq-page li,
+.mq-page small,
+.mq-page span {
+  overflow-wrap: break-word;
+}
+
+.text-highlight,
+.mq-page strong {
+  display: inline;
+  white-space: normal;
+}
+
+.mq-photo-card {
+  border-radius: 12px 24px 12px 24px;
+}
+
+.mq-photo-card img {
+  object-fit: contain;
+  object-position: center;
+}
+
+.mq-chip {
+  min-height: clamp(26px, 2.35vh, 34px);
+  padding: 6px 12px;
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12), transparent),
+    rgba(60, 142, 121, 0.62);
+  border-color: rgba(150, 255, 220, 0.74);
+  color: #f2fff8;
+  font-size: 0.78em;
+}
+
+.mq-button-link {
+  border-radius: 10px 16px 10px 16px;
+}
+
+.mq-about {
+  grid-template-rows: minmax(0, 1.02fr) minmax(124px, 0.48fr) auto;
+  align-content: start;
+}
+
+.mq-about-hero {
+  grid-template-columns: clamp(210px, 21%, 330px) minmax(0, 1fr);
+  align-items: start;
+  gap: clamp(14px, 1vw, 22px);
+}
+
+.mq-about-photo {
+  height: clamp(245px, 34vh, 390px);
+  align-self: start;
+}
+
+.mq-about-photo img {
+  object-fit: contain;
+  object-position: center bottom;
+}
+
+.mq-intro-paragraph {
+  align-self: start;
+  padding-top: 2px;
+  font-size: clamp(1.12rem, 1.03vw, 1.38rem);
+  line-height: 1.31;
+}
+
+.mq-education-map {
+  grid-template-columns: 1.16fr 0.92fr 0.92fr;
+  gap: var(--mq-gap);
+}
+
+.mq-map-card {
+  padding: clamp(12px, 0.9vw, 18px);
+  align-content: center;
+}
+
+.mq-map-card h3 {
+  font-size: clamp(1.05rem, 0.98vw, 1.28rem);
+}
+
+.mq-map-card p,
+.mq-map-card strong {
+  line-height: 1.18;
+}
+
+.mq-map-card small {
+  display: block;
+  margin-top: 6px;
+  color: #dcefc7;
+  font-size: 0.74em;
+  line-height: 1.16;
+}
+
+.mq-about-footer .mq-fun-fact {
+  width: min(100%, 820px);
+  justify-self: center;
+}
+
+.mq-projects {
+  grid-template-rows: clamp(86px, 10vh, 112px) minmax(0, 1fr);
+}
+
+.mq-project-topbar {
+  grid-template-columns: clamp(250px, 26%, 430px) minmax(170px, 1fr);
+  align-items: stretch;
+}
+
+.mq-project-command {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: clamp(10px, 0.8vw, 16px);
+}
+
+.mq-project-command p {
+  display: none;
+}
+
+.mq-project-command .mq-button-link {
+  min-height: clamp(42px, 4.1vh, 54px);
+  padding: 9px 18px;
+  border-color: rgba(143, 255, 218, 0.88);
+  background:
+    radial-gradient(circle at 18px 50%, rgba(143, 255, 218, 0.28), transparent 25px),
+    rgba(5, 18, 22, 0.96);
+  color: #f3fff9;
+  font-size: 0.86em;
+}
+
+.mq-project-cards {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-rows: minmax(0, 1.05fr) minmax(0, 0.95fr);
+}
+
+.mq-project-card:nth-child(1),
+.mq-project-card:nth-child(2) {
+  grid-column: span 6;
+}
+
+.mq-project-card:nth-child(n + 3) {
+  grid-column: span 4;
+}
+
+.mq-project-card {
+  grid-template-rows: auto auto minmax(0, 1fr) auto auto;
+  gap: clamp(5px, 0.42vw, 8px);
+  padding: clamp(10px, 0.74vw, 15px);
+  overflow: hidden;
+}
+
+.mq-project-title-row h3 {
+  font-size: clamp(0.98rem, 0.88vw, 1.22rem);
+}
+
+.mq-project-title-row p {
+  font-size: 0.65em;
+  line-height: 1.18;
+}
+
+.mq-project-description {
+  font-size: 0.82em;
+  line-height: 1.2;
+}
+
+.mq-project-card .mq-bullet-list {
+  align-content: start;
+  overflow: hidden;
+  gap: 5px;
+}
+
+.mq-project-card .mq-bullet-list li {
+  display: block;
+  padding: 6px 8px 6px 18px;
+  font-size: 0.72em;
+  line-height: 1.18;
+}
+
+.mq-project-card .mq-chip-row {
+  max-height: 58px;
+  overflow: hidden;
+}
+
+.mq-project-card .mq-chip {
+  min-height: 23px;
+  padding: 4px 8px;
+  font-size: 0.58em;
+}
+
+.mq-card-actions .mq-button-link {
+  min-height: 32px;
+  padding: 6px 10px;
+  font-size: 0.66em;
+}
+
+.mq-work {
+  grid-template-rows: minmax(0, 1fr);
+}
+
+.mq-work-track {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+  gap: clamp(14px, 1.05vw, 24px);
+}
+
+.mq-work-track::before {
+  top: clamp(42px, 4.8vh, 62px);
+}
+
+.mq-work-card {
+  grid-template-rows: auto auto auto minmax(0, 1fr);
+  align-content: start;
+  gap: clamp(9px, 0.7vw, 13px);
+  padding: clamp(13px, 0.92vw, 20px);
+  overflow: hidden;
+}
+
+.mq-work-head {
+  grid-template-columns: clamp(46px, 3.35vw, 58px) minmax(0, 1fr);
+  padding-right: clamp(40px, 3vw, 54px);
+}
+
+.mq-work-head img {
+  width: clamp(46px, 3.35vw, 58px);
+  height: clamp(46px, 3.35vw, 58px);
+}
+
+.mq-work-head h3 {
+  font-size: clamp(1.06rem, 1vw, 1.34rem);
+}
+
+.mq-work-head p {
+  font-size: 0.78em;
+}
+
+.mq-work-node {
+  width: clamp(36px, 2.75vw, 46px);
+  height: clamp(36px, 2.75vw, 46px);
+}
+
+.mq-work-date {
+  font-size: 0.7em;
+}
+
+.mq-work-focus {
+  font-size: 0.88em;
+  line-height: 1.2;
+}
+
+.mq-work-card .mq-bullet-list {
+  grid-template-rows: none;
+  grid-auto-rows: auto;
+  align-content: start;
+  gap: clamp(8px, 0.65vw, 12px);
+  overflow: hidden;
+}
+
+.mq-work-card .mq-bullet-list li {
+  display: block;
+  min-height: 0;
+  padding: 9px 9px 9px 20px;
+  border: 1px solid rgba(241, 211, 154, 0.3);
+  border-left-width: 4px;
+  border-radius: 8px 14px 8px 14px;
+  background:
+    linear-gradient(90deg, rgba(143, 255, 218, 0.1), transparent 42%),
+    rgba(244, 220, 160, 0.045);
+  font-size: 0.76em;
+  line-height: 1.22;
+}
+
+.mq-skill-grid {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+}
+
+.mq-skill-widget {
+  align-content: center;
+  gap: clamp(9px, 0.72vw, 14px);
+  padding: clamp(13px, 0.9vw, 20px);
+}
+
+.mq-skill-widget .mq-chip-row {
+  align-content: center;
+  justify-content: flex-start;
+}
+
+.mq-skill-widget .mq-chip {
+  min-height: clamp(28px, 2.7vh, 36px);
+  padding: 6px 12px;
+  font-size: 0.78em;
+}
+
+.mq-soft {
+  grid-template-rows: minmax(0, 1fr) minmax(70px, auto) auto;
+}
+
+.mq-soft-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+}
+
+.mq-soft-card {
+  align-content: center;
+  padding: clamp(13px, 0.9vw, 20px);
+  overflow: hidden;
+}
+
+.mq-soft-card h3 {
+  font-size: clamp(1.12rem, 1.02vw, 1.36rem);
+}
+
+.mq-soft-card p {
+  font-size: 0.86em;
+  line-height: 1.2;
+}
+
+.mq-soft-notes .mq-paper-note {
+  align-items: center;
+  font-size: 0.8em;
+  line-height: 1.18;
+}
+
+.mq-leadership {
+  grid-template-columns: clamp(235px, 22%, 340px) minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr) auto;
+}
+
+.mq-leadership-media {
+  grid-template-rows: minmax(0, 0.48fr) minmax(0, 0.52fr);
+}
+
+.mq-leader-photo {
+  border-radius: 28px 10px 28px 10px;
+}
+
+.mq-leader-photo img {
+  object-fit: contain;
+  object-position: center bottom;
+}
+
+.mq-leadership-ledger {
+  grid-template-rows: repeat(8, minmax(0, 1fr));
+  gap: clamp(6px, 0.45vw, 9px);
+}
+
+.mq-leadership-row {
+  padding: clamp(7px, 0.55vw, 11px);
+}
+
+.mq-leadership-row h3 {
+  font-size: clamp(0.9rem, 0.82vw, 1.08rem);
+}
+
+.mq-leadership-row p {
+  font-size: 0.68em;
+  line-height: 1.13;
+}
+
+.mq-hobbies {
+  grid-template-columns: clamp(235px, 20%, 330px) minmax(0, 1fr);
+}
+
+.mq-phone-frame {
+  aspect-ratio: 0.48;
+  align-self: stretch;
+}
+
+.mq-phone-frame img {
+  width: 100%;
+  height: 124%;
+  object-fit: cover;
+  object-position: 50% 48%;
+  transform: translateY(-9%);
+}
+
+.mq-hobby-body {
+  grid-template-rows: auto minmax(0, 0.82fr) minmax(0, 0.74fr) auto;
+}
+
+.mq-hobby-story {
+  font-size: clamp(1.05rem, 0.98vw, 1.28rem);
+  line-height: 1.28;
+}
+
+.mq-hobby-card,
+.mq-hobby-notes .mq-paper-note {
+  align-content: center;
+  overflow: hidden;
+}
+
+.mq-hobby-card p,
+.mq-hobby-notes .mq-paper-note {
+  font-size: 0.82em;
+  line-height: 1.18;
+}
+
+.mq-hobby-actions {
+  flex-wrap: wrap;
+}
+
+.mq-achievements {
+  grid-template-rows: minmax(0, 0.72fr) minmax(0, 1fr) auto;
+}
+
+.mq-achievement-card {
+  align-content: center;
+  padding: clamp(12px, 0.8vw, 18px);
+  overflow: hidden;
+}
+
+.mq-achievement-card h3 {
+  font-size: clamp(0.98rem, 0.92vw, 1.2rem);
+}
+
+.mq-achievement-card p {
+  font-size: 0.76em;
+  line-height: 1.16;
+}
+
+.mq-achievement-list .mq-paper-note {
+  align-items: center;
+  overflow: hidden;
+  font-size: 0.76em;
+  line-height: 1.16;
+}
+
+.preview-screen .side-preview-nav .continue-button {
+  min-height: clamp(50px, 4.2vh, 68px);
+  padding: 8px 12px;
+}
+
+@media (min-width: 1500px) and (min-height: 850px) {
+  .mq-project-card .mq-bullet-list li,
+  .mq-work-card .mq-bullet-list li {
+    font-size: 0.79em;
+  }
+
+  .mq-project-description {
+    font-size: 0.86em;
+  }
+}
+
+/* Memory Quest density correction */
+.mq-project-command {
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.mq-work-track {
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  gap: clamp(12px, 1vw, 18px);
+}
+
+.mq-work-track::before {
+  left: clamp(26px, 2.4vw, 42px);
+  right: auto;
+  top: clamp(72px, 7vh, 94px);
+  bottom: clamp(72px, 7vh, 94px);
+  width: 5px;
+  height: auto;
+  background: repeating-linear-gradient(180deg, #f3d08c 0 24px, transparent 24px 38px);
+}
+
+.mq-work-card {
+  display: grid;
+  grid-template-columns: clamp(250px, 23%, 340px) clamp(190px, 18%, 270px) minmax(0, 1fr);
+  grid-template-rows: auto minmax(0, 1fr);
+  grid-template-areas:
+    "head date bullets"
+    "focus focus bullets";
+  align-items: center;
+  gap: clamp(10px, 0.75vw, 16px);
+  padding: clamp(16px, 1vw, 22px) clamp(18px, 1.2vw, 26px);
+}
+
+.mq-work-node {
+  top: 50%;
+  right: clamp(14px, 1vw, 20px);
+  transform: translateY(-50%);
+}
+
+.mq-work-head {
+  grid-area: head;
+  padding-right: 0;
+}
+
+.mq-work-date {
+  grid-area: date;
+  justify-self: start;
+}
+
+.mq-work-focus {
+  grid-area: focus;
+  align-self: start;
+}
+
+.mq-work-card .mq-bullet-list {
+  grid-area: bullets;
+  align-self: stretch;
+  display: grid;
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  align-content: stretch;
+}
+
+.mq-work-card .mq-bullet-list li {
+  display: grid;
+  align-content: center;
+  padding: 8px 12px 8px 22px;
+  font-size: 0.82em;
+}
+
+.mq-skill-widget .mq-chip-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(128px, 1fr));
+  align-content: stretch;
+  align-items: stretch;
+}
+
+.mq-skill-widget .mq-chip {
+  justify-content: center;
+  min-height: clamp(38px, 4.2vh, 54px);
+  padding: 8px 10px;
+  text-align: center;
+  white-space: normal;
+  line-height: 1.12;
+}
+
+.mq-soft {
+  grid-template-rows: auto auto auto;
+  align-content: start;
+}
+
+.mq-soft-grid {
+  grid-template-rows: repeat(2, minmax(138px, auto));
+}
+
+.mq-soft-card {
+  min-height: clamp(138px, 15vh, 188px);
+  align-content: start;
+}
+
+.mq-hobby-body {
+  grid-template-rows: auto auto auto auto;
+  align-content: center;
+}
+
+.mq-hobby-cards,
+.mq-hobby-notes {
+  grid-auto-rows: auto;
+}
+
+.mq-hobby-card {
+  min-height: clamp(140px, 16vh, 192px);
+  align-content: start;
+}
+
+.mq-hobby-notes .mq-paper-note {
+  min-height: clamp(96px, 10vh, 132px);
+}
+
+.mq-achievements {
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  align-content: start;
+}
+
+.mq-achievement-board {
+  grid-auto-rows: auto;
+}
+
+.mq-achievement-card {
+  min-height: clamp(172px, 19vh, 236px);
+  align-content: start;
+}
+
+.mq-achievement-list {
+  grid-auto-rows: minmax(0, 1fr);
+}
+
+.mq-leader-photo-2 img {
+  object-fit: cover;
+  object-position: 52% 46%;
+}
+
+/* Memory Quest layout stabilization */
+.mq-page {
+  font-size: clamp(1.12rem, 1.03vw, 1.38rem);
+}
+
+.slide-screen .mq-page {
+  font-size: clamp(1.26rem, 1.15vw, 1.68rem);
+}
+
+.mq-about {
+  grid-template-rows: auto auto auto;
+  align-content: start;
+  gap: clamp(16px, 1.1vw, 24px);
+}
+
+.mq-about-hero {
+  min-height: 0;
+}
+
+.mq-about-photo {
+  height: clamp(286px, 35vh, 410px);
+}
+
+.mq-about .mq-intro-paragraph {
+  font-size: clamp(1.14rem, 1.06vw, 1.44rem);
+  line-height: 1.34;
+}
+
+.mq-education-map {
+  grid-auto-rows: auto;
+}
+
+.mq-map-card {
+  min-height: clamp(132px, 14vh, 178px);
+}
+
+.mq-about-footer {
+  align-content: start;
+}
+
+.mq-work-track {
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: repeat(3, minmax(190px, 1fr));
+  align-items: stretch;
+}
+
+.mq-work-track::before {
+  left: clamp(44px, 3.5vw, 66px);
+  top: clamp(64px, 6vh, 86px);
+  bottom: clamp(64px, 6vh, 86px);
+}
+
+.mq-work-card {
+  grid-template-columns: clamp(52px, 3.4vw, 68px) clamp(245px, 21vw, 360px) minmax(0, 1fr);
+  grid-template-rows: auto auto minmax(0, 1fr);
+  grid-template-areas:
+    "node head bullets"
+    "node date bullets"
+    "node focus bullets";
+  align-items: start;
+  gap: clamp(8px, 0.6vw, 13px) clamp(14px, 1vw, 24px);
+  padding: clamp(14px, 0.9vw, 20px) clamp(18px, 1.2vw, 26px);
+}
+
+.mq-work-node {
+  position: relative;
+  top: auto;
+  right: auto;
+  transform: none;
+  grid-area: node;
+  align-self: center;
+  justify-self: center;
+  z-index: 1;
+}
+
+.mq-work-head {
+  grid-area: head;
+}
+
+.mq-work-date {
+  grid-area: date;
+}
+
+.mq-work-focus {
+  grid-area: focus;
+  align-self: start;
+}
+
+.mq-work-card .mq-bullet-list {
+  grid-area: bullets;
+  align-self: stretch;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: minmax(0, 1fr);
+  align-content: stretch;
+  gap: clamp(8px, 0.7vw, 14px);
+  overflow: visible;
+}
+
+.mq-work-card .mq-bullet-list li {
+  display: block;
+  min-height: 0;
+  overflow: visible;
+  align-content: start;
+  padding: clamp(9px, 0.65vw, 13px) clamp(10px, 0.75vw, 16px) clamp(9px, 0.65vw, 13px) clamp(20px, 1vw, 26px);
+  font-size: clamp(0.78rem, 0.73vw, 0.98rem);
+  line-height: 1.2;
+}
+
+.mq-soft {
+  grid-template-rows: minmax(0, 1fr) auto auto;
+  align-content: stretch;
+}
+
+.mq-soft-grid {
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+}
+
+.mq-soft-card {
+  min-height: 0;
+  display: grid;
+  align-content: center;
+}
+
+.mq-hobbies {
+  align-items: stretch;
+  grid-template-columns: clamp(260px, 21.5%, 355px) minmax(0, 1fr);
+}
+
+.mq-phone-frame {
+  height: 100%;
+  max-height: 100%;
+}
+
+.mq-hobby-body {
+  grid-template-rows: auto minmax(0, 1fr) minmax(0, 0.72fr) auto;
+  align-content: stretch;
+}
+
+.mq-hobby-cards,
+.mq-hobby-notes {
+  align-items: stretch;
+}
+
+.mq-hobby-card,
+.mq-hobby-notes .mq-paper-note {
+  min-height: 0;
+  display: grid;
+  align-content: center;
+}
+
+.mq-achievements {
+  grid-template-rows: auto auto auto;
+  align-content: start;
+}
+
+.mq-achievement-board {
+  grid-auto-rows: auto;
+}
+
+.mq-achievement-card {
+  min-height: clamp(148px, 16vh, 200px);
+}
+
+.mq-achievement-list {
+  grid-auto-rows: auto;
+  align-content: start;
+}
+
+.mq-achievement-list .mq-paper-note {
+  min-height: clamp(76px, 7.8vh, 110px);
+  align-items: center;
+}
+
+@media (max-width: 1380px), (max-height: 820px) {
+  .mq-work-card {
+    grid-template-columns: clamp(48px, 4vw, 58px) minmax(220px, 0.34fr) minmax(0, 1fr);
+  }
+
+  .mq-work-card .mq-bullet-list {
+    grid-template-columns: minmax(0, 1fr);
+    grid-auto-rows: auto;
+  }
+}
+
+/* Memory Quest overlap correction */
+.mq-work-card .mq-bullet-list {
+  grid-template-rows: auto;
+  align-self: start;
+  align-content: start;
+}
+
+.mq-work-card .mq-bullet-list li {
+  min-height: auto;
+}
+
+.mq-soft {
+  grid-template-rows: auto auto auto;
+  align-content: start;
+}
+
+.mq-soft-grid {
+  grid-template-rows: repeat(2, minmax(138px, auto));
+  align-items: start;
+}
+
+.mq-soft-card {
+  min-height: clamp(138px, 14vh, 176px);
+  align-content: start;
+}
+
+.mq-hobbies {
+  align-items: start;
+}
+
+.mq-phone-frame {
+  width: 100%;
+  height: auto;
+  max-height: none;
+  align-self: start;
+  justify-self: start;
+  overflow: hidden;
+}
+
+.mq-hobby-body {
+  grid-template-rows: auto auto auto auto;
+  align-content: start;
+}
+
+.mq-hobby-cards,
+.mq-hobby-notes {
+  align-items: start;
+}
+
+.mq-hobby-card {
+  min-height: clamp(132px, 13.5vh, 170px);
+  align-content: start;
+}
+
+.mq-hobby-notes .mq-paper-note {
+  min-height: clamp(86px, 8.5vh, 112px);
+  align-content: center;
+}
+
+/* Memory Quest final layout lock */
+.preview-screen .side-preview-panel,
+.slide-screen .slide-page {
+  --mq-panel-pad: clamp(18px, 1.25vw, 30px);
+  padding: var(--mq-panel-pad);
+}
+
+.preview-screen .side-preview-panel,
+.slide-screen .slide-page,
+.preview-screen .side-preview-panel > .qd-content,
+.slide-screen .slide-page > .qd-content,
+.qd-content {
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.mq-page {
+  --mq-gap: clamp(12px, 0.82vw, 18px);
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  font-size: clamp(1.14rem, 1.02vw, 1.4rem);
+  line-height: 1.28;
+}
+
+.slide-screen .mq-page {
+  font-size: clamp(1.28rem, 1.16vw, 1.72rem);
+}
+
+.mq-page p,
+.mq-page li,
+.mq-page small,
+.mq-page span {
+  overflow-wrap: anywhere;
+}
+
+.mq-photo-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.mq-chip {
+  min-height: clamp(30px, 2.7vh, 40px);
+  padding: 7px 13px;
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12), transparent),
+    rgba(57, 148, 126, 0.68);
+  border-color: rgba(151, 255, 221, 0.78);
+  color: #f5fff9;
+  box-shadow: 2px 2px 0 rgba(4, 8, 9, 0.88);
+}
+
+.mq-project-command {
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.mq-project-command .mq-button-link {
+  border-color: rgba(136, 255, 218, 0.92);
+  background:
+    radial-gradient(circle at 20px 50%, rgba(136, 255, 218, 0.28), transparent 28px),
+    rgba(5, 18, 22, 0.98);
+  color: #f3fff9;
+}
+
+.mq-work {
+  height: 100%;
+  grid-template-rows: minmax(0, 1fr);
+  align-content: stretch;
+}
+
+.mq-work-track {
+  position: relative;
+  height: 100%;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: minmax(0, 1fr);
+  align-items: stretch;
+  gap: clamp(16px, 1vw, 24px);
+}
+
+.mq-work-track::before {
+  content: "";
+  position: absolute;
+  left: clamp(86px, 6vw, 128px);
+  right: clamp(86px, 6vw, 128px);
+  top: clamp(36px, 5vh, 58px);
+  bottom: auto;
+  width: auto;
+  height: 5px;
+  background: repeating-linear-gradient(90deg, rgba(255, 221, 143, 0.95) 0 24px, transparent 24px 40px);
+  z-index: 0;
+}
+
+.mq-work-card {
+  position: relative;
+  z-index: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-rows: auto auto auto minmax(0, 1fr);
+  grid-template-areas:
+    "node head"
+    "date date"
+    "focus focus"
+    "bullets bullets";
+  align-content: stretch;
+  align-items: start;
+  gap: clamp(10px, 0.7vw, 15px);
+  padding: clamp(17px, 1.05vw, 24px);
+  overflow: hidden;
+  border-radius: 18px 8px 18px 8px;
+}
+
+.mq-work-node {
+  position: relative;
+  top: auto;
+  right: auto;
+  transform: none;
+  grid-area: node;
+  align-self: center;
+  justify-self: center;
+  width: clamp(38px, 2.75vw, 52px);
+  height: clamp(38px, 2.75vw, 52px);
+  z-index: 2;
+}
+
+.mq-work-head {
+  grid-area: head;
+  display: grid;
+  grid-template-columns: clamp(48px, 3.2vw, 64px) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(10px, 0.7vw, 15px);
+  padding-right: 0;
+}
+
+.mq-work-head img {
+  width: clamp(48px, 3.2vw, 64px);
+  height: clamp(48px, 3.2vw, 64px);
+}
+
+.mq-work-head h3 {
+  font-size: clamp(1.16rem, 1.05vw, 1.48rem);
+  line-height: 1.08;
+}
+
+.mq-work-head p {
+  font-size: 0.8em;
+  line-height: 1.15;
+}
+
+.mq-work-date {
+  grid-area: date;
+  justify-self: start;
+  width: auto;
+  max-width: 100%;
+  font-size: 0.78em;
+  line-height: 1.1;
+}
+
+.mq-work-focus {
+  grid-area: focus;
+  align-self: start;
+  font-size: 0.96em;
+  line-height: 1.18;
+}
+
+.mq-work-card .mq-bullet-list {
+  grid-area: bullets;
+  align-self: stretch;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  align-content: stretch;
+  gap: clamp(9px, 0.65vw, 14px);
+  overflow: hidden;
+}
+
+.mq-work-card .mq-bullet-list li {
+  min-height: 0;
+  display: grid;
+  align-content: center;
+  overflow: hidden;
+  padding: clamp(10px, 0.78vw, 16px) clamp(12px, 0.9vw, 18px) clamp(10px, 0.78vw, 16px) clamp(24px, 1.08vw, 30px);
+  border: 1px solid rgba(241, 211, 154, 0.34);
+  border-left-width: 4px;
+  border-radius: 10px 16px 10px 16px;
+  background:
+    linear-gradient(90deg, rgba(143, 255, 218, 0.12), transparent 46%),
+    rgba(244, 220, 160, 0.05);
+  font-size: clamp(0.82rem, 0.76vw, 1.02rem);
+  line-height: 1.2;
+}
+
+.mq-skills {
+  height: 100%;
+}
+
+.mq-skill-grid {
+  height: 100%;
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  align-items: stretch;
+}
+
+.mq-skill-widget {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  align-content: stretch;
+  overflow: hidden;
+}
+
+.mq-skill-widget .mq-chip-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(138px, 1fr));
+  align-content: stretch;
+  align-items: stretch;
+  overflow: hidden;
+}
+
+.mq-skill-widget .mq-chip {
+  justify-content: center;
+  min-height: 0;
+  padding: 8px 10px;
+  text-align: center;
+  white-space: normal;
+  line-height: 1.12;
+}
+
+.mq-soft {
+  height: 100%;
+  grid-template-rows: minmax(0, 1fr) minmax(96px, auto) auto;
+  align-content: stretch;
+}
+
+.mq-soft-grid {
+  min-height: 0;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+}
+
+.mq-soft-card {
+  min-height: 0;
+  display: grid;
+  align-content: center;
+  gap: clamp(8px, 0.55vw, 12px);
+  overflow: hidden;
+}
+
+.mq-soft-card h3 {
+  font-size: clamp(1.18rem, 1.08vw, 1.52rem);
+  line-height: 1.08;
+}
+
+.mq-soft-card p {
+  font-size: 0.9em;
+  line-height: 1.2;
+}
+
+.mq-soft-notes {
+  min-height: 0;
+  align-self: stretch;
+}
+
+.mq-soft-notes .mq-paper-note {
+  min-height: clamp(84px, 8.4vh, 124px);
+  align-content: center;
+  overflow: hidden;
+  font-size: 0.86em;
+  line-height: 1.18;
+}
+
+.mq-leadership {
+  height: 100%;
+  grid-template-columns: clamp(260px, 21%, 360px) minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr) auto;
+  align-content: stretch;
+}
+
+.mq-leadership-media {
+  min-height: 0;
+  grid-template-rows: minmax(0, 0.5fr) minmax(0, 0.5fr);
+  align-items: stretch;
+}
+
+.mq-leader-photo img {
+  object-fit: contain;
+  object-position: center bottom;
+}
+
+.mq-leadership-ledger {
+  min-height: 0;
+  grid-template-rows: repeat(8, minmax(0, 1fr));
+  align-items: stretch;
+}
+
+.mq-leadership-row {
+  min-height: 0;
+  align-items: center;
+  overflow: hidden;
+}
+
+.mq-leadership-row h3 {
+  font-size: clamp(0.96rem, 0.86vw, 1.16rem);
+  line-height: 1.08;
+}
+
+.mq-leadership-row p {
+  font-size: clamp(0.72rem, 0.66vw, 0.9rem);
+  line-height: 1.15;
+}
+
+.mq-hobbies {
+  height: 100%;
+  align-items: stretch;
+  grid-template-columns: clamp(255px, 20.5%, 350px) minmax(0, 1fr);
+}
+
+.mq-phone-frame {
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  align-self: stretch;
+  justify-self: stretch;
+  overflow: hidden;
+}
+
+.mq-phone-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+  transform: none;
+}
+
+.mq-hobby-body {
+  min-height: 0;
+  grid-template-rows: auto minmax(0, 1fr) minmax(0, 0.72fr) auto;
+  align-content: stretch;
+}
+
+.mq-hobby-cards,
+.mq-hobby-notes {
+  min-height: 0;
+  align-items: stretch;
+}
+
+.mq-hobby-card,
+.mq-hobby-notes .mq-paper-note {
+  min-height: 0;
+  display: grid;
+  align-content: center;
+  overflow: hidden;
+}
+
+.mq-hobby-card p,
+.mq-hobby-notes .mq-paper-note {
+  font-size: 0.86em;
+  line-height: 1.18;
+}
+
+.mq-achievements {
+  height: 100%;
+  grid-template-rows: minmax(0, 0.86fr) minmax(0, 1fr) auto;
+  align-content: stretch;
+}
+
+.mq-achievement-board {
+  min-height: 0;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  align-items: stretch;
+}
+
+.mq-achievement-card {
+  min-height: 0;
+  display: grid;
+  align-content: center;
+  overflow: hidden;
+}
+
+.mq-achievement-card h3 {
+  font-size: clamp(1rem, 0.94vw, 1.28rem);
+  line-height: 1.1;
+}
+
+.mq-achievement-card p {
+  font-size: 0.82em;
+  line-height: 1.16;
+}
+
+.mq-achievement-list {
+  min-height: 0;
+  grid-auto-rows: minmax(0, 1fr);
+  align-items: stretch;
+}
+
+.mq-achievement-list .mq-paper-note {
+  min-height: 0;
+  overflow: hidden;
+  align-content: center;
+  font-size: 0.82em;
+  line-height: 1.16;
+}
+
+@media (max-width: 1380px), (max-height: 820px) {
+  .mq-page {
+    font-size: clamp(1rem, 1vw, 1.18rem);
+  }
+
+  .mq-work-track {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: repeat(3, minmax(0, 1fr));
+  }
+
+  .mq-work-track::before {
+    left: clamp(40px, 3.6vw, 58px);
+    right: auto;
+    top: clamp(56px, 5.5vh, 82px);
+    bottom: clamp(56px, 5.5vh, 82px);
+    width: 5px;
+    height: auto;
+    background: repeating-linear-gradient(180deg, rgba(255, 221, 143, 0.95) 0 22px, transparent 22px 36px);
+  }
+
+  .mq-work-card {
+    grid-template-columns: clamp(46px, 4vw, 58px) minmax(190px, 0.35fr) minmax(0, 1fr);
+    grid-template-rows: auto auto minmax(0, 1fr);
+    grid-template-areas:
+      "node head bullets"
+      "node date bullets"
+      "node focus bullets";
+  }
+
+  .mq-work-card .mq-bullet-list {
+    grid-template-rows: repeat(3, minmax(0, 1fr));
+  }
+
+  .mq-work-card .mq-bullet-list li {
+    font-size: clamp(0.74rem, 0.8vw, 0.9rem);
+    line-height: 1.16;
+  }
+}
+
+@media (max-width: 960px) {
+  .preview-screen .side-preview {
+    grid-template-columns: 1fr;
+  }
+
+  .preview-screen .portfolio-map {
+    display: none;
+  }
+
+  .preview-screen .side-preview-panel,
+  .slide-screen .slide-page {
+    overflow: auto;
+  }
+
+  .preview-screen .side-preview-panel > .qd-content,
+  .slide-screen .slide-page > .qd-content,
+  .qd-content {
+    overflow: visible;
+  }
+
+  .mq-page,
+  .mq-work-track,
+  .mq-soft,
+  .mq-hobbies,
+  .mq-achievements,
+  .mq-skill-grid,
+  .mq-leadership {
+    height: auto;
+    overflow: visible;
+  }
+
+  .mq-work-track,
+  .mq-soft-grid,
+  .mq-hobbies,
+  .mq-hobby-cards,
+  .mq-hobby-notes,
+  .mq-achievement-board,
+  .mq-achievement-list,
+  .mq-leadership,
+  .mq-education-map,
+  .mq-project-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .mq-project-card:nth-child(n),
+  .mq-skill-widget:nth-child(n) {
+    grid-column: auto;
+  }
+}
+
+/* Memory Quest final compactness pass */
+.mq-projects {
+  grid-template-rows: auto minmax(0, 1fr);
+}
+
+.mq-project-topbar {
+  align-items: center;
+}
+
+.mq-project-cards {
+  min-height: 0;
+  align-items: stretch;
+}
+
+.mq-project-card {
+  min-height: 0;
+  grid-template-rows: auto auto auto minmax(0, auto) auto;
+  align-content: start;
+  gap: clamp(6px, 0.46vw, 10px);
+  padding: clamp(12px, 0.86vw, 18px);
+  overflow: hidden;
+}
+
+.mq-project-card .mq-bullet-list {
+  display: grid;
+  align-content: start;
+  gap: clamp(5px, 0.42vw, 8px);
+  max-height: none;
+  overflow: visible;
+}
+
+.mq-project-card .mq-bullet-list li {
+  min-height: 0;
+  display: block;
+  padding: clamp(6px, 0.5vw, 9px) clamp(9px, 0.62vw, 12px) clamp(6px, 0.5vw, 9px) clamp(20px, 0.95vw, 28px);
+  font-size: clamp(0.7rem, 0.62vw, 0.9rem);
+  line-height: 1.14;
+}
+
+.mq-project-card:nth-child(n + 3) {
+  gap: clamp(4px, 0.34vw, 7px);
+  padding: clamp(9px, 0.68vw, 14px);
+}
+
+.mq-project-card:nth-child(n + 3) .mq-project-title-row {
+  grid-template-columns: clamp(26px, 1.8vw, 34px) minmax(0, 1fr);
+  gap: 7px;
+}
+
+.mq-project-card:nth-child(n + 3) .mq-project-title-row .inventory-token {
+  width: clamp(26px, 1.8vw, 34px);
+  height: clamp(26px, 1.8vw, 34px);
+}
+
+.mq-project-card:nth-child(n + 3) .mq-project-title-row h3 {
+  font-size: clamp(0.88rem, 0.76vw, 1.04rem);
+}
+
+.mq-project-card:nth-child(n + 3) .mq-project-title-row p {
+  font-size: 0.58em;
+  line-height: 1.12;
+}
+
+.mq-project-card:nth-child(n + 3) .mq-project-description {
+  font-size: clamp(0.68rem, 0.6vw, 0.84rem);
+  line-height: 1.12;
+}
+
+.mq-project-card:nth-child(n + 3) .mq-bullet-list li {
+  padding: 5px 7px 5px 18px;
+  font-size: clamp(0.62rem, 0.56vw, 0.76rem);
+  line-height: 1.09;
+}
+
+.mq-project-card .mq-chip-row {
+  max-height: none;
+  overflow: visible;
+  gap: 5px;
+}
+
+.mq-project-card .mq-chip {
+  min-height: clamp(21px, 2vh, 28px);
+  padding: 4px 8px;
+  font-size: clamp(0.58rem, 0.52vw, 0.72rem);
+  line-height: 1;
+}
+
+.mq-card-actions {
+  align-self: end;
+  margin-top: auto;
+}
+
+.mq-card-actions .mq-button-link {
+  min-height: clamp(30px, 2.8vh, 38px);
+  padding: 6px 10px;
+  font-size: clamp(0.62rem, 0.56vw, 0.8rem);
+}
+
+.mq-work {
+  grid-template-rows: minmax(0, 1fr);
+}
+
+.mq-work-track {
+  height: 100%;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: minmax(0, 1fr);
+  align-items: stretch;
+  gap: clamp(18px, 1.2vw, 28px);
+}
+
+.mq-work-track::before {
+  left: clamp(80px, 5.8vw, 126px);
+  right: clamp(80px, 5.8vw, 126px);
+  top: clamp(46px, 5.8vh, 74px);
+  height: 5px;
+  width: auto;
+  bottom: auto;
+  background:
+    linear-gradient(90deg, transparent, rgba(255, 231, 170, 0.95) 10%, rgba(143, 255, 218, 0.9) 50%, rgba(255, 231, 170, 0.95) 90%, transparent),
+    repeating-linear-gradient(90deg, rgba(255, 231, 170, 0.6) 0 18px, transparent 18px 34px);
+}
+
+.mq-work-card {
+  min-height: 0;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  grid-template-rows: auto auto auto auto;
+  grid-template-areas:
+    "node head"
+    "date date"
+    "focus focus"
+    "bullets bullets";
+  align-content: center;
+  align-items: start;
+  gap: clamp(12px, 0.82vw, 18px);
+  padding: clamp(18px, 1.25vw, 28px);
+  border-radius: 20px 8px 20px 8px;
+  background:
+    radial-gradient(circle at 14% 10%, rgba(255, 218, 116, 0.16), transparent 32%),
+    linear-gradient(180deg, rgba(9, 39, 42, 0.94), rgba(4, 17, 22, 0.98));
+  overflow: hidden;
+}
+
+.mq-work-card:nth-child(2) {
+  background:
+    radial-gradient(circle at 14% 10%, rgba(143, 255, 218, 0.14), transparent 32%),
+    linear-gradient(180deg, rgba(11, 43, 36, 0.94), rgba(4, 17, 22, 0.98));
+}
+
+.mq-work-card:nth-child(3) {
+  background:
+    radial-gradient(circle at 14% 10%, rgba(205, 153, 255, 0.14), transparent 32%),
+    linear-gradient(180deg, rgba(36, 22, 48, 0.94), rgba(4, 17, 22, 0.98));
+}
+
+.mq-work-head {
+  min-width: 0;
+  grid-template-columns: clamp(46px, 3vw, 60px) minmax(0, 1fr);
+  gap: clamp(10px, 0.74vw, 16px);
+}
+
+.mq-work-head img {
+  width: clamp(46px, 3vw, 60px);
+  height: clamp(46px, 3vw, 60px);
+}
+
+.mq-work-head h3 {
+  font-size: clamp(1.08rem, 0.98vw, 1.38rem);
+  line-height: 1.08;
+}
+
+.mq-work-head p {
+  font-size: clamp(0.66rem, 0.62vw, 0.84rem);
+  line-height: 1.14;
+}
+
+.mq-work-date {
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255, 218, 116, 0.14);
+  color: #ffe7aa;
+  font-size: clamp(0.72rem, 0.66vw, 0.92rem);
+}
+
+.mq-work-focus {
+  font-size: clamp(0.9rem, 0.82vw, 1.08rem);
+  line-height: 1.18;
+}
+
+.mq-work-card .mq-bullet-list {
+  display: grid;
+  grid-template-rows: none;
+  grid-auto-rows: auto;
+  align-self: start;
+  align-content: start;
+  gap: clamp(9px, 0.62vw, 14px);
+  padding: clamp(10px, 0.72vw, 16px);
+  border: 1px solid rgba(241, 211, 154, 0.24);
+  border-radius: 14px;
+  background:
+    linear-gradient(90deg, rgba(143, 255, 218, 0.08), transparent 48%),
+    rgba(4, 13, 17, 0.54);
+  overflow: visible;
+}
+
+.mq-work-card .mq-bullet-list li {
+  min-height: 0;
+  display: block;
+  padding: 0 0 0 clamp(20px, 0.95vw, 28px);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  font-size: clamp(0.78rem, 0.72vw, 0.96rem);
+  line-height: 1.18;
+}
+
+@media (max-width: 1380px), (max-height: 820px) {
+  .mq-project-card:nth-child(n + 3) .mq-bullet-list li {
+    font-size: clamp(0.6rem, 0.64vw, 0.72rem);
+  }
+
+  .mq-work-track {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: repeat(3, minmax(0, 1fr));
+  }
+
+  .mq-work-track::before {
+    left: clamp(42px, 3.6vw, 60px);
+    right: auto;
+    top: clamp(56px, 5.5vh, 82px);
+    bottom: clamp(56px, 5.5vh, 82px);
+    width: 5px;
+    height: auto;
+    background:
+      linear-gradient(180deg, transparent, rgba(255, 231, 170, 0.95) 10%, rgba(143, 255, 218, 0.9) 50%, rgba(255, 231, 170, 0.95) 90%, transparent),
+      repeating-linear-gradient(180deg, rgba(255, 231, 170, 0.6) 0 18px, transparent 18px 34px);
+  }
+
+  .mq-work-card {
+    grid-template-columns: clamp(48px, 4vw, 60px) minmax(180px, 0.3fr) minmax(0, 1fr);
+    grid-template-rows: auto auto minmax(0, auto);
+    grid-template-areas:
+      "node head bullets"
+      "node date bullets"
+      "node focus bullets";
+    align-content: center;
+    gap: clamp(10px, 0.76vw, 14px);
+    padding: clamp(13px, 1vw, 18px);
+  }
+
+  .mq-work-card .mq-bullet-list {
+    align-self: center;
+    padding: clamp(8px, 0.66vw, 12px);
+  }
+
+  .mq-work-card .mq-bullet-list li {
+    font-size: clamp(0.68rem, 0.74vw, 0.84rem);
+    line-height: 1.13;
+  }
+}
+
+/* Memory Quest dense viewport correction */
+.mq-projects {
+  grid-template-rows: clamp(78px, 9vh, 104px) minmax(0, 1fr);
+}
+
+.mq-project-topbar {
+  grid-template-columns: clamp(230px, 24%, 360px) minmax(0, 1fr);
+}
+
+.mq-projects .qd-project-portal {
+  min-height: 0;
+  height: 100%;
+  padding: clamp(7px, 0.52vw, 11px);
+  gap: 5px;
+}
+
+.mq-projects .qd-contribution-months,
+.mq-projects .qd-contribution-caption {
+  font-size: clamp(0.48rem, 0.46vw, 0.64rem);
+}
+
+.mq-projects .qd-contribution-grid {
+  gap: 2px;
+}
+
+.mq-project-cards {
+  grid-template-rows: minmax(0, 1.15fr) minmax(0, 0.85fr);
+}
+
+.mq-project-card:nth-child(1),
+.mq-project-card:nth-child(2) {
+  gap: clamp(5px, 0.38vw, 8px);
+}
+
+.mq-project-card:nth-child(1) .mq-project-description,
+.mq-project-card:nth-child(2) .mq-project-description {
+  font-size: clamp(0.78rem, 0.72vw, 0.96rem);
+  line-height: 1.17;
+}
+
+.mq-project-card:nth-child(1) .mq-bullet-list li,
+.mq-project-card:nth-child(2) .mq-bullet-list li {
+  padding: 5px 8px 5px 18px;
+  font-size: clamp(0.62rem, 0.58vw, 0.78rem);
+  line-height: 1.08;
+}
+
+.mq-project-card:nth-child(n + 3) .mq-project-description {
+  font-size: clamp(0.6rem, 0.54vw, 0.74rem);
+}
+
+.mq-project-card:nth-child(n + 3) .mq-bullet-list li {
+  font-size: clamp(0.54rem, 0.5vw, 0.68rem);
+}
+
+.mq-achievements {
+  grid-template-rows: minmax(0, 0.78fr) minmax(0, 1.14fr) auto;
+  gap: clamp(10px, 0.72vw, 15px);
+}
+
+.mq-achievement-board {
+  gap: clamp(8px, 0.6vw, 12px);
+}
+
+.mq-achievement-card {
+  min-height: 0;
+  padding: clamp(10px, 0.72vw, 15px);
+  gap: 6px;
+}
+
+.mq-achievement-card h3 {
+  font-size: clamp(0.9rem, 0.82vw, 1.1rem);
+  line-height: 1.06;
+}
+
+.mq-achievement-card p {
+  font-size: clamp(0.62rem, 0.56vw, 0.76rem);
+  line-height: 1.12;
+}
+
+.mq-achievement-list {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: minmax(0, 1fr);
+  gap: clamp(8px, 0.6vw, 12px);
+}
+
+.mq-achievement-list .mq-paper-note {
+  min-height: 0;
+  padding: clamp(8px, 0.62vw, 12px);
+  font-size: clamp(0.64rem, 0.59vw, 0.78rem);
+  line-height: 1.1;
+}
+
+.mq-achievements > .mq-chip-row {
+  gap: 5px;
+}
+
+.mq-achievements > .mq-chip-row .mq-chip {
+  min-height: 22px;
+  padding: 4px 8px;
+  font-size: clamp(0.54rem, 0.5vw, 0.66rem);
+}
