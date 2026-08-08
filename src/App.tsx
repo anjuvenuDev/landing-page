@@ -231,10 +231,17 @@ function useTypewriter(lines: string[]) {
     return undefined;
   }, [characterIndex, lineIndex, lines]);
 
+  const skip = useCallback(() => {
+    const lastLineIndex = Math.max(lines.length - 1, 0);
+    setLineIndex(lastLineIndex);
+    setCharacterIndex(lines[lastLineIndex]?.length ?? 0);
+  }, [lines]);
+
   return {
     visibleLines: lines.slice(0, lineIndex),
     activeLine: (lines[lineIndex] ?? "").slice(0, characterIndex),
     complete: lineIndex === lines.length - 1 && characterIndex === lines[lineIndex].length,
+    skip,
   };
 }
 
@@ -245,44 +252,36 @@ function IntroScreen({
   onEnterQuest: () => void;
   onSkipToProfile: () => void;
 }) {
-  const { visibleLines, activeLine, complete } = useTypewriter(narrationLines);
+  const { visibleLines, activeLine, complete, skip } = useTypewriter(narrationLines);
 
   return (
-    <main className="intro-screen">
-      <div className="intro-forest" aria-hidden="true">
-        <span />
-        <span />
-        <span />
-        <span />
-      </div>
-      <section className="flashback-panel" aria-label="Story narration">
-        <div className="intro-copy">
+    <main className="intro-screen quest-cover-screen">
+      <section className="flashback-panel quest-cover" aria-label="Story narration">
+        <div className="intro-copy quest-cover-copy">
           <h1>Anjana&apos;s Memory Quest</h1>
-          <div className="typewriter" aria-live="polite">
-            {visibleLines.map((line) => (
-              <p key={line}>{line}</p>
-            ))}
-            <p>
-              {activeLine}
-              <span className="cursor">_</span>
-            </p>
+          <div className="quest-scroll" aria-live="polite">
+            <div className="typewriter">
+              {visibleLines.map((line) => (
+                <p key={line}>{line}</p>
+              ))}
+              <p>
+                {activeLine}
+                <span className="cursor">_</span>
+              </p>
+            </div>
           </div>
-          <button type="button" className="skip-narration" onClick={onEnterQuest}>
-            Skip
+          <button type="button" className="skip-narration" onClick={skip}>
+            Skip intro
           </button>
+        </div>
+        <div className="quest-cover-menu">
           <div className={complete ? "intro-actions visible" : "intro-actions"}>
             <button type="button" onClick={onEnterQuest}>
-              Enter the game
+              Enter game
             </button>
             <button type="button" onClick={onSkipToProfile}>
               Skip to profile
             </button>
-          </div>
-        </div>
-        <div className="avatar-stage" aria-label="Pixel avatar of Anjana">
-          <div className="gesture-avatar" aria-hidden="true">
-            <span className="pixelart-to-css" />
-            <span className="avatar-specs" />
           </div>
         </div>
       </section>
@@ -730,6 +729,325 @@ function MemoryDetails({ section }: { section: PortfolioSection }) {
   );
 }
 
+function ChipRow({ items, className = "" }: { items: string[]; className?: string }) {
+  if (!items.length) return null;
+
+  return (
+    <div className={`mq-chip-row ${className}`.trim()}>
+      {items.map((item) => (
+        <span className="mq-chip" key={item}>
+          {item}
+        </span>
+      ))}
+    </div>
+  );
+}
+
+function PortfolioButtonLink({ link }: { link: NonNullable<PortfolioSection["links"]>[number] }) {
+  return (
+    <a className={`mq-button-link mq-link-${link.type}`} href={link.href} target="_blank" rel="noreferrer">
+      <span aria-hidden="true">
+        <LinkGlyph type={link.type} />
+      </span>
+      {link.label}
+    </a>
+  );
+}
+
+function AboutMemory({ section }: { section: PortfolioSection }) {
+  const education = [
+    {
+      mark: "01",
+      title: "SSN College of Engineering",
+      detail: "Integrated M.Tech CSE, Chennai",
+      stats: "Aug 2023 - Jul 2028 | CGPA 9.237/10 | Department Rank 3",
+    },
+    {
+      mark: "02",
+      title: "Senior Secondary",
+      detail: "AISSCE",
+      stats: "482/500 | 96.4%",
+    },
+    {
+      mark: "03",
+      title: "Secondary School",
+      detail: "AISSE",
+      stats: "489/500 | 97.8%",
+    },
+  ];
+
+  return (
+    <div className="mq-page mq-about">
+      <div className="mq-about-hero">
+        <figure className="mq-photo-card mq-about-photo">
+          <img src={section.image?.src} alt={section.image?.alt ?? section.title} />
+        </figure>
+        <p className="mq-intro-paragraph">
+          <HighlightText text={section.summary} />
+        </p>
+      </div>
+      <div className="mq-education-map" aria-label="Education path">
+        {education.map((item) => (
+          <article className="mq-map-card" key={item.title}>
+            <span className="mq-map-marker">{item.mark}</span>
+            <div>
+              <h3>{item.title}</h3>
+              <p>{item.detail}</p>
+              <strong>
+                <HighlightText text={item.stats} />
+              </strong>
+            </div>
+          </article>
+        ))}
+      </div>
+      <div className="mq-about-footer">
+        <article className="mq-paper-note mq-course-note">
+          <InventoryToken type="plainCrate" />
+          <span>
+            <HighlightText text={section.highlights[0]} />
+          </span>
+        </article>
+        <article className="mq-fun-fact">
+          <span className="mq-fun-icon">⌁</span>
+          <div>
+            <h3>Arch Linux Convert</h3>
+            <p>
+              Dual-booted Arch alongside Windows because <strong>Windows is boring</strong>, she said.
+            </p>
+          </div>
+        </article>
+      </div>
+      <ChipRow items={section.tags} />
+    </div>
+  );
+}
+
+function ProjectsMemory({ section }: { section: PortfolioSection }) {
+  const profileLink = section.links?.find((link) => link.type === "profile");
+
+  return (
+    <div className="mq-page mq-projects">
+      <div className="mq-project-topbar">
+        <ProjectContributionBoard />
+        <div className="mq-project-command">
+          <p>&gt; building practical products from messy problems</p>
+          {profileLink ? <PortfolioButtonLink link={profileLink} /> : null}
+        </div>
+      </div>
+      <div className="mq-project-cards">
+        {section.projectCards?.map((project, index) => (
+          <article className={`mq-project-card mq-project-${index + 1}`} key={project.title}>
+            <div className="mq-project-title-row">
+              <InventoryToken type={index === 0 ? "chest" : "crate"} />
+              <div>
+                <h3>{project.title}</h3>
+                <p>{project.role}</p>
+              </div>
+            </div>
+            <p className="mq-project-description">
+              <HighlightText text={project.description} />
+            </p>
+            <ul className="mq-bullet-list">
+              {project.details?.map((detail) => (
+                <li key={detail}>
+                  <HighlightText text={detail} />
+                </li>
+              ))}
+            </ul>
+            <ChipRow items={project.stack} />
+            <div className="mq-card-actions">
+              {project.links.map((link) => (
+                <PortfolioButtonLink link={link} key={link.href} />
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function WorkMemory({ section }: { section: PortfolioSection }) {
+  return (
+    <div className="mq-page mq-work">
+      <div className="mq-work-track" aria-label="Internship roadmap">
+        {section.timeline?.map((step, index) => (
+          <article className="mq-work-card" key={step.company}>
+            <span className="mq-work-node">{index + 1}</span>
+            <div className="mq-work-head">
+              <img src={step.logo} alt={`${step.company} logo`} />
+              <div>
+                <h3>{step.company}</h3>
+                <p>{step.role}</p>
+              </div>
+            </div>
+            <strong className="mq-work-date">{step.dates}</strong>
+            <p className="mq-work-focus">
+              <HighlightText text={step.focus} />
+            </p>
+            <ul className="mq-bullet-list">
+              {step.details.map((detail) => (
+                <li key={detail}>
+                  <HighlightText text={detail} />
+                </li>
+              ))}
+            </ul>
+          </article>
+        ))}
+      </div>
+      <ChipRow items={section.tags} />
+    </div>
+  );
+}
+
+function SkillsMemory({ section }: { section: PortfolioSection }) {
+  return (
+    <div className="mq-page mq-skills">
+      <div className="mq-skill-grid">
+        {section.skillGroups?.map((group) => (
+          <section className="mq-skill-widget" key={group.title}>
+            <div className="mq-widget-title">
+              <InventoryToken type="plainCrate" />
+              <h3>{group.title}</h3>
+            </div>
+            <ChipRow items={group.items} />
+          </section>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function SoftSkillsMemory({ section }: { section: PortfolioSection }) {
+  return (
+    <div className="mq-page mq-soft">
+      <div className="mq-soft-grid">
+        {section.featureCards?.map((card, index) => (
+          <article className={`mq-soft-card mq-tone-${(index % 4) + 1}`} key={card.title}>
+            <h3>{card.title}</h3>
+            <p>
+              <HighlightText text={card.body} />
+            </p>
+          </article>
+        ))}
+      </div>
+      <div className="mq-soft-notes">
+        {section.highlights.map((highlight) => (
+          <article className="mq-paper-note" key={highlight}>
+            <InventoryToken type="plainCrate" />
+            <span>
+              <HighlightText text={highlight} />
+            </span>
+          </article>
+        ))}
+      </div>
+      <ChipRow items={section.tags} />
+    </div>
+  );
+}
+
+function LeadershipMemory({ section }: { section: PortfolioSection }) {
+  return (
+    <div className="mq-page mq-leadership">
+      <div className="mq-leadership-media">
+        {section.images?.map((image, index) => (
+          <figure className={`mq-photo-card mq-leader-photo mq-leader-photo-${index + 1}`} key={image.src}>
+            <img src={image.src} alt={image.alt} />
+          </figure>
+        ))}
+      </div>
+      <div className="mq-leadership-cards">
+        {section.highlights.map((highlight) => {
+          const [title, ...rest] = highlight.split(". ");
+          return (
+            <article className="mq-leadership-card" key={highlight}>
+              <h3>
+                <HighlightText text={title.replace(/\.$/, "")} />
+              </h3>
+              {rest.length ? (
+                <p>
+                  <HighlightText text={rest.join(". ")} />
+                </p>
+              ) : null}
+            </article>
+          );
+        })}
+      </div>
+      <ChipRow items={section.tags} />
+    </div>
+  );
+}
+
+function HobbiesMemory({ section }: { section: PortfolioSection }) {
+  const socialLink = section.links?.[0];
+
+  return (
+    <div className="mq-page mq-hobbies">
+      <figure className="mq-photo-card mq-phone-frame">
+        <img src={section.image?.src} alt={section.image?.alt ?? section.title} />
+      </figure>
+      <div className="mq-hobby-body">
+        <p className="mq-hobby-story">
+          <HighlightText text={section.story?.[0] ?? ""} />
+        </p>
+        <div className="mq-hobby-cards">
+          {section.featureCards?.map((card) => (
+            <article className="mq-hobby-card" key={card.title}>
+              <h3>{card.title}</h3>
+              <p>
+                <HighlightText text={card.body} />
+              </p>
+            </article>
+          ))}
+        </div>
+        <div className="mq-hobby-notes">
+          {section.highlights.map((highlight) => (
+            <article className="mq-paper-note" key={highlight}>
+              <InventoryToken type="plainCrate" />
+              <span>
+                <HighlightText text={highlight} />
+              </span>
+            </article>
+          ))}
+        </div>
+        <div className="mq-hobby-actions">
+          {socialLink ? <PortfolioButtonLink link={socialLink} /> : null}
+          <ChipRow items={section.tags} />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function AchievementsMemory({ section }: { section: PortfolioSection }) {
+  return (
+    <div className="mq-page mq-achievements">
+      <div className="mq-achievement-board">
+        {section.featureCards?.map((card, index) => (
+          <article className={`mq-achievement-card mq-medal-${index + 1}`} key={card.title}>
+            <span className="mq-medal">{card.label}</span>
+            <h3>{card.title}</h3>
+            <p>
+              <HighlightText text={card.body} />
+            </p>
+          </article>
+        ))}
+      </div>
+      <div className="mq-achievement-list">
+        {section.highlights.map((highlight) => (
+          <article className="mq-paper-note" key={highlight}>
+            <InventoryToken type="plainCrate" />
+            <span>
+              <HighlightText text={highlight} />
+            </span>
+          </article>
+        ))}
+      </div>
+      <ChipRow items={section.tags} />
+    </div>
+  );
+}
+
 function PortfolioCopy({
   section,
   mode,
@@ -737,6 +1055,15 @@ function PortfolioCopy({
   section: PortfolioSection;
   mode: "preview" | "slide";
 }) {
+  if (section.id === "about") return <AboutMemory section={section} />;
+  if (section.id === "projects") return <ProjectsMemory section={section} />;
+  if (section.id === "work") return <WorkMemory section={section} />;
+  if (section.id === "tech") return <SkillsMemory section={section} />;
+  if (section.id === "soft") return <SoftSkillsMemory section={section} />;
+  if (section.id === "activities") return <LeadershipMemory section={section} />;
+  if (section.id === "hobbies") return <HobbiesMemory section={section} />;
+  if (section.id === "achievements") return <AchievementsMemory section={section} />;
+
   return (
     <div className={`qd-copy qd-${section.id} qd-layout-${section.layout} qd-mode-${mode}`}>
       <div className="qd-hero">
