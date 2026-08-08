@@ -21,6 +21,17 @@ const inventoryAssets = {
   plainCrate: "/assets/sunnyland/crate-plain.png",
 };
 
+const mapLabels: Record<PortfolioSectionId, string> = {
+  about: "Self",
+  projects: "Making",
+  work: "Practice",
+  tech: "Tools",
+  soft: "Voice",
+  activities: "Guilds",
+  hobbies: "Wonder",
+  achievements: "Proof",
+};
+
 const highlightPhrases = [
   "SSN College of Engineering",
   "5 Year Integrated M.Tech CSE",
@@ -643,8 +654,8 @@ function PortfolioMap({
               <span className="map-node-pad">
                 <img src={isActive ? "/assets/sunnyland/chest.png" : "/assets/sunnyland/crate-ornate.png"} alt="" />
               </span>
-              <strong>{section.level}: {section.rewardName.replace("Memory of ", "")}</strong>
-              <small>{isUnlocked ? section.title : "Play to unlock"}</small>
+              <strong>{section.level}: {mapLabels[section.id]}</strong>
+              <small>{isUnlocked ? section.rewardName : "Play to unlock"}</small>
             </button>
           );
         })}
