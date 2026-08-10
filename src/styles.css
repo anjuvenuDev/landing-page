@@ -12850,3 +12850,3308 @@ body {
   padding: 4px 8px;
   font-size: clamp(0.54rem, 0.5vw, 0.66rem);
 }
+
+/* Memory Quest readable asset pass */
+.preview-screen .side-preview-panel,
+.slide-screen .slide-page {
+  font-size: clamp(16px, 0.96vw, 20px);
+}
+
+.preview-screen .portfolio-map {
+  width: clamp(250px, 20vw, 330px);
+  padding: clamp(12px, 0.9vw, 18px);
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  gap: clamp(10px, 0.75vw, 16px);
+}
+
+.preview-screen .portfolio-map h2 {
+  min-height: 0;
+  padding: clamp(16px, 1.1vw, 24px) 12px;
+  border-width: 3px;
+  color: #fff8d0;
+  font-size: clamp(1.8rem, 2.05vw, 2.55rem);
+  line-height: 1;
+}
+
+.preview-screen .portfolio-map-path {
+  min-height: 0;
+  padding: clamp(12px, 0.84vw, 16px);
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(8, minmax(0, 1fr));
+  gap: clamp(8px, 0.62vw, 12px);
+  overflow: hidden;
+  border: 3px solid rgba(241, 211, 154, 0.72);
+  background:
+    linear-gradient(180deg, rgba(7, 39, 44, 0.7), rgba(3, 17, 22, 0.9)),
+    url("/assets/packs/fields/background_1.png") center / cover;
+}
+
+.preview-screen .portfolio-map-path::before {
+  display: none;
+}
+
+.preview-screen .portfolio-map .map-node {
+  position: relative !important;
+  inset: auto !important;
+  width: 100%;
+  min-height: 0;
+  height: auto;
+  display: grid;
+  grid-template-columns: clamp(48px, 3.8vw, 62px) minmax(0, 1fr);
+  grid-template-rows: 1fr auto;
+  column-gap: clamp(9px, 0.72vw, 13px);
+  align-items: center;
+  padding: clamp(7px, 0.55vw, 11px);
+  border: 0;
+  border-radius: 16px 8px 16px 8px;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255, 238, 161, 0.24), transparent 32%),
+    linear-gradient(135deg, rgba(9, 43, 39, 0.96), rgba(3, 16, 20, 0.98));
+  box-shadow:
+    inset 0 0 0 2px rgba(255, 238, 180, 0.48),
+    inset 0 -5px 0 rgba(0, 0, 0, 0.35),
+    4px 5px 0 rgba(0, 0, 0, 0.55);
+  text-align: left;
+}
+
+.preview-screen .portfolio-map .map-node:nth-child(even) {
+  transform: none;
+}
+
+.preview-screen .portfolio-map .map-node-pad {
+  grid-row: 1 / span 2;
+  width: clamp(48px, 3.8vw, 62px);
+  height: clamp(48px, 3.8vw, 62px);
+  border: 2px solid rgba(255, 238, 180, 0.7);
+  border-radius: 12px;
+  background: linear-gradient(180deg, #ffeab0, #9f7446);
+}
+
+.preview-screen .portfolio-map .map-node strong {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #fff8d0;
+  font-size: clamp(0.92rem, 0.96vw, 1.22rem);
+  line-height: 1.04;
+  text-shadow: 2px 2px 0 #070b0c;
+}
+
+.preview-screen .portfolio-map .map-node strong span {
+  width: 1.7em;
+  height: 1.7em;
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 auto;
+  border-radius: 8px;
+  background: #f1c45c;
+  color: #12100d;
+  text-shadow: none;
+}
+
+.preview-screen .portfolio-map .map-node small {
+  min-width: 0;
+  margin: 0;
+  color: #b8ffdf;
+  font-size: clamp(0.7rem, 0.66vw, 0.84rem);
+  line-height: 1.05;
+}
+
+.preview-screen .portfolio-map .map-node:disabled {
+  opacity: 0.72;
+  filter: saturate(0.55);
+}
+
+.preview-screen .portfolio-map .map-node.active {
+  background:
+    radial-gradient(circle at 20% 20%, rgba(143, 255, 218, 0.34), transparent 36%),
+    linear-gradient(135deg, rgba(18, 69, 54, 0.98), rgba(10, 30, 36, 0.98));
+  box-shadow:
+    inset 0 0 0 3px rgba(143, 255, 218, 0.72),
+    inset 0 -5px 0 rgba(0, 0, 0, 0.35),
+    4px 5px 0 rgba(0, 0, 0, 0.55);
+}
+
+.preview-screen .portfolio-map-actions {
+  gap: clamp(7px, 0.55vw, 10px);
+}
+
+.preview-screen .portfolio-map-actions button,
+.preview-screen .portfolio-map-actions .map-action-chip {
+  min-height: clamp(56px, 5.5vh, 72px);
+  padding: 8px;
+  border-width: 3px;
+  font-size: clamp(0.68rem, 0.68vw, 0.88rem);
+}
+
+.mq-page {
+  --mq-gap: clamp(12px, 0.88vw, 18px);
+  font-size: clamp(1rem, 0.98vw, 1.18rem);
+}
+
+.mq-chip-row {
+  gap: 7px;
+}
+
+.mq-chip {
+  min-height: clamp(29px, 2.8vh, 38px);
+  padding: 7px 12px;
+  border-width: 2px;
+  border-radius: 10px;
+  background:
+    linear-gradient(180deg, rgba(143, 255, 218, 0.26), rgba(48, 104, 98, 0.68)),
+    rgba(7, 25, 29, 0.94);
+  color: #f6fff2;
+  font-size: clamp(0.78rem, 0.78vw, 1rem);
+  line-height: 1;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.16),
+    inset 0 -3px 0 rgba(0, 0, 0, 0.24);
+}
+
+.mq-button-link {
+  border-radius: 14px;
+  font-size: clamp(0.82rem, 0.82vw, 1.08rem);
+}
+
+.mq-projects {
+  grid-template-rows: clamp(96px, 11vh, 128px) minmax(0, 1fr);
+  gap: var(--mq-gap);
+}
+
+.mq-project-topbar {
+  min-height: 0;
+  display: grid;
+  grid-template-columns: clamp(220px, 20%, 330px) minmax(260px, 1fr) auto;
+  gap: var(--mq-gap);
+  align-items: stretch;
+}
+
+.mq-generated-panel {
+  margin: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.mq-generated-panel img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  image-rendering: auto;
+  filter: drop-shadow(4px 5px 0 rgba(0, 0, 0, 0.55));
+}
+
+.mq-project-terminal {
+  min-height: 0;
+  display: grid;
+  grid-template-columns: clamp(130px, 14vw, 230px) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(12px, 1vw, 20px);
+  padding: clamp(10px, 0.78vw, 16px) clamp(14px, 1vw, 20px);
+  border-radius: 18px 8px 18px 8px;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(143, 255, 218, 0.2), transparent 34%),
+    linear-gradient(135deg, rgba(8, 38, 44, 0.96), rgba(3, 15, 21, 0.98));
+  box-shadow:
+    inset 0 0 0 2px rgba(143, 255, 218, 0.28),
+    inset 0 -5px 0 rgba(0, 0, 0, 0.3);
+}
+
+.mq-project-terminal img {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  object-fit: contain;
+  filter: drop-shadow(3px 4px 0 rgba(0, 0, 0, 0.48));
+}
+
+.mq-project-terminal p {
+  margin: 0;
+  color: #fff1bf;
+  font-size: clamp(1rem, 1vw, 1.26rem);
+  line-height: 1.22;
+}
+
+.mq-project-command {
+  min-width: clamp(170px, 13vw, 245px);
+  padding: 0;
+  justify-content: stretch;
+}
+
+.mq-project-command .mq-button-link {
+  width: 100%;
+  min-height: 100%;
+  justify-content: center;
+  border-color: rgba(143, 255, 218, 0.82);
+  border-width: 3px;
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 22% 48%, rgba(143, 255, 218, 0.24), transparent 34%),
+    linear-gradient(180deg, rgba(13, 58, 55, 0.96), rgba(5, 19, 24, 0.98));
+  font-size: clamp(0.95rem, 0.96vw, 1.24rem);
+  box-shadow:
+    inset 0 0 0 2px rgba(255, 255, 255, 0.12),
+    inset 0 -5px 0 rgba(0, 0, 0, 0.32),
+    4px 5px 0 rgba(0, 0, 0, 0.48);
+}
+
+.mq-project-cards {
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-rows: minmax(0, 1.08fr) minmax(0, 0.92fr);
+  gap: var(--mq-gap);
+}
+
+.mq-project-card {
+  min-height: 0;
+  display: grid;
+  grid-template-rows: auto auto auto auto;
+  align-content: start;
+  gap: clamp(8px, 0.58vw, 12px);
+  padding: clamp(16px, 1.05vw, 24px);
+  border: 0;
+  border-radius: 26px 10px 26px 10px;
+  background:
+    linear-gradient(180deg, rgba(16, 55, 50, 0.88), rgba(5, 18, 22, 0.98)),
+    url("/assets/packs/forest/background.png") center / cover;
+  box-shadow:
+    inset 0 0 0 3px rgba(241, 211, 154, 0.62),
+    inset 0 -7px 0 rgba(0, 0, 0, 0.28),
+    5px 6px 0 rgba(0, 0, 0, 0.48);
+}
+
+.mq-project-card:nth-child(1),
+.mq-project-card:nth-child(2) {
+  grid-column: span 6;
+}
+
+.mq-project-card:nth-child(n + 3) {
+  grid-column: span 4;
+  padding: clamp(13px, 0.92vw, 18px);
+}
+
+.mq-project-title-row {
+  grid-template-columns: clamp(36px, 2.7vw, 48px) minmax(0, 1fr);
+  gap: clamp(10px, 0.74vw, 14px);
+}
+
+.mq-project-title-row h3 {
+  color: #fff6c8;
+  font-size: clamp(1.05rem, 1.04vw, 1.34rem);
+  line-height: 1.12;
+}
+
+.mq-project-title-row p {
+  margin-top: 3px;
+  color: #d8c79b;
+  font-size: clamp(0.74rem, 0.72vw, 0.92rem);
+  line-height: 1.16;
+}
+
+.mq-project-description {
+  margin: 0;
+  color: #ffefbf;
+  font-size: clamp(0.9rem, 0.86vw, 1.08rem);
+  line-height: 1.22;
+}
+
+.mq-project-card:nth-child(n + 3) .mq-project-description {
+  font-size: clamp(0.76rem, 0.74vw, 0.94rem);
+  line-height: 1.18;
+}
+
+.mq-project-card .mq-bullet-list {
+  display: grid;
+  gap: clamp(6px, 0.48vw, 9px);
+  overflow: visible;
+}
+
+.mq-project-card .mq-bullet-list li {
+  min-height: 0;
+  padding: 7px 10px 7px 24px;
+  border: 0;
+  border-radius: 12px;
+  background:
+    linear-gradient(90deg, rgba(143, 255, 218, 0.15), rgba(255, 238, 180, 0.06)),
+    rgba(255, 255, 255, 0.035);
+  color: #efe2b9;
+  font-size: clamp(0.76rem, 0.72vw, 0.92rem);
+  line-height: 1.16;
+}
+
+.mq-project-card:nth-child(n + 3) .mq-bullet-list li {
+  font-size: clamp(0.66rem, 0.65vw, 0.82rem);
+  line-height: 1.12;
+}
+
+.mq-project-card .mq-chip-row {
+  max-height: none;
+  overflow: visible;
+}
+
+.mq-project-card .mq-chip {
+  min-height: clamp(27px, 2.5vh, 34px);
+  padding: 6px 10px;
+  font-size: clamp(0.68rem, 0.66vw, 0.84rem);
+}
+
+.mq-card-actions {
+  display: flex;
+  align-items: end;
+  gap: 9px;
+}
+
+.mq-card-actions .mq-button-link {
+  min-height: clamp(38px, 3.6vh, 48px);
+  padding: 8px 13px;
+  border-radius: 13px;
+  font-size: clamp(0.76rem, 0.74vw, 0.94rem);
+}
+
+.mq-skills {
+  grid-template-rows: minmax(0, 1fr);
+}
+
+.mq-skill-grid {
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-rows: repeat(3, minmax(0, 1fr));
+  gap: var(--mq-gap);
+}
+
+.mq-skill-widget {
+  min-height: 0;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  align-content: stretch;
+  gap: clamp(10px, 0.76vw, 15px);
+  padding: clamp(16px, 1.05vw, 24px);
+  border: 0;
+  border-radius: 24px 10px 24px 10px;
+  background:
+    radial-gradient(circle at 18% 14%, rgba(143, 255, 218, 0.18), transparent 34%),
+    linear-gradient(135deg, rgba(8, 44, 42, 0.94), rgba(5, 16, 22, 0.98));
+  box-shadow:
+    inset 0 0 0 3px rgba(241, 211, 154, 0.5),
+    inset 0 -7px 0 rgba(0, 0, 0, 0.28),
+    5px 6px 0 rgba(0, 0, 0, 0.42);
+}
+
+.mq-skill-widget:nth-child(1) { grid-column: span 5; }
+.mq-skill-widget:nth-child(2) { grid-column: span 4; }
+.mq-skill-widget:nth-child(3) { grid-column: span 3; }
+.mq-skill-widget:nth-child(4),
+.mq-skill-widget:nth-child(5),
+.mq-skill-widget:nth-child(6) { grid-column: span 4; }
+.mq-skill-widget:nth-child(7) { grid-column: span 12; }
+
+.mq-widget-title {
+  display: grid;
+  grid-template-columns: clamp(54px, 4.2vw, 76px) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(10px, 0.8vw, 15px);
+}
+
+.mq-skill-gem,
+.mq-soft-head img {
+  width: clamp(54px, 4.2vw, 76px);
+  height: clamp(54px, 4.2vw, 76px);
+  object-fit: contain;
+  image-rendering: auto;
+  filter: drop-shadow(3px 4px 0 rgba(0, 0, 0, 0.5));
+}
+
+.mq-widget-title h3 {
+  color: #fff8d0;
+  font-size: clamp(1.18rem, 1.22vw, 1.58rem);
+  line-height: 1.05;
+}
+
+.mq-skill-widget .mq-chip-row {
+  align-content: start;
+  align-items: start;
+  justify-content: start;
+  gap: clamp(7px, 0.55vw, 10px);
+}
+
+.mq-skill-widget .mq-chip {
+  min-height: clamp(32px, 3.1vh, 42px);
+  padding: 8px 12px;
+  border-radius: 10px 5px 10px 5px;
+  background:
+    linear-gradient(180deg, rgba(70, 120, 172, 0.78), rgba(25, 58, 91, 0.92));
+  color: #f7fbff;
+  font-size: clamp(0.82rem, 0.84vw, 1.08rem);
+}
+
+.mq-soft {
+  grid-template-rows: minmax(0, 1fr) auto auto;
+  gap: var(--mq-gap);
+}
+
+.mq-soft-grid {
+  min-height: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: var(--mq-gap);
+}
+
+.mq-soft-card {
+  min-height: 0;
+  height: 100%;
+  padding: clamp(17px, 1.16vw, 25px);
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  align-content: start;
+  gap: clamp(9px, 0.68vw, 13px);
+  border: 0;
+  border-radius: 26px 10px 26px 10px;
+  box-shadow:
+    inset 0 0 0 3px rgba(241, 211, 154, 0.48),
+    inset 0 -7px 0 rgba(0, 0, 0, 0.28),
+    5px 6px 0 rgba(0, 0, 0, 0.42);
+}
+
+.mq-soft-head {
+  display: grid;
+  grid-template-columns: clamp(54px, 4.2vw, 76px) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(10px, 0.8vw, 15px);
+}
+
+.mq-soft-card h3 {
+  color: #fff8d0;
+  font-size: clamp(1.16rem, 1.2vw, 1.52rem);
+  line-height: 1.04;
+}
+
+.mq-soft-card p {
+  margin: 0;
+  color: #f3e5bd;
+  font-size: clamp(0.9rem, 0.9vw, 1.1rem);
+  line-height: 1.2;
+}
+
+.mq-tone-1 {
+  background:
+    radial-gradient(circle at 20% 15%, rgba(143, 255, 218, 0.18), transparent 34%),
+    linear-gradient(135deg, rgba(16, 73, 63, 0.92), rgba(5, 18, 22, 0.98));
+}
+.mq-tone-2 {
+  background:
+    radial-gradient(circle at 20% 15%, rgba(205, 153, 255, 0.18), transparent 34%),
+    linear-gradient(135deg, rgba(46, 34, 78, 0.92), rgba(5, 18, 22, 0.98));
+}
+.mq-tone-3 {
+  background:
+    radial-gradient(circle at 20% 15%, rgba(255, 205, 118, 0.18), transparent 34%),
+    linear-gradient(135deg, rgba(82, 50, 26, 0.9), rgba(5, 18, 22, 0.98));
+}
+.mq-tone-4 {
+  background:
+    radial-gradient(circle at 20% 15%, rgba(161, 255, 143, 0.16), transparent 34%),
+    linear-gradient(135deg, rgba(47, 67, 33, 0.9), rgba(5, 18, 22, 0.98));
+}
+
+.mq-soft-notes {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--mq-gap);
+}
+
+.mq-soft-notes .mq-paper-note {
+  min-height: clamp(58px, 6vh, 84px);
+  border: 0;
+  border-radius: 18px 6px 18px 6px;
+  background:
+    linear-gradient(90deg, rgba(255, 235, 175, 0.88), rgba(212, 169, 92, 0.88));
+  color: #1e1710;
+  font-size: clamp(0.88rem, 0.86vw, 1.06rem);
+  line-height: 1.18;
+  box-shadow: inset 0 -5px 0 rgba(89, 50, 23, 0.24), 4px 5px 0 rgba(0, 0, 0, 0.36);
+}
+
+.mq-soft-notes .mq-paper-note .inventory-token {
+  display: none;
+}
+
+.mq-soft > .mq-chip-row {
+  justify-content: start;
+}
+
+@media (max-width: 1450px), (max-height: 820px) {
+  .preview-screen .side-preview-panel,
+  .slide-screen .slide-page {
+    font-size: 16px;
+  }
+
+  .mq-projects {
+    grid-template-rows: clamp(82px, 10vh, 104px) minmax(0, 1fr);
+  }
+
+  .mq-project-topbar {
+    grid-template-columns: clamp(190px, 18%, 270px) minmax(220px, 1fr) clamp(150px, 13%, 210px);
+  }
+
+  .mq-project-terminal {
+    grid-template-columns: clamp(100px, 10vw, 155px) minmax(0, 1fr);
+    padding: 9px 12px;
+  }
+
+  .mq-project-terminal p {
+    font-size: clamp(0.84rem, 0.9vw, 1rem);
+  }
+
+  .mq-project-cards {
+    gap: 12px;
+  }
+
+  .mq-project-card {
+    padding: 13px;
+    gap: 6px;
+  }
+
+  .mq-project-card:nth-child(n + 3) {
+    padding: 10px;
+  }
+
+  .mq-project-title-row h3 {
+    font-size: clamp(0.92rem, 1vw, 1.08rem);
+  }
+
+  .mq-project-description {
+    font-size: clamp(0.72rem, 0.78vw, 0.9rem);
+  }
+
+  .mq-project-card .mq-bullet-list li {
+    padding: 5px 8px 5px 19px;
+    font-size: clamp(0.62rem, 0.68vw, 0.78rem);
+  }
+
+  .mq-project-card .mq-chip {
+    min-height: 24px;
+    padding: 4px 8px;
+    font-size: clamp(0.58rem, 0.62vw, 0.74rem);
+  }
+
+  .mq-card-actions .mq-button-link {
+    min-height: 34px;
+    padding: 6px 10px;
+    font-size: clamp(0.64rem, 0.68vw, 0.78rem);
+  }
+
+  .mq-skill-grid {
+    gap: 12px;
+  }
+
+  .mq-skill-widget {
+    padding: 13px;
+    gap: 8px;
+  }
+
+  .mq-skill-gem,
+  .mq-soft-head img {
+    width: 52px;
+    height: 52px;
+  }
+
+  .mq-widget-title,
+  .mq-soft-head {
+    grid-template-columns: 52px minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  .mq-widget-title h3,
+  .mq-soft-card h3 {
+    font-size: clamp(1rem, 1.05vw, 1.2rem);
+  }
+
+  .mq-skill-widget .mq-chip,
+  .mq-chip {
+    min-height: 28px;
+    padding: 6px 9px;
+    font-size: clamp(0.68rem, 0.72vw, 0.86rem);
+  }
+
+  .mq-soft-card {
+    padding: 13px;
+  }
+
+  .mq-soft-card p {
+    font-size: clamp(0.76rem, 0.82vw, 0.94rem);
+    line-height: 1.16;
+  }
+
+  .mq-soft-notes .mq-paper-note {
+    min-height: 46px;
+    padding: 10px 13px;
+    font-size: clamp(0.72rem, 0.76vw, 0.88rem);
+  }
+}
+
+/* Memory Quest density and overflow cleanup */
+.mq-work-track {
+  height: auto !important;
+  align-items: start !important;
+  align-content: start !important;
+}
+
+.mq-work-card {
+  height: auto !important;
+  min-height: clamp(380px, 40vh, 455px) !important;
+  grid-template-rows: auto auto auto auto auto !important;
+}
+
+.mq-work .mq-bullet-list {
+  align-content: start !important;
+  grid-auto-rows: auto !important;
+}
+
+.mq-work .mq-bullet-list li {
+  display: block !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+  hyphens: none !important;
+}
+
+.mq-soft {
+  grid-template-rows: auto auto auto !important;
+  align-content: start !important;
+}
+
+.mq-soft-grid {
+  grid-template-rows: repeat(2, auto) !important;
+  align-content: start !important;
+}
+
+.mq-soft-card {
+  height: auto !important;
+  min-height: clamp(176px, 19vh, 240px) !important;
+  grid-template-rows: auto auto !important;
+}
+
+.mq-soft-card p {
+  max-width: 44ch !important;
+}
+
+.mq-hobby-body {
+  grid-template-rows: auto auto auto auto !important;
+  align-content: start !important;
+}
+
+.mq-hobby-cards {
+  min-height: 0 !important;
+  align-content: start !important;
+}
+
+.mq-hobby-card {
+  height: auto !important;
+  min-height: clamp(142px, 15vh, 190px) !important;
+  display: block !important;
+}
+
+.mq-hobby-notes .mq-paper-note {
+  min-height: clamp(58px, 6vh, 78px) !important;
+}
+
+.mq-achievements {
+  grid-template-rows: auto auto auto !important;
+  align-content: start !important;
+}
+
+.mq-achievement-board {
+  align-items: stretch !important;
+  align-content: start !important;
+}
+
+.mq-achievement-card {
+  height: auto !important;
+  min-height: clamp(190px, 20vh, 245px) !important;
+  align-content: start !important;
+}
+
+.mq-achievement-list {
+  align-content: start !important;
+}
+
+.mq-achievement-list .mq-paper-note {
+  min-height: clamp(48px, 5.2vh, 70px) !important;
+}
+
+.slide-screen .mq-work-card {
+  min-height: clamp(400px, 42vh, 480px) !important;
+}
+
+@media (max-width: 1450px), (max-height: 820px) {
+  .mq-work-card {
+    min-height: 340px !important;
+  }
+
+  .mq-soft-card {
+    min-height: 152px !important;
+  }
+
+  .mq-hobby-card {
+    min-height: 122px !important;
+  }
+
+  .mq-achievement-card {
+    min-height: 165px !important;
+  }
+}
+
+/* Memory Quest final alignment guard */
+.preview-screen .side-preview {
+  grid-template-columns: clamp(330px, 19vw, 380px) minmax(0, 1fr) !important;
+  gap: clamp(14px, 1vw, 22px) !important;
+}
+
+.preview-screen .side-preview-panel,
+.slide-screen .slide-page {
+  overflow: hidden !important;
+}
+
+.preview-screen .portfolio-map h2 {
+  font-size: clamp(2.15rem, 2.15vw, 2.8rem) !important;
+}
+
+.preview-screen .portfolio-map .map-node strong {
+  font-size: clamp(1.02rem, 1vw, 1.3rem) !important;
+}
+
+.preview-screen .portfolio-map .map-node small {
+  font-size: clamp(0.76rem, 0.72vw, 0.92rem) !important;
+}
+
+.preview-screen .side-preview-nav {
+  min-height: clamp(74px, 7.4vh, 96px) !important;
+  padding-top: clamp(8px, 0.7vw, 14px) !important;
+}
+
+.preview-screen .side-preview-nav .continue-button {
+  min-height: clamp(58px, 5.8vh, 76px) !important;
+  font-size: clamp(0.86rem, 0.82vw, 1.08rem) !important;
+  line-height: 1.12 !important;
+}
+
+.mq-page {
+  --mq-gap: clamp(12px, 0.85vw, 18px) !important;
+}
+
+.mq-project-topbar {
+  grid-template-columns: clamp(260px, 18%, 330px) minmax(0, 1fr) clamp(185px, 12%, 230px) !important;
+}
+
+.mq-project-terminal {
+  grid-template-columns: clamp(86px, 6vw, 118px) minmax(0, 1fr) !important;
+  min-width: 0 !important;
+}
+
+.mq-project-terminal p {
+  font-size: clamp(0.98rem, 0.92vw, 1.16rem) !important;
+}
+
+.mq-project-command {
+  min-width: 0 !important;
+}
+
+.mq-project-command .mq-button-link {
+  padding-inline: clamp(12px, 0.8vw, 18px) !important;
+  white-space: nowrap !important;
+}
+
+.mq-project-cards {
+  grid-template-rows: minmax(0, 1.04fr) minmax(0, 0.96fr) !important;
+}
+
+.mq-project-card {
+  gap: clamp(8px, 0.55vw, 12px) !important;
+}
+
+.mq-project-card .mq-bullet-list {
+  overflow: visible !important;
+}
+
+.mq-project-card .mq-bullet-list li {
+  font-size: clamp(0.76rem, 0.7vw, 0.92rem) !important;
+}
+
+.mq-project-card:nth-child(n + 3) .mq-bullet-list li {
+  font-size: clamp(0.72rem, 0.66vw, 0.86rem) !important;
+}
+
+.mq-work-track {
+  height: auto !important;
+  min-height: 0 !important;
+  align-items: stretch !important;
+}
+
+.mq-work-card {
+  height: clamp(440px, 51vh, 560px) !important;
+  align-self: start !important;
+}
+
+.mq-work .mq-bullet-list {
+  grid-auto-rows: minmax(0, 1fr) !important;
+  align-content: stretch !important;
+}
+
+.mq-work .mq-bullet-list li {
+  min-height: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  font-size: clamp(0.92rem, 0.78vw, 1.04rem) !important;
+  line-height: 1.14 !important;
+}
+
+.mq-skill-grid {
+  grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+  grid-template-rows: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 0.72fr) !important;
+}
+
+.mq-skill-widget:nth-child(1),
+.mq-skill-widget:nth-child(2),
+.mq-skill-widget:nth-child(3),
+.mq-skill-widget:nth-child(4),
+.mq-skill-widget:nth-child(5),
+.mq-skill-widget:nth-child(6) {
+  grid-column: span 4 !important;
+}
+
+.mq-skill-widget:nth-child(7) {
+  grid-column: span 12 !important;
+}
+
+.mq-widget-title {
+  grid-template-columns: clamp(50px, 3.4vw, 66px) minmax(0, 1fr) !important;
+}
+
+.mq-skill-gem,
+.mq-soft-head img {
+  width: clamp(50px, 3.4vw, 66px) !important;
+  height: clamp(50px, 3.4vw, 66px) !important;
+}
+
+.mq-widget-title h3,
+.mq-soft-card h3 {
+  font-size: clamp(1.14rem, 1vw, 1.38rem) !important;
+}
+
+.mq-skill-widget .mq-chip-row {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 92px), 1fr)) !important;
+  gap: 7px !important;
+}
+
+.mq-skill-widget .mq-chip {
+  min-height: clamp(30px, 2.7vh, 38px) !important;
+  padding: 6px 8px !important;
+  font-size: clamp(0.76rem, 0.68vw, 0.9rem) !important;
+}
+
+.mq-soft {
+  grid-template-rows: auto auto auto !important;
+  align-content: start !important;
+}
+
+.mq-soft-grid {
+  grid-template-rows: repeat(2, minmax(176px, auto)) !important;
+  align-content: start !important;
+}
+
+.mq-soft-card {
+  height: auto !important;
+  min-height: 176px !important;
+  align-content: center !important;
+}
+
+.mq-soft-card p {
+  font-size: clamp(0.98rem, 0.86vw, 1.12rem) !important;
+}
+
+.mq-soft-notes .mq-paper-note {
+  font-size: clamp(0.98rem, 0.84vw, 1.12rem) !important;
+}
+
+.mq-leader-photo img {
+  object-fit: cover !important;
+}
+
+.mq-leader-photo-1 img {
+  object-position: 50% 34% !important;
+}
+
+.mq-leader-photo-2 img {
+  object-position: 50% 42% !important;
+}
+
+.mq-hobbies {
+  grid-template-columns: clamp(250px, 18%, 330px) minmax(0, 1fr) !important;
+}
+
+.mq-phone-frame img {
+  height: 116% !important;
+  transform: translateY(-7%) !important;
+}
+
+.mq-hobby-body {
+  grid-template-rows: auto auto auto auto !important;
+  align-content: start !important;
+}
+
+.mq-hobby-cards {
+  align-content: start !important;
+}
+
+.mq-hobby-card {
+  min-height: 220px !important;
+  display: grid !important;
+  align-content: center !important;
+}
+
+.mq-hobby-card h3 {
+  font-size: clamp(1.3rem, 1.12vw, 1.56rem) !important;
+}
+
+.mq-hobby-card p,
+.mq-hobby-notes .mq-paper-note {
+  font-size: clamp(0.98rem, 0.84vw, 1.1rem) !important;
+}
+
+.mq-achievements {
+  grid-template-rows: auto auto auto !important;
+  align-content: start !important;
+}
+
+.mq-achievement-board {
+  align-content: start !important;
+}
+
+.mq-achievement-card {
+  height: auto !important;
+  min-height: 285px !important;
+  display: grid !important;
+  align-content: center !important;
+}
+
+.mq-achievement-card h3 {
+  font-size: clamp(1.18rem, 1vw, 1.42rem) !important;
+}
+
+.mq-achievement-card p,
+.mq-achievement-list .mq-paper-note {
+  font-size: clamp(0.9rem, 0.78vw, 1.04rem) !important;
+}
+
+.slide-screen .slide-page > .qd-content {
+  min-height: 0 !important;
+}
+
+.slide-screen .mq-project-topbar {
+  grid-template-columns: clamp(260px, 18%, 340px) minmax(0, 1fr) clamp(190px, 12%, 240px) !important;
+}
+
+@media (max-width: 1450px), (max-height: 820px) {
+  .preview-screen .portfolio-map .map-node strong {
+    font-size: 0.98rem !important;
+  }
+
+  .preview-screen .portfolio-map .map-node small {
+    font-size: 0.7rem !important;
+  }
+
+  .mq-project-topbar {
+    grid-template-columns: 210px minmax(0, 1fr) 155px !important;
+  }
+
+  .mq-skill-widget .mq-chip-row {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 86px), 1fr)) !important;
+  }
+
+  .mq-skill-widget .mq-chip,
+  .mq-soft-card p,
+  .mq-hobby-card p,
+  .mq-achievement-card p {
+    font-size: 0.72rem !important;
+  }
+
+  .mq-work-card {
+    height: clamp(380px, 50vh, 470px) !important;
+  }
+}
+
+/* Memory Quest final product UI pass */
+.preview-screen .side-preview {
+  grid-template-columns: clamp(310px, 18.5vw, 380px) minmax(0, 1fr) !important;
+  gap: clamp(12px, 0.85vw, 18px) !important;
+  padding: clamp(14px, 1vw, 22px) !important;
+  align-items: stretch !important;
+}
+
+.preview-screen .side-preview-panel,
+.slide-screen .slide-page {
+  overflow: hidden !important;
+  border: 4px solid #f3dca4 !important;
+  background:
+    linear-gradient(180deg, rgba(3, 24, 21, 0.985), rgba(2, 13, 17, 0.995)),
+    url("/assets/packs/forest/background.png") center / cover no-repeat !important;
+  color: #f8edc6 !important;
+  box-shadow:
+    inset 0 0 0 5px rgba(3, 12, 13, 0.94),
+    inset 0 0 0 7px rgba(222, 190, 121, 0.4),
+    8px 8px 0 rgba(0, 0, 0, 0.58) !important;
+  backdrop-filter: none !important;
+}
+
+.preview-screen .side-preview-panel::before,
+.slide-screen .slide-page::before,
+.preview-screen .side-preview-panel::after,
+.slide-screen .slide-page::after {
+  opacity: 0.05 !important;
+  pointer-events: none;
+}
+
+.preview-screen .side-preview-panel {
+  padding: clamp(22px, 1.55vw, 34px) !important;
+  display: grid !important;
+  grid-template-rows: auto minmax(0, 1fr) auto !important;
+  row-gap: clamp(14px, 0.95vw, 20px) !important;
+}
+
+.slide-screen .slide-page {
+  padding: clamp(30px, 2.2vw, 52px) !important;
+  display: grid !important;
+  grid-template-rows: auto minmax(0, 1fr) !important;
+  row-gap: clamp(14px, 1vw, 24px) !important;
+}
+
+.preview-screen .side-preview-header,
+.slide-screen .slide-header {
+  min-height: 0 !important;
+  padding: 0 clamp(245px, 18vw, 360px) 0 0 !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  align-items: start !important;
+  gap: 16px !important;
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.preview-screen .side-preview-header h2,
+.slide-screen .slide-header h2 {
+  margin: 0 !important;
+  color: #fff6c6 !important;
+  font-size: clamp(3.15rem, 3.55vw, 5.6rem) !important;
+  line-height: 0.92 !important;
+  letter-spacing: 0 !important;
+  text-shadow:
+    4px 4px 0 #071111,
+    0 0 18px rgba(139, 255, 221, 0.12) !important;
+}
+
+.preview-screen .quest-progress,
+.slide-screen .slide-header span {
+  color: #fff6c6 !important;
+  font-size: clamp(0.9rem, 0.82vw, 1.16rem) !important;
+}
+
+.preview-screen .quest-progress {
+  position: absolute !important;
+  top: clamp(30px, 2.2vw, 42px) !important;
+  right: clamp(205px, 11vw, 250px) !important;
+  min-width: clamp(260px, 18vw, 360px) !important;
+  display: grid !important;
+  grid-template-columns: auto minmax(120px, 1fr) auto !important;
+  align-items: center !important;
+  gap: 10px !important;
+}
+
+.preview-screen .quest-progress div {
+  height: 24px !important;
+  border: 3px solid rgba(241, 211, 154, 0.75) !important;
+  background: rgba(2, 12, 13, 0.95) !important;
+}
+
+.preview-screen .quest-progress i {
+  background: linear-gradient(90deg, #f1c75e, #7df7d5) !important;
+}
+
+.preview-screen .preview-expand,
+.preview-screen .preview-close,
+.slide-screen .slide-mode-button {
+  width: clamp(54px, 3.5vw, 72px) !important;
+  height: clamp(54px, 3.5vw, 72px) !important;
+  border: 4px solid #f3dca4 !important;
+  border-radius: 8px !important;
+  background: #071014 !important;
+  color: #ffe37b !important;
+  font-size: clamp(1.28rem, 1.35vw, 1.74rem) !important;
+  box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.58) !important;
+}
+
+.preview-screen .preview-expand {
+  right: clamp(90px, 5.4vw, 115px) !important;
+}
+
+.preview-screen .preview-close {
+  right: clamp(22px, 1.55vw, 34px) !important;
+}
+
+.preview-screen .side-preview-panel > .qd-content,
+.slide-screen .slide-page > .qd-content {
+  min-height: 0 !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  display: block !important;
+}
+
+.preview-screen .side-preview-nav {
+  min-height: 0 !important;
+  padding-top: clamp(10px, 0.78vw, 16px) !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) clamp(190px, 14vw, 275px) minmax(0, 1fr) !important;
+  gap: clamp(12px, 0.9vw, 18px) !important;
+  align-items: stretch !important;
+  border-top: 2px solid rgba(241, 211, 154, 0.28) !important;
+}
+
+.preview-screen .side-preview-nav .continue-button {
+  min-height: clamp(58px, 6.2vh, 82px) !important;
+  padding: 10px 18px !important;
+  border-width: 3px !important;
+  border-radius: 10px !important;
+  font-size: clamp(0.98rem, 0.96vw, 1.28rem) !important;
+  line-height: 1.08 !important;
+}
+
+.preview-screen .side-preview-nav .continue-button.primary {
+  background: linear-gradient(180deg, #ffd76b, #c79331) !important;
+  color: #12100d !important;
+}
+
+.preview-screen .portfolio-map {
+  width: auto !important;
+  min-width: 0 !important;
+  padding: clamp(12px, 0.85vw, 18px) !important;
+  border: 4px solid #f3dca4 !important;
+  background:
+    linear-gradient(180deg, rgba(10, 42, 38, 0.93), rgba(3, 14, 18, 0.97)),
+    url("/assets/packs/fields/background_1.png") center / cover no-repeat !important;
+  display: grid !important;
+  grid-template-rows: auto minmax(0, 1fr) auto !important;
+  gap: clamp(10px, 0.72vw, 14px) !important;
+  box-shadow:
+    inset 0 0 0 4px rgba(2, 11, 12, 0.88),
+    7px 7px 0 rgba(0, 0, 0, 0.54) !important;
+}
+
+.preview-screen .portfolio-map h2 {
+  min-height: 0 !important;
+  padding: clamp(16px, 1vw, 22px) 12px !important;
+  border: 3px solid rgba(241, 211, 154, 0.86) !important;
+  background: rgba(3, 20, 21, 0.95) !important;
+  color: #fff6c6 !important;
+  font-size: clamp(2rem, 2.2vw, 3rem) !important;
+  line-height: 1 !important;
+  text-align: center !important;
+  box-shadow: inset 0 -5px 0 rgba(0, 0, 0, 0.28) !important;
+}
+
+.preview-screen .portfolio-map-path {
+  min-height: 0 !important;
+  padding: clamp(10px, 0.72vw, 14px) !important;
+  overflow: hidden !important;
+  display: grid !important;
+  grid-template-rows: repeat(8, minmax(56px, 1fr)) !important;
+  gap: clamp(8px, 0.52vw, 12px) !important;
+  border: 3px solid rgba(241, 211, 154, 0.58) !important;
+  background:
+    linear-gradient(180deg, rgba(8, 42, 40, 0.42), rgba(2, 15, 20, 0.86)),
+    url("/assets/packs/forest/background.png") center / cover no-repeat !important;
+}
+
+.preview-screen .portfolio-map-path::before {
+  display: none !important;
+}
+
+.preview-screen .portfolio-map .map-node {
+  position: relative !important;
+  inset: auto !important;
+  width: 100% !important;
+  max-width: none !important;
+  min-height: 0 !important;
+  height: auto !important;
+  display: grid !important;
+  grid-template-columns: clamp(46px, 3.3vw, 60px) minmax(0, 1fr) !important;
+  grid-template-rows: 1fr auto !important;
+  align-items: center !important;
+  column-gap: clamp(10px, 0.65vw, 14px) !important;
+  padding: clamp(7px, 0.5vw, 10px) !important;
+  border: 0 !important;
+  border-radius: 18px 8px 18px 8px !important;
+  background:
+    linear-gradient(90deg, rgba(255, 221, 128, 0.88) 0 clamp(58px, 4vw, 74px), rgba(4, 21, 22, 0.96) clamp(58px, 4vw, 74px)),
+    linear-gradient(135deg, rgba(8, 46, 40, 0.94), rgba(2, 12, 15, 0.98)) !important;
+  color: #fff6c6 !important;
+  transform: none !important;
+  box-shadow:
+    inset 0 0 0 3px rgba(241, 211, 154, 0.62),
+    inset 0 -5px 0 rgba(0, 0, 0, 0.32),
+    4px 5px 0 rgba(0, 0, 0, 0.52) !important;
+}
+
+.preview-screen .portfolio-map .map-node-pad {
+  grid-row: 1 / span 2 !important;
+  width: clamp(46px, 3.3vw, 60px) !important;
+  height: clamp(46px, 3.3vw, 60px) !important;
+  border: 0 !important;
+  border-radius: 10px !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.preview-screen .portfolio-map .map-node-pad img {
+  width: 88% !important;
+  height: 88% !important;
+  object-fit: contain !important;
+  image-rendering: pixelated !important;
+  filter: drop-shadow(3px 4px 0 rgba(0, 0, 0, 0.5)) !important;
+}
+
+.preview-screen .portfolio-map .map-node strong {
+  min-width: 0 !important;
+  display: flex !important;
+  align-items: baseline !important;
+  gap: 7px !important;
+  color: #fff6c6 !important;
+  font-size: clamp(1.02rem, 0.94vw, 1.25rem) !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  text-shadow: 2px 2px 0 #02090a !important;
+}
+
+.preview-screen .portfolio-map .map-node strong span {
+  width: auto !important;
+  height: auto !important;
+  display: inline !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: #ffe081 !important;
+  text-shadow: 2px 2px 0 #02090a !important;
+}
+
+.preview-screen .portfolio-map .map-node small {
+  min-width: 0 !important;
+  margin: 0 !important;
+  color: #a4f7da !important;
+  font-size: clamp(0.74rem, 0.64vw, 0.9rem) !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+}
+
+.preview-screen .portfolio-map .map-node.active {
+  background:
+    linear-gradient(90deg, rgba(255, 219, 105, 1) 0 clamp(58px, 4vw, 74px), rgba(10, 52, 44, 0.98) clamp(58px, 4vw, 74px)),
+    linear-gradient(135deg, rgba(16, 78, 62, 0.98), rgba(2, 12, 15, 0.98)) !important;
+  box-shadow:
+    inset 0 0 0 4px rgba(143, 255, 218, 0.82),
+    inset 0 -5px 0 rgba(0, 0, 0, 0.32),
+    4px 5px 0 rgba(0, 0, 0, 0.52) !important;
+}
+
+.preview-screen .portfolio-map-actions {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: clamp(8px, 0.55vw, 12px) !important;
+}
+
+.preview-screen .portfolio-map-actions button,
+.preview-screen .portfolio-map-actions .map-action-chip {
+  min-height: clamp(60px, 6.4vh, 84px) !important;
+  padding: 8px 6px !important;
+  border: 3px solid rgba(241, 211, 154, 0.8) !important;
+  border-radius: 9px !important;
+  background: rgba(6, 19, 20, 0.94) !important;
+  color: #fff2bd !important;
+  font-size: clamp(0.8rem, 0.7vw, 1rem) !important;
+  line-height: 1.05 !important;
+}
+
+.preview-screen .portfolio-map-actions .map-action-icon {
+  font-size: clamp(1.45rem, 1.5vw, 2rem) !important;
+}
+
+.mq-page {
+  --mq-gap: clamp(12px, 0.78vw, 18px);
+  height: 100% !important;
+  min-height: 0 !important;
+  overflow: hidden !important;
+  color: #f8edc6 !important;
+  font-size: clamp(1.08rem, 0.96vw, 1.28rem) !important;
+  line-height: 1.2 !important;
+}
+
+.slide-screen .mq-page {
+  font-size: clamp(1.18rem, 1.12vw, 1.45rem) !important;
+}
+
+.mq-page p,
+.mq-page li,
+.mq-page small,
+.mq-page strong {
+  letter-spacing: 0 !important;
+}
+
+.mq-page strong,
+.highlighted {
+  color: #fff7d2 !important;
+  font-weight: 800 !important;
+}
+
+.mq-photo-card {
+  overflow: hidden !important;
+  border: 4px solid #f3dca4 !important;
+  border-radius: 20px 10px 20px 10px !important;
+  background: #071214 !important;
+  box-shadow:
+    inset 0 0 0 4px rgba(6, 14, 15, 0.78),
+    6px 7px 0 rgba(0, 0, 0, 0.55) !important;
+}
+
+.mq-photo-card img {
+  width: 100% !important;
+  height: 100% !important;
+  image-rendering: auto !important;
+}
+
+.mq-chip-row {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+  align-items: center !important;
+}
+
+.mq-chip {
+  min-height: 30px !important;
+  padding: 7px 12px !important;
+  border: 2px solid rgba(124, 235, 207, 0.76) !important;
+  border-radius: 999px !important;
+  background:
+    linear-gradient(180deg, rgba(101, 190, 163, 0.88), rgba(35, 105, 89, 0.94)) !important;
+  color: #f4fff2 !important;
+  font-family: var(--pixel-font) !important;
+  font-size: clamp(0.74rem, 0.66vw, 0.94rem) !important;
+  line-height: 1 !important;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.65) !important;
+  box-shadow:
+    inset 0 -3px 0 rgba(0, 0, 0, 0.22),
+    2px 3px 0 rgba(0, 0, 0, 0.28) !important;
+}
+
+.mq-button-link {
+  min-height: 42px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 9px !important;
+  padding: 9px 15px !important;
+  border: 3px solid #f3dca4 !important;
+  border-radius: 15px !important;
+  background:
+    linear-gradient(180deg, rgba(19, 39, 43, 0.98), rgba(5, 14, 17, 0.98)) !important;
+  color: #fff6c6 !important;
+  font-family: var(--pixel-font) !important;
+  font-size: clamp(0.86rem, 0.78vw, 1.08rem) !important;
+  line-height: 1 !important;
+  text-decoration: none !important;
+  box-shadow: inset 0 -4px 0 rgba(0, 0, 0, 0.28), 4px 4px 0 rgba(0, 0, 0, 0.48) !important;
+}
+
+.mq-link-profile {
+  border-color: #8af5dd !important;
+  background:
+    radial-gradient(circle at 20% 50%, rgba(138, 245, 221, 0.23), transparent 36%),
+    linear-gradient(180deg, rgba(19, 77, 67, 0.98), rgba(4, 19, 23, 0.98)) !important;
+  color: #f7fffb !important;
+  font-size: clamp(1rem, 0.96vw, 1.24rem) !important;
+}
+
+.inventory-token img {
+  image-rendering: pixelated !important;
+}
+
+.mq-about {
+  display: grid !important;
+  grid-template-rows: auto auto auto !important;
+  align-content: start !important;
+  gap: var(--mq-gap) !important;
+}
+
+.mq-about-hero {
+  display: grid !important;
+  grid-template-columns: clamp(270px, 28%, 440px) minmax(0, 1fr) !important;
+  gap: clamp(18px, 1.2vw, 28px) !important;
+  align-items: start !important;
+}
+
+.mq-about-photo {
+  width: 100% !important;
+  aspect-ratio: 1 / 0.78 !important;
+  margin: 0 !important;
+}
+
+.mq-about-photo img {
+  object-fit: cover !important;
+  object-position: 50% 36% !important;
+}
+
+.mq-intro-paragraph {
+  margin: 0 !important;
+  max-width: none !important;
+  color: #fff0c4 !important;
+  font-size: clamp(1.12rem, 1.05vw, 1.42rem) !important;
+  line-height: 1.24 !important;
+}
+
+.mq-education-map {
+  display: grid !important;
+  grid-template-columns: 1.35fr 1fr 1fr !important;
+  gap: var(--mq-gap) !important;
+  align-items: stretch !important;
+}
+
+.mq-map-card,
+.mq-fun-fact,
+.mq-paper-note {
+  border: 0 !important;
+  background:
+    linear-gradient(180deg, #f4db9b, #c49351) !important;
+  color: #17100c !important;
+  box-shadow:
+    inset 0 0 0 3px rgba(84, 48, 22, 0.5),
+    inset 0 -6px 0 rgba(84, 48, 22, 0.28),
+    5px 6px 0 rgba(0, 0, 0, 0.42) !important;
+}
+
+.mq-map-card {
+  min-height: clamp(135px, 14vh, 190px) !important;
+  padding: clamp(14px, 1vw, 20px) !important;
+  display: grid !important;
+  grid-template-columns: clamp(54px, 4vw, 72px) minmax(0, 1fr) !important;
+  gap: clamp(12px, 0.8vw, 16px) !important;
+  border-radius: 20px 8px 20px 8px !important;
+}
+
+.mq-map-marker {
+  width: clamp(54px, 4vw, 72px) !important;
+  height: clamp(54px, 4vw, 72px) !important;
+  display: grid !important;
+  place-items: center !important;
+  border-radius: 14px !important;
+  background: #08201e !important;
+  color: #ffe07b !important;
+  font-size: clamp(0.9rem, 0.92vw, 1.25rem) !important;
+  box-shadow: inset 0 0 0 3px rgba(255, 230, 152, 0.5) !important;
+}
+
+.mq-map-card h3 {
+  margin: 0 0 5px !important;
+  color: #1b100a !important;
+  font-size: clamp(1.04rem, 1.02vw, 1.32rem) !important;
+  line-height: 1.04 !important;
+}
+
+.mq-map-card p,
+.mq-map-card strong,
+.mq-map-card small {
+  display: block !important;
+  margin: 0 !important;
+  color: #1f160f !important;
+  font-size: clamp(0.82rem, 0.76vw, 1rem) !important;
+  line-height: 1.14 !important;
+}
+
+.mq-map-card small {
+  margin-top: 6px !important;
+  opacity: 0.86 !important;
+}
+
+.mq-about-footer {
+  display: block !important;
+}
+
+.mq-fun-fact {
+  min-height: 82px !important;
+  padding: 14px 18px !important;
+  display: grid !important;
+  grid-template-columns: 54px minmax(0, 1fr) !important;
+  gap: 14px !important;
+  align-items: center !important;
+  border-radius: 18px 8px 18px 8px !important;
+}
+
+.mq-fun-fact h3,
+.mq-fun-fact p {
+  margin: 0 !important;
+  color: #1b100a !important;
+}
+
+.mq-fun-fact h3 {
+  font-size: clamp(1.08rem, 1vw, 1.34rem) !important;
+}
+
+.mq-fun-fact p {
+  font-size: clamp(0.96rem, 0.9vw, 1.16rem) !important;
+}
+
+.mq-fun-icon {
+  width: 52px !important;
+  height: 52px !important;
+  display: grid !important;
+  place-items: center !important;
+  border-radius: 13px !important;
+  background: #08201e !important;
+  color: #ffe07b !important;
+  font-size: 1.8rem !important;
+}
+
+.mq-projects {
+  display: grid !important;
+  grid-template-rows: clamp(92px, 10vh, 125px) minmax(0, 1fr) !important;
+  gap: var(--mq-gap) !important;
+}
+
+.mq-project-topbar {
+  display: grid !important;
+  grid-template-columns: clamp(260px, 21%, 390px) minmax(240px, 1fr) clamp(180px, 15%, 270px) !important;
+  gap: var(--mq-gap) !important;
+  align-items: stretch !important;
+}
+
+.mq-generated-panel,
+.mq-project-terminal,
+.mq-project-command {
+  min-height: 0 !important;
+  height: 100% !important;
+}
+
+.mq-generated-panel {
+  padding: 8px !important;
+  border: 3px solid rgba(241, 211, 154, 0.75) !important;
+  border-radius: 15px !important;
+  background: rgba(3, 18, 20, 0.95) !important;
+}
+
+.mq-generated-panel img {
+  object-fit: cover !important;
+  image-rendering: auto !important;
+}
+
+.mq-project-terminal {
+  display: grid !important;
+  grid-template-columns: clamp(82px, 7vw, 132px) minmax(0, 1fr) !important;
+  align-items: center !important;
+  gap: 14px !important;
+  padding: 12px 16px !important;
+  border: 3px solid rgba(137, 245, 220, 0.42) !important;
+  border-radius: 18px !important;
+  background: rgba(3, 18, 20, 0.94) !important;
+}
+
+.mq-project-terminal img {
+  object-fit: contain !important;
+}
+
+.mq-project-terminal p {
+  margin: 0 !important;
+  color: #fff4c6 !important;
+  font-size: clamp(1rem, 0.98vw, 1.28rem) !important;
+  line-height: 1.14 !important;
+}
+
+.mq-project-command {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: stretch !important;
+}
+
+.mq-project-command .mq-button-link {
+  width: 100% !important;
+  min-height: 62px !important;
+}
+
+.mq-project-cards {
+  min-height: 0 !important;
+  display: grid !important;
+  grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+  grid-template-rows: minmax(0, 1.08fr) minmax(0, 0.92fr) !important;
+  gap: var(--mq-gap) !important;
+}
+
+.mq-project-card {
+  min-height: 0 !important;
+  height: 100% !important;
+  overflow: hidden !important;
+  display: grid !important;
+  grid-template-rows: auto auto minmax(0, auto) auto auto !important;
+  align-content: start !important;
+  gap: clamp(7px, 0.5vw, 11px) !important;
+  padding: clamp(16px, 1vw, 22px) !important;
+  border: 0 !important;
+  border-radius: 24px 12px 24px 12px !important;
+  background:
+    linear-gradient(180deg, rgba(11, 35, 35, 0.98), rgba(4, 14, 17, 0.99)) !important;
+  box-shadow:
+    inset 0 0 0 3px rgba(241, 211, 154, 0.62),
+    inset 0 -6px 0 rgba(0, 0, 0, 0.25),
+    5px 5px 0 rgba(0, 0, 0, 0.44) !important;
+}
+
+.mq-project-card:nth-child(1),
+.mq-project-card:nth-child(2) {
+  grid-column: span 6 !important;
+}
+
+.mq-project-card:nth-child(n + 3) {
+  grid-column: span 4 !important;
+  padding: clamp(13px, 0.85vw, 18px) !important;
+  gap: 7px !important;
+}
+
+.mq-project-title-row {
+  display: grid !important;
+  grid-template-columns: clamp(34px, 2.6vw, 46px) minmax(0, 1fr) !important;
+  gap: 12px !important;
+  align-items: start !important;
+}
+
+.mq-project-title-row h3 {
+  margin: 0 !important;
+  color: #fff6c6 !important;
+  font-size: clamp(1.08rem, 1.02vw, 1.38rem) !important;
+  line-height: 1.08 !important;
+}
+
+.mq-project-card:nth-child(n + 3) .mq-project-title-row h3 {
+  font-size: clamp(0.96rem, 0.88vw, 1.16rem) !important;
+}
+
+.mq-project-title-row p {
+  margin: 4px 0 0 !important;
+  color: #decfa8 !important;
+  font-size: clamp(0.72rem, 0.68vw, 0.88rem) !important;
+  line-height: 1.05 !important;
+}
+
+.mq-project-description {
+  margin: 0 !important;
+  color: #fff1c2 !important;
+  font-size: clamp(0.9rem, 0.82vw, 1.06rem) !important;
+  line-height: 1.16 !important;
+}
+
+.mq-project-card:nth-child(n + 3) .mq-project-description {
+  font-size: clamp(0.76rem, 0.68vw, 0.9rem) !important;
+  line-height: 1.12 !important;
+}
+
+.mq-project-card .mq-bullet-list {
+  min-height: 0 !important;
+  display: grid !important;
+  gap: 6px !important;
+  overflow: hidden !important;
+}
+
+.mq-project-card .mq-bullet-list li {
+  min-height: 0 !important;
+  padding: 7px 10px 7px 23px !important;
+  border: 0 !important;
+  border-radius: 11px !important;
+  background: rgba(255, 255, 255, 0.055) !important;
+  color: #eee0b6 !important;
+  font-size: clamp(0.72rem, 0.66vw, 0.86rem) !important;
+  line-height: 1.1 !important;
+}
+
+.mq-project-card:nth-child(n + 3) .mq-bullet-list li {
+  font-size: clamp(0.6rem, 0.56vw, 0.74rem) !important;
+}
+
+.mq-project-card .mq-chip-row {
+  gap: 6px !important;
+}
+
+.mq-project-card .mq-chip {
+  min-height: 24px !important;
+  padding: 5px 9px !important;
+  font-size: clamp(0.58rem, 0.55vw, 0.72rem) !important;
+  border-radius: 999px !important;
+}
+
+.mq-card-actions {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 8px !important;
+  align-items: end !important;
+}
+
+.mq-card-actions .mq-button-link {
+  min-height: 38px !important;
+  padding: 7px 12px !important;
+  font-size: clamp(0.68rem, 0.63vw, 0.82rem) !important;
+}
+
+.mq-work {
+  display: grid !important;
+  grid-template-rows: minmax(0, 1fr) !important;
+}
+
+.mq-work-track {
+  min-height: 0 !important;
+  height: 100% !important;
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: clamp(18px, 1.2vw, 28px) !important;
+  align-items: stretch !important;
+  position: relative !important;
+}
+
+.mq-work-track::before {
+  content: "" !important;
+  position: absolute !important;
+  left: 8% !important;
+  right: 8% !important;
+  top: clamp(56px, 5.2vh, 80px) !important;
+  height: 5px !important;
+  background: repeating-linear-gradient(90deg, #f1ce72 0 18px, transparent 18px 30px) !important;
+  opacity: 0.75 !important;
+}
+
+.mq-work-card {
+  min-height: 0 !important;
+  height: 100% !important;
+  overflow: hidden !important;
+  display: grid !important;
+  grid-template-rows: auto auto auto minmax(0, 1fr) !important;
+  align-content: start !important;
+  gap: clamp(10px, 0.78vw, 15px) !important;
+  padding: clamp(22px, 1.45vw, 32px) !important;
+  border: 0 !important;
+  border-radius: 28px 12px 28px 12px !important;
+  background:
+    linear-gradient(180deg, rgba(9, 35, 34, 0.98), rgba(4, 14, 17, 0.99)) !important;
+  box-shadow:
+    inset 0 0 0 3px rgba(241, 211, 154, 0.62),
+    inset 0 -7px 0 rgba(0, 0, 0, 0.28),
+    6px 7px 0 rgba(0, 0, 0, 0.5) !important;
+}
+
+.mq-work-node {
+  width: clamp(50px, 3.6vw, 70px) !important;
+  height: clamp(50px, 3.6vw, 70px) !important;
+  border: 4px solid #f3dca4 !important;
+  border-radius: 50% !important;
+  background: #0b2926 !important;
+  color: #ffe07b !important;
+  font-size: clamp(1.15rem, 1.15vw, 1.55rem) !important;
+  z-index: 1 !important;
+}
+
+.mq-work-head {
+  display: grid !important;
+  grid-template-columns: clamp(58px, 4vw, 82px) minmax(0, 1fr) !important;
+  align-items: center !important;
+  gap: 14px !important;
+}
+
+.mq-work-head img {
+  width: clamp(58px, 4vw, 82px) !important;
+  height: clamp(58px, 4vw, 82px) !important;
+  object-fit: contain !important;
+  padding: 8px !important;
+  border-radius: 14px !important;
+  background: #f4db9b !important;
+}
+
+.mq-work-head h3 {
+  margin: 0 !important;
+  color: #fff6c6 !important;
+  font-size: clamp(1.28rem, 1.22vw, 1.64rem) !important;
+  line-height: 1.04 !important;
+}
+
+.mq-work-head p,
+.mq-work-date {
+  color: #dbcd9e !important;
+  font-size: clamp(0.88rem, 0.8vw, 1.06rem) !important;
+  line-height: 1.08 !important;
+}
+
+.mq-work-focus {
+  margin: 0 !important;
+  color: #fff0bc !important;
+  font-size: clamp(1rem, 0.92vw, 1.2rem) !important;
+  line-height: 1.14 !important;
+}
+
+.mq-work .mq-bullet-list {
+  min-height: 0 !important;
+  display: grid !important;
+  gap: 8px !important;
+  overflow: hidden !important;
+}
+
+.mq-work .mq-bullet-list li {
+  padding: 8px 10px 8px 25px !important;
+  border: 0 !important;
+  border-radius: 12px !important;
+  background: rgba(255, 255, 255, 0.055) !important;
+  color: #efe2b9 !important;
+  font-size: clamp(0.8rem, 0.74vw, 0.96rem) !important;
+  line-height: 1.12 !important;
+}
+
+.mq-skills {
+  display: grid !important;
+  grid-template-rows: minmax(0, 1fr) !important;
+}
+
+.mq-skill-grid {
+  min-height: 0 !important;
+  display: grid !important;
+  grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+  grid-auto-rows: minmax(120px, 1fr) !important;
+  gap: var(--mq-gap) !important;
+  align-content: stretch !important;
+}
+
+.mq-skill-widget {
+  min-height: 0 !important;
+  height: 100% !important;
+  display: grid !important;
+  grid-template-rows: auto minmax(0, 1fr) !important;
+  gap: clamp(10px, 0.72vw, 15px) !important;
+  padding: clamp(16px, 1vw, 23px) !important;
+  border: 0 !important;
+  border-radius: 20px 8px 20px 8px !important;
+  background:
+    radial-gradient(circle at 12% 14%, rgba(138, 245, 221, 0.2), transparent 32%),
+    linear-gradient(180deg, rgba(9, 39, 36, 0.98), rgba(4, 15, 18, 0.99)) !important;
+  box-shadow:
+    inset 0 0 0 3px rgba(241, 211, 154, 0.54),
+    inset 0 -6px 0 rgba(0, 0, 0, 0.26),
+    5px 5px 0 rgba(0, 0, 0, 0.42) !important;
+}
+
+.mq-skill-widget:nth-child(1) { grid-column: span 5 !important; }
+.mq-skill-widget:nth-child(2) { grid-column: span 4 !important; }
+.mq-skill-widget:nth-child(3) { grid-column: span 3 !important; }
+.mq-skill-widget:nth-child(4),
+.mq-skill-widget:nth-child(5),
+.mq-skill-widget:nth-child(6) { grid-column: span 4 !important; }
+.mq-skill-widget:nth-child(7) { grid-column: span 12 !important; }
+
+.mq-widget-title {
+  display: grid !important;
+  grid-template-columns: clamp(58px, 4.2vw, 80px) minmax(0, 1fr) !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+.mq-skill-gem,
+.mq-soft-head img {
+  width: clamp(58px, 4.2vw, 80px) !important;
+  height: clamp(58px, 4.2vw, 80px) !important;
+  object-fit: contain !important;
+  image-rendering: auto !important;
+  filter: drop-shadow(4px 5px 0 rgba(0, 0, 0, 0.55)) !important;
+}
+
+.mq-widget-title h3 {
+  margin: 0 !important;
+  color: #fff6c6 !important;
+  font-size: clamp(1.22rem, 1.16vw, 1.55rem) !important;
+  line-height: 1.05 !important;
+}
+
+.mq-skill-widget .mq-chip-row {
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 135px), 1fr)) !important;
+  gap: 8px !important;
+  align-content: start !important;
+}
+
+.mq-skill-widget .mq-chip {
+  width: 100% !important;
+  min-height: clamp(36px, 3.3vh, 48px) !important;
+  padding: 8px 10px !important;
+  border: 2px solid rgba(241, 211, 154, 0.58) !important;
+  border-radius: 8px !important;
+  background:
+    linear-gradient(180deg, rgba(29, 87, 77, 0.96), rgba(9, 32, 36, 0.98)) !important;
+  color: #f8edc6 !important;
+  font-size: clamp(0.8rem, 0.74vw, 0.96rem) !important;
+  text-align: center !important;
+}
+
+.mq-soft {
+  display: grid !important;
+  grid-template-rows: minmax(0, 1fr) auto auto !important;
+  gap: var(--mq-gap) !important;
+}
+
+.mq-soft-grid {
+  min-height: 0 !important;
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  grid-template-rows: repeat(2, minmax(0, 1fr)) !important;
+  gap: var(--mq-gap) !important;
+}
+
+.mq-soft-card {
+  min-height: 0 !important;
+  height: 100% !important;
+  overflow: hidden !important;
+  padding: clamp(16px, 1.05vw, 24px) !important;
+  display: grid !important;
+  grid-template-rows: auto minmax(0, 1fr) !important;
+  gap: 10px !important;
+  border: 0 !important;
+  border-radius: 22px 10px 22px 10px !important;
+  box-shadow:
+    inset 0 0 0 3px rgba(241, 211, 154, 0.52),
+    inset 0 -6px 0 rgba(0, 0, 0, 0.25),
+    5px 5px 0 rgba(0, 0, 0, 0.42) !important;
+}
+
+.mq-soft-head {
+  display: grid !important;
+  grid-template-columns: clamp(58px, 4.2vw, 80px) minmax(0, 1fr) !important;
+  align-items: center !important;
+  gap: 12px !important;
+}
+
+.mq-soft-card h3 {
+  margin: 0 !important;
+  color: #fff6c6 !important;
+  font-size: clamp(1.18rem, 1.1vw, 1.46rem) !important;
+  line-height: 1.04 !important;
+}
+
+.mq-soft-card p {
+  margin: 0 !important;
+  color: #f4e7bf !important;
+  font-size: clamp(0.9rem, 0.82vw, 1.05rem) !important;
+  line-height: 1.15 !important;
+}
+
+.mq-soft-notes {
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: var(--mq-gap) !important;
+}
+
+.mq-soft-notes .mq-paper-note {
+  min-height: clamp(64px, 6.2vh, 86px) !important;
+  padding: 14px 18px !important;
+  border-radius: 18px 8px 18px 8px !important;
+  color: #17100c !important;
+  font-size: clamp(0.96rem, 0.84vw, 1.1rem) !important;
+  line-height: 1.15 !important;
+}
+
+.mq-soft > .mq-chip-row {
+  justify-content: start !important;
+}
+
+.mq-leadership {
+  display: grid !important;
+  grid-template-columns: clamp(185px, 16%, 280px) minmax(0, 1fr) clamp(210px, 21%, 340px) !important;
+  grid-template-rows: minmax(0, 1fr) auto !important;
+  gap: var(--mq-gap) !important;
+}
+
+.mq-leadership-media {
+  display: contents !important;
+}
+
+.mq-leader-photo {
+  margin: 0 !important;
+  min-height: 0 !important;
+}
+
+.mq-leader-photo-1 {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+  align-self: start !important;
+  height: clamp(250px, 43vh, 470px) !important;
+}
+
+.mq-leader-photo-2 {
+  grid-column: 3 !important;
+  grid-row: 1 !important;
+  align-self: end !important;
+  height: clamp(210px, 34vh, 390px) !important;
+}
+
+.mq-leader-photo img {
+  object-fit: contain !important;
+  object-position: center !important;
+  background: rgba(255, 238, 200, 0.08) !important;
+}
+
+.mq-leadership-ledger {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+  min-height: 0 !important;
+  height: 100% !important;
+  display: grid !important;
+  grid-auto-rows: minmax(0, 1fr) !important;
+  gap: 10px !important;
+  overflow: hidden !important;
+}
+
+.mq-leadership-row {
+  min-height: 0 !important;
+  padding: 11px 14px !important;
+  display: grid !important;
+  grid-template-columns: 44px minmax(0, 1fr) !important;
+  gap: 12px !important;
+  align-items: start !important;
+  border: 0 !important;
+  border-radius: 16px 6px 16px 6px !important;
+  background:
+    linear-gradient(180deg, rgba(14, 44, 42, 0.98), rgba(5, 16, 18, 0.98)) !important;
+  box-shadow: inset 0 0 0 2px rgba(241, 211, 154, 0.42) !important;
+}
+
+.mq-leadership-row > span {
+  width: 40px !important;
+  height: 40px !important;
+  display: grid !important;
+  place-items: center !important;
+  border-radius: 10px !important;
+  background: #f1c95f !important;
+  color: #15100d !important;
+  font-size: clamp(0.74rem, 0.68vw, 0.92rem) !important;
+}
+
+.mq-leadership-row h3,
+.mq-leadership-row p {
+  margin: 0 !important;
+}
+
+.mq-leadership-row h3 {
+  color: #fff6c6 !important;
+  font-size: clamp(0.92rem, 0.82vw, 1.08rem) !important;
+  line-height: 1.08 !important;
+}
+
+.mq-leadership-row p {
+  margin-top: 4px !important;
+  color: #e8d7ad !important;
+  font-size: clamp(0.72rem, 0.64vw, 0.84rem) !important;
+  line-height: 1.08 !important;
+}
+
+.mq-leadership > .mq-chip-row {
+  grid-column: 1 / -1 !important;
+  grid-row: 2 !important;
+}
+
+.mq-hobbies {
+  display: grid !important;
+  grid-template-columns: clamp(225px, 20%, 335px) minmax(0, 1fr) !important;
+  gap: clamp(18px, 1.2vw, 28px) !important;
+}
+
+.mq-phone-frame {
+  margin: 0 !important;
+  height: 100% !important;
+  max-height: 100% !important;
+  border-radius: 28px !important;
+}
+
+.mq-phone-frame img {
+  width: 100% !important;
+  height: 108% !important;
+  object-fit: cover !important;
+  object-position: 50% 49% !important;
+  transform: translateY(-3.5%) !important;
+}
+
+.mq-hobby-body {
+  min-height: 0 !important;
+  display: grid !important;
+  grid-template-rows: auto minmax(0, 1fr) auto auto !important;
+  gap: var(--mq-gap) !important;
+  overflow: hidden !important;
+}
+
+.mq-hobby-story {
+  margin: 0 !important;
+  color: #fff0c4 !important;
+  font-size: clamp(1.12rem, 1.02vw, 1.36rem) !important;
+  line-height: 1.18 !important;
+}
+
+.mq-hobby-cards {
+  min-height: 0 !important;
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: var(--mq-gap) !important;
+}
+
+.mq-hobby-card {
+  min-height: 0 !important;
+  padding: clamp(18px, 1.1vw, 26px) !important;
+  border: 0 !important;
+  border-radius: 24px 10px 24px 10px !important;
+  background:
+    linear-gradient(180deg, #f4db9b, #c49351) !important;
+  color: #17100c !important;
+  box-shadow:
+    inset 0 0 0 3px rgba(84, 48, 22, 0.45),
+    inset 0 -6px 0 rgba(84, 48, 22, 0.24),
+    5px 6px 0 rgba(0, 0, 0, 0.4) !important;
+}
+
+.mq-hobby-card h3 {
+  margin: 0 0 8px !important;
+  color: #17100c !important;
+  font-size: clamp(1.2rem, 1.1vw, 1.48rem) !important;
+}
+
+.mq-hobby-card p {
+  margin: 0 !important;
+  color: #201610 !important;
+  font-size: clamp(0.94rem, 0.84vw, 1.08rem) !important;
+  line-height: 1.14 !important;
+}
+
+.mq-hobby-notes {
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: var(--mq-gap) !important;
+}
+
+.mq-hobby-notes .mq-paper-note {
+  min-height: 78px !important;
+  padding: 13px 16px !important;
+  font-size: clamp(0.82rem, 0.74vw, 0.96rem) !important;
+  line-height: 1.12 !important;
+}
+
+.mq-hobby-actions {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 12px !important;
+  align-items: center !important;
+}
+
+.mq-achievements {
+  display: grid !important;
+  grid-template-rows: minmax(0, 1fr) auto auto !important;
+  gap: var(--mq-gap) !important;
+}
+
+.mq-achievement-board {
+  min-height: 0 !important;
+  display: grid !important;
+  grid-template-columns: repeat(5, minmax(0, 1fr)) !important;
+  gap: var(--mq-gap) !important;
+}
+
+.mq-achievement-card {
+  min-height: 0 !important;
+  height: 100% !important;
+  overflow: hidden !important;
+  padding: clamp(16px, 1vw, 24px) !important;
+  border: 0 !important;
+  border-radius: 24px 10px 24px 10px !important;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255, 223, 121, 0.24), transparent 38%),
+    linear-gradient(180deg, rgba(12, 41, 38, 0.98), rgba(4, 15, 18, 0.99)) !important;
+  box-shadow:
+    inset 0 0 0 3px rgba(241, 211, 154, 0.54),
+    inset 0 -6px 0 rgba(0, 0, 0, 0.26),
+    5px 5px 0 rgba(0, 0, 0, 0.42) !important;
+}
+
+.mq-medal {
+  min-height: 34px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  padding: 7px 10px !important;
+  border-radius: 999px !important;
+  background: #f1c95f !important;
+  color: #18100b !important;
+  font-size: clamp(0.72rem, 0.64vw, 0.86rem) !important;
+  line-height: 1 !important;
+}
+
+.mq-achievement-card h3 {
+  margin: 12px 0 8px !important;
+  color: #fff6c6 !important;
+  font-size: clamp(1.04rem, 0.96vw, 1.26rem) !important;
+  line-height: 1.06 !important;
+}
+
+.mq-achievement-card p {
+  margin: 0 !important;
+  color: #eee0b6 !important;
+  font-size: clamp(0.82rem, 0.74vw, 0.96rem) !important;
+  line-height: 1.13 !important;
+}
+
+.mq-achievement-list {
+  min-height: 0 !important;
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 10px !important;
+}
+
+.mq-achievement-list .mq-paper-note {
+  min-height: 0 !important;
+  padding: 10px 14px !important;
+  font-size: clamp(0.78rem, 0.7vw, 0.92rem) !important;
+  line-height: 1.08 !important;
+}
+
+@media (min-width: 1700px) and (min-height: 880px) {
+  .mq-project-card:nth-child(n + 3) .mq-project-description,
+  .mq-project-card:nth-child(n + 3) .mq-bullet-list li,
+  .mq-leadership-row p,
+  .mq-achievement-list .mq-paper-note {
+    font-size: clamp(0.88rem, 0.78vw, 1.02rem) !important;
+  }
+
+  .mq-page {
+    font-size: clamp(1.15rem, 1.02vw, 1.36rem) !important;
+  }
+}
+
+@media (max-width: 1450px), (max-height: 820px) {
+  .preview-screen .side-preview {
+    grid-template-columns: 286px minmax(0, 1fr) !important;
+    gap: 10px !important;
+    padding: 10px !important;
+  }
+
+  .preview-screen .side-preview-panel {
+    padding: 18px !important;
+    row-gap: 10px !important;
+  }
+
+  .preview-screen .side-preview-header {
+    padding-right: 248px !important;
+  }
+
+  .preview-screen .side-preview-header h2 {
+    font-size: clamp(2.45rem, 3.1vw, 3.5rem) !important;
+  }
+
+  .preview-screen .quest-progress {
+    top: 24px !important;
+    right: 178px !important;
+    min-width: 235px !important;
+  }
+
+  .preview-screen .preview-expand,
+  .preview-screen .preview-close {
+    width: 56px !important;
+    height: 56px !important;
+  }
+
+  .preview-screen .preview-expand {
+    right: 82px !important;
+  }
+
+  .preview-screen .portfolio-map h2 {
+    font-size: 1.9rem !important;
+    padding: 14px 8px !important;
+  }
+
+  .preview-screen .portfolio-map-path {
+    grid-template-rows: repeat(8, minmax(51px, 1fr)) !important;
+    gap: 7px !important;
+  }
+
+  .preview-screen .portfolio-map .map-node {
+    grid-template-columns: 43px minmax(0, 1fr) !important;
+    padding: 6px !important;
+  }
+
+  .preview-screen .portfolio-map .map-node-pad {
+    width: 43px !important;
+    height: 43px !important;
+  }
+
+  .preview-screen .portfolio-map .map-node strong {
+    font-size: 0.88rem !important;
+  }
+
+  .preview-screen .portfolio-map .map-node small {
+    font-size: 0.62rem !important;
+  }
+
+  .mq-page {
+    --mq-gap: 10px;
+    font-size: 0.96rem !important;
+  }
+
+  .mq-about-hero {
+    grid-template-columns: 270px minmax(0, 1fr) !important;
+  }
+
+  .mq-intro-paragraph {
+    font-size: 0.98rem !important;
+    line-height: 1.18 !important;
+  }
+
+  .mq-map-card {
+    min-height: 120px !important;
+    padding: 11px !important;
+  }
+
+  .mq-projects {
+    grid-template-rows: 78px minmax(0, 1fr) !important;
+  }
+
+  .mq-project-topbar {
+    grid-template-columns: 215px minmax(180px, 1fr) 170px !important;
+  }
+
+  .mq-project-card,
+  .mq-project-card:nth-child(n + 3) {
+    padding: 11px !important;
+  }
+
+  .mq-project-title-row h3 {
+    font-size: 0.92rem !important;
+  }
+
+  .mq-project-description,
+  .mq-project-card:nth-child(n + 3) .mq-project-description {
+    font-size: 0.72rem !important;
+  }
+
+  .mq-project-card .mq-bullet-list li,
+  .mq-project-card:nth-child(n + 3) .mq-bullet-list li {
+    font-size: 0.58rem !important;
+    padding: 5px 7px 5px 18px !important;
+  }
+
+  .mq-work-card {
+    padding: 16px !important;
+  }
+
+  .mq-work-head h3 {
+    font-size: 1.05rem !important;
+  }
+
+  .mq-work .mq-bullet-list li {
+    font-size: 0.68rem !important;
+  }
+
+  .mq-skill-grid {
+    grid-auto-rows: minmax(100px, 1fr) !important;
+  }
+
+  .mq-skill-widget {
+    padding: 11px !important;
+  }
+
+  .mq-skill-gem,
+  .mq-soft-head img {
+    width: 50px !important;
+    height: 50px !important;
+  }
+
+  .mq-widget-title,
+  .mq-soft-head {
+    grid-template-columns: 50px minmax(0, 1fr) !important;
+  }
+
+  .mq-widget-title h3,
+  .mq-soft-card h3 {
+    font-size: 0.98rem !important;
+  }
+
+  .mq-skill-widget .mq-chip {
+    min-height: 28px !important;
+    font-size: 0.62rem !important;
+  }
+
+  .mq-soft-card {
+    padding: 11px !important;
+  }
+
+  .mq-soft-card p {
+    font-size: 0.68rem !important;
+  }
+
+  .mq-soft-notes .mq-paper-note {
+    min-height: 46px !important;
+    padding: 9px 11px !important;
+    font-size: 0.66rem !important;
+  }
+
+  .mq-leadership {
+    grid-template-columns: 150px minmax(0, 1fr) 190px !important;
+  }
+
+  .mq-leader-photo-1 {
+    height: 330px !important;
+  }
+
+  .mq-leader-photo-2 {
+    height: 250px !important;
+  }
+
+  .mq-leadership-row {
+    padding: 8px 10px !important;
+    grid-template-columns: 34px minmax(0, 1fr) !important;
+  }
+
+  .mq-leadership-row > span {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  .mq-leadership-row h3 {
+    font-size: 0.7rem !important;
+  }
+
+  .mq-leadership-row p {
+    font-size: 0.54rem !important;
+  }
+
+  .mq-hobbies {
+    grid-template-columns: 210px minmax(0, 1fr) !important;
+  }
+
+  .mq-hobby-story {
+    font-size: 0.9rem !important;
+  }
+
+  .mq-hobby-card {
+    padding: 12px !important;
+  }
+
+  .mq-hobby-card h3 {
+    font-size: 1rem !important;
+  }
+
+  .mq-hobby-card p,
+  .mq-hobby-notes .mq-paper-note {
+    font-size: 0.66rem !important;
+  }
+
+  .mq-achievement-card {
+    padding: 11px !important;
+  }
+
+  .mq-achievement-card h3 {
+    font-size: 0.86rem !important;
+  }
+
+  .mq-achievement-card p,
+  .mq-achievement-list .mq-paper-note {
+    font-size: 0.58rem !important;
+  }
+}
+
+/* Memory Quest layout lock: final readable widget pass */
+.preview-screen .side-preview {
+  grid-template-columns: clamp(300px, 18vw, 355px) minmax(0, 1fr) !important;
+}
+
+.preview-screen .portfolio-map h2 {
+  padding: clamp(14px, 0.9vw, 20px) 10px !important;
+  font-size: clamp(1.9rem, 2vw, 2.65rem) !important;
+}
+
+.preview-screen .portfolio-map-path {
+  padding: clamp(10px, 0.7vw, 14px) !important;
+  grid-template-rows: repeat(8, minmax(58px, 1fr)) !important;
+  gap: clamp(8px, 0.55vw, 11px) !important;
+}
+
+.preview-screen .portfolio-map .map-node {
+  grid-template-columns: clamp(48px, 3.4vw, 62px) minmax(0, 1fr) !important;
+  padding: clamp(7px, 0.5vw, 10px) !important;
+}
+
+.preview-screen .portfolio-map .map-node-pad {
+  width: clamp(48px, 3.4vw, 62px) !important;
+  height: clamp(48px, 3.4vw, 62px) !important;
+}
+
+.preview-screen .portfolio-map .map-node strong {
+  font-size: clamp(0.98rem, 0.9vw, 1.18rem) !important;
+  line-height: 1.02 !important;
+}
+
+.preview-screen .portfolio-map .map-node small {
+  font-size: clamp(0.72rem, 0.62vw, 0.86rem) !important;
+}
+
+.preview-screen .side-preview-panel,
+.slide-screen .slide-page {
+  font-size: clamp(18px, 1vw, 22px) !important;
+}
+
+.preview-screen .side-preview-panel > .qd-content,
+.slide-screen .slide-page > .qd-content,
+.qd-content {
+  min-height: 0 !important;
+  height: 100% !important;
+  overflow: hidden !important;
+}
+
+.mq-page {
+  --mq-gap: clamp(12px, 0.82vw, 18px);
+  min-height: 0 !important;
+  height: 100% !important;
+  overflow: hidden !important;
+  font-size: clamp(1.06rem, 1vw, 1.28rem) !important;
+  line-height: 1.18 !important;
+}
+
+.slide-screen .mq-page {
+  font-size: clamp(1.2rem, 1.14vw, 1.5rem) !important;
+}
+
+.mq-page p,
+.mq-page li,
+.mq-page small {
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+  hyphens: none !important;
+}
+
+.mq-chip {
+  min-height: 34px !important;
+  padding: 8px 13px !important;
+  border-radius: 999px !important;
+  border: 2px solid rgba(143, 255, 218, 0.72) !important;
+  background:
+    linear-gradient(180deg, rgba(104, 205, 181, 0.82), rgba(34, 86, 84, 0.94)) !important;
+  color: #f7fff2 !important;
+  font-size: clamp(0.82rem, 0.76vw, 1rem) !important;
+  box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.25) !important;
+}
+
+.mq-projects {
+  display: grid !important;
+  grid-template-rows: clamp(82px, 8.6vh, 112px) auto !important;
+  align-content: start !important;
+  gap: var(--mq-gap) !important;
+}
+
+.mq-project-topbar {
+  display: grid !important;
+  grid-template-columns: clamp(255px, 23vw, 430px) minmax(190px, 260px) !important;
+  justify-content: space-between !important;
+  gap: var(--mq-gap) !important;
+}
+
+.mq-project-command {
+  min-width: 0 !important;
+  width: 100% !important;
+  display: grid !important;
+}
+
+.mq-project-command .mq-button-link {
+  min-height: clamp(56px, 6vh, 76px) !important;
+  font-size: clamp(1rem, 0.92vw, 1.22rem) !important;
+}
+
+.mq-project-cards {
+  min-height: 0 !important;
+  display: grid !important;
+  grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+  grid-template-rows: none !important;
+  grid-auto-rows: auto !important;
+  align-content: start !important;
+  align-items: start !important;
+  gap: var(--mq-gap) !important;
+}
+
+.mq-project-card,
+.mq-project-card:nth-child(n + 3) {
+  min-height: 0 !important;
+  height: auto !important;
+  align-self: start !important;
+  display: grid !important;
+  grid-template-rows: auto auto auto auto !important;
+  gap: clamp(8px, 0.55vw, 12px) !important;
+  padding: clamp(16px, 1vw, 22px) !important;
+  border-radius: 26px 10px 26px 10px !important;
+  overflow: visible !important;
+}
+
+.mq-project-card:nth-child(1),
+.mq-project-card:nth-child(2) {
+  grid-column: span 6 !important;
+}
+
+.mq-project-card:nth-child(n + 3) {
+  grid-column: span 4 !important;
+}
+
+.mq-project-title-row h3 {
+  font-size: clamp(1.08rem, 1.04vw, 1.34rem) !important;
+}
+
+.mq-project-title-row p,
+.mq-project-description,
+.mq-project-card:nth-child(n + 3) .mq-project-description {
+  font-size: clamp(0.84rem, 0.76vw, 0.98rem) !important;
+  line-height: 1.18 !important;
+}
+
+.mq-project-card .mq-bullet-list {
+  max-height: none !important;
+  overflow: visible !important;
+}
+
+.mq-project-card .mq-bullet-list li,
+.mq-project-card:nth-child(n + 3) .mq-bullet-list li {
+  padding: 7px 10px 7px 24px !important;
+  font-size: clamp(0.74rem, 0.66vw, 0.86rem) !important;
+  line-height: 1.12 !important;
+}
+
+.mq-card-actions .mq-button-link {
+  min-height: 42px !important;
+  font-size: clamp(0.8rem, 0.72vw, 0.94rem) !important;
+}
+
+.mq-work {
+  display: grid !important;
+  grid-template-rows: auto !important;
+  align-content: start !important;
+}
+
+.mq-work-track {
+  min-height: 0 !important;
+  height: auto !important;
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  align-items: start !important;
+  gap: clamp(18px, 1.1vw, 26px) !important;
+}
+
+.mq-work-card {
+  min-height: 0 !important;
+  height: auto !important;
+  align-self: start !important;
+  grid-template-rows: auto auto auto auto auto !important;
+  gap: clamp(10px, 0.72vw, 14px) !important;
+  padding: clamp(22px, 1.35vw, 30px) !important;
+  overflow: visible !important;
+}
+
+.mq-work-head h3 {
+  font-size: clamp(1.28rem, 1.08vw, 1.52rem) !important;
+}
+
+.mq-work-head p,
+.mq-work-date {
+  font-size: clamp(0.9rem, 0.78vw, 1rem) !important;
+}
+
+.mq-work-focus {
+  font-size: clamp(1rem, 0.88vw, 1.14rem) !important;
+}
+
+.mq-work .mq-bullet-list {
+  display: grid !important;
+  gap: 8px !important;
+  overflow: visible !important;
+}
+
+.mq-work .mq-bullet-list li {
+  font-size: clamp(0.82rem, 0.72vw, 0.92rem) !important;
+  line-height: 1.14 !important;
+}
+
+.mq-skills,
+.mq-soft,
+.mq-hobbies,
+.mq-achievements {
+  align-content: start !important;
+}
+
+.mq-skill-grid {
+  grid-template-rows: none !important;
+  grid-auto-rows: auto !important;
+  align-content: start !important;
+}
+
+.mq-skill-widget {
+  min-height: 0 !important;
+  height: auto !important;
+  align-self: start !important;
+  grid-template-rows: auto auto !important;
+  padding: clamp(17px, 1vw, 24px) !important;
+}
+
+.mq-skill-widget .mq-chip-row {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  align-content: start !important;
+}
+
+.mq-skill-widget .mq-chip {
+  width: auto !important;
+  min-height: 36px !important;
+  padding: 8px 13px !important;
+  border-radius: 999px !important;
+  font-size: clamp(0.82rem, 0.74vw, 0.96rem) !important;
+}
+
+.mq-soft {
+  display: grid !important;
+  grid-template-rows: auto auto auto !important;
+}
+
+.mq-soft-grid {
+  min-height: 0 !important;
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  grid-template-rows: none !important;
+  grid-auto-rows: auto !important;
+  align-content: start !important;
+  gap: var(--mq-gap) !important;
+}
+
+.mq-soft-card {
+  min-height: 0 !important;
+  height: auto !important;
+  grid-template-rows: auto auto !important;
+  padding: clamp(18px, 1.1vw, 24px) !important;
+}
+
+.mq-soft-card h3 {
+  font-size: clamp(1.16rem, 1vw, 1.34rem) !important;
+}
+
+.mq-soft-card p {
+  font-size: clamp(0.9rem, 0.78vw, 1rem) !important;
+  line-height: 1.16 !important;
+}
+
+.mq-soft-notes {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+
+.mq-soft-notes .mq-paper-note {
+  min-height: 0 !important;
+  padding: 13px 16px !important;
+  font-size: clamp(0.9rem, 0.78vw, 1rem) !important;
+}
+
+.mq-leadership-ledger {
+  grid-auto-rows: auto !important;
+  align-content: start !important;
+  overflow: visible !important;
+}
+
+.mq-leadership-row {
+  min-height: 0 !important;
+  padding: clamp(10px, 0.72vw, 14px) !important;
+}
+
+.mq-leadership-row h3 {
+  font-size: clamp(0.98rem, 0.82vw, 1.12rem) !important;
+}
+
+.mq-leadership-row p {
+  font-size: clamp(0.78rem, 0.66vw, 0.88rem) !important;
+  line-height: 1.12 !important;
+}
+
+.mq-hobby-body {
+  min-height: 0 !important;
+  display: grid !important;
+  grid-template-rows: auto auto auto auto !important;
+  align-content: start !important;
+  gap: var(--mq-gap) !important;
+}
+
+.mq-hobby-cards,
+.mq-hobby-notes {
+  min-height: 0 !important;
+  grid-template-rows: none !important;
+  grid-auto-rows: auto !important;
+}
+
+.mq-hobby-card,
+.mq-hobby-notes .mq-paper-note {
+  min-height: 0 !important;
+  height: auto !important;
+}
+
+.mq-hobby-story {
+  font-size: clamp(1.06rem, 0.92vw, 1.2rem) !important;
+}
+
+.mq-hobby-card h3 {
+  font-size: clamp(1.1rem, 0.96vw, 1.28rem) !important;
+}
+
+.mq-hobby-card p,
+.mq-hobby-notes .mq-paper-note {
+  font-size: clamp(0.82rem, 0.72vw, 0.94rem) !important;
+  line-height: 1.14 !important;
+}
+
+.mq-achievements {
+  display: grid !important;
+  grid-template-rows: auto auto auto !important;
+}
+
+.mq-achievement-board {
+  min-height: 0 !important;
+  grid-auto-rows: auto !important;
+  align-content: start !important;
+}
+
+.mq-achievement-card {
+  min-height: 0 !important;
+  height: auto !important;
+  padding: clamp(16px, 1vw, 22px) !important;
+}
+
+.mq-achievement-card h3 {
+  font-size: clamp(1rem, 0.9vw, 1.16rem) !important;
+}
+
+.mq-achievement-card p,
+.mq-achievement-list .mq-paper-note {
+  font-size: clamp(0.78rem, 0.68vw, 0.9rem) !important;
+  line-height: 1.12 !important;
+}
+
+.mq-achievement-list {
+  min-height: 0 !important;
+  grid-auto-rows: auto !important;
+  align-content: start !important;
+}
+
+.mq-achievement-list .mq-paper-note {
+  min-height: 0 !important;
+  padding: 11px 14px !important;
+}
+
+@media (max-width: 1450px), (max-height: 820px) {
+  .preview-screen .side-preview {
+    grid-template-columns: 280px minmax(0, 1fr) !important;
+  }
+
+  .preview-screen .portfolio-map .map-node strong {
+    font-size: 0.88rem !important;
+  }
+
+  .preview-screen .portfolio-map .map-node small {
+    font-size: 0.62rem !important;
+  }
+
+  .mq-page {
+    --mq-gap: 10px;
+    font-size: 0.94rem !important;
+  }
+
+  .mq-projects {
+    grid-template-rows: 72px auto !important;
+  }
+
+  .mq-project-topbar {
+    grid-template-columns: 230px 180px !important;
+  }
+
+  .mq-project-card,
+  .mq-project-card:nth-child(n + 3),
+  .mq-work-card,
+  .mq-soft-card,
+  .mq-skill-widget,
+  .mq-achievement-card {
+    padding: 11px !important;
+  }
+
+  .mq-project-description,
+  .mq-project-title-row p,
+  .mq-project-card .mq-bullet-list li,
+  .mq-work .mq-bullet-list li,
+  .mq-soft-card p,
+  .mq-hobby-card p,
+  .mq-hobby-notes .mq-paper-note,
+  .mq-achievement-card p,
+  .mq-achievement-list .mq-paper-note {
+    font-size: 0.68rem !important;
+    line-height: 1.12 !important;
+  }
+
+  .mq-project-title-row h3,
+  .mq-work-head h3,
+  .mq-soft-card h3,
+  .mq-widget-title h3,
+  .mq-hobby-card h3 {
+    font-size: 0.98rem !important;
+  }
+}
+
+/* Memory Quest final polish: fill panels without clipping */
+.preview-screen .portfolio-map {
+  background:
+    linear-gradient(180deg, rgba(3, 24, 22, 0.96), rgba(4, 13, 16, 0.98)),
+    url("/assets/levels/teal-forest.png") center / cover !important;
+}
+
+.preview-screen .portfolio-map .map-node {
+  min-height: clamp(72px, 7.2vh, 96px) !important;
+  grid-template-columns: clamp(58px, 4.1vw, 74px) minmax(0, 1fr) !important;
+}
+
+.preview-screen .portfolio-map .map-node-pad {
+  width: clamp(58px, 4.1vw, 74px) !important;
+  height: clamp(58px, 4.1vw, 74px) !important;
+}
+
+.preview-screen .portfolio-map .map-node strong {
+  font-size: clamp(1.06rem, 0.98vw, 1.28rem) !important;
+}
+
+.preview-screen .portfolio-map .map-node small {
+  font-size: clamp(0.82rem, 0.72vw, 0.96rem) !important;
+}
+
+.mq-page {
+  font-size: clamp(1.14rem, 1.04vw, 1.36rem) !important;
+}
+
+.slide-screen .mq-page {
+  font-size: clamp(1.32rem, 1.2vw, 1.62rem) !important;
+}
+
+.mq-work {
+  height: 100% !important;
+  display: grid !important;
+  grid-template-rows: minmax(0, 1fr) !important;
+  align-content: stretch !important;
+}
+
+.mq-work-track {
+  height: 100% !important;
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  grid-template-rows: repeat(3, minmax(0, 1fr)) !important;
+  align-items: stretch !important;
+  gap: clamp(14px, 1vh, 20px) !important;
+}
+
+.mq-work-track::before {
+  left: clamp(42px, 3.2vw, 64px) !important;
+  right: auto !important;
+  top: clamp(62px, 6vh, 86px) !important;
+  bottom: clamp(62px, 6vh, 86px) !important;
+  width: 5px !important;
+  height: auto !important;
+  background: repeating-linear-gradient(180deg, #f4d06f 0 18px, transparent 18px 30px) !important;
+}
+
+.mq-work-card {
+  height: 100% !important;
+  display: grid !important;
+  grid-template-columns: clamp(66px, 4.2vw, 88px) minmax(215px, 0.72fr) minmax(240px, 0.9fr) minmax(360px, 1.55fr) !important;
+  grid-template-rows: minmax(0, 1fr) !important;
+  align-items: center !important;
+  gap: clamp(16px, 1.1vw, 26px) !important;
+  padding: clamp(18px, 1.15vw, 27px) clamp(22px, 1.5vw, 34px) !important;
+  overflow: hidden !important;
+}
+
+.mq-work-node {
+  grid-column: 1 !important;
+  justify-self: center !important;
+}
+
+.mq-work-head {
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+  grid-template-columns: clamp(66px, 4.4vw, 90px) minmax(0, 1fr) !important;
+}
+
+.mq-work-head img {
+  width: clamp(66px, 4.4vw, 90px) !important;
+  height: clamp(66px, 4.4vw, 90px) !important;
+}
+
+.mq-work-head h3 {
+  font-size: clamp(1.38rem, 1.18vw, 1.7rem) !important;
+}
+
+.mq-work-head p,
+.mq-work-date {
+  font-size: clamp(1rem, 0.84vw, 1.12rem) !important;
+}
+
+.mq-work-date,
+.mq-work-focus {
+  grid-column: 3 !important;
+  grid-row: 1 !important;
+  margin: 0 !important;
+}
+
+.mq-work-date {
+  align-self: end !important;
+  justify-self: start !important;
+  padding: 8px 14px !important;
+  border-radius: 999px !important;
+  background: rgba(245, 210, 119, 0.18) !important;
+}
+
+.mq-work-focus {
+  align-self: start !important;
+  font-size: clamp(1.12rem, 0.98vw, 1.28rem) !important;
+}
+
+.mq-work .mq-bullet-list {
+  grid-column: 4 !important;
+  grid-row: 1 !important;
+  height: 100% !important;
+  display: grid !important;
+  grid-auto-rows: 1fr !important;
+  gap: clamp(8px, 0.7vh, 13px) !important;
+}
+
+.mq-work .mq-bullet-list li {
+  display: flex !important;
+  align-items: center !important;
+  padding: clamp(9px, 0.8vh, 13px) clamp(13px, 0.9vw, 18px) clamp(9px, 0.8vh, 13px) clamp(30px, 1.8vw, 38px) !important;
+  font-size: clamp(0.92rem, 0.78vw, 1.05rem) !important;
+  line-height: 1.14 !important;
+}
+
+.mq-soft {
+  height: 100% !important;
+  display: grid !important;
+  grid-template-rows: minmax(0, 1fr) auto auto !important;
+  align-content: stretch !important;
+}
+
+.mq-soft-grid {
+  height: 100% !important;
+  grid-template-rows: repeat(2, minmax(0, 1fr)) !important;
+  align-items: stretch !important;
+}
+
+.mq-soft-card {
+  height: 100% !important;
+  display: grid !important;
+  grid-template-rows: auto minmax(0, 1fr) !important;
+  align-content: stretch !important;
+}
+
+.mq-soft-card p {
+  align-self: center !important;
+  font-size: clamp(1rem, 0.88vw, 1.13rem) !important;
+}
+
+.mq-soft-notes .mq-paper-note {
+  font-size: clamp(1rem, 0.86vw, 1.14rem) !important;
+}
+
+.mq-hobbies {
+  height: 100% !important;
+  grid-template-columns: clamp(260px, 19vw, 355px) minmax(0, 1fr) !important;
+}
+
+.mq-hobby-body {
+  height: 100% !important;
+  grid-template-rows: auto minmax(0, 1.05fr) minmax(0, 0.78fr) auto !important;
+  align-content: stretch !important;
+}
+
+.mq-hobby-cards,
+.mq-hobby-notes {
+  height: 100% !important;
+  align-items: stretch !important;
+}
+
+.mq-hobby-card,
+.mq-hobby-notes .mq-paper-note {
+  height: 100% !important;
+  display: grid !important;
+  align-content: center !important;
+}
+
+.mq-hobby-card p,
+.mq-hobby-notes .mq-paper-note {
+  font-size: clamp(0.94rem, 0.82vw, 1.08rem) !important;
+}
+
+.mq-achievements {
+  height: 100% !important;
+  display: grid !important;
+  grid-template-rows: minmax(0, 0.85fr) minmax(0, 1fr) auto !important;
+  align-content: stretch !important;
+}
+
+.mq-achievement-board,
+.mq-achievement-list {
+  height: 100% !important;
+  align-items: stretch !important;
+}
+
+.mq-achievement-card,
+.mq-achievement-list .mq-paper-note {
+  height: 100% !important;
+  display: grid !important;
+  align-content: center !important;
+}
+
+.mq-achievement-card p,
+.mq-achievement-list .mq-paper-note {
+  font-size: clamp(0.9rem, 0.78vw, 1rem) !important;
+}
+
+.mq-achievement-card h3 {
+  font-size: clamp(1.08rem, 1vw, 1.3rem) !important;
+}
+
+.mq-about {
+  height: 100% !important;
+  grid-template-rows: auto auto minmax(0, 1fr) !important;
+  align-content: stretch !important;
+}
+
+.mq-about-footer {
+  align-self: start !important;
+}
+
+.mq-projects {
+  height: 100% !important;
+  grid-template-rows: clamp(82px, 8.6vh, 112px) minmax(0, 1fr) !important;
+  align-content: stretch !important;
+}
+
+.mq-project-cards {
+  height: 100% !important;
+  grid-template-rows: minmax(0, 1.05fr) minmax(0, 0.95fr) !important;
+  align-content: stretch !important;
+  align-items: stretch !important;
+}
+
+.mq-project-card,
+.mq-project-card:nth-child(n + 3) {
+  height: 100% !important;
+  overflow: hidden !important;
+}
+
+@media (max-width: 1450px), (max-height: 820px) {
+  .preview-screen .portfolio-map .map-node {
+    min-height: 62px !important;
+    grid-template-columns: 48px minmax(0, 1fr) !important;
+  }
+
+  .preview-screen .portfolio-map .map-node-pad {
+    width: 48px !important;
+    height: 48px !important;
+  }
+
+  .mq-work-card {
+    grid-template-columns: 50px minmax(160px, 0.7fr) minmax(170px, 0.85fr) minmax(250px, 1.5fr) !important;
+    padding: 13px 16px !important;
+  }
+
+  .mq-work-head {
+    grid-template-columns: 54px minmax(0, 1fr) !important;
+  }
+
+  .mq-work-head img {
+    width: 54px !important;
+    height: 54px !important;
+  }
+
+  .mq-work .mq-bullet-list li {
+    font-size: 0.72rem !important;
+    line-height: 1.1 !important;
+  }
+}
+
+/* Final viewport cleanup: keep intro choices off the avatar and simplify map badges. */
+.quest-cover-menu {
+  position: absolute !important;
+  left: clamp(650px, 44vw, 880px) !important;
+  top: 54% !important;
+  justify-self: start !important;
+  align-self: center !important;
+  width: clamp(290px, 21vw, 390px) !important;
+  transform: none !important;
+}
+
+.quest-cover-screen .intro-actions {
+  width: 100% !important;
+}
+
+.preview-screen .portfolio-map-path {
+  grid-template-rows: repeat(8, minmax(66px, 1fr)) !important;
+}
+
+.preview-screen .portfolio-map .map-node {
+  grid-template-columns: clamp(50px, 3.2vw, 60px) minmax(0, 1fr) !important;
+  grid-template-rows: 1fr !important;
+  min-height: clamp(66px, 7vh, 92px) !important;
+  padding: 8px 10px !important;
+}
+
+.preview-screen .portfolio-map .map-node-pad {
+  width: clamp(50px, 3.2vw, 60px) !important;
+  height: clamp(50px, 3.2vw, 60px) !important;
+}
+
+.preview-screen .portfolio-map .map-node small {
+  display: none !important;
+}
+
+.preview-screen .portfolio-map .map-node strong {
+  align-self: center !important;
+  font-size: clamp(1.12rem, 1vw, 1.32rem) !important;
+  line-height: 1.05 !important;
+}
+
+@media (max-width: 1450px), (max-height: 820px) {
+  .preview-screen .portfolio-map-path {
+    grid-template-rows: repeat(8, minmax(54px, 1fr)) !important;
+  }
+
+  .preview-screen .portfolio-map .map-node {
+    min-height: 54px !important;
+    grid-template-columns: 42px minmax(0, 1fr) !important;
+    padding: 6px 8px !important;
+  }
+
+  .preview-screen .portfolio-map .map-node-pad {
+    width: 42px !important;
+    height: 42px !important;
+  }
+
+  .preview-screen .portfolio-map .map-node strong {
+    font-size: 0.86rem !important;
+  }
+}

@@ -260,7 +260,7 @@ export const sections: PortfolioSection[] = [
         logo: "/assets/logos/noshack.svg",
         focus: "Production frontend foundations",
         details: [
-          "Integrated REST APIs with React and JavaScript interfaces.",
+          "Integrated APIs into React and JavaScript product interfaces.",
           "Built interactive screens and internal dashboard workflows.",
           "Improved data rendering, debugging flow, testing, and frontend performance.",
         ],
@@ -284,9 +284,8 @@ export const sections: PortfolioSection[] = [
         logo: "/assets/logos/friday-intellytics.svg",
         focus: "AI analytics product ownership",
         details: [
-          "Selected from 25+ candidates through a 6-hour evaluation covering analytics, system design, AI agents, and product ideation.",
-          "Owned desktop app improvements across data integration, authentication, exports, and UI workflows.",
-          "Worked with the founder on feature planning, MVP flows, testing, beta registration, and product refinement.",
+          "Owned desktop app improvements across data, auth, export, and interface flows.",
+          "Worked with the founder on feature planning, MVP flows, tests, beta signups, and product refinement.",
         ],
       },
     ],

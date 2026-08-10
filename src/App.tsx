@@ -32,6 +32,26 @@ const mapLabels: Record<PortfolioSectionId, string> = {
   achievements: "Proof",
 };
 
+const skillGemAssets = [
+  "/assets/portfolio/ui-gem-growth.png",
+  "/assets/portfolio/ui-gem-db.png",
+  "/assets/portfolio/ui-gem-code.png",
+  "/assets/portfolio/ui-gem-window.png",
+  "/assets/portfolio/ui-gem-gear.png",
+  "/assets/portfolio/ui-gem-brain.png",
+  "/assets/portfolio/ui-gem-swords.png",
+  "/assets/portfolio/ui-gem-team.png",
+];
+
+const softGemAssets = [
+  "/assets/portfolio/ui-gem-team.png",
+  "/assets/portfolio/ui-gem-heart.png",
+  "/assets/portfolio/ui-gem-growth.png",
+  "/assets/portfolio/ui-gem-gear.png",
+  "/assets/portfolio/ui-gem-brain.png",
+  "/assets/portfolio/ui-gem-fire.png",
+];
+
 const highlightPhrases = [
   "SSN College of Engineering",
   "5 Year Integrated M.Tech CSE",
@@ -655,8 +675,10 @@ function PortfolioMap({
               <span className="map-node-pad">
                 <img src={isActive ? "/assets/sunnyland/chest.png" : "/assets/sunnyland/crate-ornate.png"} alt="" />
               </span>
-              <strong>{section.level}: {mapLabels[section.id]}</strong>
-              <small>{isUnlocked ? section.rewardName : "Play to unlock"}</small>
+              <strong>
+                <span>{section.level}</span>
+                {mapLabels[section.id]}
+              </strong>
             </button>
           );
         })}
@@ -827,7 +849,9 @@ function ProjectsMemory({ section }: { section: PortfolioSection }) {
   return (
     <div className="mq-page mq-projects">
       <div className="mq-project-topbar">
-        <ProjectContributionBoard />
+        <figure className="mq-generated-panel mq-github-panel">
+          <img src="/assets/portfolio/ui-github-panel.png" alt="Pixel GitHub contribution board" />
+        </figure>
         <div className="mq-project-command">
           {profileLink ? <PortfolioButtonLink link={profileLink} /> : null}
         </div>
@@ -846,7 +870,7 @@ function ProjectsMemory({ section }: { section: PortfolioSection }) {
               <HighlightText text={project.description} />
             </p>
             <ul className="mq-bullet-list">
-              {project.details?.map((detail) => (
+              {project.details?.slice(0, index < 2 ? 2 : 1).map((detail) => (
                 <li key={detail}>
                   <HighlightText text={detail} />
                 </li>
@@ -901,10 +925,10 @@ function SkillsMemory({ section }: { section: PortfolioSection }) {
   return (
     <div className="mq-page mq-skills">
       <div className="mq-skill-grid">
-        {section.skillGroups?.map((group) => (
+        {section.skillGroups?.map((group, index) => (
           <section className="mq-skill-widget" key={group.title}>
             <div className="mq-widget-title">
-              <InventoryToken type="plainCrate" />
+              <img className="mq-skill-gem" src={skillGemAssets[index % skillGemAssets.length]} alt="" />
               <h3>{group.title}</h3>
             </div>
             <ChipRow items={group.items} />
@@ -921,7 +945,10 @@ function SoftSkillsMemory({ section }: { section: PortfolioSection }) {
       <div className="mq-soft-grid">
         {section.featureCards?.map((card, index) => (
           <article className={`mq-soft-card mq-tone-${(index % 4) + 1}`} key={card.title}>
-            <h3>{card.title}</h3>
+            <div className="mq-soft-head">
+              <img src={softGemAssets[index % softGemAssets.length]} alt="" />
+              <h3>{card.title}</h3>
+            </div>
             <p>
               <HighlightText text={card.body} />
             </p>
