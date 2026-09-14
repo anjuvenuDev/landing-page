@@ -1,0 +1,95 @@
+- main [ref=e3]:
+  - generic "Anjana Memory Quest game" [ref=e5]
+  - generic [ref=e7]:
+    - complementary "Portfolio game map" [ref=e8]:
+      - heading "Game Map" [level=2] [ref=e9]
+      - navigation "Memory map" [ref=e10]:
+        - 'button "1: Self" [ref=e11] [cursor=pointer]':
+          - strong [ref=e13]: "1: Self"
+        - 'button "2: Making" [ref=e14] [cursor=pointer]':
+          - strong [ref=e16]: "2: Making"
+        - 'button "3: Practice" [ref=e17] [cursor=pointer]':
+          - strong [ref=e19]: "3: Practice"
+        - 'button "4: Tools" [ref=e20] [cursor=pointer]':
+          - strong [ref=e22]: "4: Tools"
+        - 'button "5: Voice" [ref=e23] [cursor=pointer]':
+          - strong [ref=e25]: "5: Voice"
+        - 'button "6: Guilds" [ref=e26] [cursor=pointer]':
+          - strong [ref=e28]: "6: Guilds"
+        - 'button "7: Wonder" [ref=e29] [cursor=pointer]':
+          - strong [ref=e31]: "7: Wonder"
+        - 'button "8: Proof" [ref=e32] [cursor=pointer]':
+          - strong [ref=e34]: "8: Proof"
+      - generic [ref=e35]:
+        - button "Home" [ref=e36] [cursor=pointer]:
+          - generic [ref=e37]: ⌂
+          - text: Home
+        - generic "Game guide" [ref=e38]:
+          - generic [ref=e39]: ◈
+          - text: Guide
+        - generic "Quest log" [ref=e40]:
+          - generic [ref=e41]: ▣
+          - text: Log
+    - article [ref=e42]:
+      - button "Close memory view" [ref=e43] [cursor=pointer]: x
+      - button "Open fullscreen preview" [ref=e44] [cursor=pointer]: ⛶
+      - generic [ref=e45]:
+        - heading "About Anjana" [level=2] [ref=e46]
+        - generic "Memory 1 of 8" [ref=e47]:
+          - generic [ref=e48]: Quest Progress
+          - strong [ref=e51]: 1/8
+      - generic [ref=e53]:
+        - generic [ref=e54]:
+          - figure [ref=e56]:
+            - img "Anjana Venugopalan" [ref=e57]
+          - paragraph [ref=e59]:
+            - text: Anjana Venugopalan is a
+            - strong [ref=e60]: 5 Year Integrated M.Tech CSE
+            - text: student at
+            - strong [ref=e61]: SSN College of Engineering
+            - text: ", Chennai, driven by a passion for building technology that creates"
+            - strong [ref=e62]: meaningful impact
+            - text: . With a strong academic record and hands-on experience across
+            - strong [ref=e63]: artificial intelligence
+            - text: ","
+            - strong [ref=e64]: full-stack development
+            - text: ","
+            - strong [ref=e65]: product engineering
+            - text: ", and"
+            - strong [ref=e66]: computer vision
+            - text: ", she enjoys working at the intersection of innovation and usability. What began as a fascination with programming has evolved into a broader interest in designing complete digital experiences. From conceptualizing products and architecting software to refining user interactions, Anjana enjoys understanding every layer of the development process. She believes that successful technology is not defined solely by its technical sophistication, but by how naturally it fits into people's lives. Her work is guided by curiosity, creativity, and a constant desire to learn. Anjana hopes to contribute to products that combine intelligent technology with thoughtful design, making complex systems more accessible, intuitive, and human-centered."
+        - generic:
+          - generic:
+            - article [ref=e67]:
+              - generic [ref=e69]:
+                - heading "CSE foundation" [level=3] [ref=e70]
+                - paragraph [ref=e71]: Her coursework and project work span algorithms, databases, analytics, machine learning, optimization, software construction, and full-stack systems, backed by a 9.237/10 CGPA and Department Rank 3.
+            - article [ref=e72]:
+              - generic [ref=e74]:
+                - heading "Technology with usability" [level=3] [ref=e75]
+                - paragraph [ref=e76]: "She is drawn to the full lifecycle of products: from ideas and architecture to user flows, UI details, and real-world usefulness."
+            - article [ref=e77]:
+              - generic [ref=e79]:
+                - heading "Arch Linux convert" [level=3] [ref=e80]
+                - paragraph [ref=e81]: Dual-booted Arch alongside Windows and now builds most projects from that setup.
+        - list [ref=e83]:
+          - listitem [ref=e84]:
+            - generic [ref=e86]: Master of Technology, Computer Science and Engineering at Sri Sivasubramaniya Nadar College of Engineering, August 2023 - July 2028.
+          - listitem [ref=e87]:
+            - generic [ref=e89]:
+              - text: "CGPA: 9.237/10 |"
+              - strong [ref=e90]: "Department Rank: 3"
+              - text: "| AISSCE: 96.4% (482/500)."
+          - listitem [ref=e91]:
+            - generic [ref=e93]: Relevant courses include Data Science and Analytics, Machine Learning, Database Management Systems, Applied Optimization Techniques, Software Construction, Design and Analysis of Algorithms, and Data Structures and Algorithms.
+          - listitem [ref=e94]:
+            - generic [ref=e96]: "Standard 12 AISSCE: 482/500 = 96.4%. Standard 10 AISSCE: 489/500 = 97.8%."
+          - listitem [ref=e97]:
+            - generic [ref=e99]:
+              - text: Dual-booted her laptop with
+              - strong [ref=e100]: Arch Linux
+              - text: alongside Windows because she was done with Windows, and now primarily builds projects on Arch.
+      - generic [ref=e101]:
+        - button "No previous" [disabled] [ref=e102]
+        - button "Play again" [ref=e103] [cursor=pointer]
+        - 'button "Next: Anjana''s Projects" [ref=e104] [cursor=pointer]'

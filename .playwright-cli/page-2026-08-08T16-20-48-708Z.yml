@@ -1,0 +1,10 @@
+- main [ref=e3]:
+  - region "Story narration" [ref=e4]:
+    - generic [ref=e5]:
+      - heading "Anjana's Memory Quest" [level=1] [ref=e6]
+      - paragraph [ref=e9]: I wake in_
+      - button "Skip intro" [ref=e10] [cursor=pointer]
+    - generic [ref=e11]:
+      - generic:
+        - button "Enter game"
+        - button "Skip to profile"

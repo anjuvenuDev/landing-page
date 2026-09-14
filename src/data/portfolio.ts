@@ -257,7 +257,7 @@ export const sections: PortfolioSection[] = [
         company: "NoShack Solutions",
         role: "Frontend Developer Intern",
         dates: "Jul 2024 - Aug 2024",
-        logo: "/assets/logos/noshack.svg",
+        logo: "/assets/logos/noshack-official.png",
         focus: "Production frontend foundations",
         details: [
           "Integrated APIs into React and JavaScript product interfaces.",
@@ -269,7 +269,7 @@ export const sections: PortfolioSection[] = [
         company: "Yhills",
         role: "Web Development Intern",
         dates: "Jan 2025 - Mar 2025",
-        logo: "/assets/logos/yhills.svg",
+        logo: "/assets/logos/yhills-official.webp",
         focus: "Responsive product delivery",
         details: [
           "Developed responsive user-facing web pages with HTML, CSS, JavaScript, and React.",
@@ -281,7 +281,7 @@ export const sections: PortfolioSection[] = [
         company: "Friday Intellytics",
         role: "Associate Intern - Product & Growth",
         dates: "May 2026 - Present",
-        logo: "/assets/logos/friday-intellytics.svg",
+        logo: "/assets/logos/friday-company.png",
         focus: "AI analytics product ownership",
         details: [
           "Owned desktop app improvements across data, auth, export, and interface flows.",
@@ -349,10 +349,7 @@ export const sections: PortfolioSection[] = [
     layout: "diagram",
     summary: "",
     story: [],
-    highlights: [
-      "Accepted as a GirlScript Summer of Code contributor earlier this year; new to open source, with one PR merged and a few issues raised.",
-      "Her stage work includes compering ICCIDS, Sports Day, CSI Inauguration, and ACM Competitive Thinking Workshop.",
-    ],
+    highlights: [],
     featureCards: [
       {
         title: "Leadership",
@@ -408,14 +405,12 @@ export const sections: PortfolioSection[] = [
     summary: "",
     story: [],
     highlights: [
-      "Club Head, SSN Design Club, 2026-27; Junior Core, 2025-26. Selected and structured a 16-member Core Committee.",
-      "Joint Event Coordinator, SSN ACE, 2025-26. Core organizer for Invente: 10+ competitions and about 200 registrations.",
-      "Joint Secretary, SSN IEEE WIE, 2025-26; Event Management, 2024-25. Coordinated 5 verticals and about 30-35 members; helped nearly double the team size; led WISE 2025 with ACM-W.",
-      "Treasurer, SSN ACM Student Chapter, 2025-26; Event Management, 2024-25. Supported ACM Hour of Code and helped secure about US$250 in ACM funding.",
-      "Deputy PR Lead and Full-Stack Development Core, SSN Coding Club, 2025-26.",
-      "Under Secretary General, SSN SNUC MUN, 2025.",
-      "Core PR, SSN Networks; Creative and PR Member, Lakshya E-Cell Entrepreneurship Club; Core Member, QFactorial.",
-      "Head Girl, Director of Event Management at Polemic Debating Venture, and MC/compere for ICCIDS, Sports Day, CSI Inauguration, and ACM Competitive Thinking Workshop.",
+      "SSN Design Club Head, 2026–27. Selected and structured a 16-member core committee.",
+      "SSN ACE Joint Event Coordinator, 2025–26. Organized 10+ Invente competitions with about 200 registrations.",
+      "IEEE WIE Joint Secretary, 2025–26. Coordinated five verticals and 30–35 members; led WISE 2025 with ACM-W.",
+      "SSN ACM Treasurer, 2025–26. Supported Hour of Code and secured about US$250 in funding.",
+      "SSN Coding Club Deputy PR Lead and Full-Stack Core; SSN SNUC MUN Under Secretary General, 2025.",
+      "Compere for ICCIDS, Sports Day, CSI Inauguration, and ACM Competitive Thinking Workshop.",
     ],
     featureCards: [],
     tags: ["SSN ACE", "IEEE WIE", "Coding Club", "ACM", "MUN", "Gradient", "Lakshya"],
@@ -436,27 +431,12 @@ export const sections: PortfolioSection[] = [
       variant: "phone",
     },
     summary: "",
-    story: [
-      "For Anjana, creativity has always existed alongside technology. Traditional art, mixed media, stage hosting, and design leadership shape the way she thinks about products: useful things should also feel expressive, clear, and human.",
-    ],
-    highlights: [
-      "Traditional art and mixed media remain a long-running creative practice; she hosted a public art exhibition at age 14.",
-      "Her design leadership at SSN connects visual identity, communication, accessibility, and student community work.",
-      "Public speaking, compering, and hosting shape how she connects with audiences.",
-    ],
+    story: [],
+    highlights: [],
     featureCards: [
-      {
-        title: "Art",
-        body: "A practice built around hand-drawn illustration, mixed media, patience, observation, and visual storytelling.",
-      },
-      {
-        title: "Design",
-        body: "A tool for communication, accessibility, storytelling, and creating memorable student initiatives.",
-      },
-      {
-        title: "Stage",
-        body: "Compering and speaking help her engage people directly and create experiences that feel alive.",
-      },
+      { title: "Art & mixed media", body: "A long-running illustration practice, including a public art exhibition at age 14." },
+      { title: "Visual design", body: "Exploring composition, colour, and storytelling through handmade and digital work." },
+      { title: "Linux tinkering", body: "An Arch Linux dual-boot setup and a habit of figuring out how things work." },
     ],
     links: [
       {
@@ -479,43 +459,13 @@ export const sections: PortfolioSection[] = [
     layout: "achievements",
     summary: "",
     story: [],
-    highlights: [
-      "Ranked 3rd in the Department of M.Tech CSE with a CGPA of 9.237/10 as of the sixth semester.",
-      "1st Place at MIT Tech Symposium 2026 and VIT Intercollegiate Tech Symposium for Causal Deforestation Propagation Prediction via Road-Aware Graph Attention Networks, with Rs. 8,000 in combined prize winnings.",
-      "Finalist in the Internal Smart India Hackathon under the Smart Healthcare Management System problem statement.",
-      "Placed in the Top 15% Global Leaderboard in the Kaggle Spaceship Titanic ML Competition, achieving approximately 82% accuracy.",
-      "Recognized multiple times for excellence in organizing and coordinating technical events under ACM, IEEE WIE, and ACE.",
-      "Served as School Pupil Leader (Head Girl) and later continued leadership across SSN student organizations.",
-      "Hosted a public art exhibition at age 14.",
-    ],
+    highlights: [],
     featureCards: [
-      {
-        label: "Research",
-        title: "1st Place Symposium Wins",
-        body: "Causal Deforestation Propagation Prediction via Road-Aware Graph Attention Networks won at MIT Tech Symposium 2026 and VIT Intercollegiate Tech Symposium.",
-      },
-      {
-        label: "Academics",
-        title: "3rd Department Rank",
-        body: "Integrated M.Tech CSE, SSN College of Engineering, with consistent academic performance recorded across the uploaded documents.",
-      },
-      {
-        label: "ML",
-        title: "Kaggle Top 15%",
-        body: "Spaceship Titanic Machine Learning Competition, approximately 82% accuracy.",
-      },
-      {
-        label: "Hackathon",
-        title: "Internal SIH Finalist",
-        body: "Finalist under the Smart Healthcare Management System problem statement.",
-      },
-      {
-        label: "Open Source",
-        title: "GSSoC Contributor",
-        body: "Accepted earlier this year; one pull request merged and a few issues raised.",
-      },
+      { label: "Research", title: "Two first-place finishes", body: "Won at MIT Tech Symposium 2026 and VIT Intercollegiate Tech Symposium for road-aware graph attention research on deforestation. Rs. 8,000 in combined prizes." },
+      { label: "Machine learning", title: "Kaggle · Top 15%", body: "Placed in the top 15% of the Spaceship Titanic global leaderboard, with approximately 82% accuracy." },
+      { label: "Open source", title: "GSSoC contributor", body: "Accepted into GirlScript Summer of Code; contributed one merged pull request and raised project issues." },
     ],
-    tags: ["CGPA 9.237", "Department Rank", "Kaggle", "Smart India Hackathon", "GSSoC", "Leadership", "Art exhibition"],
+    tags: ["Research", "Kaggle", "Open source"],
   },
 ];
 
@@ -526,7 +476,7 @@ export const gameLevels: GameLevel[] = sections.map((section, index) => ({
   rewardName: section.rewardName,
   quest: section.quest,
   shardLabel: section.rewardName.replace("Memory of ", ""),
-  obstacleCount: 2 + (index % 3),
+  obstacleCount: Math.max(0, index - 1),
   palette: [
     { sky: "#13241f", glow: "#ffd166", ground: "#3d6b3d" },
     { sky: "#172034", glow: "#80ffdb", ground: "#315a45" },

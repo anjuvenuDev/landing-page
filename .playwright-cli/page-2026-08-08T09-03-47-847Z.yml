@@ -1,0 +1,102 @@
+- main [ref=e3]:
+  - generic "Anjana Memory Quest game" [ref=e5]
+  - generic [ref=e7]:
+    - complementary "Portfolio game map" [ref=e8]:
+      - heading "Game Map" [level=2] [ref=e9]
+      - navigation "Memory map" [ref=e10]:
+        - 'button "1: Self About Anjana" [ref=e11] [cursor=pointer]':
+          - strong [ref=e13]: "1: Self"
+          - generic [ref=e14]: About Anjana
+        - 'button "2: Making Anjana''s Projects" [ref=e15] [cursor=pointer]':
+          - strong [ref=e17]: "2: Making"
+          - generic [ref=e18]: Anjana's Projects
+        - 'button "3: Practice Work Experience" [ref=e19] [cursor=pointer]':
+          - strong [ref=e21]: "3: Practice"
+          - generic [ref=e22]: Work Experience
+        - 'button "4: Tools Technical Skills" [ref=e23] [cursor=pointer]':
+          - strong [ref=e25]: "4: Tools"
+          - generic [ref=e26]: Technical Skills
+        - 'button "5: Voice Soft Skills" [ref=e27] [cursor=pointer]':
+          - strong [ref=e29]: "5: Voice"
+          - generic [ref=e30]: Soft Skills
+        - 'button "6: Guilds Extra-curricular Activities" [ref=e31] [cursor=pointer]':
+          - strong [ref=e33]: "6: Guilds"
+          - generic [ref=e34]: Extra-curricular Activities
+        - 'button "7: Wonder Hobbies & Interests" [ref=e35] [cursor=pointer]':
+          - strong [ref=e37]: "7: Wonder"
+          - generic [ref=e38]: Hobbies & Interests
+        - 'button "8: Proof Achievements" [ref=e39] [cursor=pointer]':
+          - strong [ref=e41]: "8: Proof"
+          - generic [ref=e42]: Achievements
+      - generic [ref=e43]:
+        - button "Home" [ref=e44] [cursor=pointer]:
+          - generic [ref=e45]: ⌂
+          - text: Home
+        - generic "Game guide" [ref=e46]:
+          - generic [ref=e47]: ◈
+          - text: Guide
+        - generic "Quest log" [ref=e48]:
+          - generic [ref=e49]: ▣
+          - text: Log
+    - article [ref=e50]:
+      - button "Close memory view" [ref=e51] [cursor=pointer]: x
+      - button "Open fullscreen preview" [ref=e52] [cursor=pointer]: ⛶
+      - generic [ref=e53]:
+        - heading "About Anjana" [level=2] [ref=e54]
+        - generic "Memory 1 of 8" [ref=e55]:
+          - generic [ref=e56]: Quest Progress
+          - strong [ref=e59]: 1/8
+      - generic [ref=e61]:
+        - generic [ref=e62]:
+          - figure [ref=e64]:
+            - img "Anjana Venugopalan" [ref=e65]
+          - paragraph [ref=e67]:
+            - text: Anjana Venugopalan is a
+            - strong [ref=e68]: 5 Year Integrated M.Tech CSE
+            - text: student at
+            - strong [ref=e69]: SSN College of Engineering
+            - text: ", Chennai, driven by a passion for building technology that creates"
+            - strong [ref=e70]: meaningful impact
+            - text: . With a strong academic record and hands-on experience across
+            - strong [ref=e71]: artificial intelligence
+            - text: ","
+            - strong [ref=e72]: full-stack development
+            - text: ","
+            - strong [ref=e73]: product engineering
+            - text: ", and"
+            - strong [ref=e74]: computer vision
+            - text: ", she enjoys working at the intersection of innovation and usability. What began as a fascination with programming has evolved into a broader interest in designing complete digital experiences. From conceptualizing products and architecting software to refining user interactions, Anjana enjoys understanding every layer of the development process. She believes that successful technology is not defined solely by its technical sophistication, but by how naturally it fits into people's lives. Her work is guided by curiosity, creativity, and a constant desire to learn. Anjana hopes to contribute to products that combine intelligent technology with thoughtful design, making complex systems more accessible, intuitive, and human-centered."
+        - generic [ref=e76]:
+          - article [ref=e77]:
+            - generic [ref=e79]:
+              - heading "CSE foundation" [level=3] [ref=e80]
+              - paragraph [ref=e81]: Her coursework and project work span algorithms, databases, analytics, machine learning, optimization, software construction, and full-stack systems, backed by a 9.237/10 CGPA and Department Rank 3.
+          - article [ref=e82]:
+            - generic [ref=e84]:
+              - heading "Technology with usability" [level=3] [ref=e85]
+              - paragraph [ref=e86]: "She is drawn to the full lifecycle of products: from ideas and architecture to user flows, UI details, and real-world usefulness."
+          - article [ref=e87]:
+            - generic [ref=e89]:
+              - heading "Arch Linux convert" [level=3] [ref=e90]
+              - paragraph [ref=e91]: Dual-booted Arch alongside Windows and now builds most projects from that setup.
+        - list [ref=e93]:
+          - listitem [ref=e94]:
+            - generic [ref=e96]: Master of Technology, Computer Science and Engineering at Sri Sivasubramaniya Nadar College of Engineering, August 2023 - July 2028.
+          - listitem [ref=e97]:
+            - generic [ref=e99]:
+              - text: "CGPA: 9.237/10 |"
+              - strong [ref=e100]: "Department Rank: 3"
+              - text: "| AISSCE: 96.4% (482/500)."
+          - listitem [ref=e101]:
+            - generic [ref=e103]: Relevant courses include Data Science and Analytics, Machine Learning, Database Management Systems, Applied Optimization Techniques, Software Construction, Design and Analysis of Algorithms, and Data Structures and Algorithms.
+          - listitem [ref=e104]:
+            - generic [ref=e106]: "Standard 12 AISSCE: 482/500 = 96.4%. Standard 10 AISSCE: 489/500 = 97.8%."
+          - listitem [ref=e107]:
+            - generic [ref=e109]:
+              - text: Dual-booted her laptop with
+              - strong [ref=e110]: Arch Linux
+              - text: alongside Windows because she was done with Windows, and now primarily builds projects on Arch.
+      - generic [ref=e111]:
+        - button "No previous" [disabled] [ref=e112]
+        - button "Play again" [ref=e113] [cursor=pointer]
+        - 'button "Next: Anjana''s Projects" [ref=e114] [cursor=pointer]'

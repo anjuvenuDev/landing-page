@@ -1,0 +1,170 @@
+- main [ref=e3]:
+  - generic "Anjana Memory Quest game" [ref=e5]
+  - generic [ref=e7]:
+    - complementary "Portfolio game map" [ref=e8]:
+      - heading "Game Map" [level=2] [ref=e9]
+      - navigation "Memory map" [ref=e10]:
+        - 'button "1: Self" [ref=e11] [cursor=pointer]':
+          - strong [ref=e13]: "1: Self"
+        - 'button "2: Making" [ref=e14] [cursor=pointer]':
+          - strong [ref=e16]: "2: Making"
+        - 'button "3: Practice" [ref=e17] [cursor=pointer]':
+          - strong [ref=e19]: "3: Practice"
+        - 'button "4: Tools" [ref=e20] [cursor=pointer]':
+          - strong [ref=e22]: "4: Tools"
+        - 'button "5: Voice" [ref=e23] [cursor=pointer]':
+          - strong [ref=e25]: "5: Voice"
+        - 'button "6: Guilds" [ref=e26] [cursor=pointer]':
+          - strong [ref=e28]: "6: Guilds"
+        - 'button "7: Wonder" [ref=e29] [cursor=pointer]':
+          - strong [ref=e31]: "7: Wonder"
+        - 'button "8: Proof" [ref=e32] [cursor=pointer]':
+          - strong [ref=e34]: "8: Proof"
+      - generic [ref=e35]:
+        - button "Home" [ref=e36] [cursor=pointer]:
+          - generic [ref=e37]: ⌂
+          - text: Home
+        - generic "Game guide" [ref=e38]:
+          - generic [ref=e39]: ◈
+          - text: Guide
+        - generic "Quest log" [ref=e40]:
+          - generic [ref=e41]: ▣
+          - text: Log
+    - article [ref=e42]:
+      - button "Close memory view" [ref=e43] [cursor=pointer]: x
+      - button "Open fullscreen preview" [ref=e44] [cursor=pointer]: ⛶
+      - generic [ref=e45]:
+        - heading "Achievements" [level=2] [ref=e46]
+        - generic "Memory 8 of 8" [ref=e47]:
+          - generic [ref=e48]: Quest Progress
+          - strong [ref=e51]: 8/8
+      - generic [ref=e53]:
+        - generic [ref=e62]:
+          - paragraph [ref=e63]: Anjana's journey has been shaped by a balance of academic excellence, technical curiosity, creative expression, and leadership.
+          - generic [ref=e64]:
+            - paragraph [ref=e65]:
+              - text: As of the sixth semester, she holds the
+              - strong [ref=e66]: 3rd Department Rank
+              - text: in the Integrated M.Tech Computer Science and Engineering program at Sri Sivasubramaniya Nadar College of Engineering, maintaining a
+              - strong [ref=e67]: CGPA of 9.237/10
+              - text: through consistent academic performance.
+            - paragraph [ref=e68]:
+              - text: She also secured
+              - strong [ref=e69]: 1st place
+              - text: at
+              - strong [ref=e70]: MIT Tech Symposium 2026
+              - text: and
+              - strong [ref=e71]: VIT Intercollegiate Tech Symposium
+              - text: for Causal Deforestation Propagation Prediction via
+              - strong [ref=e72]: Road-Aware Graph Attention Networks
+              - text: ", earning"
+              - strong [ref=e73]: Rs. 8,000
+              - text: in combined prize winnings.
+            - paragraph [ref=e74]:
+              - text: Her leadership journey began well before college when she served as the
+              - strong [ref=e75]: School Pupil Leader
+              - text: (Head Girl), representing the student body and leading school-wide initiatives.
+            - paragraph [ref=e76]:
+              - text: Since then, she has continued to take on leadership roles across multiple student organizations at SSN, including serving as Joint Secretary of
+              - strong [ref=e77]: IEEE Women in Engineering
+              - text: ", Joint Event Coordinator of"
+              - strong [ref=e78]: SSN ACE
+              - text: ", and currently leading the"
+              - strong [ref=e79]: Gradient Design Club
+              - text: .
+            - paragraph [ref=e80]: These experiences have strengthened her ability to manage teams, organize large-scale events, and foster collaborative communities.
+            - paragraph [ref=e81]:
+              - text: Her technical accomplishments include being a Finalist in the Internal
+              - strong [ref=e82]: Smart India Hackathon
+              - text: and securing a position in the
+              - strong [ref=e83]: Top 15%
+              - text: globally in
+              - strong [ref=e84]: Kaggle
+              - text: "'s Spaceship Titanic Machine Learning Competition."
+            - paragraph [ref=e85]: Outside engineering, creativity has remained a defining part of her identity. At the age of 14, she hosted her own art exhibition, an early milestone that continues to influence her approach to design, communication, and product thinking.
+            - paragraph [ref=e86]:
+              - text: For Anjana, success is measured not only by academic achievements or technical projects, but by continuously learning, leading with purpose, and creating work that leaves a
+              - strong [ref=e87]: meaningful impact
+              - text: .
+            - paragraph [ref=e88]:
+              - text: She was also accepted as a
+              - strong [ref=e89]: GirlScript Summer of Code
+              - text: contributor earlier this year, with one PR merged and a few issues raised as she begins contributing to open source.
+        - generic:
+          - generic:
+            - article [ref=e90]:
+              - generic [ref=e92]:
+                - heading "1st Place Symposium Wins" [level=3] [ref=e93]
+                - paragraph [ref=e94]:
+                  - text: Causal Deforestation Propagation Prediction via
+                  - strong [ref=e95]: Road-Aware Graph Attention Networks
+                  - text: won at
+                  - strong [ref=e96]: MIT Tech Symposium 2026
+                  - text: and
+                  - strong [ref=e97]: VIT Intercollegiate Tech Symposium
+                  - text: .
+            - article [ref=e98]:
+              - generic [ref=e100]:
+                - heading "3rd Department Rank" [level=3] [ref=e101]
+                - paragraph [ref=e102]:
+                  - text: Integrated M.Tech CSE,
+                  - strong [ref=e103]: SSN College of Engineering
+                  - text: ", with consistent academic performance recorded across the uploaded documents."
+            - article [ref=e104]:
+              - generic [ref=e106]:
+                - heading "Kaggle Top 15%" [level=3] [ref=e107]
+                - paragraph [ref=e108]: Spaceship Titanic Machine Learning Competition, approximately 82% accuracy.
+            - article [ref=e109]:
+              - generic [ref=e111]:
+                - heading "Internal SIH Finalist" [level=3] [ref=e112]
+                - paragraph [ref=e113]: Finalist under the Smart Healthcare Management System problem statement.
+            - article [ref=e114]:
+              - generic [ref=e116]:
+                - heading "GSSoC Contributor" [level=3] [ref=e117]
+                - paragraph [ref=e118]: Accepted earlier this year; one pull request merged and a few issues raised.
+        - list [ref=e120]:
+          - listitem [ref=e121]:
+            - generic [ref=e123]:
+              - text: Ranked 3rd in the Department of M.Tech CSE with a
+              - strong [ref=e124]: CGPA of 9.237/10
+              - text: as of the sixth semester.
+          - listitem [ref=e125]:
+            - generic [ref=e127]:
+              - strong [ref=e128]: 1st Place
+              - text: at
+              - strong [ref=e129]: MIT Tech Symposium 2026
+              - text: and
+              - strong [ref=e130]: VIT Intercollegiate Tech Symposium
+              - text: for Causal Deforestation Propagation Prediction via
+              - strong [ref=e131]: Road-Aware Graph Attention Networks
+              - text: ", with"
+              - strong [ref=e132]: Rs. 8,000
+              - text: in combined prize winnings.
+          - listitem [ref=e133]:
+            - generic [ref=e135]:
+              - text: Finalist in the Internal
+              - strong [ref=e136]: Smart India Hackathon
+              - text: under the Smart Healthcare Management System problem statement.
+          - listitem [ref=e137]:
+            - generic [ref=e139]:
+              - text: Placed in the
+              - strong [ref=e140]: Top 15%
+              - text: Global Leaderboard in the
+              - strong [ref=e141]: Kaggle
+              - text: Spaceship Titanic ML Competition, achieving approximately 82% accuracy.
+          - listitem [ref=e142]:
+            - generic [ref=e144]: Recognized multiple times for excellence in organizing and coordinating technical events under ACM, IEEE WIE, and ACE.
+          - listitem [ref=e145]:
+            - generic [ref=e147]:
+              - text: Served as
+              - strong [ref=e148]: School Pupil Leader
+              - text: (Head Girl) and later continued leadership across SSN student organizations.
+          - listitem [ref=e149]:
+            - generic [ref=e151]:
+              - text: Hosted a
+              - strong [ref=e152]: public art exhibition
+              - text: at age 14.
+      - generic [ref=e153]:
+        - 'button "Prev: Hobbies & Interests" [ref=e154] [cursor=pointer]'
+        - button "Play again" [ref=e155] [cursor=pointer]
+        - button "Play to unlock" [disabled] [ref=e156]

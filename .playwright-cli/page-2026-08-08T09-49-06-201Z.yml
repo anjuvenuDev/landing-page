@@ -1,0 +1,89 @@
+- main [ref=e3]:
+  - generic "Anjana Memory Quest game" [ref=e5]
+  - generic [ref=e7]:
+    - complementary "Portfolio game map" [ref=e8]:
+      - heading "Game Map" [level=2] [ref=e9]
+      - navigation "Memory map" [ref=e10]:
+        - 'button "1: Self" [ref=e11] [cursor=pointer]':
+          - strong [ref=e13]: "1: Self"
+        - 'button "2: Making" [ref=e14] [cursor=pointer]':
+          - strong [ref=e16]: "2: Making"
+        - 'button "3: Practice" [ref=e17] [cursor=pointer]':
+          - strong [ref=e19]: "3: Practice"
+        - 'button "4: Tools" [ref=e20] [cursor=pointer]':
+          - strong [ref=e22]: "4: Tools"
+        - 'button "5: Voice" [ref=e23] [cursor=pointer]':
+          - strong [ref=e25]: "5: Voice"
+        - 'button "6: Guilds" [ref=e26] [cursor=pointer]':
+          - strong [ref=e28]: "6: Guilds"
+        - 'button "7: Wonder" [ref=e29] [cursor=pointer]':
+          - strong [ref=e31]: "7: Wonder"
+        - 'button "8: Proof" [ref=e32] [cursor=pointer]':
+          - strong [ref=e34]: "8: Proof"
+      - generic [ref=e35]:
+        - button "Home" [ref=e36] [cursor=pointer]:
+          - generic [ref=e37]: ⌂
+          - text: Home
+        - generic "Game guide" [ref=e38]:
+          - generic [ref=e39]: ◈
+          - text: Guide
+        - generic "Quest log" [ref=e40]:
+          - generic [ref=e41]: ▣
+          - text: Log
+    - article [ref=e42]:
+      - button "Close memory view" [ref=e43] [cursor=pointer]: x
+      - button "Open fullscreen preview" [ref=e44] [cursor=pointer]: ⛶
+      - generic [ref=e45]:
+        - heading "Soft Skills" [level=2] [ref=e46]
+        - generic "Memory 5 of 8" [ref=e47]:
+          - generic [ref=e48]: Quest Progress
+          - strong [ref=e51]: 5/8
+      - generic [ref=e53]:
+        - generic [ref=e54]:
+          - generic [ref=e56]:
+            - generic [ref=e59]: Own
+            - generic [ref=e60]: Lead
+            - generic [ref=e61]: Ship
+            - generic [ref=e62]: Listen
+          - generic [ref=e63]:
+            - paragraph [ref=e64]: Beyond technical expertise, Anjana believes that impactful products are built through collaboration, empathy, and effective communication.
+            - generic [ref=e65]:
+              - paragraph [ref=e66]: Her leadership experiences across student organizations and internships have strengthened her ability to manage teams, coordinate large-scale events, communicate across diverse groups, and take ownership of responsibilities.
+              - paragraph [ref=e67]: She enjoys solving problems collaboratively, adapting quickly to new challenges, and approaching projects with curiosity and a growth mindset.
+              - paragraph [ref=e68]: Whether leading an event, brainstorming product ideas, or working alongside developers and designers, she values clarity, accountability, and continuous learning.
+              - paragraph [ref=e69]:
+                - text: She also stepped into open source this year after being accepted as a
+                - strong [ref=e70]: GirlScript Summer of Code
+                - text: contributor; as someone new to open source, she has one PR merged and has raised a few issues.
+        - generic [ref=e72]:
+          - article [ref=e73]:
+            - generic [ref=e75]:
+              - heading "Leadership" [level=3] [ref=e76]
+              - paragraph [ref=e77]: Student organization roles and internships have trained her to manage teams, coordinate responsibilities, structure committees, and make decisions under real constraints.
+          - article [ref=e78]:
+            - generic [ref=e80]:
+              - heading "Communication" [level=3] [ref=e81]
+              - paragraph [ref=e82]: "She communicates across diverse groups: founders, mentors, teammates, developers, designers, event volunteers, and student communities."
+          - article [ref=e83]:
+            - generic [ref=e85]:
+              - heading "Collaboration" [level=3] [ref=e86]
+              - paragraph [ref=e87]: She enjoys solving problems collaboratively and adapts quickly when projects, teams, or requirements change.
+          - article [ref=e88]:
+            - generic [ref=e90]:
+              - heading "Growth mindset" [level=3] [ref=e91]
+              - paragraph [ref=e92]:
+                - text: Her
+                - strong [ref=e93]: GSSoC
+                - text: start reflects her willingness to enter new technical communities, learn in public, and contribute incrementally.
+        - list [ref=e95]:
+          - listitem [ref=e96]:
+            - generic [ref=e98]: Leadership, communication, ownership, collaboration, adaptability, clarity, accountability, empathy, and continuous learning are presented here as lived habits rather than one-word claims.
+          - listitem [ref=e99]:
+            - generic [ref=e101]:
+              - text: Her
+              - strong [ref=e102]: Friday Intellytics
+              - text: "work adds a product-growth lens: ambiguous requirements, direct founder collaboration, prioritized feature decisions, and ownership from problem definition through implementation."
+      - generic [ref=e103]:
+        - 'button "Prev: Technical Skills" [ref=e104] [cursor=pointer]'
+        - button "Play again" [ref=e105] [cursor=pointer]
+        - 'button "Next: Extra-curricular Activities" [ref=e106] [cursor=pointer]'

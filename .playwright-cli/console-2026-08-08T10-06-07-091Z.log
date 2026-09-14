@@ -1,0 +1,680 @@
+[     688ms] [INFO] Download the React DevTools for a better development experience: https://react.dev/link/react-devtools @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:20102
+[     959ms] [TIMESTAMP] Blocking Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12095
+[     959ms] [TIMESTAMP] Transition Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12102
+[     960ms] [TIMESTAMP] Suspense Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12109
+[     960ms] [TIMESTAMP] Idle Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12116
+[     960ms] [TIMESTAMP] Render @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3314
+[     960ms] [TIMESTAMP] Commit @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12955
+[     995ms] [TIMESTAMP] Waiting for Paint @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:13132
+[     996ms] [TIMESTAMP] App @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[     996ms] [TIMESTAMP] MemoryQuestGame @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[    1028ms] [LOG]          Phaser v3.90.0 (WebGL | Web Audio)   https://phaser.io/v390 @ http://127.0.0.1:5173/node_modules/.vite/deps/phaser.js?v=6e7410d6:8455
+[    1029ms] [TIMESTAMP] MemoryQuestGame @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3291
+[    1029ms] [TIMESTAMP] FullscreenSlides @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[    1029ms] [TIMESTAMP] PortfolioContent @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[    1029ms] [TIMESTAMP] PortfolioCopy @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[    1030ms] [TIMESTAMP] PortfolioVisual @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[    1031ms] [TIMESTAMP] ProjectContributionBoard @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[    1031ms] [TIMESTAMP] NarrativeBlock @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[    1031ms] [TIMESTAMP] HighlightText @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[    1031ms] [TIMESTAMP] HighlightText @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[    1031ms] [TIMESTAMP] MemoryMain @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[    1031ms] [TIMESTAMP] ProjectCards @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[    1031ms] [TIMESTAMP] HighlightText @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[    1032ms] [TIMESTAMP] LinkGlyph @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[    1032ms] [TIMESTAMP] LinkGlyph @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[    1032ms] [TIMESTAMP] LinkGlyph @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[    1032ms] [TIMESTAMP] WorkRoadmap @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[    1032ms] [TIMESTAMP] SkillWall @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[    1032ms] [TIMESTAMP] FeatureCards @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[    1032ms] [TIMESTAMP] MemoryDetails @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[    1032ms] [TIMESTAMP] PortfolioLinks @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[    1032ms] [TIMESTAMP] MemoryHighlights @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[    1033ms] [TIMESTAMP] InventoryToken @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[    1033ms] [TIMESTAMP] HighlightText @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[    1033ms] [TIMESTAMP] InventoryToken @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[    1033ms] [TIMESTAMP] HighlightText @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3291
+[    1047ms] [LOG]          Phaser v3.90.0 (WebGL | Web Audio)   https://phaser.io/v390 @ http://127.0.0.1:5173/node_modules/.vite/deps/phaser.js?v=6e7410d6:8455
+[    1048ms] [TIMESTAMP] MemoryQuestGame @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3291
+[    1048ms] [TIMESTAMP] Remaining Effects @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:13177
+[    1066ms] [WARNING] [JavaScript Warning: "An AudioContext was prevented from starting automatically. It must be created or resumed after a user gesture on the page." {file: "http://127.0.0.1:5173/node_modules/.vite/deps/phaser.js?v=6e7410d6" line: 116607}] @ http://127.0.0.1:5173/node_modules/.vite/deps/phaser.js?v=6e7410d6:116607
+[    1069ms] [WARNING] [JavaScript Warning: "An AudioContext was prevented from starting automatically. It must be created or resumed after a user gesture on the page." {file: "http://127.0.0.1:5173/node_modules/.vite/deps/phaser.js?v=6e7410d6" line: 116607}] @ http://127.0.0.1:5173/node_modules/.vite/deps/phaser.js?v=6e7410d6:116607
+[    1838ms] [WARNING] [JavaScript Warning: "WebGL warning: texImage: Alpha-premult and y-flip are deprecated for non-DOM-Element uploads."] @ :0
+[    1855ms] [WARNING] [JavaScript Warning: "WebGL warning: texImage: Alpha-premult and y-flip are deprecated for non-DOM-Element uploads."] @ :0
+[    1858ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[    1859ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[    1859ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[    1859ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[    1859ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[    1859ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[    1859ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[    1859ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[    1860ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[    1860ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[    1860ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[    1860ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[    1860ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[    1860ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[    1860ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[    1861ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[    1862ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[    1862ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[    1862ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[    1862ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[    1862ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[    1862ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[    1862ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[    1862ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[    1863ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[    1863ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[    1863ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[    1863ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[    1864ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[    1864ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  111570ms] [LOG] [vite] server connection lost. Polling for restart... @ http://127.0.0.1:5173/@vite/client:864
+[  358437ms] [WARNING] [JavaScript Warning: "“127.0.0.1” has been classified as a bounce tracker. If it does not receive user activation within the next 3,600 seconds it will have its state purged."] @ :0
+[  516898ms] [INFO] Download the React DevTools for a better development experience: https://react.dev/link/react-devtools @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:20102
+[  516941ms] [TIMESTAMP] Blocking Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12095
+[  516941ms] [TIMESTAMP] Transition Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12102
+[  516941ms] [TIMESTAMP] Suspense Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12109
+[  516942ms] [TIMESTAMP] Idle Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12116
+[  516960ms] [TIMESTAMP] Render @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3314
+[  516962ms] [TIMESTAMP] Commit @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12955
+[  516986ms] [TIMESTAMP] Waiting for Paint @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:13132
+[  516987ms] [TIMESTAMP] App @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  516987ms] [TIMESTAMP] MemoryQuestGame @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  517026ms] [LOG]          Phaser v3.90.0 (WebGL | Web Audio)   https://phaser.io/v390 @ http://127.0.0.1:5173/node_modules/.vite/deps/phaser.js?v=6e7410d6:8455
+[  517029ms] [TIMESTAMP] MemoryQuestGame @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3291
+[  517029ms] [TIMESTAMP] SidePreview @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  517029ms] [TIMESTAMP] PortfolioMap @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  517030ms] [TIMESTAMP] PortfolioContent @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  517030ms] [TIMESTAMP] PortfolioCopy @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  517030ms] [TIMESTAMP] PortfolioVisual @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  517030ms] [TIMESTAMP] NarrativeBlock @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  517030ms] [TIMESTAMP] HighlightText @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  517030ms] [TIMESTAMP] MemoryMain @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  517031ms] [TIMESTAMP] ProjectCards @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  517031ms] [TIMESTAMP] WorkRoadmap @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  517031ms] [TIMESTAMP] SkillWall @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  517031ms] [TIMESTAMP] FeatureCards @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  517031ms] [TIMESTAMP] InventoryToken @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  517031ms] [TIMESTAMP] HighlightText @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  517031ms] [TIMESTAMP] MemoryDetails @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  517031ms] [TIMESTAMP] PortfolioLinks @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  517031ms] [TIMESTAMP] MemoryHighlights @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  517031ms] [TIMESTAMP] InventoryToken @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  517032ms] [TIMESTAMP] HighlightText @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  517032ms] [TIMESTAMP] InventoryToken @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  517032ms] [TIMESTAMP] HighlightText @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  517043ms] [LOG]          Phaser v3.90.0 (WebGL | Web Audio)   https://phaser.io/v390 @ http://127.0.0.1:5173/node_modules/.vite/deps/phaser.js?v=6e7410d6:8455
+[  517045ms] [TIMESTAMP] MemoryQuestGame @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3291
+[  517045ms] [TIMESTAMP] Remaining Effects @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:13177
+[  517059ms] [WARNING] [JavaScript Warning: "An AudioContext was prevented from starting automatically. It must be created or resumed after a user gesture on the page." {file: "http://127.0.0.1:5173/node_modules/.vite/deps/phaser.js?v=6e7410d6" line: 116607}] @ http://127.0.0.1:5173/node_modules/.vite/deps/phaser.js?v=6e7410d6:116607
+[  517063ms] [WARNING] [JavaScript Warning: "An AudioContext was prevented from starting automatically. It must be created or resumed after a user gesture on the page." {file: "http://127.0.0.1:5173/node_modules/.vite/deps/phaser.js?v=6e7410d6" line: 116607}] @ http://127.0.0.1:5173/node_modules/.vite/deps/phaser.js?v=6e7410d6:116607
+[  521392ms] [WARNING] [JavaScript Warning: "WebGL warning: texImage: Alpha-premult and y-flip are deprecated for non-DOM-Element uploads."] @ :0
+[  521450ms] [WARNING] [JavaScript Warning: "WebGL warning: texImage: Alpha-premult and y-flip are deprecated for non-DOM-Element uploads."] @ :0
+[  521451ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  521451ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  521453ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  521453ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  521454ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  521454ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  521454ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  521454ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  521454ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  521454ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  521454ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  521454ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  521454ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  521454ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  521454ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  521454ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  521454ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  521460ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  521467ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  521471ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  521471ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  521471ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  521471ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  521471ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  521471ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  521477ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  521477ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  521477ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  521478ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  521478ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  521478ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  521479ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  521479ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  521479ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  521479ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  521479ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  522166ms] [INFO] Download the React DevTools for a better development experience: https://react.dev/link/react-devtools @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:20102
+[  522213ms] [TIMESTAMP] Blocking Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12095
+[  522214ms] [TIMESTAMP] Transition Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12102
+[  522214ms] [TIMESTAMP] Suspense Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12109
+[  522214ms] [TIMESTAMP] Idle Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12116
+[  522244ms] [TIMESTAMP] Render @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3314
+[  522246ms] [TIMESTAMP] Commit @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12955
+[  522277ms] [TIMESTAMP] Waiting for Paint @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:13132
+[  522277ms] [TIMESTAMP] App @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  522277ms] [TIMESTAMP] MemoryQuestGame @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  522284ms] [LOG]          Phaser v3.90.0 (WebGL | Web Audio)   https://phaser.io/v390 @ http://127.0.0.1:5173/node_modules/.vite/deps/phaser.js?v=6e7410d6:8455
+[  522287ms] [TIMESTAMP] MemoryQuestGame @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3291
+[  522287ms] [TIMESTAMP] SidePreview @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  522287ms] [TIMESTAMP] PortfolioMap @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  522287ms] [TIMESTAMP] PortfolioContent @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  522287ms] [TIMESTAMP] PortfolioCopy @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  522288ms] [TIMESTAMP] PortfolioVisual @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  522288ms] [TIMESTAMP] ProjectContributionBoard @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  522288ms] [TIMESTAMP] NarrativeBlock @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  522290ms] [TIMESTAMP] HighlightText @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  522291ms] [TIMESTAMP] MemoryMain @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  522291ms] [TIMESTAMP] ProjectCards @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  522291ms] [TIMESTAMP] HighlightText @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  522291ms] [TIMESTAMP] LinkGlyph @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  522291ms] [TIMESTAMP] InventoryToken @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  522291ms] [TIMESTAMP] HighlightText @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  522291ms] [TIMESTAMP] WorkRoadmap @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  522291ms] [TIMESTAMP] SkillWall @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  522291ms] [TIMESTAMP] FeatureCards @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  522291ms] [TIMESTAMP] MemoryDetails @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  522291ms] [TIMESTAMP] PortfolioLinks @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  522291ms] [TIMESTAMP] MemoryHighlights @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  522291ms] [TIMESTAMP] InventoryToken @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  522298ms] [LOG]          Phaser v3.90.0 (WebGL | Web Audio)   https://phaser.io/v390 @ http://127.0.0.1:5173/node_modules/.vite/deps/phaser.js?v=6e7410d6:8455
+[  522300ms] [TIMESTAMP] MemoryQuestGame @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3291
+[  522301ms] [TIMESTAMP] Remaining Effects @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:13177
+[  522312ms] [WARNING] [JavaScript Warning: "An AudioContext was prevented from starting automatically. It must be created or resumed after a user gesture on the page." {file: "http://127.0.0.1:5173/node_modules/.vite/deps/phaser.js?v=6e7410d6" line: 116607}] @ http://127.0.0.1:5173/node_modules/.vite/deps/phaser.js?v=6e7410d6:116607
+[  522315ms] [WARNING] [JavaScript Warning: "An AudioContext was prevented from starting automatically. It must be created or resumed after a user gesture on the page." {file: "http://127.0.0.1:5173/node_modules/.vite/deps/phaser.js?v=6e7410d6" line: 116607}] @ http://127.0.0.1:5173/node_modules/.vite/deps/phaser.js?v=6e7410d6:116607
+[  523866ms] [WARNING] [JavaScript Warning: "WebGL warning: texImage: Alpha-premult and y-flip are deprecated for non-DOM-Element uploads."] @ :0
+[  523866ms] [WARNING] [JavaScript Warning: "WebGL warning: texImage: Alpha-premult and y-flip are deprecated for non-DOM-Element uploads."] @ :0
+[  523867ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  523867ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  523867ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  523867ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  523867ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  523867ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  523867ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  523867ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  523867ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  523867ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  523867ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  523867ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  523867ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  523867ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  523867ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  523867ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  523867ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  523867ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  523867ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  523867ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  523867ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  523867ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  523867ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  523868ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  523868ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  523868ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  523868ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  523868ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  523868ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  523868ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  523869ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  523869ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  523869ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  523872ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  523873ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  523873ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  524392ms] [INFO] Download the React DevTools for a better development experience: https://react.dev/link/react-devtools @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:20102
+[  524417ms] [TIMESTAMP] Blocking Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12095
+[  524418ms] [TIMESTAMP] Transition Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12102
+[  524418ms] [TIMESTAMP] Suspense Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12109
+[  524418ms] [TIMESTAMP] Idle Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12116
+[  524442ms] [TIMESTAMP] Render @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3314
+[  524445ms] [TIMESTAMP] Commit @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12955
+[  524466ms] [TIMESTAMP] Waiting for Paint @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:13132
+[  524466ms] [TIMESTAMP] App @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  524466ms] [TIMESTAMP] MemoryQuestGame @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  524480ms] [LOG]          Phaser v3.90.0 (WebGL | Web Audio)   https://phaser.io/v390 @ http://127.0.0.1:5173/node_modules/.vite/deps/phaser.js?v=6e7410d6:8455
+[  524483ms] [TIMESTAMP] MemoryQuestGame @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3291
+[  524483ms] [TIMESTAMP] SidePreview @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  524483ms] [TIMESTAMP] PortfolioMap @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  524484ms] [TIMESTAMP] PortfolioContent @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  524484ms] [TIMESTAMP] PortfolioCopy @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  524484ms] [TIMESTAMP] PortfolioVisual @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  524484ms] [TIMESTAMP] NarrativeBlock @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  524485ms] [TIMESTAMP] HighlightText @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  524485ms] [TIMESTAMP] HighlightText @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  524486ms] [TIMESTAMP] HighlightText @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  524486ms] [TIMESTAMP] MemoryMain @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  524486ms] [TIMESTAMP] ProjectCards @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  524486ms] [TIMESTAMP] WorkRoadmap @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  524486ms] [TIMESTAMP] HighlightText @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  524487ms] [TIMESTAMP] SkillWall @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  524487ms] [TIMESTAMP] FeatureCards @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  524487ms] [TIMESTAMP] MemoryDetails @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  524488ms] [TIMESTAMP] MemoryHighlights @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  524488ms] [TIMESTAMP] InventoryToken @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  524488ms] [TIMESTAMP] HighlightText @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  524488ms] [TIMESTAMP] InventoryToken @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  524488ms] [TIMESTAMP] HighlightText @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  524488ms] [TIMESTAMP] InventoryToken @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  524488ms] [TIMESTAMP] HighlightText @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  524505ms] [LOG]          Phaser v3.90.0 (WebGL | Web Audio)   https://phaser.io/v390 @ http://127.0.0.1:5173/node_modules/.vite/deps/phaser.js?v=6e7410d6:8455
+[  524507ms] [TIMESTAMP] MemoryQuestGame @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3291
+[  524508ms] [TIMESTAMP] Remaining Effects @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:13177
+[  524533ms] [WARNING] [JavaScript Warning: "An AudioContext was prevented from starting automatically. It must be created or resumed after a user gesture on the page." {file: "http://127.0.0.1:5173/node_modules/.vite/deps/phaser.js?v=6e7410d6" line: 116607}] @ http://127.0.0.1:5173/node_modules/.vite/deps/phaser.js?v=6e7410d6:116607
+[  524535ms] [WARNING] [JavaScript Warning: "An AudioContext was prevented from starting automatically. It must be created or resumed after a user gesture on the page." {file: "http://127.0.0.1:5173/node_modules/.vite/deps/phaser.js?v=6e7410d6" line: 116607}] @ http://127.0.0.1:5173/node_modules/.vite/deps/phaser.js?v=6e7410d6:116607
+[  527296ms] [WARNING] [JavaScript Warning: "WebGL warning: texImage: Alpha-premult and y-flip are deprecated for non-DOM-Element uploads."] @ :0
+[  527296ms] [WARNING] [JavaScript Warning: "WebGL warning: texImage: Alpha-premult and y-flip are deprecated for non-DOM-Element uploads."] @ :0
+[  527297ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  527297ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  527297ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  527297ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  527297ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  527297ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  527297ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  527297ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  527298ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  527298ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  527298ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  527309ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  527309ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  527309ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  527324ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  527325ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  527325ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  527325ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  527325ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  527327ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  527327ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  527327ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  527327ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  527327ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  527327ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  527327ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  527328ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  527328ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  527328ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  527329ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  527329ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  527329ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  527329ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  527329ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  527329ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  527330ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  528276ms] [INFO] Download the React DevTools for a better development experience: https://react.dev/link/react-devtools @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:20102
+[  528317ms] [TIMESTAMP] Blocking Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12095
+[  528317ms] [TIMESTAMP] Transition Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12102
+[  528318ms] [TIMESTAMP] Suspense Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12109
+[  528318ms] [TIMESTAMP] Idle Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12116
+[  528323ms] [TIMESTAMP] Render @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3314
+[  528324ms] [TIMESTAMP] Commit @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12955
+[  528340ms] [TIMESTAMP] Waiting for Paint @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:13132
+[  528340ms] [TIMESTAMP] App @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  528340ms] [TIMESTAMP] IntroScreen @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  528341ms] [TIMESTAMP] Remaining Effects @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:13177
+[  528395ms] [TIMESTAMP] Blocking Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12095
+[  528395ms] [TIMESTAMP] Transition Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12102
+[  528395ms] [TIMESTAMP] Suspense Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12109
+[  528395ms] [TIMESTAMP] Idle Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12116
+[  528396ms] [TIMESTAMP] Render @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3314
+[  528396ms] [TIMESTAMP] Commit @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12955
+[  528396ms] [TIMESTAMP] Waiting for Paint @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:13132
+[  528396ms] [TIMESTAMP] IntroScreen @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  528396ms] [TIMESTAMP] Remaining Effects @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:13177
+[  528417ms] [TIMESTAMP] Blocking Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12095
+[  528417ms] [TIMESTAMP] Transition Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12102
+[  528417ms] [TIMESTAMP] Suspense Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12109
+[  528417ms] [TIMESTAMP] Idle Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12116
+[  528419ms] [TIMESTAMP] Render @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3314
+[  528420ms] [TIMESTAMP] Commit @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12955
+[  528424ms] [TIMESTAMP] IntroScreen @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  528457ms] [TIMESTAMP] Blocking Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12095
+[  528457ms] [TIMESTAMP] Transition Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12102
+[  528457ms] [TIMESTAMP] Suspense Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12109
+[  528457ms] [TIMESTAMP] Idle Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12116
+[  528458ms] [TIMESTAMP] Render @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3314
+[  528459ms] [TIMESTAMP] Waiting for Paint @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:13132
+[  528459ms] [TIMESTAMP] IntroScreen @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  528494ms] [TIMESTAMP] Blocking Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12095
+[  528494ms] [TIMESTAMP] Transition Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12102
+[  528495ms] [TIMESTAMP] Suspense Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12109
+[  528495ms] [TIMESTAMP] Idle Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12116
+[  528496ms] [TIMESTAMP] Render @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3314
+[  528496ms] [TIMESTAMP] IntroScreen @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  528532ms] [TIMESTAMP] Blocking Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12095
+[  528532ms] [TIMESTAMP] Transition Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12102
+[  528532ms] [TIMESTAMP] Suspense Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12109
+[  528532ms] [TIMESTAMP] Idle Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12116
+[  528534ms] [TIMESTAMP] Render @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3314
+[  528535ms] [TIMESTAMP] Commit @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12955
+[  528535ms] [TIMESTAMP] IntroScreen @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  528569ms] [TIMESTAMP] Blocking Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12095
+[  528569ms] [TIMESTAMP] Transition Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12102
+[  528569ms] [TIMESTAMP] Suspense Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12109
+[  528569ms] [TIMESTAMP] Idle Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12116
+[  528570ms] [TIMESTAMP] Render @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3314
+[  528571ms] [TIMESTAMP] Waiting for Paint @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:13132
+[  528571ms] [TIMESTAMP] IntroScreen @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  528606ms] [TIMESTAMP] Blocking Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12095
+[  528607ms] [TIMESTAMP] Transition Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12102
+[  528607ms] [TIMESTAMP] Suspense Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12109
+[  528607ms] [TIMESTAMP] Idle Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12116
+[  528608ms] [TIMESTAMP] Render @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3314
+[  528609ms] [TIMESTAMP] Waiting for Paint @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:13132
+[  528609ms] [TIMESTAMP] IntroScreen @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  528609ms] [TIMESTAMP] IntroScreen @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3291
+[  528609ms] [TIMESTAMP] Remaining Effects @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:13177
+[  528901ms] [INFO] Download the React DevTools for a better development experience: https://react.dev/link/react-devtools @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:20102
+[  528924ms] [TIMESTAMP] Blocking Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12095
+[  528924ms] [TIMESTAMP] Transition Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12102
+[  528924ms] [TIMESTAMP] Suspense Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12109
+[  528925ms] [TIMESTAMP] Idle Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12116
+[  528949ms] [TIMESTAMP] Render @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3314
+[  528951ms] [TIMESTAMP] Commit @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12955
+[  528962ms] [TIMESTAMP] Waiting for Paint @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:13132
+[  528963ms] [TIMESTAMP] App @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  528963ms] [TIMESTAMP] MemoryQuestGame @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  528993ms] [LOG]          Phaser v3.90.0 (WebGL | Web Audio)   https://phaser.io/v390 @ http://127.0.0.1:5173/node_modules/.vite/deps/phaser.js?v=6e7410d6:8455
+[  528996ms] [TIMESTAMP] MemoryQuestGame @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3291
+[  528997ms] [TIMESTAMP] SidePreview @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  528997ms] [TIMESTAMP] PortfolioMap @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  528997ms] [TIMESTAMP] PortfolioContent @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  528997ms] [TIMESTAMP] PortfolioCopy @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  528997ms] [TIMESTAMP] PortfolioVisual @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  528997ms] [TIMESTAMP] SectionIllustration @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  529000ms] [TIMESTAMP] NarrativeBlock @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  529000ms] [TIMESTAMP] HighlightText @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  529000ms] [TIMESTAMP] HighlightText @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  529003ms] [TIMESTAMP] MemoryMain @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  529003ms] [TIMESTAMP] ProjectCards @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  529003ms] [TIMESTAMP] WorkRoadmap @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  529003ms] [TIMESTAMP] SkillWall @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  529003ms] [TIMESTAMP] FeatureCards @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  529003ms] [TIMESTAMP] InventoryToken @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  529003ms] [TIMESTAMP] MemoryDetails @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  529003ms] [TIMESTAMP] MemoryHighlights @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  529003ms] [TIMESTAMP] InventoryToken @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  529003ms] [TIMESTAMP] HighlightText @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  529140ms] [LOG]          Phaser v3.90.0 (WebGL | Web Audio)   https://phaser.io/v390 @ http://127.0.0.1:5173/node_modules/.vite/deps/phaser.js?v=6e7410d6:8455
+[  529143ms] [TIMESTAMP] MemoryQuestGame @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3291
+[  529144ms] [TIMESTAMP] Remaining Effects @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:13177
+[  529172ms] [WARNING] [JavaScript Warning: "An AudioContext was prevented from starting automatically. It must be created or resumed after a user gesture on the page." {file: "http://127.0.0.1:5173/node_modules/.vite/deps/phaser.js?v=6e7410d6" line: 116607}] @ http://127.0.0.1:5173/node_modules/.vite/deps/phaser.js?v=6e7410d6:116607
+[  529173ms] [WARNING] [JavaScript Warning: "An AudioContext was prevented from starting automatically. It must be created or resumed after a user gesture on the page." {file: "http://127.0.0.1:5173/node_modules/.vite/deps/phaser.js?v=6e7410d6" line: 116607}] @ http://127.0.0.1:5173/node_modules/.vite/deps/phaser.js?v=6e7410d6:116607
+[  531259ms] [WARNING] [JavaScript Warning: "WebGL warning: texImage: Alpha-premult and y-flip are deprecated for non-DOM-Element uploads."] @ :0
+[  531260ms] [WARNING] [JavaScript Warning: "WebGL warning: texImage: Alpha-premult and y-flip are deprecated for non-DOM-Element uploads."] @ :0
+[  531260ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  531260ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  531260ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  531260ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  531260ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  531260ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  531261ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  531261ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  531261ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  531261ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  531261ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  531261ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  531261ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  531262ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  531262ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  531266ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  531266ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  531267ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  531270ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  531270ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  531270ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  531270ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  531270ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  531270ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  531270ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  531270ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  531271ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  531271ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  531271ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  531271ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  531271ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  531271ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  531274ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  531274ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  531274ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  531274ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  531807ms] [INFO] Download the React DevTools for a better development experience: https://react.dev/link/react-devtools @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:20102
+[  531853ms] [TIMESTAMP] Blocking Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12095
+[  531854ms] [TIMESTAMP] Transition Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12102
+[  531854ms] [TIMESTAMP] Suspense Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12109
+[  531854ms] [TIMESTAMP] Idle Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12116
+[  531882ms] [TIMESTAMP] Render @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3314
+[  531883ms] [TIMESTAMP] Commit @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12955
+[  531902ms] [TIMESTAMP] Waiting for Paint @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:13132
+[  531902ms] [TIMESTAMP] App @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  531902ms] [TIMESTAMP] MemoryQuestGame @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  531915ms] [LOG]          Phaser v3.90.0 (WebGL | Web Audio)   https://phaser.io/v390 @ http://127.0.0.1:5173/node_modules/.vite/deps/phaser.js?v=6e7410d6:8455
+[  531919ms] [TIMESTAMP] MemoryQuestGame @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3291
+[  531920ms] [TIMESTAMP] SidePreview @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  531920ms] [TIMESTAMP] PortfolioMap @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  531920ms] [TIMESTAMP] PortfolioContent @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  531920ms] [TIMESTAMP] PortfolioCopy @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  531920ms] [TIMESTAMP] PortfolioVisual @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  531920ms] [TIMESTAMP] NarrativeBlock @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  531920ms] [TIMESTAMP] HighlightText @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  531921ms] [TIMESTAMP] HighlightText @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  531921ms] [TIMESTAMP] MemoryMain @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  531921ms] [TIMESTAMP] ProjectCards @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  531921ms] [TIMESTAMP] WorkRoadmap @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  531921ms] [TIMESTAMP] SkillWall @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  531921ms] [TIMESTAMP] FeatureCards @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  531921ms] [TIMESTAMP] MemoryDetails @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  531921ms] [TIMESTAMP] PortfolioLinks @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  531921ms] [TIMESTAMP] MemoryHighlights @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  531921ms] [TIMESTAMP] InventoryToken @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  531921ms] [TIMESTAMP] HighlightText @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  531921ms] [TIMESTAMP] InventoryToken @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  531921ms] [TIMESTAMP] InventoryToken @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  531922ms] [TIMESTAMP] HighlightText @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  531922ms] [TIMESTAMP] InventoryToken @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  531922ms] [TIMESTAMP] InventoryToken @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  531922ms] [TIMESTAMP] HighlightText @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  531933ms] [LOG]          Phaser v3.90.0 (WebGL | Web Audio)   https://phaser.io/v390 @ http://127.0.0.1:5173/node_modules/.vite/deps/phaser.js?v=6e7410d6:8455
+[  531934ms] [TIMESTAMP] MemoryQuestGame @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3291
+[  531934ms] [TIMESTAMP] Remaining Effects @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:13177
+[  531942ms] [WARNING] [JavaScript Warning: "An AudioContext was prevented from starting automatically. It must be created or resumed after a user gesture on the page." {file: "http://127.0.0.1:5173/node_modules/.vite/deps/phaser.js?v=6e7410d6" line: 116607}] @ http://127.0.0.1:5173/node_modules/.vite/deps/phaser.js?v=6e7410d6:116607
+[  531942ms] [WARNING] [JavaScript Warning: "An AudioContext was prevented from starting automatically. It must be created or resumed after a user gesture on the page." {file: "http://127.0.0.1:5173/node_modules/.vite/deps/phaser.js?v=6e7410d6" line: 116607}] @ http://127.0.0.1:5173/node_modules/.vite/deps/phaser.js?v=6e7410d6:116607
+[  532952ms] [WARNING] [JavaScript Warning: "WebGL warning: texImage: Alpha-premult and y-flip are deprecated for non-DOM-Element uploads."] @ :0
+[  532957ms] [WARNING] [JavaScript Warning: "WebGL warning: texImage: Alpha-premult and y-flip are deprecated for non-DOM-Element uploads."] @ :0
+[  532958ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  532958ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  532958ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  532958ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  532959ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  532960ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  532960ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  532960ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  532960ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  532960ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  532960ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  532960ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  532961ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  532961ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  532961ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  532962ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  532962ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  532962ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  532964ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  532964ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  532964ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  532965ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  532965ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  532965ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  532965ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  532965ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  532966ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  532966ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  532966ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  532966ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  532968ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  532974ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  532975ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  532975ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  532976ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  532976ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  533454ms] [INFO] Download the React DevTools for a better development experience: https://react.dev/link/react-devtools @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:20102
+[  533494ms] [TIMESTAMP] Blocking Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12095
+[  533495ms] [TIMESTAMP] Transition Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12102
+[  533495ms] [TIMESTAMP] Suspense Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12109
+[  533495ms] [TIMESTAMP] Idle Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12116
+[  533518ms] [TIMESTAMP] Render @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3314
+[  533519ms] [TIMESTAMP] Commit @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12955
+[  533540ms] [TIMESTAMP] Waiting for Paint @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:13132
+[  533541ms] [TIMESTAMP] App @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  533541ms] [TIMESTAMP] MemoryQuestGame @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  533551ms] [LOG]          Phaser v3.90.0 (WebGL | Web Audio)   https://phaser.io/v390 @ http://127.0.0.1:5173/node_modules/.vite/deps/phaser.js?v=6e7410d6:8455
+[  533553ms] [TIMESTAMP] MemoryQuestGame @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3291
+[  533553ms] [TIMESTAMP] SidePreview @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  533553ms] [TIMESTAMP] PortfolioMap @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  533553ms] [TIMESTAMP] PortfolioContent @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  533554ms] [TIMESTAMP] PortfolioCopy @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  533554ms] [TIMESTAMP] PortfolioVisual @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  533554ms] [TIMESTAMP] NarrativeBlock @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  533554ms] [TIMESTAMP] HighlightText @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  533554ms] [TIMESTAMP] HighlightText @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  533554ms] [TIMESTAMP] MemoryMain @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  533554ms] [TIMESTAMP] ProjectCards @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  533554ms] [TIMESTAMP] WorkRoadmap @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  533554ms] [TIMESTAMP] SkillWall @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  533554ms] [TIMESTAMP] FeatureCards @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  533554ms] [TIMESTAMP] InventoryToken @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  533554ms] [TIMESTAMP] HighlightText @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  533554ms] [TIMESTAMP] MemoryDetails @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  533555ms] [TIMESTAMP] PortfolioLinks @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  533555ms] [TIMESTAMP] LinkGlyph @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  533555ms] [TIMESTAMP] MemoryHighlights @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  533555ms] [TIMESTAMP] InventoryToken @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  533569ms] [LOG]          Phaser v3.90.0 (WebGL | Web Audio)   https://phaser.io/v390 @ http://127.0.0.1:5173/node_modules/.vite/deps/phaser.js?v=6e7410d6:8455
+[  533571ms] [TIMESTAMP] MemoryQuestGame @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3291
+[  533572ms] [TIMESTAMP] Remaining Effects @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:13177
+[  533574ms] [WARNING] [JavaScript Warning: "An AudioContext was prevented from starting automatically. It must be created or resumed after a user gesture on the page." {file: "http://127.0.0.1:5173/node_modules/.vite/deps/phaser.js?v=6e7410d6" line: 116607}] @ http://127.0.0.1:5173/node_modules/.vite/deps/phaser.js?v=6e7410d6:116607
+[  533578ms] [WARNING] [JavaScript Warning: "An AudioContext was prevented from starting automatically. It must be created or resumed after a user gesture on the page." {file: "http://127.0.0.1:5173/node_modules/.vite/deps/phaser.js?v=6e7410d6" line: 116607}] @ http://127.0.0.1:5173/node_modules/.vite/deps/phaser.js?v=6e7410d6:116607
+[  536830ms] [WARNING] [JavaScript Warning: "WebGL warning: texImage: Alpha-premult and y-flip are deprecated for non-DOM-Element uploads."] @ :0
+[  536837ms] [WARNING] [JavaScript Warning: "WebGL warning: texImage: Alpha-premult and y-flip are deprecated for non-DOM-Element uploads."] @ :0
+[  536837ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  536842ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  536842ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  536843ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  536844ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  536844ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  536844ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  536844ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  536844ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  536844ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  536844ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  536844ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  536844ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  536844ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  536844ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  536844ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  536844ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  536844ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  536844ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  536844ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  536844ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  536844ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  536845ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  536846ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  536846ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  536846ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  536846ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  536846ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  536846ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  536846ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  536846ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  536846ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  536846ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  536846ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  536846ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  536846ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  537590ms] [INFO] Download the React DevTools for a better development experience: https://react.dev/link/react-devtools @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:20102
+[  537646ms] [TIMESTAMP] Blocking Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12095
+[  537646ms] [TIMESTAMP] Transition Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12102
+[  537646ms] [TIMESTAMP] Suspense Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12109
+[  537646ms] [TIMESTAMP] Idle Track @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12116
+[  537680ms] [TIMESTAMP] Render @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3314
+[  537682ms] [TIMESTAMP] Commit @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:12955
+[  537696ms] [TIMESTAMP] Waiting for Paint @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:13132
+[  537696ms] [TIMESTAMP] App @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  537696ms] [TIMESTAMP] MemoryQuestGame @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  537713ms] [LOG]          Phaser v3.90.0 (WebGL | Web Audio)   https://phaser.io/v390 @ http://127.0.0.1:5173/node_modules/.vite/deps/phaser.js?v=6e7410d6:8455
+[  537716ms] [TIMESTAMP] MemoryQuestGame @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3291
+[  537716ms] [TIMESTAMP] SidePreview @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  537717ms] [TIMESTAMP] PortfolioMap @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  537717ms] [TIMESTAMP] PortfolioContent @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  537717ms] [TIMESTAMP] PortfolioCopy @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  537717ms] [TIMESTAMP] PortfolioVisual @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  537717ms] [TIMESTAMP] SectionIllustration @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  537717ms] [TIMESTAMP] NarrativeBlock @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  537717ms] [TIMESTAMP] HighlightText @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  537717ms] [TIMESTAMP] HighlightText @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  537721ms] [TIMESTAMP] HighlightText @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  537721ms] [TIMESTAMP] HighlightText @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  537721ms] [TIMESTAMP] MemoryMain @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  537721ms] [TIMESTAMP] ProjectCards @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  537721ms] [TIMESTAMP] WorkRoadmap @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  537721ms] [TIMESTAMP] SkillWall @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  537721ms] [TIMESTAMP] FeatureCards @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  537721ms] [TIMESTAMP] InventoryToken @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  537721ms] [TIMESTAMP] InventoryToken @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  537721ms] [TIMESTAMP] InventoryToken @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  537721ms] [TIMESTAMP] HighlightText @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  537722ms] [TIMESTAMP] MemoryDetails @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  537723ms] [TIMESTAMP] MemoryHighlights @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  537723ms] [TIMESTAMP] InventoryToken @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  537723ms] [TIMESTAMP] HighlightText @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  537723ms] [TIMESTAMP] InventoryToken @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  537723ms] [TIMESTAMP] HighlightText @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  537723ms] [TIMESTAMP] InventoryToken @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  537723ms] [TIMESTAMP] HighlightText @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3200
+[  537739ms] [LOG]          Phaser v3.90.0 (WebGL | Web Audio)   https://phaser.io/v390 @ http://127.0.0.1:5173/node_modules/.vite/deps/phaser.js?v=6e7410d6:8455
+[  537741ms] [TIMESTAMP] MemoryQuestGame @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:3291
+[  537742ms] [TIMESTAMP] Remaining Effects @ http://127.0.0.1:5173/node_modules/.vite/deps/react-dom_client.js?v=6e7410d6:13177
+[  537750ms] [WARNING] [JavaScript Warning: "An AudioContext was prevented from starting automatically. It must be created or resumed after a user gesture on the page." {file: "http://127.0.0.1:5173/node_modules/.vite/deps/phaser.js?v=6e7410d6" line: 116607}] @ http://127.0.0.1:5173/node_modules/.vite/deps/phaser.js?v=6e7410d6:116607
+[  537754ms] [WARNING] [JavaScript Warning: "An AudioContext was prevented from starting automatically. It must be created or resumed after a user gesture on the page." {file: "http://127.0.0.1:5173/node_modules/.vite/deps/phaser.js?v=6e7410d6" line: 116607}] @ http://127.0.0.1:5173/node_modules/.vite/deps/phaser.js?v=6e7410d6:116607
+[  539534ms] [WARNING] [JavaScript Warning: "WebGL warning: texImage: Alpha-premult and y-flip are deprecated for non-DOM-Element uploads."] @ :0
+[  539534ms] [WARNING] [JavaScript Warning: "WebGL warning: texImage: Alpha-premult and y-flip are deprecated for non-DOM-Element uploads."] @ :0
+[  539534ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  539534ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  539534ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  539534ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  539534ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  539534ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  539534ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  539534ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  539553ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  539553ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  539553ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  539553ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  539553ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  539553ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  539553ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  539553ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  539553ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  539553ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  539554ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  539554ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  539554ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  539554ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  539554ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  539554ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  539555ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  539555ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  539555ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  539555ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  539555ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  539555ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  539555ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  539555ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  539555ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  539555ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  539555ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  539555ms] [WARNING] [JavaScript Warning: "WebGL warning: generateMipmap: Tex image TEXTURE_2D level 0 is incurring lazy initialization."] @ :0
+[  568302ms] [LOG] [vite] server connection lost. Polling for restart... @ http://127.0.0.1:5173/@vite/client:864

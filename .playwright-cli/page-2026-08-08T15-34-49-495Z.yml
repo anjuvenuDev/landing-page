@@ -1,0 +1,74 @@
+- main [ref=e19]:
+  - generic "Anjana Memory Quest game" [ref=e21]
+  - region "Portfolio preview" [ref=e511]:
+    - button "go back to game mode" [ref=e512] [cursor=pointer]: ⤢
+    - button "Previous slide" [ref=e513] [cursor=pointer]: <
+    - article [ref=e514]:
+      - generic [ref=e515]:
+        - heading "Work Experience" [level=2] [ref=e516]
+        - generic "Memory 3 of 8" [ref=e517]: 3/8
+      - generic "Internship roadmap" [ref=e520]:
+        - article [ref=e521]:
+          - generic [ref=e522]: "1"
+          - generic [ref=e523]:
+            - img "NoShack Solutions logo" [ref=e524]
+            - generic [ref=e525]:
+              - heading "NoShack Solutions" [level=3] [ref=e526]
+              - paragraph [ref=e527]: Frontend Developer Intern
+          - strong [ref=e528]: Jul 2024 - Aug 2024
+          - paragraph [ref=e529]: Production frontend foundations
+          - list [ref=e530]:
+            - listitem [ref=e531]:
+              - text: Integrated
+              - strong [ref=e532]: REST APIs
+              - text: with React and JavaScript interfaces.
+            - listitem [ref=e533]: Built interactive screens and internal dashboard workflows.
+            - listitem [ref=e534]: Improved data rendering, debugging flow, testing, and frontend performance.
+        - article [ref=e535]:
+          - generic [ref=e536]: "2"
+          - generic [ref=e537]:
+            - img "Yhills logo" [ref=e538]
+            - generic [ref=e539]:
+              - heading "Yhills" [level=3] [ref=e540]
+              - paragraph [ref=e541]: Web Development Intern
+          - strong [ref=e542]: Jan 2025 - Mar 2025
+          - paragraph [ref=e543]: Responsive product delivery
+          - list [ref=e544]:
+            - listitem [ref=e545]: Developed responsive user-facing web pages with HTML, CSS, JavaScript, and React.
+            - listitem [ref=e546]: Connected APIs to frontend components so product workflows felt complete.
+            - listitem [ref=e547]: Collaborated with mentors and teammates to clarify requirements and ship maintainable features.
+        - article [ref=e548]:
+          - generic [ref=e549]: "3"
+          - generic [ref=e550]:
+            - img "Friday Intellytics logo" [ref=e551]
+            - generic [ref=e552]:
+              - heading "Friday Intellytics" [level=3] [ref=e553]
+              - paragraph [ref=e554]: Associate Intern - Product & Growth
+          - strong [ref=e555]: May 2026 - Present
+          - paragraph [ref=e556]: AI analytics product ownership
+          - list [ref=e557]:
+            - listitem [ref=e558]:
+              - text: Selected from
+              - strong [ref=e559]: 25+ candidates
+              - text: through a
+              - strong [ref=e560]: 6-hour evaluation
+              - text: covering analytics,
+              - strong [ref=e561]: system design
+              - text: ", AI agents, and"
+              - strong [ref=e562]: product ideation
+              - text: .
+            - listitem [ref=e563]:
+              - text: Owned desktop app improvements across
+              - strong [ref=e564]: data integration
+              - text: ","
+              - strong [ref=e565]: authentication
+              - text: ","
+              - strong [ref=e566]: exports
+              - text: ", and"
+              - strong [ref=e567]: UI workflows
+              - text: .
+            - listitem [ref=e568]:
+              - text: Worked with the founder on feature planning, MVP flows, testing,
+              - strong [ref=e569]: beta registration
+              - text: ", and product refinement."
+    - button "Next slide" [ref=e570] [cursor=pointer]: ">"

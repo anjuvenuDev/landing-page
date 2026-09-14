@@ -1,0 +1,15 @@
+{
+  "browser": {
+    "launchOptions": {
+      "executablePath": "/home/anj/.cache/ms-playwright/chromium-1237/chrome-linux64/chrome",
+      "headless": true,
+      "args": ["--no-sandbox"]
+    },
+    "contextOptions": {
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      }
+    }
+  }
+}

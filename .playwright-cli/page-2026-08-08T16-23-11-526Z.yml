@@ -1,0 +1,60 @@
+- main [ref=e19]:
+  - generic "Anjana Memory Quest game" [ref=e21]
+  - region "Portfolio preview" [ref=e23]:
+    - button "go back to game mode" [ref=e24] [cursor=pointer]: ⤢
+    - button "Previous slide" [disabled] [ref=e25]: <
+    - article [ref=e26]:
+      - generic [ref=e27]:
+        - heading "About Anjana" [level=2] [ref=e28]
+        - generic "Memory 1 of 8" [ref=e29]: 1/8
+      - generic [ref=e31]:
+        - generic [ref=e32]:
+          - figure [ref=e33]:
+            - img "Anjana Venugopalan" [ref=e34]
+          - paragraph [ref=e35]:
+            - text: Anjana Venugopalan is a
+            - strong [ref=e36]: 5 Year Integrated M.Tech CSE
+            - text: student at
+            - strong [ref=e37]: SSN College of Engineering
+            - text: ", Chennai, driven by a passion for building technology that creates"
+            - strong [ref=e38]: meaningful impact
+            - text: . With a strong academic record and hands-on experience across
+            - strong [ref=e39]: artificial intelligence
+            - text: ","
+            - strong [ref=e40]: full-stack development
+            - text: ","
+            - strong [ref=e41]: product engineering
+            - text: ", and"
+            - strong [ref=e42]: computer vision
+            - text: ", she enjoys working at the intersection of innovation and usability. What began as a fascination with programming has evolved into a broader interest in designing complete digital experiences. From conceptualizing products and architecting software to refining user interactions, Anjana enjoys understanding every layer of the development process. She believes that successful technology is not defined solely by its technical sophistication, but by how naturally it fits into people's lives. Her work is guided by curiosity, creativity, and a constant desire to learn. Anjana hopes to contribute to products that combine intelligent technology with thoughtful design, making complex systems more accessible, intuitive, and human-centered."
+        - generic "Education path" [ref=e43]:
+          - article [ref=e44]:
+            - generic [ref=e45]: SSN
+            - generic [ref=e46]:
+              - heading "Integrated M.Tech CSE" [level=3] [ref=e47]
+              - paragraph [ref=e48]: Sri Sivasubramaniya Nadar College of Engineering, Chennai
+              - strong [ref=e49]: Aug 2023 - Jul 2028 | CGPA 9.237/10 | Department Rank 3
+              - generic [ref=e50]: Coursework spans data analytics, machine learning, databases, optimization, software construction, algorithms, and data structures.
+          - article [ref=e51]:
+            - generic [ref=e52]: XII
+            - generic [ref=e53]:
+              - heading "Senior Secondary" [level=3] [ref=e54]
+              - paragraph [ref=e55]: AISSCE
+              - strong [ref=e56]: 482/500 | 96.4%
+              - generic [ref=e57]: Built the academic base for analytical problem solving and technical depth.
+          - article [ref=e58]:
+            - generic [ref=e59]: X
+            - generic [ref=e60]:
+              - heading "Secondary School" [level=3] [ref=e61]
+              - paragraph [ref=e62]: AISSE
+              - strong [ref=e63]: 489/500 | 97.8%
+              - generic [ref=e64]: A strong early foundation before the long CSE quest began.
+        - article [ref=e66]:
+          - generic [ref=e67]: ⌁
+          - generic [ref=e68]:
+            - heading "Arch Linux Convert" [level=3] [ref=e69]
+            - paragraph [ref=e70]:
+              - text: Dual-booted Arch alongside Windows because
+              - strong [ref=e71]: Windows is boring
+              - text: ", she said."
+    - button "Next slide" [ref=e72] [cursor=pointer]: ">"

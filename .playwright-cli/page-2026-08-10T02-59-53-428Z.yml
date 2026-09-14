@@ -1,0 +1,11 @@
+- main [ref=e3]:
+  - region "Story narration" [ref=e4]:
+    - generic [ref=e5]:
+      - heading "Anjana's Memory Quest" [level=1] [ref=e6]
+      - generic [ref=e8]:
+        - paragraph [ref=e9]: I wake inside a forest that feels older than memory.
+        - paragraph [ref=e10]: The trees know my name, but I cannot remember wh_
+      - button "Skip intro" [ref=e11]
+    - generic [ref=e13]:
+      - button "Enter game" [ref=e14]
+      - button "Skip to profile" [ref=e15]

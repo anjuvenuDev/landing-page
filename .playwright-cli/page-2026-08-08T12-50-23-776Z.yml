@@ -1,0 +1,100 @@
+- main [ref=f1e3]:
+  - generic "Anjana Memory Quest game" [ref=f1e5]
+  - generic [ref=f1e7]:
+    - complementary "Portfolio game map" [ref=f1e8]:
+      - heading "Game Map" [level=2] [ref=f1e9]
+      - navigation "Memory map" [ref=f1e10]:
+        - 'button "1: Self" [ref=f1e11] [cursor=pointer]':
+          - strong [ref=f1e13]: "1: Self"
+        - 'button "2: Making" [ref=f1e14] [cursor=pointer]':
+          - strong [ref=f1e16]: "2: Making"
+        - 'button "3: Practice" [ref=f1e17] [cursor=pointer]':
+          - strong [ref=f1e19]: "3: Practice"
+        - 'button "4: Tools" [ref=f1e20] [cursor=pointer]':
+          - strong [ref=f1e22]: "4: Tools"
+        - 'button "5: Voice" [ref=f1e23] [cursor=pointer]':
+          - strong [ref=f1e25]: "5: Voice"
+        - 'button "6: Guilds" [ref=f1e26] [cursor=pointer]':
+          - strong [ref=f1e28]: "6: Guilds"
+        - 'button "7: Wonder" [ref=f1e29] [cursor=pointer]':
+          - strong [ref=f1e31]: "7: Wonder"
+        - 'button "8: Proof" [ref=f1e32] [cursor=pointer]':
+          - strong [ref=f1e34]: "8: Proof"
+      - generic [ref=f1e35]:
+        - button "Home" [ref=f1e36] [cursor=pointer]:
+          - generic [ref=f1e37]: ⌂
+          - text: Home
+        - generic "Game guide" [ref=f1e38]:
+          - generic [ref=f1e39]: ◈
+          - text: Guide
+        - generic "Quest log" [ref=f1e40]:
+          - generic [ref=f1e41]: ▣
+          - text: Log
+    - article [ref=f1e42]:
+      - button "Close memory view" [ref=f1e43] [cursor=pointer]: x
+      - button "Open fullscreen preview" [ref=f1e44] [cursor=pointer]: ⛶
+      - generic [ref=f1e45]:
+        - heading "About Anjana" [level=2] [ref=f1e46]
+        - generic "Memory 1 of 8" [ref=f1e47]:
+          - generic [ref=f1e48]: Quest Progress
+          - strong [ref=f1e51]: 1/8
+      - generic [ref=f1e53]:
+        - generic [ref=f1e54]:
+          - figure [ref=f1e55]:
+            - img "Anjana Venugopalan" [ref=f1e56]
+          - paragraph [ref=f1e57]:
+            - text: Anjana Venugopalan is a
+            - strong [ref=f1e58]: 5 Year Integrated M.Tech CSE
+            - text: student at
+            - strong [ref=f1e59]: SSN College of Engineering
+            - text: ", Chennai, driven by a passion for building technology that creates"
+            - strong [ref=f1e60]: meaningful impact
+            - text: . With a strong academic record and hands-on experience across
+            - strong [ref=f1e61]: artificial intelligence
+            - text: ","
+            - strong [ref=f1e62]: full-stack development
+            - text: ","
+            - strong [ref=f1e63]: product engineering
+            - text: ", and"
+            - strong [ref=f1e64]: computer vision
+            - text: ", she enjoys working at the intersection of innovation and usability. What began as a fascination with programming has evolved into a broader interest in designing complete digital experiences. From conceptualizing products and architecting software to refining user interactions, Anjana enjoys understanding every layer of the development process. She believes that successful technology is not defined solely by its technical sophistication, but by how naturally it fits into people's lives. Her work is guided by curiosity, creativity, and a constant desire to learn. Anjana hopes to contribute to products that combine intelligent technology with thoughtful design, making complex systems more accessible, intuitive, and human-centered."
+        - generic "Education path" [ref=f1e65]:
+          - article [ref=f1e66]:
+            - generic [ref=f1e67]: "01"
+            - generic [ref=f1e68]:
+              - heading "SSN College of Engineering" [level=3] [ref=f1e69]
+              - paragraph [ref=f1e70]: Integrated M.Tech CSE, Chennai
+              - strong [ref=f1e71]: Aug 2023 - Jul 2028 | CGPA 9.237/10 | Department Rank 3
+          - article [ref=f1e72]:
+            - generic [ref=f1e73]: "02"
+            - generic [ref=f1e74]:
+              - heading "Senior Secondary" [level=3] [ref=f1e75]
+              - paragraph [ref=f1e76]: AISSCE
+              - strong [ref=f1e77]: 482/500 | 96.4%
+          - article [ref=f1e78]:
+            - generic [ref=f1e79]: "03"
+            - generic [ref=f1e80]:
+              - heading "Secondary School" [level=3] [ref=f1e81]
+              - paragraph [ref=f1e82]: AISSE
+              - strong [ref=f1e83]: 489/500 | 97.8%
+        - generic [ref=f1e84]:
+          - article [ref=f1e85]:
+            - generic [ref=f1e87]: "Relevant coursework: Data Science and Analytics, Machine Learning, Database Management Systems, Applied Optimization Techniques, Software Construction, Design and Analysis of Algorithms, Data Structures and Algorithms."
+          - article [ref=f1e88]:
+            - generic [ref=f1e89]: ⌁
+            - generic [ref=f1e90]:
+              - heading "Arch Linux Convert" [level=3] [ref=f1e91]
+              - paragraph [ref=f1e92]:
+                - text: Dual-booted Arch alongside Windows because
+                - strong [ref=f1e93]: Windows is boring
+                - text: ", she said."
+        - generic [ref=f1e94]:
+          - generic [ref=f1e95]: Product
+          - generic [ref=f1e96]: AI
+          - generic [ref=f1e97]: Frontend
+          - generic [ref=f1e98]: Design
+          - generic [ref=f1e99]: Arch Linux
+      - generic [ref=f1e100]:
+        - button "No previous" [disabled] [ref=f1e101]
+        - button "Play again" [ref=f1e102] [cursor=pointer]
+        - 'button "Next: Anjana''s Projects" [ref=f1e103] [cursor=pointer]'

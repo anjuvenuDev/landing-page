@@ -1,5 +1,6 @@
 import { useEffect, useRef } from "react";
 import Phaser from "phaser";
+import { challenges } from "./levels";
 import { parseAvatarSprite } from "../avatar/cssPixelSprite";
 import type { GameLevel } from "../data/portfolio";
 
@@ -42,13 +43,6 @@ type PlatformSpec = {
   tiles: number;
 };
 
-type PlatformPatternSpec = {
-  x: number;
-  rise: number;
-  tiles: number;
-  lifted?: boolean;
-};
-
 type SafeSurface = {
   left: number;
   right: number;
@@ -83,38 +77,28 @@ const platformSurfaceInset = 16;
 const maxRunVelocity = 360;
 const jumpVelocity = 520;
 const moveAcceleration = 900;
-const coursePatterns: PlatformPatternSpec[][] = [
-  [
-    { x: 0, rise: 0, tiles: 10 },
-    { x: 12.35, rise: 0.76, tiles: 8 },
-    { x: 22.55, rise: 1.32, tiles: 8, lifted: true },
-    { x: 32.35, rise: 0.88, tiles: 8 },
-    { x: 42.4, rise: 0.12, tiles: 12 },
-  ],
-  [
-    { x: 0, rise: 0, tiles: 9 },
-    { x: 11.65, rise: 0.44, tiles: 7 },
-    { x: 20.85, rise: 1.04, tiles: 9, lifted: true },
-    { x: 32.15, rise: 1.48, tiles: 7 },
-    { x: 41.55, rise: 0.7, tiles: 11 },
-  ],
-  [
-    { x: 0, rise: 0, tiles: 11 },
-    { x: 13.45, rise: 1.02, tiles: 7 },
-    { x: 22.95, rise: 0.42, tiles: 8 },
-    { x: 32.9, rise: 1.22, tiles: 8, lifted: true },
-    { x: 43.15, rise: 0.38, tiles: 12 },
-  ],
-  [
-    { x: 0, rise: 0, tiles: 10 },
-    { x: 12.15, rise: 0.64, tiles: 8 },
-    { x: 22.4, rise: 1.5, tiles: 7, lifted: true },
-    { x: 31.75, rise: 0.64, tiles: 9 },
-    { x: 43.05, rise: 1.02, tiles: 10 },
-  ],
-];
-
 class MemoryQuestScene extends Phaser.Scene {
+  private forestImage?: Phaser.GameObjects.Image;
+  private forestShade?: Phaser.GameObjects.Rectangle;
+  private sparks = 0;
+  private totalSparks = 0;
+  private sparkText?: Phaser.GameObjects.Text;
+  private touch = { left: false, right: false, jump: false };
+  private lastGrounded = -1000;
+  private jumpQueued = -1000;
+  private hazards: { sprite: Phaser.Physics.Arcade.Sprite; start: number; range: number; phase: number }[] = [];
+  public setTouch(key: 'left' | 'right' | 'jump', down: boolean) { this.touch[key] = down; }
+  public ensureKeyboardFocus() {
+    const canvas = this.game.canvas;
+    if (!canvas) return;
+    canvas.setAttribute("tabindex", "0");
+    canvas.style.outline = "none";
+    try {
+      canvas.focus({ preventScroll: true });
+    } catch {
+      canvas.focus();
+    }
+  }
   private player?: Phaser.Physics.Arcade.Sprite;
   private cursors?: Phaser.Types.Input.Keyboard.CursorKeys;
   private wasd?: Record<string, Phaser.Input.Keyboard.Key>;
@@ -135,6 +119,7 @@ class MemoryQuestScene extends Phaser.Scene {
     level: GameLevel,
     reducedMotion: boolean,
     completeCallback: (sectionId: GameLevel["id"]) => void,
+    private shouldPause: () => boolean = () => false,
   ) {
     super("memory-quest");
     this.level = level;
@@ -161,14 +146,18 @@ class MemoryQuestScene extends Phaser.Scene {
     this.load.image("tall-rock", "/assets/sunnyland/tall/rock.png");
     this.load.image("sunny-slug", "/assets/sunnyland/slug.png");
     this.load.image("sunny-chest", "/assets/sunnyland/chest.png");
+    this.load.image("chapter-bg", `/assets/levels/${challenges[this.level.level - 1].background}.png`);
     this.createPixelTextures();
   }
 
   create() {
     const { width, height } = this.scale;
     const theme = this.currentTheme();
-    this.physics.world.setBounds(0, 0, 3320, height + 420);
-    this.cameras.main.setBounds(0, 0, 3320, height);
+    const plan = challenges[this.level.level - 1];
+    const end = plan.platforms[plan.platforms.length - 1];
+    const worldWidth = (end.x + end.tiles + 1) * 16 * this.courseScale(height);
+    this.physics.world.setBounds(0, 0, worldWidth, height + 420);
+    this.cameras.main.setBounds(0, 0, worldWidth, height);
 
     this.createForest(width, height);
     this.createHud(width);
@@ -193,8 +182,32 @@ class MemoryQuestScene extends Phaser.Scene {
     this.player.setDragX(1200);
     this.player.setMaxVelocity(maxRunVelocity, 720);
     this.player.body?.setSize(bodyWidth, bodyHeight).setOffset(bodyOffsetX, bodyOffsetY);
-    this.cameras.main.startFollow(this.player, true, 0.08, 0.08, -160, 70);
+    this.cameras.main.startFollow(this.player, true, 0.08, 0.08, -Math.min(160, width * .18), 35);
     this.physics.add.collider(this.player, course.platforms);
+    this.totalSparks = course.safeSurfaces.length - 1;
+    const sparkGroup = this.physics.add.staticGroup();
+    course.safeSurfaces.slice(1).forEach((surface, index) => {
+      const x = (surface.left + surface.right) / 2;
+      const spark = sparkGroup.create(x, surface.y - 90, 'spark') as Phaser.Physics.Arcade.Sprite;
+      spark.setDepth(25).setScale(1.3).refreshBody();
+      if (!this.reducedMotion) this.tweens.add({ targets: spark, alpha: .5, duration: 800, yoyo: true, repeat: -1 });
+      if (index < plan.hazards) {
+        const guardian = this.physics.add.sprite(x + 80, surface.y - 19, 'sunny-slug').setScale(1.6).setDepth(23);
+        (guardian.body as Phaser.Physics.Arcade.Body).setAllowGravity(false);
+        guardian.setSize(20, 16);
+        this.hazards.push({ sprite: guardian, start: x + 45, range: 24 + this.level.level * 3, phase: index });
+        this.physics.add.overlap(this.player!, guardian, () => this.resetPlayer());
+      }
+    });
+    this.physics.add.overlap(this.player, sparkGroup, (_player, item) => {
+      const spark = item as Phaser.Physics.Arcade.Sprite;
+      if (!spark.active) return;
+      spark.disableBody(true, true);
+      this.sparks++;
+      this.sparkText?.setText(`SPARKS ${this.sparks}/${this.totalSparks}`);
+      if (this.sparks === this.totalSparks) this.questText?.setText('All sparks found! Reach the rune box →');
+    });
+    this.sparkText?.setText(`SPARKS 0/${this.totalSparks}`);
 
     const obstacles = this.physics.add.staticGroup();
     course.obstacles.forEach((item) => {
@@ -213,34 +226,56 @@ class MemoryQuestScene extends Phaser.Scene {
     unlockBox.refreshBody();
     this.physics.add.overlap(this.player, unlockBox, () => {
       if (this.completed) return;
+      if (this.sparks < this.totalSparks) {
+        this.questText?.setText(`Find ${this.totalSparks - this.sparks} more sparks before opening the rune box.`);
+        return;
+      }
       unlockBox.disableBody(true, true);
       unlockPrompt.forEach((item) => item.destroy());
       this.revealTreasure();
     });
 
-    this.cursors = this.input.keyboard?.createCursorKeys();
-    this.input.keyboard?.addCapture(["SPACE", "UP", "W", "A", "D", "LEFT", "RIGHT"]);
-    this.wasd = this.input.keyboard?.addKeys("W,A,S,D") as Record<
-      string,
-      Phaser.Input.Keyboard.Key
-    >;
-
+    this.armControls();
+    // Defer pause so React's pause effect can sync after the scene is fully ready.
+    if (this.shouldPause()) {
+      this.time.delayedCall(0, () => {
+        if (this.shouldPause() && this.sys.settings.active) this.scene.pause();
+      });
+    }
   }
 
-  update() {
-    if (!this.player || !this.cursors || !this.wasd) return;
+  /** Bind or re-arm Phaser keyboard after boot / resume so move keys stay live. */
+  public armControls() {
+    const keyboard = this.input.keyboard;
+    if (!keyboard) return;
+    keyboard.enabled = true;
+    keyboard.clearCaptures();
+    keyboard.resetKeys();
+    if (!this.cursors) this.cursors = keyboard.createCursorKeys();
+    if (!this.wasd) this.wasd = keyboard.addKeys("W,A,S,D") as Record<string, Phaser.Input.Keyboard.Key>;
+    keyboard.addCapture(["SPACE", "UP", "W", "A", "D", "LEFT", "RIGHT"]);
+    if (!this.shouldPause()) this.ensureKeyboardFocus();
+  }
+
+  update(time: number) {
+    this.hazards.forEach(h => {
+      const x = h.start + Math.sin(time / (1500 - this.level.level * 65) + h.phase) * h.range;
+      h.sprite.setFlipX(x < h.sprite.x);
+      (h.sprite.body as Phaser.Physics.Arcade.Body).reset(x, h.sprite.y);
+    });
+    if (!this.player) return;
 
     if (this.respawning) {
       this.holdPlayerAtCheckpoint();
       return;
     }
 
-    const left = this.cursors.left.isDown || this.wasd.A.isDown;
-    const right = this.cursors.right.isDown || this.wasd.D.isDown;
-    const jump =
-      Phaser.Input.Keyboard.JustDown(this.cursors.space) ||
-      Phaser.Input.Keyboard.JustDown(this.cursors.up) ||
-      Phaser.Input.Keyboard.JustDown(this.wasd.W);
+    const left = this.touch.left || !!this.cursors?.left.isDown || !!this.wasd?.A.isDown;
+    const right = this.touch.right || !!this.cursors?.right.isDown || !!this.wasd?.D.isDown;
+    const jump = this.touch.jump ||
+      (!!this.cursors?.space && Phaser.Input.Keyboard.JustDown(this.cursors.space)) ||
+      (!!this.cursors?.up && Phaser.Input.Keyboard.JustDown(this.cursors.up)) ||
+      (!!this.wasd?.W && Phaser.Input.Keyboard.JustDown(this.wasd.W));
 
     if (left) {
       this.player.setAccelerationX(-moveAcceleration);
@@ -262,11 +297,16 @@ class MemoryQuestScene extends Phaser.Scene {
         activeSurface.left + activeSurface.margin,
         activeSurface.right - activeSurface.margin,
       );
-      this.lastSafePosition.set(safeX, this.playerYForSurface(activeSurface.y));
+      const nearHazard = this.hazards.some(h => Math.abs(safeX - h.start) < h.range + 60);
+      if (!nearHazard) this.lastSafePosition.set(safeX, this.playerYForSurface(activeSurface.y));
     }
 
-    if (jump && grounded) {
+    if (grounded) this.lastGrounded = time;
+    if (jump) { this.jumpQueued = time; this.touch.jump = false; }
+    if (time - this.jumpQueued < 130 && time - this.lastGrounded < 100) {
       this.player.setVelocityY(-jumpVelocity);
+      this.lastGrounded = -1000;
+      this.jumpQueued = -1000;
     }
 
     if (this.player.x < 32) {
@@ -278,8 +318,8 @@ class MemoryQuestScene extends Phaser.Scene {
       this.resetPlayer();
     }
 
-    const progress = Phaser.Math.Clamp(this.player.x / 3000, 0, 1);
-    this.progressBar?.setDisplaySize(184 * progress, 10);
+    const progress = Phaser.Math.Clamp(this.player.x / this.chestPoint.x, 0, 1);
+    this.progressBar?.setDisplaySize(140 * progress, 4);
   }
 
   private createPixelTextures() {
@@ -292,6 +332,10 @@ class MemoryQuestScene extends Phaser.Scene {
     });
     avatar.generateTexture("anjana-avatar", avatarSprite.width, avatarSprite.height);
 
+    const spark = this.make.graphics({ x: 0, y: 0 }, false);
+    spark.fillStyle(0xffe2a0); spark.fillPoints([{x:12,y:0},{x:24,y:12},{x:12,y:24},{x:0,y:12}], true);
+    spark.fillStyle(0xffffff); spark.fillRect(10,6,4,8);
+    spark.generateTexture('spark',24,24);
     const ground = this.make.graphics({ x: 0, y: 0 }, false);
     ground.fillStyle(theme.near);
     ground.fillRect(0, 0, 64, 40);
@@ -527,50 +571,34 @@ class MemoryQuestScene extends Phaser.Scene {
   }
 
   private createForest(width: number, height: number) {
-    const theme = this.currentTheme();
-    this.cameras.main.setBackgroundColor(theme.sky);
-    const layerScale = Math.max(3, height / 240);
-
-    if (theme.mode === "sunny") {
-      this.add.tileSprite(0, 0, width, height, "sunny-bg")
-        .setOrigin(0, 0)
-        .setTileScale(layerScale, layerScale)
-        .setScrollFactor(0)
-        .setDepth(-50);
-      this.add.tileSprite(0, 0, width, height, "sunny-mid")
-        .setOrigin(0, 0)
-        .setTileScale(layerScale, layerScale)
-        .setScrollFactor(0)
-        .setDepth(-42);
-      return;
-    }
-
-    this.add.tileSprite(0, 0, width, height, "tall-back")
-      .setOrigin(0, 0)
-      .setTileScale(layerScale, layerScale)
-      .setScrollFactor(0)
-      .setDepth(-50);
-    this.add.tileSprite(0, 0, width, height, "tall-far")
-      .setOrigin(0, 0)
-      .setTileScale(layerScale, layerScale)
-      .setScrollFactor(0)
-      .setDepth(-46);
-    this.add.tileSprite(0, 0, width, height, "tall-middle")
-      .setOrigin(0, 0)
-      .setTileScale(layerScale, layerScale)
-      .setScrollFactor(0)
-      .setDepth(-42);
+    this.cameras.main.setBackgroundColor(0x192132);
+    // Cover-fit a single image: uniform scale, no stretch, no tiling/replay, no empty bands.
+    this.forestImage = this.add.image(width / 2, height / 2, "chapter-bg").setScrollFactor(0).setDepth(-50);
+    this.forestShade = this.add.rectangle(0, 0, width, height, 0x121927, .08).setOrigin(0).setScrollFactor(0).setDepth(-40);
+    const fit = (size: { width: number; height: number }) => {
+      const bg = this.forestImage!;
+      const source = bg.texture.getSourceImage() as HTMLImageElement;
+      const scale = Math.max(size.width / source.width, size.height / source.height);
+      bg.setPosition(size.width / 2, size.height / 2);
+      bg.setScale(scale);
+      this.forestShade?.setSize(size.width, size.height);
+      this.cameras.main.setSize(size.width, size.height);
+      this.cameras.main.setFollowOffset(-Math.min(160, size.width * .18), 35);
+      this.questText?.setX(size.width - 18).setWordWrapWidth(Math.max(100, Math.min(350, size.width - 175)));
+    };
+    fit({ width, height });
+    this.scale.on("resize", fit);
+    this.events.once("shutdown", () => this.scale.off("resize", fit));
   }
 
   private createCourse(height: number): CourseLayout {
     const tileScale = this.courseScale(height);
     const unit = 16 * tileScale;
     const baseY = height - Math.max(126, unit * 2.2);
-    const lift = Math.min(this.level.level - 1, 5) * (unit * 0.14);
-    const pattern = coursePatterns[(this.level.level - 1) % coursePatterns.length];
+    const pattern = challenges[this.level.level - 1].platforms;
     const platforms: PlatformSpec[] = pattern.map((platform) => ({
       x: platform.x * unit,
-      y: baseY - platform.rise * unit - (platform.lifted ? lift : 0),
+      y: baseY - platform.rise * unit,
       tiles: platform.tiles,
     }));
     const platformGroup = this.physics.add.staticGroup();
@@ -580,7 +608,7 @@ class MemoryQuestScene extends Phaser.Scene {
       safeSurfaces.push(this.drawPlatform(platformGroup, platform, tileScale));
     });
 
-    const finalPlatform = platforms[4];
+    const finalPlatform = platforms[platforms.length - 1];
     const finalSurfaceY = finalPlatform.y + platformSurfaceInset * tileScale;
     const triggerX = finalPlatform.x + unit * Math.min(2.4, finalPlatform.tiles - 4.2);
     const chestX = finalPlatform.x + unit * Math.min(6.5, finalPlatform.tiles - 2.2);
@@ -640,40 +668,11 @@ class MemoryQuestScene extends Phaser.Scene {
   }
 
   private createHud(width: number) {
-    const theme = this.currentTheme();
-    const panelX = 88;
-    const textX = panelX + 20;
-    const progressX = textX;
-    const panel = this.add.rectangle(panelX, 22, 286, 72, 0x101419, 0.82)
-      .setOrigin(0, 0)
-      .setScrollFactor(0)
-      .setDepth(70);
-    panel.setStrokeStyle(3, theme.accent);
-
-    this.add.text(textX, 38, `LEVEL ${this.level.level}`, {
-      fontFamily: "\"Pixelify Sans\", monospace",
-      fontSize: "16px",
-      color: `#${theme.accent.toString(16).padStart(6, "0")}`,
-    }).setScrollFactor(0).setDepth(71);
-    this.add.text(textX, 62, this.level.title.toUpperCase(), {
-      fontFamily: "\"Pixelify Sans\", monospace",
-      fontSize: "15px",
-      color: "#f9e7b7",
-      wordWrap: { width: 230 },
-    }).setScrollFactor(0).setDepth(71);
-
-    this.add.rectangle(progressX, 84, 232, 5, 0x050505).setOrigin(0, 0).setScrollFactor(0).setDepth(71);
-    this.progressBar = this.add.rectangle(progressX, 84, 0, 5, theme.accent).setOrigin(0, 0).setScrollFactor(0).setDepth(72);
-    this.questText = this.add.text(width / 2, 30, this.level.quest, {
-      fontFamily: "\"Pixelify Sans\", monospace",
-      fontSize: "20px",
-      color: "#f9e7b7",
-      align: "center",
-      stroke: "#101419",
-      strokeThickness: 6,
-      shadow: { offsetX: 3, offsetY: 3, color: "#000000", blur: 0, fill: true },
-      wordWrap: { width: Math.max(280, Math.min(620, width - 440)) },
-    }).setOrigin(0.5, 0).setScrollFactor(0).setDepth(71);
+    const style = { fontFamily: 'Pixelify Sans', fontSize: '18px', color: '#f3e5b8', backgroundColor: '#142b2be6', padding: { x: 12, y: 9 } };
+    this.sparkText = this.add.text(18, 18, 'SPARKS', style).setScrollFactor(0).setDepth(71);
+    this.add.rectangle(18, 56, 140, 4, 0x18372d).setOrigin(0).setScrollFactor(0).setDepth(71);
+    this.progressBar = this.add.rectangle(18, 56, 1, 4, 0xe4c66e).setOrigin(0).setScrollFactor(0).setDepth(72);
+    this.questText = this.add.text(width - 18, 18, 'Collect sparks → Find the rune box', { ...style, fontSize: '16px', wordWrap: { width: Math.max(120, Math.min(350, width - 215)) } }).setOrigin(1, 0).setScrollFactor(0).setDepth(71);
   }
 
   private createUnlockPrompt(point: Phaser.Math.Vector2, theme: LevelTheme) {
@@ -719,7 +718,7 @@ class MemoryQuestScene extends Phaser.Scene {
     this.completed = true;
     this.chest.setTint(0xffd166);
     this.questText?.setText(`${this.level.rewardName} is opening...`);
-    this.cameras.main.flash(420, 255, 209, 102);
+    if (!this.reducedMotion) this.cameras.main.flash(200, 120, 140, 100);
     this.time.delayedCall(520, () => this.completeLevel());
   }
 
@@ -740,7 +739,7 @@ class MemoryQuestScene extends Phaser.Scene {
     if (!this.player || this.completed || this.respawning) return;
     this.respawning = true;
     this.holdPlayerAtCheckpoint();
-    this.cameras.main.shake(120, 0.004);
+    if (!this.reducedMotion) this.cameras.main.shake(120, 0.004);
     this.time.delayedCall(120, () => {
       this.respawning = false;
     });
@@ -775,64 +774,117 @@ export function MemoryQuestGame({
 }: MemoryQuestGameProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const gameRef = useRef<Phaser.Game | null>(null);
+  const pausedRef = useRef(paused);
+  pausedRef.current = paused;
 
-  const sendKey = (type: "keydown" | "keyup", key: string, code: string) => {
-    window.dispatchEvent(
-      new KeyboardEvent(type, {
-        key,
-        code,
-        bubbles: true,
-      }),
-    );
+  const sendKey = (type: "keydown" | "keyup", key: string) => {
+    const scene = gameRef.current?.scene.getScene('memory-quest') as MemoryQuestScene | undefined;
+    scene?.setTouch(key === 'ArrowLeft' ? 'left' : key === 'ArrowRight' ? 'right' : 'jump', type === 'keydown');
   };
 
-  useEffect(() => {
-    if (!containerRef.current) return;
+useEffect(() => {
+  if (!containerRef.current) return;
 
-    gameRef.current?.destroy(true);
-    containerRef.current.innerHTML = "";
+  let cancelled = false;
+  let game: Phaser.Game | null = null;
+  let observer: ResizeObserver | null = null;
+  const canvasHost = containerRef.current;
+  // Phaser.destroy is deferred to the next step; two frames lets a remount avoid fighting the previous instance's window keyboard/focus handlers.
+  let bootRaf2 = 0;
+  const bootRaf1 = window.requestAnimationFrame(() => {
+    bootRaf2 = window.requestAnimationFrame(() => {
+      if (cancelled || !containerRef.current) return;
+      containerRef.current.innerHTML = "";
 
-    const scene = new MemoryQuestScene(level, reducedMotion, onComplete);
-    const game = new Phaser.Game({
-      type: Phaser.AUTO,
-      parent: containerRef.current,
-      width: window.innerWidth,
-      height: window.innerHeight,
-      backgroundColor: level.palette.sky,
-      pixelArt: true,
-      roundPixels: true,
-      physics: {
-        default: "arcade",
-        arcade: {
-          gravity: { x: 0, y: 1150 },
-          debug: false,
+      const scene = new MemoryQuestScene(level, reducedMotion, onComplete, () => pausedRef.current);
+
+      game = new Phaser.Game({
+        type: Phaser.AUTO,
+        parent: containerRef.current,
+        backgroundColor: level.palette.sky,
+        pixelArt: true,
+        roundPixels: true,
+        physics: {
+          default: "arcade",
+          arcade: {
+            gravity: { x: 0, y: 1150 },
+            debug: false,
+          },
         },
-      },
-      scale: {
-        mode: Phaser.Scale.RESIZE,
-        autoCenter: Phaser.Scale.CENTER_BOTH,
-      },
-      scene,
-    });
-    gameRef.current = game;
+        scale: {
+          mode: Phaser.Scale.RESIZE, // canvas resolution == real container size, always. No virtual-then-stretch step.
+          parent: containerRef.current,
+          width: "100%",
+          height: "100%",
+        },
+        scene,
+      });
+      gameRef.current = game;
 
-    return () => {
+      observer = new ResizeObserver(() => {
+        if (!game) return;
+        const w = canvasHost.clientWidth;
+        const h = canvasHost.clientHeight;
+        if (w > 0 && h > 0) {
+          game.scale.resize(w, h);
+        }
+      });
+      observer.observe(canvasHost);
+
+      game.events.once(Phaser.Core.Events.READY, () => {
+        if (cancelled) return;
+        const active = game?.scene.getScene("memory-quest") as MemoryQuestScene | undefined;
+        window.requestAnimationFrame(() => active?.armControls());
+      });
+    });
+  });
+
+  const focusGame = () => {
+    const active = gameRef.current?.scene.getScene("memory-quest") as MemoryQuestScene | undefined;
+    active?.ensureKeyboardFocus();
+  };
+  canvasHost.addEventListener("pointerdown", focusGame);
+
+  return () => {
+    cancelled = true;
+    window.cancelAnimationFrame(bootRaf1);
+    window.cancelAnimationFrame(bootRaf2);
+    canvasHost.removeEventListener("pointerdown", focusGame);
+    observer?.disconnect();
+    if (game) {
       game.destroy(true);
-      if (gameRef.current === game) {
-        gameRef.current = null;
-      }
-    };
-  }, [level, onComplete, reducedMotion]);
+      if (gameRef.current === game) gameRef.current = null;
+    }
+  };
+}, [level, onComplete, reducedMotion]);
 
   useEffect(() => {
-    const scene = gameRef.current?.scene.getScene("memory-quest");
-    if (!scene) return;
-    if (paused) {
-      scene.scene.pause();
-    } else {
-      scene.scene.resume();
-    }
-  }, [paused]);
+    const syncPause = () => {
+      const game = gameRef.current;
+      if (!game) return false;
+      const scene = game.scene.getScene("memory-quest") as MemoryQuestScene | undefined;
+      // Wait until create() has finished so pause/resume and keyboard arming stick.
+      const status = scene?.sys?.settings?.status;
+      if (!scene || status === undefined || status < Phaser.Scenes.RUNNING) return false;
+      if (paused) {
+        scene.setTouch("left", false);
+        scene.setTouch("right", false);
+        scene.setTouch("jump", false);
+        scene.input.keyboard?.resetKeys();
+        if (scene.sys.isActive()) scene.scene.pause();
+        return scene.sys.isPaused();
+      }
+      if (scene.sys.isPaused()) scene.scene.resume();
+      scene.armControls();
+      return !scene.sys.isPaused() && !!scene.input.keyboard?.enabled;
+    };
+
+    if (syncPause()) return;
+    const timer = window.setInterval(() => {
+      if (syncPause()) window.clearInterval(timer);
+    }, 32);
+    return () => window.clearInterval(timer);
+  }, [paused, level, reducedMotion]);
 
   return (
     <div className="game-wrap">
@@ -841,27 +893,27 @@ export function MemoryQuestGame({
         <button
           type="button"
           aria-label="Move left"
-          onPointerDown={() => sendKey("keydown", "ArrowLeft", "ArrowLeft")}
-          onPointerUp={() => sendKey("keyup", "ArrowLeft", "ArrowLeft")}
-          onPointerLeave={() => sendKey("keyup", "ArrowLeft", "ArrowLeft")}
+          onPointerDown={(event) => { event.currentTarget.setPointerCapture(event.pointerId); sendKey("keydown", "ArrowLeft"); }}
+          onPointerUp={() => sendKey("keyup", "ArrowLeft")}
+          onPointerCancel={() => sendKey("keyup", "ArrowLeft")}
         >
           ←
         </button>
         <button
           type="button"
           aria-label="Jump"
-          onPointerDown={() => sendKey("keydown", " ", "Space")}
-          onPointerUp={() => sendKey("keyup", " ", "Space")}
-          onPointerLeave={() => sendKey("keyup", " ", "Space")}
+          onPointerDown={(event) => { event.currentTarget.setPointerCapture(event.pointerId); sendKey("keydown", " "); }}
+          onPointerUp={() => sendKey("keyup", " ")}
+          onPointerCancel={() => sendKey("keyup", " ")}
         >
           ↑
         </button>
         <button
           type="button"
           aria-label="Move right"
-          onPointerDown={() => sendKey("keydown", "ArrowRight", "ArrowRight")}
-          onPointerUp={() => sendKey("keyup", "ArrowRight", "ArrowRight")}
-          onPointerLeave={() => sendKey("keyup", "ArrowRight", "ArrowRight")}
+          onPointerDown={(event) => { event.currentTarget.setPointerCapture(event.pointerId); sendKey("keydown", "ArrowRight"); }}
+          onPointerUp={() => sendKey("keyup", "ArrowRight")}
+          onPointerCancel={() => sendKey("keyup", "ArrowRight")}
         >
           →
         </button>

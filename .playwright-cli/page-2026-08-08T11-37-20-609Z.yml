@@ -1,0 +1,145 @@
+- main [ref=e3]:
+  - generic "Anjana Memory Quest game" [ref=e5]
+  - generic [ref=e7]:
+    - complementary "Portfolio game map" [ref=e8]:
+      - heading "Game Map" [level=2] [ref=e9]
+      - navigation "Memory map" [ref=e10]:
+        - 'button "1: Self" [ref=e11] [cursor=pointer]':
+          - strong [ref=e13]: "1: Self"
+        - 'button "2: Making" [ref=e14] [cursor=pointer]':
+          - strong [ref=e16]: "2: Making"
+        - 'button "3: Practice" [ref=e17] [cursor=pointer]':
+          - strong [ref=e19]: "3: Practice"
+        - 'button "4: Tools" [ref=e20] [cursor=pointer]':
+          - strong [ref=e22]: "4: Tools"
+        - 'button "5: Voice" [ref=e23] [cursor=pointer]':
+          - strong [ref=e25]: "5: Voice"
+        - 'button "6: Guilds" [ref=e26] [cursor=pointer]':
+          - strong [ref=e28]: "6: Guilds"
+        - 'button "7: Wonder" [ref=e29] [cursor=pointer]':
+          - strong [ref=e31]: "7: Wonder"
+        - 'button "8: Proof" [ref=e32] [cursor=pointer]':
+          - strong [ref=e34]: "8: Proof"
+      - generic [ref=e35]:
+        - button "Home" [ref=e36] [cursor=pointer]:
+          - generic [ref=e37]: ⌂
+          - text: Home
+        - generic "Game guide" [ref=e38]:
+          - generic [ref=e39]: ◈
+          - text: Guide
+        - generic "Quest log" [ref=e40]:
+          - generic [ref=e41]: ▣
+          - text: Log
+    - article [ref=e42]:
+      - button "Close memory view" [ref=e43] [cursor=pointer]: x
+      - button "Open fullscreen preview" [ref=e44] [cursor=pointer]: ⛶
+      - generic [ref=e45]:
+        - heading "Technical Skills" [level=2] [ref=e46]
+        - generic "Memory 4 of 8" [ref=e47]:
+          - generic [ref=e48]: Quest Progress
+          - strong [ref=e51]: 4/8
+      - generic [ref=e53]:
+        - generic [ref=e54]:
+          - generic [ref=e56]:
+            - generic [ref=e60]: TS
+            - generic [ref=e61]: SQL
+            - generic [ref=e62]: Py
+          - generic [ref=e63]:
+            - paragraph [ref=e64]: Anjana enjoys learning technologies not simply for the sake of mastering frameworks, but for understanding how they work together to build meaningful products.
+            - generic [ref=e65]:
+              - paragraph [ref=e66]:
+                - text: Her technical expertise includes Python, JavaScript,
+                - strong [ref=e67]: TypeScript
+                - text: ", Java, C, SQL, React, Vue,"
+                - strong [ref=e68]: Node.js
+                - text: ", Spring Boot,"
+                - strong [ref=e69]: MongoDB
+                - text: ","
+                - strong [ref=e70]: REST APIs
+                - text: ", Git, Linux, and modern deployment platforms."
+              - paragraph [ref=e71]: She has also worked extensively with machine learning, data analytics, and scientific computing libraries including Scikit-learn, Pandas, NumPy, SciPy, and Matplotlib.
+              - paragraph [ref=e72]:
+                - text: Alongside engineering, she has developed a strong interest in product thinking,
+                - strong [ref=e73]: product discovery
+                - text: ","
+                - strong [ref=e74]: requirements analysis
+                - text: ","
+                - strong [ref=e75]: feature prioritization
+                - text: ", UI/UX principles, Agile development, and creating intuitive user experiences that bridge technical functionality with thoughtful design."
+              - paragraph [ref=e76]:
+                - text: "A personal part of that technical journey: she dual-booted her laptop to accommodate"
+                - strong [ref=e77]: Arch Linux
+                - text: alongside Windows, and now primarily does her projects on Arch.
+        - generic [ref=e78]:
+          - generic [ref=e79]:
+            - generic [ref=e80]:
+              - heading "Product & Design" [level=3] [ref=e83]
+              - generic [ref=e84]:
+                - generic [ref=e85]: Product Discovery
+                - generic [ref=e86]: Requirements Analysis
+                - generic [ref=e87]: Feature Prioritization
+                - generic [ref=e88]: User / Problem Analysis
+                - generic [ref=e89]: User Flows
+                - generic [ref=e90]: Wireframing
+                - generic [ref=e91]: Agile Development
+                - generic [ref=e92]: UI/UX Principles
+                - generic [ref=e93]: Feature Planning
+                - generic [ref=e94]: Product Thinking
+                - generic [ref=e95]: Canva
+            - generic [ref=e96]:
+              - heading "Analytics & Data" [level=3] [ref=e99]
+              - generic [ref=e100]:
+                - generic [ref=e101]: Data Analysis
+                - generic [ref=e102]: Statistical Analysis
+                - generic [ref=e103]: Quantitative Problem Solving
+                - generic [ref=e104]: Data Visualization
+                - generic [ref=e105]: SQL
+                - generic [ref=e106]: Python
+                - generic [ref=e107]: Pandas
+                - generic [ref=e108]: NumPy
+                - generic [ref=e109]: Matplotlib
+                - generic [ref=e110]: SciPy
+                - generic [ref=e111]: Scikit-learn
+                - generic [ref=e112]: Seaborn
+                - generic [ref=e113]: Statistics
+                - generic [ref=e114]: Excel
+            - generic [ref=e115]:
+              - heading "Technical" [level=3] [ref=e118]
+              - generic [ref=e119]:
+                - generic [ref=e120]: JavaScript
+                - generic [ref=e121]: TypeScript
+                - generic [ref=e122]: Java
+                - generic [ref=e123]: C
+                - generic [ref=e124]: HTML
+                - generic [ref=e125]: CSS
+                - generic [ref=e126]: React.js
+                - generic [ref=e127]: Vue.js
+                - generic [ref=e128]: Node.js
+                - generic [ref=e129]: Spring Boot
+                - generic [ref=e130]: REST APIs
+            - generic [ref=e131]:
+              - heading "Databases & Platforms" [level=3] [ref=e134]
+              - generic [ref=e135]:
+                - generic [ref=e136]: MongoDB
+                - generic [ref=e137]: SQL
+                - generic [ref=e138]: Neo4j
+                - generic [ref=e139]: Git
+                - generic [ref=e140]: Linux
+                - generic [ref=e141]: Vercel
+                - generic [ref=e142]: Render
+          - generic [ref=e143]:
+            - article [ref=e144]:
+              - generic [ref=e146]:
+                - heading "Full-stack learning" [level=3] [ref=e147]
+                - paragraph [ref=e148]: Completed The Complete Full-Stack Web Development Bootcamp and a Value-Added Course in Full Stack Web App Development using Spring Boot and Vue.js.
+            - article [ref=e149]:
+              - generic [ref=e151]:
+                - heading "Arch-first workflow" [level=3] [ref=e152]
+                - paragraph [ref=e153]: Her Linux setup is not just a tag; it is part of how she experiments, builds, and ships projects.
+        - list [ref=e155]:
+          - listitem [ref=e156]:
+            - generic [ref=e158]: "The skill set is organized as a system: product and design for shaping the experience, analytics and data for reasoning, engineering for building, and platforms for shipping."
+      - generic [ref=e159]:
+        - 'button "Prev: Work Experience" [ref=e160] [cursor=pointer]'
+        - button "Play again" [ref=e161] [cursor=pointer]
+        - 'button "Next: Soft Skills" [ref=e162] [cursor=pointer]'

@@ -1,0 +1,84 @@
+- main [ref=e3]:
+  - generic "Anjana Memory Quest game" [ref=e5]
+  - generic [ref=e7]:
+    - complementary "Portfolio game map" [ref=e8]:
+      - heading "Game Map" [level=2] [ref=e9]
+      - navigation "Memory map" [ref=e10]:
+        - 'button "1: Self" [ref=e11] [cursor=pointer]':
+          - strong [ref=e13]: "1: Self"
+        - 'button "2: Making" [ref=e14] [cursor=pointer]':
+          - strong [ref=e16]: "2: Making"
+        - 'button "3: Practice" [ref=e17] [cursor=pointer]':
+          - strong [ref=e19]: "3: Practice"
+        - 'button "4: Tools" [ref=e20] [cursor=pointer]':
+          - strong [ref=e22]: "4: Tools"
+        - 'button "5: Voice" [ref=e23] [cursor=pointer]':
+          - strong [ref=e25]: "5: Voice"
+        - 'button "6: Guilds" [ref=e26] [cursor=pointer]':
+          - strong [ref=e28]: "6: Guilds"
+        - 'button "7: Wonder" [ref=e29] [cursor=pointer]':
+          - strong [ref=e31]: "7: Wonder"
+        - 'button "8: Proof" [ref=e32] [cursor=pointer]':
+          - strong [ref=e34]: "8: Proof"
+      - generic [ref=e35]:
+        - button "Home" [ref=e36] [cursor=pointer]:
+          - generic [ref=e37]: ⌂
+          - text: Home
+        - generic "Game guide" [ref=e38]:
+          - generic [ref=e39]: ◈
+          - text: Guide
+        - generic "Quest log" [ref=e40]:
+          - generic [ref=e41]: ▣
+          - text: Log
+    - article [ref=e42]:
+      - button "Close memory view" [ref=e43] [cursor=pointer]: x
+      - button "Open fullscreen preview" [ref=e44] [cursor=pointer]: ⛶
+      - generic [ref=e45]:
+        - heading "Hobbies & Interests" [level=2] [ref=e46]
+        - generic "Memory 7 of 8" [ref=e47]:
+          - generic [ref=e48]: Quest Progress
+          - strong [ref=e51]: 7/8
+      - generic [ref=e53]:
+        - generic [ref=e54]:
+          - figure [ref=e56]:
+            - img "Anjana's art page art.anjjj" [ref=e57]
+          - generic [ref=e58]:
+            - paragraph [ref=e59]: For Anjana, creativity has always existed alongside technology.
+            - generic [ref=e60]:
+              - paragraph [ref=e61]: She found expression through traditional art. Working primarily with hand-drawn illustrations and mixed media, art has been an integral part of her life from an early age.
+              - paragraph [ref=e62]:
+                - text: At the age of 14, she held her own
+                - strong [ref=e63]: public art exhibition
+                - text: ", an experience that not only strengthened her artistic confidence but also shaped the way she approaches creativity and problem-solving today."
+              - paragraph [ref=e64]:
+                - text: Her interest in design naturally evolved alongside her technical journey. As the Head of the
+                - strong [ref=e65]: Gradient Design Club
+                - text: at SSN, she leads the college's design community, mentors aspiring designers, and oversees the visual identity of student initiatives and events.
+              - paragraph [ref=e66]: Through this role, she has developed a deeper appreciation for design as a tool for communication, accessibility, and storytelling.
+              - paragraph [ref=e67]: Beyond art and design, Anjana enjoys being on stage. Whether compering events, hosting programs, or speaking before large audiences, she finds energy in engaging with people and creating memorable experiences.
+              - paragraph [ref=e68]: Years of public speaking have strengthened her confidence, communication skills, and ability to connect with diverse audiences.
+              - paragraph [ref=e69]: Looking ahead, she hopes to build a career where technology and design complement one another. Her long-term vision is to create products that are not only technically innovative but also intuitive, visually thoughtful, and centered around the people who use them.
+        - generic [ref=e71]:
+          - article [ref=e72]:
+            - generic [ref=e74]:
+              - heading "Art" [level=3] [ref=e75]
+              - paragraph [ref=e76]: A practice built around hand-drawn illustration, mixed media, patience, observation, and visual storytelling.
+          - article [ref=e77]:
+            - generic [ref=e79]:
+              - heading "Design" [level=3] [ref=e80]
+              - paragraph [ref=e81]: A tool for communication, accessibility, storytelling, and creating memorable student initiatives.
+          - article [ref=e82]:
+            - generic [ref=e84]:
+              - heading "Stage" [level=3] [ref=e85]
+              - paragraph [ref=e86]: Compering and speaking help her engage people directly and create experiences that feel alive.
+        - list [ref=e88]:
+          - listitem [ref=e89]:
+            - generic [ref=e91]: Traditional art and mixed media remain a long-running creative practice.
+          - listitem [ref=e92]:
+            - generic [ref=e94]: Design leadership at Gradient connects her creative identity to her technical journey.
+          - listitem [ref=e95]:
+            - generic [ref=e97]: Public speaking, compering, and hosting shape how she communicates with people.
+      - generic [ref=e98]:
+        - 'button "Prev: Extra-curricular Activities" [ref=e99] [cursor=pointer]'
+        - button "Play again" [ref=e100] [cursor=pointer]
+        - 'button "Next: Achievements" [ref=e101] [cursor=pointer]'

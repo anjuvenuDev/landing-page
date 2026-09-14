@@ -1,0 +1,194 @@
+- main [ref=e3]:
+  - generic "Anjana Memory Quest game" [ref=e5]
+  - generic [ref=e7]:
+    - complementary "Portfolio game map" [ref=e8]:
+      - heading "Game Map" [level=2] [ref=e9]
+      - navigation "Memory map" [ref=e10]:
+        - 'button "1: Self" [ref=e11] [cursor=pointer]':
+          - strong [ref=e13]: "1: Self"
+        - 'button "2: Making" [ref=e14] [cursor=pointer]':
+          - strong [ref=e16]: "2: Making"
+        - 'button "3: Practice" [ref=e17] [cursor=pointer]':
+          - strong [ref=e19]: "3: Practice"
+        - 'button "4: Tools" [ref=e20] [cursor=pointer]':
+          - strong [ref=e22]: "4: Tools"
+        - 'button "5: Voice" [ref=e23] [cursor=pointer]':
+          - strong [ref=e25]: "5: Voice"
+        - 'button "6: Guilds" [ref=e26] [cursor=pointer]':
+          - strong [ref=e28]: "6: Guilds"
+        - 'button "7: Wonder" [ref=e29] [cursor=pointer]':
+          - strong [ref=e31]: "7: Wonder"
+        - 'button "8: Proof" [ref=e32] [cursor=pointer]':
+          - strong [ref=e34]: "8: Proof"
+      - generic [ref=e35]:
+        - button "Home" [ref=e36] [cursor=pointer]:
+          - generic [ref=e37]: ⌂
+          - text: Home
+        - generic "Game guide" [ref=e38]:
+          - generic [ref=e39]: ◈
+          - text: Guide
+        - generic "Quest log" [ref=e40]:
+          - generic [ref=e41]: ▣
+          - text: Log
+    - article [ref=e42]:
+      - button "Close memory view" [ref=e43] [cursor=pointer]: x
+      - button "Open fullscreen preview" [ref=e44] [cursor=pointer]: ⛶
+      - generic [ref=e45]:
+        - heading "Anjana's Projects" [level=2] [ref=e46]
+        - generic "Memory 2 of 8" [ref=e47]:
+          - generic [ref=e48]: Quest Progress
+          - strong [ref=e51]: 2/8
+      - generic [ref=e53]:
+        - generic [ref=e54]:
+          - generic [ref=e56]:
+            - generic [ref=e57]:
+              - generic [ref=e58]: Dec
+              - generic [ref=e59]: Jan
+              - generic [ref=e60]: Feb
+              - generic [ref=e61]: Mar
+              - generic [ref=e62]: Apr
+              - generic [ref=e63]: May
+              - generic [ref=e64]: Jun
+              - generic [ref=e65]: Jul
+            - generic [ref=e207]:
+              - generic [ref=e208]: GH
+              - generic [ref=e209]: repositories, commits, experiments
+          - generic [ref=e210]:
+            - paragraph [ref=e211]: Anjana enjoys building products that solve practical problems while balancing technical depth with thoughtful user experience.
+            - generic [ref=e212]:
+              - paragraph [ref=e213]:
+                - text: Her work spans
+                - strong [ref=e214]: artificial intelligence
+                - text: ", networking, developer tooling, full-stack web development, and"
+                - strong [ref=e215]: product discovery
+                - text: ", with every project driven by a focus on usability, scalability, and real-world application."
+              - paragraph [ref=e216]: "Across every project, her goal remains the same: to build technology that is technically robust, thoughtfully designed, and genuinely useful to the people who use it."
+        - generic [ref=e218]:
+          - article [ref=e219]:
+            - generic [ref=e222]:
+              - heading "Assistive Writing Pad for Children with Dysgraphia" [level=3] [ref=e223]
+              - paragraph [ref=e224]: Python, Computer Vision, Machine Learning, Raspberry Pi
+            - paragraph [ref=e225]:
+              - text: An
+              - strong [ref=e226]: AI-powered
+              - text: assistive learning device, currently under active development, that analyzes handwriting in real time and provides personalized corrective feedback for children with dysgraphia.
+            - list:
+              - listitem [ref=e227]:
+                - text: Combines
+                - strong [ref=e228]: computer vision
+                - text: ", handwriting recognition, machine learning, and embedded computing on"
+                - strong [ref=e229]: Raspberry Pi
+                - text: .
+              - listitem [ref=e230]: Designed around portability, computational constraints, and real-time feedback.
+              - listitem [ref=e231]: Explores how intelligent systems can make learning more accessible for children with writing difficulties.
+              - listitem [ref=e232]: Continues to evolve through improvements in recognition accuracy, user interface design, and model performance.
+            - generic [ref=e233]:
+              - generic [ref=e234]: Python
+              - generic [ref=e235]: Computer Vision
+              - generic [ref=e236]: ML
+              - generic [ref=e237]: Raspberry Pi
+            - generic "Assistive Writing Pad for Children with Dysgraphia links" [ref=e238]:
+              - link "GitHub" [ref=e239] [cursor=pointer]:
+                - /url: https://github.com/anjuvenuDev/assistive-writing-pad
+          - article [ref=e244]:
+            - generic [ref=e247]:
+              - heading "Handmade By Shweta" [level=3] [ref=e248]
+              - paragraph [ref=e249]: React.js, TypeScript, Node.js, MongoDB, Tailwind CSS, REST APIs
+            - paragraph [ref=e250]:
+              - text: An end-to-end e-commerce platform for a handcrafted mandala art brand, built to strengthen the artist's online presence, showcase work through a clean responsive interface, and support
+              - strong [ref=e251]: product discovery
+              - text: .
+            - list:
+              - listitem [ref=e252]: The project emphasized thoughtful UI design, responsive development, and creating a digital experience that reflected the artist's unique creative identity.
+              - listitem [ref=e253]: The implementation includes search, filtering, purchasing workflows, a responsive product catalog, shopping flows, and production deployment.
+            - generic [ref=e254]:
+              - generic [ref=e255]: React
+              - generic [ref=e256]: TypeScript
+              - generic [ref=e257]: Node.js
+              - generic [ref=e258]: MongoDB
+              - generic [ref=e259]: Tailwind CSS
+              - generic [ref=e260]: REST APIs
+            - generic "Handmade By Shweta links" [ref=e261]:
+              - link "Repository" [ref=e262] [cursor=pointer]:
+                - /url: https://github.com/anjuvenuDev/mandala
+              - link "Live site" [ref=e267] [cursor=pointer]:
+                - /url: https://handmadebyshweta.com
+          - article [ref=e272]:
+            - generic [ref=e275]:
+              - heading "Code Impact Analyzer" [level=3] [ref=e276]
+              - paragraph [ref=e277]: JavaScript, Node.js, npm
+            - paragraph [ref=e278]:
+              - text: An
+              - strong [ref=e279]: npm package
+              - text: that identifies files, modules, and services affected by code changes to simplify debugging and release planning.
+            - list [ref=e280]:
+              - listitem [ref=e281]: Built repository-wide dependency and change impact analysis.
+              - listitem [ref=e282]: Assesses downstream code-change risk to support faster debugging, safer releases, and better developer decision-making.
+            - generic [ref=e283]:
+              - generic [ref=e284]: JavaScript
+              - generic [ref=e285]: Node.js
+              - generic [ref=e286]: npm
+            - generic "Code Impact Analyzer links" [ref=e287]:
+              - link "GitHub" [ref=e288] [cursor=pointer]:
+                - /url: https://github.com/anjuvenuDev/impact-analyzer
+          - article [ref=e293]:
+            - generic [ref=e296]:
+              - heading "Code-Viz" [level=3] [ref=e297]
+              - paragraph [ref=e298]: Python, Graph Analysis, CLI Development, PyPI
+            - paragraph [ref=e299]:
+              - text: A
+              - strong [ref=e300]: Python CLI
+              - text: tool that generates dependency graphs and architectural visualizations, helping developers better understand unfamiliar codebases and navigate complex software systems.
+            - list:
+              - listitem [ref=e301]:
+                - text: Developed and published as a
+                - strong [ref=e302]: Python CLI
+                - text: package.
+              - listitem [ref=e303]: Generated dependency graphs to help developers analyze architecture, identify module relationships, and improve onboarding into unfamiliar repositories.
+            - generic [ref=e304]:
+              - generic [ref=e305]: Python
+              - generic [ref=e306]: CLI
+              - generic [ref=e307]: Graph Analysis
+              - generic [ref=e308]: PyPI
+            - generic "Code-Viz links" [ref=e309]:
+              - link "GitHub" [ref=e310] [cursor=pointer]:
+                - /url: https://github.com/anjuvenuDev/code-viz
+          - article [ref=e315]:
+            - generic [ref=e318]:
+              - heading "PacketPi" [level=3] [ref=e319]
+              - paragraph [ref=e320]: Raspberry Pi networking collaboration
+            - paragraph [ref=e321]:
+              - text: A
+              - strong [ref=e322]: Raspberry Pi
+              - text: "-based network packet crafting and analysis platform developed as part of a collaboration with Nokia."
+            - list:
+              - listitem [ref=e323]: "Continues the same project pattern: practical tooling, systems curiosity, and hands-on experimentation with real-world technology."
+            - generic [ref=e324]:
+              - generic [ref=e325]: Raspberry Pi
+              - generic [ref=e326]: Networking
+              - generic [ref=e327]: Packet Analysis
+            - generic "PacketPi links" [ref=e328]:
+              - link "GitHub" [ref=e329] [cursor=pointer]:
+                - /url: https://github.com/anjuvenuDev/packetpi
+        - generic [ref=e334]:
+          - generic "Anjana's Projects links" [ref=e336]:
+            - link "GitHub profile" [ref=e337] [cursor=pointer]:
+              - /url: https://github.com/anjuvenuDev
+          - list [ref=e342]:
+            - listitem [ref=e343]:
+              - generic [ref=e345]:
+                - text: Projects span
+                - strong [ref=e346]: AI-powered
+                - text: assistive technology, responsive business websites, npm tooling,
+                - strong [ref=e347]: Python CLI
+                - text: architecture visualization, and
+                - strong [ref=e348]: Raspberry Pi
+                - text: networking systems.
+            - listitem [ref=e349]:
+              - generic [ref=e351]: "The resume version sharpens the product lens: discovery, search, filtering, purchasing workflows, downstream code-change risk, debugging, release planning, and real-time feedback under hardware constraints."
+            - listitem [ref=e352]:
+              - generic [ref=e354]: The common thread is practical software that can be used, understood, shipped, and improved.
+      - generic [ref=e355]:
+        - 'button "Prev: About Anjana" [ref=e356] [cursor=pointer]'
+        - button "Play again" [ref=e357] [cursor=pointer]
+        - 'button "Next: Work Experience" [ref=e358] [cursor=pointer]'

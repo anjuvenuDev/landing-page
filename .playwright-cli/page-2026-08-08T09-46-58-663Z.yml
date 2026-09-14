@@ -1,0 +1,194 @@
+- main [ref=e3]:
+  - generic "Anjana Memory Quest game" [ref=e5]
+  - generic [ref=e7]:
+    - complementary "Portfolio game map" [ref=e8]:
+      - heading "Game Map" [level=2] [ref=e9]
+      - navigation "Memory map" [ref=e10]:
+        - 'button "1: Self" [ref=e11] [cursor=pointer]':
+          - strong [ref=e13]: "1: Self"
+        - 'button "2: Making" [ref=e14] [cursor=pointer]':
+          - strong [ref=e16]: "2: Making"
+        - 'button "3: Practice" [ref=e17] [cursor=pointer]':
+          - strong [ref=e19]: "3: Practice"
+        - 'button "4: Tools" [ref=e20] [cursor=pointer]':
+          - strong [ref=e22]: "4: Tools"
+        - 'button "5: Voice" [ref=e23] [cursor=pointer]':
+          - strong [ref=e25]: "5: Voice"
+        - 'button "6: Guilds" [ref=e26] [cursor=pointer]':
+          - strong [ref=e28]: "6: Guilds"
+        - 'button "7: Wonder" [ref=e29] [cursor=pointer]':
+          - strong [ref=e31]: "7: Wonder"
+        - 'button "8: Proof" [ref=e32] [cursor=pointer]':
+          - strong [ref=e34]: "8: Proof"
+      - generic [ref=e35]:
+        - button "Home" [ref=e36] [cursor=pointer]:
+          - generic [ref=e37]: ⌂
+          - text: Home
+        - generic "Game guide" [ref=e38]:
+          - generic [ref=e39]: ◈
+          - text: Guide
+        - generic "Quest log" [ref=e40]:
+          - generic [ref=e41]: ▣
+          - text: Log
+    - article [ref=e42]:
+      - button "Close memory view" [ref=e43] [cursor=pointer]: x
+      - button "Open fullscreen preview" [ref=e44] [cursor=pointer]: ⛶
+      - generic [ref=e45]:
+        - heading "Work Experience" [level=2] [ref=e46]
+        - generic "Memory 3 of 8" [ref=e47]:
+          - generic [ref=e48]: Quest Progress
+          - strong [ref=e51]: 3/8
+      - generic [ref=e53]:
+        - generic [ref=e54]:
+          - generic "Work experience companies" [ref=e56]:
+            - generic [ref=e57]:
+              - img "Friday Intellytics logo" [ref=e58]
+              - generic [ref=e59]: Friday Intellytics
+            - generic [ref=e60]:
+              - img "Yhills logo" [ref=e61]
+              - generic [ref=e62]: Yhills
+            - generic [ref=e63]:
+              - img "NoShack Solutions logo" [ref=e64]
+              - generic [ref=e65]: NoShack Solutions
+          - generic [ref=e66]:
+            - paragraph [ref=e67]: Through multiple internships, Anjana has gained experience working in fast-paced product environments, contributing to software development from both engineering and product perspectives.
+            - generic [ref=e68]:
+              - paragraph [ref=e69]:
+                - text: As an Associate Intern at
+                - strong [ref=e70]: Friday Intellytics
+                - text: ", she works directly with the founder to shape an"
+                - strong [ref=e71]: AI-powered
+                - text: analytics platform from the ground up.
+              - paragraph [ref=e72]:
+                - text: In that
+                - strong [ref=e73]: Product & Growth
+                - text: role, she translates ambiguous requirements into prioritized features and drives execution from problem definition through implementation.
+              - paragraph [ref=e74]:
+                - text: Previously, during her internship at
+                - strong [ref=e75]: Yhills
+                - text: ", she focused on building responsive React applications, integrating APIs, and collaborating with teams to develop scalable web solutions while following industry-standard development practices."
+              - paragraph [ref=e76]:
+                - text: Her internship at
+                - strong [ref=e77]: NoShack Solutions
+                - text: introduced her to production frontend development, where she worked on REST API integration, interactive user interfaces, internal dashboards, and application optimization.
+              - paragraph [ref=e78]: These experiences have shaped her into an engineer who enjoys taking ownership, collaborating across teams, and contributing throughout the entire product lifecycle.
+        - generic [ref=e80]:
+          - article [ref=e81]:
+            - generic [ref=e82]:
+              - img "Friday Intellytics logo" [ref=e83]
+              - generic [ref=e84]:
+                - heading "Friday Intellytics" [level=3] [ref=e85]
+                - paragraph [ref=e86]: Associate Intern - Product & Growth · May 2026 - Present
+            - strong [ref=e87]:
+              - strong [ref=e88]: AI-powered
+              - text: analytics platform from product strategy to implementation
+            - list [ref=e89]:
+              - listitem [ref=e90]:
+                - text: Selected by the founder from
+                - strong [ref=e91]: 25+ candidates
+                - text: after an approximately
+                - strong [ref=e92]: 6-hour evaluation
+                - text: spanning data analytics,
+                - strong [ref=e93]: system design
+                - text: ","
+                - strong [ref=e94]: AI-agent development
+                - text: ", and"
+                - strong [ref=e95]: product ideation
+                - text: .
+              - listitem [ref=e96]:
+                - text: Assumed ownership of
+                - strong [ref=e97]: desktop application
+                - text: enhancements immediately after onboarding, shipping improvements across
+                - strong [ref=e98]: data integration
+                - text: ","
+                - strong [ref=e99]: authentication
+                - text: ","
+                - strong [ref=e100]: exports
+                - text: ", and"
+                - strong [ref=e101]: UI workflows
+                - text: .
+              - listitem [ref=e102]:
+                - text: Owned product and development responsibilities for Friday's
+                - strong [ref=e103]: desktop application
+                - text: ", contributing across feature planning, implementation, testing, debugging, and product refinement."
+          - article [ref=e104]:
+            - generic [ref=e105]:
+              - img "Yhills logo" [ref=e106]
+              - generic [ref=e107]:
+                - heading "Yhills" [level=3] [ref=e108]
+                - paragraph [ref=e109]: Web Development Intern (Remote) · Jan 2025 - Mar 2025
+            - strong [ref=e110]: Responsive user-facing web interfaces and scalable web workflows
+            - list [ref=e111]:
+              - listitem [ref=e112]: Developed responsive, user-facing web interfaces using HTML, CSS, JavaScript, and React, with focus on usability, performance, and consistent user experience.
+              - listitem [ref=e113]: Integrated APIs with frontend components to enable smooth data flow across product workflows and improve end-to-end feature functionality.
+              - listitem [ref=e114]: Collaborated with mentors and teammates to understand requirements, debug user-facing issues, and deliver functional web features.
+          - article [ref=e115]:
+            - generic [ref=e116]:
+              - img "NoShack Solutions logo" [ref=e117]
+              - generic [ref=e118]:
+                - heading "NoShack Solutions" [level=3] [ref=e119]
+                - paragraph [ref=e120]: Frontend Developer Intern · Jul 2024 - Aug 2024
+            - strong [ref=e121]: Production frontend development and dashboard workflows
+            - list [ref=e122]:
+              - listitem [ref=e123]:
+                - text: Integrated
+                - strong [ref=e124]: REST APIs
+                - text: with the frontend and optimized data rendering in React and JavaScript.
+              - listitem [ref=e125]: Worked with HTML + CSS for frontend modules and contributed to building interactive user-facing screens.
+              - listitem [ref=e126]:
+                - text: Connected frontend pages with
+                - strong [ref=e127]: MongoDB
+                - text: "-backed backend services using"
+                - strong [ref=e128]: Node.js
+                - text: and Express.
+        - generic [ref=e129]:
+          - generic [ref=e131]:
+            - generic [ref=e132]: Product planning
+            - generic [ref=e133]: React
+            - generic [ref=e134]: APIs
+            - generic [ref=e135]: MVP workflows
+            - generic [ref=e136]: Debugging
+          - list [ref=e137]:
+            - listitem [ref=e138]:
+              - generic [ref=e140]:
+                - text: Selected by the
+                - strong [ref=e141]: Friday Intellytics
+                - text: founder from
+                - strong [ref=e142]: 25+ candidates
+                - text: after an approximately
+                - strong [ref=e143]: 6-hour evaluation
+                - text: spanning data analytics,
+                - strong [ref=e144]: system design
+                - text: ","
+                - strong [ref=e145]: AI-agent development
+                - text: ", and"
+                - strong [ref=e146]: product ideation
+                - text: .
+            - listitem [ref=e147]:
+              - generic [ref=e149]:
+                - text: Her
+                - strong [ref=e150]: Friday Intellytics
+                - text: responsibilities extend beyond implementation, encompassing product planning, workflow design, feature development, usability improvements, testing, debugging, and the creation of the company's public-facing landing page.
+            - listitem [ref=e151]:
+              - generic [ref=e153]:
+                - text: She assumed ownership of
+                - strong [ref=e154]: desktop application
+                - text: enhancements across
+                - strong [ref=e155]: data integration
+                - text: ","
+                - strong [ref=e156]: authentication
+                - text: ","
+                - strong [ref=e157]: exports
+                - text: ", and"
+                - strong [ref=e158]: UI workflows
+                - text: ", while also supporting"
+                - strong [ref=e159]: stakeholder discovery
+                - text: and
+                - strong [ref=e160]: beta registration
+                - text: .
+            - listitem [ref=e161]:
+              - generic [ref=e163]: The work path moves from production frontend foundations to responsive product delivery and then to AI analytics product ownership.
+      - generic [ref=e164]:
+        - 'button "Prev: Anjana''s Projects" [ref=e165] [cursor=pointer]'
+        - button "Play again" [ref=e166] [cursor=pointer]
+        - 'button "Next: Technical Skills" [ref=e167] [cursor=pointer]'

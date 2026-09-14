@@ -1,0 +1,133 @@
+- main [ref=e3]:
+  - generic "Anjana Memory Quest game" [ref=e5]
+  - generic [ref=e7]:
+    - complementary "Portfolio game map" [ref=e8]:
+      - heading "Game Map" [level=2] [ref=e9]
+      - navigation "Memory map" [ref=e10]:
+        - 'button "1: Self" [ref=e11] [cursor=pointer]':
+          - strong [ref=e13]: "1: Self"
+        - 'button "2: Making" [ref=e14] [cursor=pointer]':
+          - strong [ref=e16]: "2: Making"
+        - 'button "3: Practice" [ref=e17] [cursor=pointer]':
+          - strong [ref=e19]: "3: Practice"
+        - 'button "4: Tools" [ref=e20] [cursor=pointer]':
+          - strong [ref=e22]: "4: Tools"
+        - 'button "5: Voice" [ref=e23] [cursor=pointer]':
+          - strong [ref=e25]: "5: Voice"
+        - 'button "6: Guilds" [ref=e26] [cursor=pointer]':
+          - strong [ref=e28]: "6: Guilds"
+        - 'button "7: Wonder" [ref=e29] [cursor=pointer]':
+          - strong [ref=e31]: "7: Wonder"
+        - 'button "8: Proof" [ref=e32] [cursor=pointer]':
+          - strong [ref=e34]: "8: Proof"
+      - generic [ref=e35]:
+        - button "Home" [ref=e36] [cursor=pointer]:
+          - generic [ref=e37]: ⌂
+          - text: Home
+        - generic "Game guide" [ref=e38]:
+          - generic [ref=e39]: ◈
+          - text: Guide
+        - generic "Quest log" [ref=e40]:
+          - generic [ref=e41]: ▣
+          - text: Log
+    - article [ref=e42]:
+      - button "Close memory view" [ref=e43] [cursor=pointer]: x
+      - button "Open fullscreen preview" [ref=e44] [cursor=pointer]: ⛶
+      - generic [ref=e45]:
+        - heading "Extra-curricular Activities" [level=2] [ref=e46]
+        - generic "Memory 6 of 8" [ref=e47]:
+          - generic [ref=e48]: Quest Progress
+          - strong [ref=e51]: 6/8
+      - generic [ref=e53]:
+        - generic [ref=e54]:
+          - generic "Extra-curricular Activities photos" [ref=e56]:
+            - figure [ref=e57]:
+              - img "Anjana speaking at an event" [ref=e58]
+            - figure [ref=e59]:
+              - img "Anjana on stage with a microphone" [ref=e60]
+          - generic [ref=e61]:
+            - paragraph [ref=e62]: Outside academics, Anjana is deeply involved in the technical and creative communities at SSN.
+            - generic [ref=e63]:
+              - paragraph [ref=e64]:
+                - text: Over the years, she has held leadership positions across several student organizations, including serving as Club Head of
+                - strong [ref=e65]: SSN Design Club
+                - text: ", Joint Secretary of"
+                - strong [ref=e66]: IEEE Women in Engineering
+                - text: (WIE), Joint Event Coordinator of
+                - strong [ref=e67]: SSN ACE
+                - text: ", Treasurer of SSN ACM Student Chapter, Deputy PR Lead and Full Stack Core Member of the"
+                - strong [ref=e68]: SSN Coding Club
+                - text: ", Under Secretary General of SSN SNUC MUN, and a core member of multiple technical and entrepreneurship clubs."
+              - paragraph [ref=e69]: These experiences have allowed her to organize large-scale technical events, mentor peers, manage teams, and contribute to initiatives that strengthen the student community.
+              - paragraph [ref=e70]: Her involvement beyond the classroom reflects a genuine enthusiasm for building communities, fostering collaboration, and creating opportunities for others to learn and grow.
+        - generic [ref=e72]:
+          - article [ref=e73]:
+            - generic [ref=e75]:
+              - heading "Building student spaces" [level=3] [ref=e76]
+              - paragraph [ref=e77]: Her roles combine event planning, mentoring, team management, committee structure, design support, public relations, and technical community work.
+          - article [ref=e78]:
+            - generic [ref=e80]:
+              - heading "Beyond participation" [level=3] [ref=e81]
+              - paragraph [ref=e82]: The focus is not only attending clubs, but strengthening the student community through repeat responsibility.
+        - list [ref=e84]:
+          - listitem [ref=e85]:
+            - generic [ref=e87]:
+              - text: Club Head,
+              - strong [ref=e88]: SSN Design Club
+              - text: ", 2026-27; previously Junior Core, 2025-26. Promoted for design excellence and rapid execution, then selected and structured a"
+              - strong [ref=e89]: 16-member Core Committee
+              - text: .
+          - listitem [ref=e90]:
+            - generic [ref=e92]:
+              - text: Joint Event Coordinator,
+              - strong [ref=e93]: SSN ACE
+              - text: (ACE Office Bearer), 2025-26.
+          - listitem [ref=e94]:
+            - generic [ref=e96]:
+              - text: Core organizer for
+              - strong [ref=e97]: Invente
+              - text: ", coordinating 10+ competitions and approximately 200 registrations while owning design and documentation."
+          - listitem [ref=e98]:
+            - generic [ref=e100]: Joint Secretary, SSN IEEE WIE, 2025.
+          - listitem [ref=e101]:
+            - generic [ref=e103]:
+              - text: Coordinated 5 verticals and approximately 30-35 members for IEEE WIE, helped nearly double the team size, and led
+              - strong [ref=e104]: WISE 2025
+              - text: with ACM-W.
+          - listitem [ref=e105]:
+            - generic [ref=e107]:
+              - text: Treasurer, SSN ACM Student Chapter, 2025-26; contributed to
+              - strong [ref=e108]: ACM Hour of Code
+              - text: and helped secure approximately
+              - strong [ref=e109]: US$250
+              - text: in ACM funding.
+          - listitem [ref=e110]:
+            - generic [ref=e112]:
+              - strong [ref=e113]: Full-Stack Development
+              - text: Core,
+              - strong [ref=e114]: SSN Coding Club
+              - text: ", 2025-26."
+          - listitem [ref=e115]:
+            - generic [ref=e117]:
+              - text: Deputy PR Lead,
+              - strong [ref=e118]: SSN Coding Club
+              - text: ", 2025-26."
+          - listitem [ref=e119]:
+            - generic [ref=e121]: Event Management member, SSN ACM, 2025-26.
+          - listitem [ref=e122]:
+            - generic [ref=e124]: Under Secretary General, SSN SNUC MUN, 2025.
+          - listitem [ref=e125]:
+            - generic [ref=e127]: Additional leadership spans Core PR at SSN Networks, Head Girl, Director of Event Management at Polemic Debating Venture, and MC/compere roles for ICCIDS, Sports Day, CSI Inauguration, and ACM Competitive Thinking Workshop.
+          - listitem [ref=e128]:
+            - generic [ref=e130]: Core Member, QFactorial, 2025.
+          - listitem [ref=e131]:
+            - generic [ref=e133]:
+              - text: Junior Core,
+              - strong [ref=e134]: Gradient Design Club
+              - text: (SDC), 2025.
+          - listitem [ref=e135]:
+            - generic [ref=e137]: Creative and PR Member, Lakshya E-Cell Entrepreneurship Club, 2025-26.
+      - generic [ref=e138]:
+        - 'button "Prev: Soft Skills" [ref=e139] [cursor=pointer]'
+        - button "Play again" [ref=e140] [cursor=pointer]
+        - 'button "Next: Hobbies & Interests" [ref=e141] [cursor=pointer]'
