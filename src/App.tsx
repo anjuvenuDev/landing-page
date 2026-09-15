@@ -2,7 +2,6 @@ import { lazy, Suspense, useCallback, useEffect, useRef, useState } from 'react'
 import { gameLevels, sections } from './data/portfolio';
 import type { PortfolioSection, PortfolioSectionId } from './data/portfolio';
 import { challenges } from './game/levels';
-import { Analytics } from "@vercel/analytics/next";
 
 const Game = lazy(() => import('./game/MemoryQuestGame').then(m => ({ default: m.MemoryQuestGame })));
 const icons = ['✦', '⌘', '⚑', '⌬', '♡', '♜', '❋', '♛'];
@@ -151,7 +150,6 @@ export default function App() {
     setGameStarted(true);
     go('game');
   };
-        <Analytics />
 
   useEffect(() => { if (view !== 'story') return; setTyped(0); const timer = window.setInterval(() => setTyped(n => Math.min(n + 1, narration[story].length)), 30); return () => clearInterval(timer); }, [view, story]);
   useEffect(() => { const change = () => { if (!document.fullscreenElement) setExpanded(false); }; document.addEventListener('fullscreenchange', change); return () => document.removeEventListener('fullscreenchange', change); }, []);
